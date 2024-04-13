@@ -63,7 +63,9 @@ typedef struct
     float Pitch;
     float Yaw;
     float YawTotalAngle;
-
+    float Lastangle;
+    float n;
+    float total_angle; 
     uint8_t init;
 } INS_t;
 

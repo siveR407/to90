@@ -27,10 +27,12 @@ static PIDInstance chassis_angle_pid;                     // 底盘的PID控制�
 static DJIMotorInstance *motor_lf, *motor_rf, *motor_lb, *motor_rb; // left right forward back
  
 void ChassisInit()
-{       
-        chassis_angle_pid.Kp=0.1;
-        chassis_angle_pid.Ki=0.01;   
-        chassis_angle_pid.Kd=0.05;
+{       //底盘角度环pid初始化
+        chassis_angle_pid.Kp=700;
+        chassis_angle_pid.Ki=0  ;   
+        chassis_angle_pid.Kd=4;
+        chassis_angle_pid.IntegralLimit = 10000;
+        chassis_angle_pid.MaxOut = 30000;
     // 四个轮子的参数一样,改tx_id和反转标志位即可
     Motor_Init_Config_s chassis_motor_config = {
         .can_init_config.can_handle = &hcan1,
@@ -143,7 +145,7 @@ static void LimitChassisOutput()
  */
 
 static void EstimateChassisAngle(PIDInstance *chassis_angle_pid,float angle_measure,float angle_ref){
-        chassis_cmd_recv.wz=PIDCalculate(&chassis_angle_pid, angle_measure, angle_ref);
+        chassis_cmd_recv.wz= -1*PIDCalculate(chassis_angle_pid, angle_measure, angle_ref);
 }
 
 /**
@@ -205,11 +207,12 @@ void ChassisTask()
     // }else
     // {intergal=intergal+(90-abs(INS.Yaw));}
     // chassis_cmd_recv.wz=(90-abs(INS.Yaw))*10+intergal*0.05;
-    chassis_cmd_recv.wz=PIDCalculate(&chassis_angle_pid, INS.Yaw,90);
-    // EstimateChassisAngle(&chassis_angle_pid,INS.Yaw,chassis_cmd_recv.offset_angle);
-    chassis_vx=chassis_cmd_recv.vx;
-    chassis_vy=chassis_cmd_recv.vy;
+    // chassis_cmd_recv.wz=PIDCalculate(&chassis_angle_pid, INS.Yaw,90);
+    EstimateChassisAngle(&chassis_angle_pid,INS.total_angle,0.01*chassis_cmd_recv.wz);
+    chassis_vx=3.0*chassis_cmd_recv.vy;
+    chassis_vy=-3.0*chassis_cmd_recv.vx;
     // chassis_wz=chassis_cmd_recv.wz;
+    //  chassis_cmd_recv.wz=0;
     // 根据云台和底盘的角度offset将控制量映射到底盘坐标系上
     // 底盘逆时针旋转为角度正方向;云台命令的方向以云台指向的方向为x,采用右手系(x指向正北时y在正东)
     // static float sin_theta, cos_theta;

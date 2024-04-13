@@ -10,6 +10,7 @@
         "remote_control.h": "c",
         "general_def.h": "c",
         "stm32f4xx.h": "c",
-        "message_center.h": "c"
+        "message_center.h": "c",
+        "usart.h": "c"
     }
 }

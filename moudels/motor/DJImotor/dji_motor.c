@@ -147,7 +147,7 @@ static void DecodeDJIMotor(CANInstance *_instance)
         measure->total_round++;
     measure->total_angle = measure->total_round * 360 + measure->angle_single_round;
     if(measure->flag==0){
-        measure->first_angle=measure->total_angle;
+        measure->first_angle=measure->angle_single_round;
         measure->flag=1;
     }
 }

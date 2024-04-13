@@ -21,19 +21,19 @@ void PawInit()
     // 左摩擦轮
     Motor_Init_Config_s paw_config = {
         .can_init_config = {
-            .can_handle = &hcan1,
+            .can_handle = &hcan2,
         },
         .controller_param_init_config = {
             .angle_PID = {
                 // 如果启用位置环来控制发弹,需要较大的I值保证输出力矩的线性度否则出现接近拨出的力矩大幅下降
-                .Kp = 10, // 10
+                .Kp = 15, // 10
                 .Ki = 1,
                 .Kd = 0,
                 .MaxOut = 1300000,
             },
             .speed_PID = {
-                .Kp = 10, // 20
-                .Ki = 0.1, // 1
+                .Kp = 2, // 20
+                .Ki = 0.002, // 1
                 .Kd = 0.00,
                 .Improve = PID_Integral_Limit,
                 .IntegralLimit = 1300000,
@@ -53,30 +53,30 @@ void PawInit()
             .speed_feedback_source = MOTOR_FEED,
 
             .outer_loop_type = SPEED_LOOP,
-            .close_loop_type = SPEED_LOOP|CURRENT_LOOP       ,
+            .close_loop_type = SPEED_LOOP      ,
             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL,
         },
         .motor_type = M2006};
-    paw_config.can_init_config.tx_id = 1,
+    paw_config.can_init_config.tx_id = 4,
     paw_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
     paw0 = DJIMotorInit(&paw_config);
 
-    paw_config.can_init_config.tx_id = 2; // 右摩擦轮,改txid和方向就行
+    paw_config.can_init_config.tx_id = 5; // 右摩擦轮,改txid和方向就行
     paw_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
     paw1 = DJIMotorInit(&paw_config);
 
     // 夹爪电机
     Motor_Init_Config_s catch_config = {
         .can_init_config = {
-            .can_handle = &hcan1,
-            .tx_id = 3,
+            .can_handle = &hcan2,
+            .tx_id = 6,
         },
         .controller_param_init_config = {
             
             .speed_PID = {
-                .Kp = 1, // 10
-                .Ki = 0.02, // 1
-                .Kd = 0.01,
+                .Kp = 2, // 10
+                .Ki = 0.002, // 1
+                .Kd = 0.0,
                 .Improve = PID_Integral_Limit,
                 .IntegralLimit = 5000,
                 .MaxOut = 2000,
@@ -98,7 +98,7 @@ void PawInit()
         },
         .motor_type = M2006 // 英雄使用m3508
     };
-    catch_config.can_init_config.tx_id = 3;
+    catch_config.can_init_config.tx_id = 6;
     paw2 = DJIMotorInit(&catch_config);
 
     paw_pub = PubRegister("paw_feed", sizeof(Paw_Upload_Data_s));

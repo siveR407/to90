@@ -3,6 +3,7 @@
 #include "robot_cmd.h"
 // module
 #include "remote_control.h"
+#include  "distance.h"
 #include "ins_task.h"
 // #include "master_process.h"--视觉
 #include "message_center.h"
@@ -20,6 +21,7 @@ static Chassis_Ctrl_Cmd_s chassis_cmd_send;      // 发送给底盘应用的信�
 static Chassis_Upload_Data_s chassis_fetch_data; // 从底盘应用接收的反馈信息信息,底盘功率枪口热量与底盘运动状态等
 
 static RC_ctrl_t *rc_data;              // 遥控器数据,初始化时返回
+static Distance_data *dt_data;
 
 static Publisher_t *paw_cmd_pub;           // 发射控制消息发布者
 static Subscriber_t *paw_feed_sub;         // 发射反馈信息订阅者
@@ -36,6 +38,7 @@ static Robot_Status_e robot_state; // 机器人整体工作状态
 void RobotCMDInit()
 {
     rc_data = RemoteControlInit(&huart3);   // 修改为对应串口,注意如果是自研板dbus协议串口需选用添加了反相器的那个
+    dt_data = dtInit(&huart1);
     // vision_recv_data = VisionInit(&huart1); // 视觉通信串口
 
     // gimbal_cmd_pub = PubRegister("gimbal_cmd", sizeof(Gimbal_Ctrl_Cmd_s));
@@ -162,15 +165,21 @@ static void RemoteControlSet()
     // 底盘参数,目前没有加入小陀螺(调试似乎暂时没有必要),系数需要调整
     chassis_cmd_send.vx = 10.0f * (float)rc_data[TEMP].rc.rocker_r_; // _水平方向
     chassis_cmd_send.vy = 10.0f * (float)rc_data[TEMP].rc.rocker_r1; // 1数值方向
+     chassis_cmd_send.wz = 10.0f * (float)rc_data[TEMP].rc.rocker_l_;
       // 旋转方向
 
-    if(rc_data[TEMP].rc.SG>1000){
-        chassis_cmd_send.wz = 10.0f * (float)rc_data[TEMP].rc.rocker_l_;
-        shoot_cmd_send.shoot_rate1=0;
-        shoot_cmd_send.shoot_rate2= 0;
+    if(rc_data[TEMP].rc.SG>800){
+       
+        shoot_cmd_send.shoot_rate1=60.0f*124;
+        
     }else{
-        shoot_cmd_send.shoot_rate1=60.0f * (float)rc_data[TEMP].rc.rocker_l_;
-        shoot_cmd_send.shoot_rate2= 60.0f * (float)rc_data[TEMP].rc.rocker_r1;
+        shoot_cmd_send.shoot_rate1=0;
+        
+    }
+    if(rc_data[TEMP].rc.SF>800){
+        shoot_cmd_send.shoot_rate2= -60.0f *924;
+    }else{
+        shoot_cmd_send.shoot_rate2= 0;
     }
     // 发射参数
     // if (switch_is_up(rc_data[TEMP].rc.switch_right)) // 右侧开关状态[上],弹舱打开

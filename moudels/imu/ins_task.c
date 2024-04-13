@@ -79,8 +79,12 @@ static void InitQuaternion(float *init_q4)
 
 attitude_t *INS_Init(void)
 {
-    if (!INS.init)
+    if (!INS.init){
         INS.init = 1;
+        INS.n=0;
+        INS.Lastangle=0;
+        INS.total_angle=0;
+        }
     else
         return (attitude_t *)&INS.Gyro;
 
@@ -166,6 +170,18 @@ void INS_Task(void)
         INS.Pitch = QEKF_INS.Pitch;
         INS.Roll = QEKF_INS.Roll;
         INS.YawTotalAngle = QEKF_INS.YawTotalAngle;
+        if(INS.Yaw<0){
+            INS.Yaw=360+INS.Yaw;
+        }
+        if(INS.Yaw-INS.Lastangle>180){
+            INS.n--;      
+        }
+        if(INS.Yaw-INS.Lastangle<-180){
+            INS.n++;
+        }
+        INS.total_angle=INS.n*360+INS.Yaw;
+        INS.Lastangle=INS.Yaw;
+         
 
         // VisionSetAltitude(INS.Yaw, INS.Pitch, INS.Roll);
     }

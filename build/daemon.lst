@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 1
   43              	.LVL1:
   44              		.loc 1 13 50 view .LVU4
   45 0006 FFF7FEFF 		bl	malloc
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s 			page 2
 
 
   46              	.LVL2:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 1
   91 0032 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
   92 0034 591C     		adds	r1, r3, #1
   93 0036 1170     		strb	r1, [r2]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s 			page 3
 
 
   94              		.loc 1 22 29 view .LVU27
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 1
  144              	.LFB136:
   31:moudels/daemon/daemon.c **** 
   32:moudels/daemon/daemon.c **** uint8_t DaemonIsOnline(DaemonInstance *instance)
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 4
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s 			page 4
 
 
   33:moudels/daemon/daemon.c **** {
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 1
   44:moudels/daemon/daemon.c ****         if (dins->temp_count > 0) // 如果计数器还有值,说明上一次喂狗后还没有超�
   45:moudels/daemon/daemon.c ****             dins->temp_count--;
   46:moudels/daemon/daemon.c ****         else if (dins->callback) // 等于零说明超时了,调用回调函数(如果有的话)
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 5
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s 			page 5
 
 
  190              		.loc 1 46 14 is_stmt 1 view .LVU46
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 1
   52:moudels/daemon/daemon.c **** }
  229              		.loc 1 52 1 view .LVU60
  230 002a 10BD     		pop	{r4, pc}
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 6
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s 			page 6
 
 
  231              	.LVL13:
@@ -329,25 +329,25 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 1
  257              		.file 5 "moudels/daemon/daemon.h"
  258              		.file 6 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
  259              		.file 7 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s 			page 7
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 daemon.c
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:21     .text.DaemonRegister:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:27     .text.DaemonRegister:00000000 DaemonRegister
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:105    .text.DaemonRegister:00000040 $d
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:244    .bss.idx:00000000 idx
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:250    .bss.daemon_instances:00000000 daemon_instances
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:111    .text.DaemonReload:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:117    .text.DaemonReload:00000000 DaemonReload
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:136    .text.DaemonIsOnline:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:142    .text.DaemonIsOnline:00000000 DaemonIsOnline
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:163    .text.DaemonTask:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:169    .text.DaemonTask:00000000 DaemonTask
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:236    .text.DaemonTask:0000002c $d
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:245    .bss.idx:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\cc36KLP8.s:247    .bss.daemon_instances:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:21     .text.DaemonRegister:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:27     .text.DaemonRegister:00000000 DaemonRegister
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:105    .text.DaemonRegister:00000040 $d
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:244    .bss.idx:00000000 idx
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:250    .bss.daemon_instances:00000000 daemon_instances
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:111    .text.DaemonReload:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:117    .text.DaemonReload:00000000 DaemonReload
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:136    .text.DaemonIsOnline:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:142    .text.DaemonIsOnline:00000000 DaemonIsOnline
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:163    .text.DaemonTask:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:169    .text.DaemonTask:00000000 DaemonTask
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:236    .text.DaemonTask:0000002c $d
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:245    .bss.idx:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccVZNxdL.s:247    .bss.daemon_instances:00000000 $d
 
 UNDEFINED SYMBOLS
 malloc

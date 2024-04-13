@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,82 +58,82 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
   18:application/paw/paw.c **** 
   19:application/paw/paw.c **** void PawInit()
   20:application/paw/paw.c **** {
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 2
 
 
   36              		.loc 1 20 1 view -0
   37              		.cfi_startproc
   38              		@ args = 0, pretend = 0, frame = 352
   39              		@ frame_needed = 0, uses_anonymous_args = 0
-  40 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
-  41              		.cfi_def_cfa_offset 36
-  42              		.cfi_offset 4, -36
-  43              		.cfi_offset 5, -32
-  44              		.cfi_offset 6, -28
-  45              		.cfi_offset 7, -24
-  46              		.cfi_offset 8, -20
-  47              		.cfi_offset 9, -16
-  48              		.cfi_offset 10, -12
-  49              		.cfi_offset 11, -8
-  50              		.cfi_offset 14, -4
-  51 0004 D9B0     		sub	sp, sp, #356
-  52              		.cfi_def_cfa_offset 392
+  40 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  41              		.cfi_def_cfa_offset 32
+  42              		.cfi_offset 4, -32
+  43              		.cfi_offset 5, -28
+  44              		.cfi_offset 6, -24
+  45              		.cfi_offset 7, -20
+  46              		.cfi_offset 8, -16
+  47              		.cfi_offset 9, -12
+  48              		.cfi_offset 10, -8
+  49              		.cfi_offset 14, -4
+  50 0004 D8B0     		sub	sp, sp, #352
+  51              		.cfi_def_cfa_offset 384
   21:application/paw/paw.c ****     // 左摩擦轮
   22:application/paw/paw.c ****     Motor_Init_Config_s paw_config = {
-  53              		.loc 1 22 5 view .LVU1
-  54              		.loc 1 22 25 is_stmt 0 view .LVU2
-  55 0006 4FF0B00A 		mov	r10, #176
-  56 000a 5246     		mov	r2, r10
-  57 000c 0021     		movs	r1, #0
-  58 000e 0DEB0A00 		add	r0, sp, r10
-  59 0012 FFF7FEFF 		bl	memset
-  60              	.LVL0:
-  61 0016 374B     		ldr	r3, .L3
-  62 0018 3093     		str	r3, [sp, #192]	@ float
-  63 001a DFF81C81 		ldr	r8, .L3+68
-  64 001e CDF8C480 		str	r8, [sp, #196]	@ float
-  65 0022 354B     		ldr	r3, .L3+4
-  66 0024 3393     		str	r3, [sp, #204]	@ float
-  67 0026 0124     		movs	r4, #1
-  68 0028 8DF8D440 		strb	r4, [sp, #212]
-  69 002c 334B     		ldr	r3, .L3+8
-  70 002e 3693     		str	r3, [sp, #216]	@ float
-  71 0030 334A     		ldr	r2, .L3+12
-  72 0032 3B92     		str	r2, [sp, #236]	@ float
-  73 0034 DFF804B1 		ldr	fp, .L3+72
-  74 0038 CDF8F0B0 		str	fp, [sp, #240]	@ float
-  75 003c 314B     		ldr	r3, .L3+16
-  76 003e 3E93     		str	r3, [sp, #248]	@ float
-  77 0040 8DF80041 		strb	r4, [sp, #256]
-  78 0044 4193     		str	r3, [sp, #260]	@ float
-  79 0046 4692     		str	r2, [sp, #280]	@ float
-  80 0048 4FF07E59 		mov	r9, #1065353216
-  81 004c CDF81C91 		str	r9, [sp, #284]	@ float
+  52              		.loc 1 22 5 view .LVU1
+  53              		.loc 1 22 25 is_stmt 0 view .LVU2
+  54 0006 4FF0B00A 		mov	r10, #176
+  55 000a 5246     		mov	r2, r10
+  56 000c 0021     		movs	r1, #0
+  57 000e 0DEB0A00 		add	r0, sp, r10
+  58 0012 FFF7FEFF 		bl	memset
+  59              	.LVL0:
+  60 0016 384B     		ldr	r3, .L3
+  61 0018 3093     		str	r3, [sp, #192]	@ float
+  62 001a 384B     		ldr	r3, .L3+4
+  63 001c 3193     		str	r3, [sp, #196]	@ float
+  64 001e 384B     		ldr	r3, .L3+8
+  65 0020 3393     		str	r3, [sp, #204]	@ float
+  66 0022 0124     		movs	r4, #1
+  67 0024 8DF8D440 		strb	r4, [sp, #212]
+  68 0028 364B     		ldr	r3, .L3+12
+  69 002a 3693     		str	r3, [sp, #216]	@ float
+  70 002c 4FF08049 		mov	r9, #1073741824
+  71 0030 CDF8EC90 		str	r9, [sp, #236]	@ float
+  72 0034 DFF80881 		ldr	r8, .L3+72
+  73 0038 CDF8F080 		str	r8, [sp, #240]	@ float
+  74 003c 324B     		ldr	r3, .L3+16
+  75 003e 3E93     		str	r3, [sp, #248]	@ float
+  76 0040 8DF80041 		strb	r4, [sp, #256]
+  77 0044 4193     		str	r3, [sp, #260]	@ float
+  78 0046 314A     		ldr	r2, .L3+20
+  79 0048 4692     		str	r2, [sp, #280]	@ float
+  80 004a 4FF07E52 		mov	r2, #1065353216
+  81 004e 4792     		str	r2, [sp, #284]	@ float
   82 0050 4993     		str	r3, [sp, #292]	@ float
-  83 0052 0226     		movs	r6, #2
-  84 0054 8DF84461 		strb	r6, [sp, #324]
-  85 0058 0325     		movs	r5, #3
-  86 005a 8DF84551 		strb	r5, [sp, #325]
-  87 005e 8DF84B51 		strb	r5, [sp, #331]
-  88 0062 294F     		ldr	r7, .L3+20
-  89 0064 5397     		str	r7, [sp, #332]
+  83 0052 0225     		movs	r5, #2
+  84 0054 8DF84451 		strb	r5, [sp, #324]
+  85 0058 8DF84551 		strb	r5, [sp, #325]
+  86 005c 0327     		movs	r7, #3
+  87 005e 8DF84B71 		strb	r7, [sp, #331]
+  88 0062 2B4E     		ldr	r6, .L3+24
+  89 0064 5396     		str	r6, [sp, #332]
   23:application/paw/paw.c ****         .can_init_config = {
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 3
 
 
-  24:application/paw/paw.c ****             .can_handle = &hcan1,
+  24:application/paw/paw.c ****             .can_handle = &hcan2,
   25:application/paw/paw.c ****         },
   26:application/paw/paw.c ****         .controller_param_init_config = {
   27:application/paw/paw.c ****             .angle_PID = {
   28:application/paw/paw.c ****                 // 如果启用位置环来控制发弹,需要较大的I值保证输出力矩的线
-  29:application/paw/paw.c ****                 .Kp = 10, // 10
+  29:application/paw/paw.c ****                 .Kp = 15, // 10
   30:application/paw/paw.c ****                 .Ki = 1,
   31:application/paw/paw.c ****                 .Kd = 0,
   32:application/paw/paw.c ****                 .MaxOut = 1300000,
   33:application/paw/paw.c ****             },
   34:application/paw/paw.c ****             .speed_PID = {
-  35:application/paw/paw.c ****                 .Kp = 10, // 20
-  36:application/paw/paw.c ****                 .Ki = 0.1, // 1
+  35:application/paw/paw.c ****                 .Kp = 2, // 20
+  36:application/paw/paw.c ****                 .Ki = 0.002, // 1
   37:application/paw/paw.c ****                 .Kd = 0.00,
   38:application/paw/paw.c ****                 .Improve = PID_Integral_Limit,
   39:application/paw/paw.c ****                 .IntegralLimit = 1300000,
@@ -153,94 +153,96 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
   53:application/paw/paw.c ****             .speed_feedback_source = MOTOR_FEED,
   54:application/paw/paw.c **** 
   55:application/paw/paw.c ****             .outer_loop_type = SPEED_LOOP,
-  56:application/paw/paw.c ****             .close_loop_type = SPEED_LOOP|CURRENT_LOOP       ,
+  56:application/paw/paw.c ****             .close_loop_type = SPEED_LOOP      ,
   57:application/paw/paw.c ****             .motor_reverse_flag = MOTOR_DIRECTION_NORMAL,
   58:application/paw/paw.c ****         },
   59:application/paw/paw.c ****         .motor_type = M2006};
-  60:application/paw/paw.c ****     paw_config.can_init_config.tx_id = 1,
+  60:application/paw/paw.c ****     paw_config.can_init_config.tx_id = 4,
   90              		.loc 1 60 5 is_stmt 1 view .LVU3
   91              		.loc 1 60 38 is_stmt 0 view .LVU4
-  92 0066 5494     		str	r4, [sp, #336]
+  92 0066 0423     		movs	r3, #4
+  93 0068 5493     		str	r3, [sp, #336]
   61:application/paw/paw.c ****     paw_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
-  93              		.loc 1 61 66 view .LVU5
-  94 0068 8DF84641 		strb	r4, [sp, #326]
+  94              		.loc 1 61 66 view .LVU5
+  95 006a 8DF84641 		strb	r4, [sp, #326]
   62:application/paw/paw.c ****     paw0 = DJIMotorInit(&paw_config);
-  95              		.loc 1 62 5 is_stmt 1 view .LVU6
-  96              		.loc 1 62 12 is_stmt 0 view .LVU7
-  97 006c 0DEB0A00 		add	r0, sp, r10
-  98 0070 FFF7FEFF 		bl	DJIMotorInit
-  99              	.LVL1:
- 100              		.loc 1 62 10 discriminator 1 view .LVU8
- 101 0074 254B     		ldr	r3, .L3+24
- 102 0076 1860     		str	r0, [r3]
+  96              		.loc 1 62 5 is_stmt 1 view .LVU6
+  97              		.loc 1 62 12 is_stmt 0 view .LVU7
+  98 006e 0DEB0A00 		add	r0, sp, r10
+  99 0072 FFF7FEFF 		bl	DJIMotorInit
+ 100              	.LVL1:
+ 101              		.loc 1 62 10 discriminator 1 view .LVU8
+ 102 0076 274B     		ldr	r3, .L3+28
+ 103 0078 1860     		str	r0, [r3]
   63:application/paw/paw.c **** 
-  64:application/paw/paw.c ****     paw_config.can_init_config.tx_id = 2; // 右摩擦轮,改txid和方向就行
- 103              		.loc 1 64 5 is_stmt 1 view .LVU9
- 104              		.loc 1 64 38 is_stmt 0 view .LVU10
- 105 0078 5496     		str	r6, [sp, #336]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 4
+  64:application/paw/paw.c ****     paw_config.can_init_config.tx_id = 5; // 右摩擦轮,改txid和方向就行
+ 104              		.loc 1 64 5 is_stmt 1 view .LVU9
+ 105              		.loc 1 64 38 is_stmt 0 view .LVU10
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 4
 
 
+ 106 007a 0523     		movs	r3, #5
+ 107 007c 5493     		str	r3, [sp, #336]
   65:application/paw/paw.c ****     paw_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
- 106              		.loc 1 65 5 is_stmt 1 view .LVU11
- 107              		.loc 1 65 66 is_stmt 0 view .LVU12
- 108 007a 8DF84641 		strb	r4, [sp, #326]
+ 108              		.loc 1 65 5 is_stmt 1 view .LVU11
+ 109              		.loc 1 65 66 is_stmt 0 view .LVU12
+ 110 007e 8DF84641 		strb	r4, [sp, #326]
   66:application/paw/paw.c ****     paw1 = DJIMotorInit(&paw_config);
- 109              		.loc 1 66 5 is_stmt 1 view .LVU13
- 110              		.loc 1 66 12 is_stmt 0 view .LVU14
- 111 007e 0DEB0A00 		add	r0, sp, r10
- 112 0082 FFF7FEFF 		bl	DJIMotorInit
- 113              	.LVL2:
- 114              		.loc 1 66 10 discriminator 1 view .LVU15
- 115 0086 224B     		ldr	r3, .L3+28
- 116 0088 1860     		str	r0, [r3]
+ 111              		.loc 1 66 5 is_stmt 1 view .LVU13
+ 112              		.loc 1 66 12 is_stmt 0 view .LVU14
+ 113 0082 0DEB0A00 		add	r0, sp, r10
+ 114 0086 FFF7FEFF 		bl	DJIMotorInit
+ 115              	.LVL2:
+ 116              		.loc 1 66 10 discriminator 1 view .LVU15
+ 117 008a 234B     		ldr	r3, .L3+32
+ 118 008c 1860     		str	r0, [r3]
   67:application/paw/paw.c **** 
   68:application/paw/paw.c ****     // 夹爪电机
   69:application/paw/paw.c ****     Motor_Init_Config_s catch_config = {
- 117              		.loc 1 69 5 is_stmt 1 view .LVU16
- 118              		.loc 1 69 25 is_stmt 0 view .LVU17
- 119 008a 5246     		mov	r2, r10
- 120 008c 0021     		movs	r1, #0
- 121 008e 6846     		mov	r0, sp
- 122 0090 FFF7FEFF 		bl	memset
- 123              	.LVL3:
- 124 0094 1F4B     		ldr	r3, .L3+32
- 125 0096 0493     		str	r3, [sp, #16]	@ float
- 126 0098 CDF814B0 		str	fp, [sp, #20]	@ float
- 127 009c 1E4B     		ldr	r3, .L3+36
- 128 009e 0793     		str	r3, [sp, #28]	@ float
- 129 00a0 8DF82440 		strb	r4, [sp, #36]
- 130 00a4 0A93     		str	r3, [sp, #40]	@ float
- 131 00a6 CDF83C90 		str	r9, [sp, #60]	@ float
- 132 00aa 1C4A     		ldr	r2, .L3+40
- 133 00ac 1092     		str	r2, [sp, #64]	@ float
- 134 00ae CDF84480 		str	r8, [sp, #68]	@ float
- 135 00b2 1B4A     		ldr	r2, .L3+44
- 136 00b4 1292     		str	r2, [sp, #72]	@ float
- 137 00b6 8DF85040 		strb	r4, [sp, #80]
- 138 00ba 1593     		str	r3, [sp, #84]	@ float
- 139 00bc 8DF89460 		strb	r6, [sp, #148]
- 140 00c0 8DF89560 		strb	r6, [sp, #149]
- 141 00c4 8DF89B50 		strb	r5, [sp, #155]
- 142 00c8 2797     		str	r7, [sp, #156]
- 143 00ca 2895     		str	r5, [sp, #160]
+ 119              		.loc 1 69 5 is_stmt 1 view .LVU16
+ 120              		.loc 1 69 25 is_stmt 0 view .LVU17
+ 121 008e 5246     		mov	r2, r10
+ 122 0090 0021     		movs	r1, #0
+ 123 0092 6846     		mov	r0, sp
+ 124 0094 FFF7FEFF 		bl	memset
+ 125              	.LVL3:
+ 126 0098 204B     		ldr	r3, .L3+36
+ 127 009a 0493     		str	r3, [sp, #16]	@ float
+ 128 009c 204B     		ldr	r3, .L3+40
+ 129 009e 0593     		str	r3, [sp, #20]	@ float
+ 130 00a0 204B     		ldr	r3, .L3+44
+ 131 00a2 0793     		str	r3, [sp, #28]	@ float
+ 132 00a4 8DF82440 		strb	r4, [sp, #36]
+ 133 00a8 0A93     		str	r3, [sp, #40]	@ float
+ 134 00aa CDF83C90 		str	r9, [sp, #60]	@ float
+ 135 00ae CDF84080 		str	r8, [sp, #64]	@ float
+ 136 00b2 1D4A     		ldr	r2, .L3+48
+ 137 00b4 1292     		str	r2, [sp, #72]	@ float
+ 138 00b6 8DF85040 		strb	r4, [sp, #80]
+ 139 00ba 1593     		str	r3, [sp, #84]	@ float
+ 140 00bc 8DF89450 		strb	r5, [sp, #148]
+ 141 00c0 8DF89550 		strb	r5, [sp, #149]
+ 142 00c4 8DF89B70 		strb	r7, [sp, #155]
+ 143 00c8 2796     		str	r6, [sp, #156]
+ 144 00ca 0623     		movs	r3, #6
+ 145 00cc 2893     		str	r3, [sp, #160]
   70:application/paw/paw.c ****         .can_init_config = {
-  71:application/paw/paw.c ****             .can_handle = &hcan1,
-  72:application/paw/paw.c ****             .tx_id = 3,
+  71:application/paw/paw.c ****             .can_handle = &hcan2,
+  72:application/paw/paw.c ****             .tx_id = 6,
   73:application/paw/paw.c ****         },
   74:application/paw/paw.c ****         .controller_param_init_config = {
   75:application/paw/paw.c ****             
   76:application/paw/paw.c ****             .speed_PID = {
-  77:application/paw/paw.c ****                 .Kp = 1, // 10
-  78:application/paw/paw.c ****                 .Ki = 0.02, // 1
-  79:application/paw/paw.c ****                 .Kd = 0.01,
+  77:application/paw/paw.c ****                 .Kp = 2, // 10
+  78:application/paw/paw.c ****                 .Ki = 0.002, // 1
+  79:application/paw/paw.c ****                 .Kd = 0.0,
   80:application/paw/paw.c ****                 .Improve = PID_Integral_Limit,
   81:application/paw/paw.c ****                 .IntegralLimit = 5000,
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 5
+
+
   82:application/paw/paw.c ****                 .MaxOut = 2000,
   83:application/paw/paw.c ****             },
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 5
-
-
   84:application/paw/paw.c ****             .current_PID = {
   85:application/paw/paw.c ****                 .Kp = 0.7, // 0.7
   86:application/paw/paw.c ****                 .Ki = 0.1, // 0.1
@@ -258,132 +260,132 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
   98:application/paw/paw.c ****         },
   99:application/paw/paw.c ****         .motor_type = M2006 // 英雄使用m3508
  100:application/paw/paw.c ****     };
- 101:application/paw/paw.c ****     catch_config.can_init_config.tx_id = 3;
- 144              		.loc 1 101 5 is_stmt 1 view .LVU18
+ 101:application/paw/paw.c ****     catch_config.can_init_config.tx_id = 6;
+ 146              		.loc 1 101 5 is_stmt 1 view .LVU18
  102:application/paw/paw.c ****     paw2 = DJIMotorInit(&catch_config);
- 145              		.loc 1 102 5 view .LVU19
- 146              		.loc 1 102 12 is_stmt 0 view .LVU20
- 147 00cc 6846     		mov	r0, sp
- 148 00ce FFF7FEFF 		bl	DJIMotorInit
- 149              	.LVL4:
- 150              		.loc 1 102 10 discriminator 1 view .LVU21
- 151 00d2 144B     		ldr	r3, .L3+48
- 152 00d4 1860     		str	r0, [r3]
+ 147              		.loc 1 102 5 view .LVU19
+ 148              		.loc 1 102 12 is_stmt 0 view .LVU20
+ 149 00ce 6846     		mov	r0, sp
+ 150 00d0 FFF7FEFF 		bl	DJIMotorInit
+ 151              	.LVL4:
+ 152              		.loc 1 102 10 discriminator 1 view .LVU21
+ 153 00d4 154B     		ldr	r3, .L3+52
+ 154 00d6 1860     		str	r0, [r3]
  103:application/paw/paw.c **** 
  104:application/paw/paw.c ****     paw_pub = PubRegister("paw_feed", sizeof(Paw_Upload_Data_s));
- 153              		.loc 1 104 5 is_stmt 1 view .LVU22
- 154              		.loc 1 104 15 is_stmt 0 view .LVU23
- 155 00d6 0021     		movs	r1, #0
- 156 00d8 1348     		ldr	r0, .L3+52
- 157 00da FFF7FEFF 		bl	PubRegister
- 158              	.LVL5:
- 159              		.loc 1 104 13 discriminator 1 view .LVU24
- 160 00de 134B     		ldr	r3, .L3+56
- 161 00e0 1860     		str	r0, [r3]
+ 155              		.loc 1 104 5 is_stmt 1 view .LVU22
+ 156              		.loc 1 104 15 is_stmt 0 view .LVU23
+ 157 00d8 0021     		movs	r1, #0
+ 158 00da 1548     		ldr	r0, .L3+56
+ 159 00dc FFF7FEFF 		bl	PubRegister
+ 160              	.LVL5:
+ 161              		.loc 1 104 13 discriminator 1 view .LVU24
+ 162 00e0 144B     		ldr	r3, .L3+60
+ 163 00e2 1860     		str	r0, [r3]
  105:application/paw/paw.c ****     paw_sub = SubRegister("paw_cmd", sizeof(Paw_Ctrl_Cmd_s));
- 162              		.loc 1 105 5 is_stmt 1 view .LVU25
- 163              		.loc 1 105 15 is_stmt 0 view .LVU26
- 164 00e2 0C21     		movs	r1, #12
- 165 00e4 1248     		ldr	r0, .L3+60
- 166 00e6 FFF7FEFF 		bl	SubRegister
- 167              	.LVL6:
- 168              		.loc 1 105 13 discriminator 1 view .LVU27
- 169 00ea 124B     		ldr	r3, .L3+64
- 170 00ec 1860     		str	r0, [r3]
+ 164              		.loc 1 105 5 is_stmt 1 view .LVU25
+ 165              		.loc 1 105 15 is_stmt 0 view .LVU26
+ 166 00e4 0C21     		movs	r1, #12
+ 167 00e6 1448     		ldr	r0, .L3+64
+ 168 00e8 FFF7FEFF 		bl	SubRegister
+ 169              	.LVL6:
+ 170              		.loc 1 105 13 discriminator 1 view .LVU27
+ 171 00ec 134B     		ldr	r3, .L3+68
+ 172 00ee 1860     		str	r0, [r3]
  106:application/paw/paw.c **** }
- 171              		.loc 1 106 1 view .LVU28
- 172 00ee 59B0     		add	sp, sp, #356
- 173              		.cfi_def_cfa_offset 36
- 174              		@ sp needed
- 175 00f0 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
- 176              	.L4:
- 177              		.align	2
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 6
+ 173              		.loc 1 106 1 view .LVU28
+ 174 00f0 58B0     		add	sp, sp, #352
+ 175              		.cfi_def_cfa_offset 32
+ 176              		@ sp needed
+ 177 00f2 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 6
 
 
- 178              	.L3:
- 179 00f4 9A99993E 		.word	1050253722
- 180 00f8 00606A46 		.word	1181376512
- 181 00fc 00401C46 		.word	1176256512
- 182 0100 00002041 		.word	1092616192
- 183 0104 00B19E49 		.word	1235136768
- 184 0108 00000000 		.word	hcan1
- 185 010c 00000000 		.word	paw0
- 186 0110 00000000 		.word	paw1
- 187 0114 3333333F 		.word	1060320051
- 188 0118 00409C45 		.word	1167867904
- 189 011c 0AD7A33C 		.word	1017370378
- 190 0120 0000FA44 		.word	1157234688
- 191 0124 00000000 		.word	paw2
- 192 0128 00000000 		.word	.LC0
- 193 012c 00000000 		.word	paw_pub
- 194 0130 0C000000 		.word	.LC1
- 195 0134 00000000 		.word	paw_sub
- 196 0138 0AD7233C 		.word	1008981770
- 197 013c CDCCCC3D 		.word	1036831949
- 198              		.cfi_endproc
- 199              	.LFE167:
- 201              		.section	.text.PawTask,"ax",%progbits
- 202              		.align	1
- 203              		.global	PawTask
- 204              		.syntax unified
- 205              		.thumb
- 206              		.thumb_func
- 208              	PawTask:
- 209              	.LFB168:
+ 178              	.L4:
+ 179 00f6 00BF     		.align	2
+ 180              	.L3:
+ 181 00f8 9A99993E 		.word	1050253722
+ 182 00fc 0AD7233C 		.word	1008981770
+ 183 0100 00606A46 		.word	1181376512
+ 184 0104 00401C46 		.word	1176256512
+ 185 0108 00B19E49 		.word	1235136768
+ 186 010c 00007041 		.word	1097859072
+ 187 0110 00000000 		.word	hcan2
+ 188 0114 00000000 		.word	paw0
+ 189 0118 00000000 		.word	paw1
+ 190 011c 3333333F 		.word	1060320051
+ 191 0120 CDCCCC3D 		.word	1036831949
+ 192 0124 00409C45 		.word	1167867904
+ 193 0128 0000FA44 		.word	1157234688
+ 194 012c 00000000 		.word	paw2
+ 195 0130 00000000 		.word	.LC0
+ 196 0134 00000000 		.word	paw_pub
+ 197 0138 0C000000 		.word	.LC1
+ 198 013c 00000000 		.word	paw_sub
+ 199 0140 6F12033B 		.word	990057071
+ 200              		.cfi_endproc
+ 201              	.LFE167:
+ 203              		.section	.text.PawTask,"ax",%progbits
+ 204              		.align	1
+ 205              		.global	PawTask
+ 206              		.syntax unified
+ 207              		.thumb
+ 208              		.thumb_func
+ 210              	PawTask:
+ 211              	.LFB168:
  107:application/paw/paw.c **** 
  108:application/paw/paw.c **** /* 机器人发射机构控制核心任务 */
  109:application/paw/paw.c **** void PawTask()
  110:application/paw/paw.c **** {
- 210              		.loc 1 110 1 is_stmt 1 view -0
- 211              		.cfi_startproc
- 212              		@ args = 0, pretend = 0, frame = 0
- 213              		@ frame_needed = 0, uses_anonymous_args = 0
- 214 0000 10B5     		push	{r4, lr}
- 215              		.cfi_def_cfa_offset 8
- 216              		.cfi_offset 4, -8
- 217              		.cfi_offset 14, -4
+ 212              		.loc 1 110 1 is_stmt 1 view -0
+ 213              		.cfi_startproc
+ 214              		@ args = 0, pretend = 0, frame = 0
+ 215              		@ frame_needed = 0, uses_anonymous_args = 0
+ 216 0000 10B5     		push	{r4, lr}
+ 217              		.cfi_def_cfa_offset 8
+ 218              		.cfi_offset 4, -8
+ 219              		.cfi_offset 14, -4
  111:application/paw/paw.c ****     // 从cmd获取控制数据
  112:application/paw/paw.c ****     SubGetMessage(paw_sub, &paw_cmd_recv);
- 218              		.loc 1 112 5 view .LVU30
- 219 0002 4D4C     		ldr	r4, .L22
- 220 0004 2146     		mov	r1, r4
- 221 0006 4D4B     		ldr	r3, .L22+4
- 222 0008 1868     		ldr	r0, [r3]
- 223 000a FFF7FEFF 		bl	SubGetMessage
- 224              	.LVL7:
+ 220              		.loc 1 112 5 view .LVU30
+ 221 0002 4D4C     		ldr	r4, .L22
+ 222 0004 2146     		mov	r1, r4
+ 223 0006 4D4B     		ldr	r3, .L22+4
+ 224 0008 1868     		ldr	r0, [r3]
+ 225 000a FFF7FEFF 		bl	SubGetMessage
+ 226              	.LVL7:
  113:application/paw/paw.c **** 
  114:application/paw/paw.c ****     // 对shoot mode等于SHOOT_STOP的情况特殊处理,直接停止所有电机(紧急停止)
  115:application/paw/paw.c ****     if (paw_cmd_recv.paw_mode == Paw_OFF)
- 225              		.loc 1 115 5 view .LVU31
- 226              		.loc 1 115 21 is_stmt 0 view .LVU32
- 227 000e E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 7
+ 227              		.loc 1 115 5 view .LVU31
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 7
 
 
- 228              		.loc 1 115 8 view .LVU33
- 229 0010 002B     		cmp	r3, #0
- 230 0012 3DD1     		bne	.L6
+ 228              		.loc 1 115 21 is_stmt 0 view .LVU32
+ 229 000e E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 230              		.loc 1 115 8 view .LVU33
+ 231 0010 002B     		cmp	r3, #0
+ 232 0012 3DD1     		bne	.L6
  116:application/paw/paw.c ****     {
  117:application/paw/paw.c ****         DJIMotorStop(paw0);
- 231              		.loc 1 117 9 is_stmt 1 view .LVU34
- 232 0014 4A4B     		ldr	r3, .L22+8
- 233 0016 1868     		ldr	r0, [r3]
- 234 0018 FFF7FEFF 		bl	DJIMotorStop
- 235              	.LVL8:
+ 233              		.loc 1 117 9 is_stmt 1 view .LVU34
+ 234 0014 4A4B     		ldr	r3, .L22+8
+ 235 0016 1868     		ldr	r0, [r3]
+ 236 0018 FFF7FEFF 		bl	DJIMotorStop
+ 237              	.LVL8:
  118:application/paw/paw.c ****         DJIMotorStop(paw1);
- 236              		.loc 1 118 9 view .LVU35
- 237 001c 494B     		ldr	r3, .L22+12
- 238 001e 1868     		ldr	r0, [r3]
- 239 0020 FFF7FEFF 		bl	DJIMotorStop
- 240              	.LVL9:
+ 238              		.loc 1 118 9 view .LVU35
+ 239 001c 494B     		ldr	r3, .L22+12
+ 240 001e 1868     		ldr	r0, [r3]
+ 241 0020 FFF7FEFF 		bl	DJIMotorStop
+ 242              	.LVL9:
  119:application/paw/paw.c ****         DJIMotorStop(paw2);
- 241              		.loc 1 119 9 view .LVU36
- 242 0024 484B     		ldr	r3, .L22+16
- 243 0026 1868     		ldr	r0, [r3]
- 244 0028 FFF7FEFF 		bl	DJIMotorStop
- 245              	.LVL10:
- 246              	.L7:
+ 243              		.loc 1 119 9 view .LVU36
+ 244 0024 484B     		ldr	r3, .L22+16
+ 245 0026 1868     		ldr	r0, [r3]
+ 246 0028 FFF7FEFF 		bl	DJIMotorStop
+ 247              	.LVL10:
+ 248              	.L7:
  120:application/paw/paw.c ****     }
  121:application/paw/paw.c ****     else // 恢复运行
  122:application/paw/paw.c ****     {
@@ -394,7 +396,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
  127:application/paw/paw.c ****     //夹爪
  128:application/paw/paw.c ****      
  129:application/paw/paw.c ****     if((paw2->measure.real_current>50000)||(paw2->measure.real_current<-50000)){
- 247              		.loc 1 129 5 view .LVU37
+ 249              		.loc 1 129 5 view .LVU37
  130:application/paw/paw.c ****         if(paw_cmd_recv.paw2location==up){
  131:application/paw/paw.c ****             DJIMotorOuterLoop(paw2, CURRENT_LOOP);
  132:application/paw/paw.c ****             DJIMotorSetRef(paw2, 1500);
@@ -407,80 +409,80 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
  139:application/paw/paw.c ****             }
  140:application/paw/paw.c ****     }else{
  141:application/paw/paw.c ****         if(paw_cmd_recv.paw2location==up){
- 248              		.loc 1 141 9 view .LVU38
- 249              		.loc 1 141 24 is_stmt 0 view .LVU39
- 250 002c 424B     		ldr	r3, .L22
- 251 002e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 252              		.loc 1 141 11 view .LVU40
- 253 0030 002B     		cmp	r3, #0
- 254 0032 3AD0     		beq	.L20
+ 250              		.loc 1 141 9 view .LVU38
+ 251              		.loc 1 141 24 is_stmt 0 view .LVU39
+ 252 002c 424B     		ldr	r3, .L22
+ 253 002e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 254              		.loc 1 141 11 view .LVU40
+ 255 0030 002B     		cmp	r3, #0
+ 256 0032 3AD0     		beq	.L20
  142:application/paw/paw.c ****             DJIMotorOuterLoop(paw2,SPEED_LOOP);
  143:application/paw/paw.c ****             DJIMotorSetRef(paw2, 15000);
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 8
+
+
  144:application/paw/paw.c ****             }else if(paw_cmd_recv.paw2location==down){
- 255              		.loc 1 144 19 is_stmt 1 view .LVU41
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 8
-
-
- 256              		.loc 1 144 21 is_stmt 0 view .LVU42
- 257 0034 012B     		cmp	r3, #1
- 258 0036 43D0     		beq	.L21
+ 257              		.loc 1 144 19 is_stmt 1 view .LVU41
+ 258              		.loc 1 144 21 is_stmt 0 view .LVU42
+ 259 0034 012B     		cmp	r3, #1
+ 260 0036 43D0     		beq	.L21
  145:application/paw/paw.c ****                     DJIMotorOuterLoop(paw2,  SPEED_LOOP);
  146:application/paw/paw.c ****                     DJIMotorSetRef(paw2, -15000);
  147:application/paw/paw.c ****             }else{
  148:application/paw/paw.c ****                 DJIMotorOuterLoop(paw2,  SPEED_LOOP);
- 259              		.loc 1 148 17 is_stmt 1 view .LVU43
- 260 0038 434C     		ldr	r4, .L22+16
- 261 003a 0221     		movs	r1, #2
- 262 003c 2068     		ldr	r0, [r4]
- 263 003e FFF7FEFF 		bl	DJIMotorOuterLoop
- 264              	.LVL11:
+ 261              		.loc 1 148 17 is_stmt 1 view .LVU43
+ 262 0038 434C     		ldr	r4, .L22+16
+ 263 003a 0221     		movs	r1, #2
+ 264 003c 2068     		ldr	r0, [r4]
+ 265 003e FFF7FEFF 		bl	DJIMotorOuterLoop
+ 266              	.LVL11:
  149:application/paw/paw.c ****                 DJIMotorSetRef(paw2, 0);
- 265              		.loc 1 149 17 view .LVU44
- 266 0042 9FED420A 		vldr.32	s0, .L22+20
- 267 0046 2068     		ldr	r0, [r4]
- 268 0048 FFF7FEFF 		bl	DJIMotorSetRef
- 269              	.LVL12:
- 270              	.L9:
+ 267              		.loc 1 149 17 view .LVU44
+ 268 0042 9FED420A 		vldr.32	s0, .L22+20
+ 269 0046 2068     		ldr	r0, [r4]
+ 270 0048 FFF7FEFF 		bl	DJIMotorSetRef
+ 271              	.LVL12:
+ 272              	.L9:
  150:application/paw/paw.c ****             }
  151:application/paw/paw.c ****     }
  152:application/paw/paw.c **** 
  153:application/paw/paw.c ****     switch(paw_cmd_recv.paw0location) {
- 271              		.loc 1 153 5 view .LVU45
- 272              		.loc 1 153 24 is_stmt 0 view .LVU46
- 273 004c 3A4B     		ldr	r3, .L22
- 274 004e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 275              		.loc 1 153 5 view .LVU47
- 276 0050 012B     		cmp	r3, #1
- 277 0052 40D0     		beq	.L11
- 278 0054 022B     		cmp	r3, #2
- 279 0056 49D0     		beq	.L12
- 280 0058 4BB9     		cbnz	r3, .L13
+ 273              		.loc 1 153 5 view .LVU45
+ 274              		.loc 1 153 24 is_stmt 0 view .LVU46
+ 275 004c 3A4B     		ldr	r3, .L22
+ 276 004e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 277              		.loc 1 153 5 view .LVU47
+ 278 0050 012B     		cmp	r3, #1
+ 279 0052 40D0     		beq	.L11
+ 280 0054 022B     		cmp	r3, #2
+ 281 0056 49D0     		beq	.L12
+ 282 0058 4BB9     		cbnz	r3, .L13
  154:application/paw/paw.c ****         case up:
  155:application/paw/paw.c ****             DJIMotorOuterLoop(paw0,  SPEED_LOOP);
- 281              		.loc 1 155 13 is_stmt 1 view .LVU48
- 282 005a 394C     		ldr	r4, .L22+8
- 283 005c 0221     		movs	r1, #2
- 284 005e 2068     		ldr	r0, [r4]
- 285 0060 FFF7FEFF 		bl	DJIMotorOuterLoop
- 286              	.LVL13:
+ 283              		.loc 1 155 13 is_stmt 1 view .LVU48
+ 284 005a 394C     		ldr	r4, .L22+8
+ 285 005c 0221     		movs	r1, #2
+ 286 005e 2068     		ldr	r0, [r4]
+ 287 0060 FFF7FEFF 		bl	DJIMotorOuterLoop
+ 288              	.LVL13:
  156:application/paw/paw.c ****             DJIMotorSetRef(paw0, -15000);
- 287              		.loc 1 156 13 view .LVU49
- 288 0064 9FED3A0A 		vldr.32	s0, .L22+24
- 289 0068 2068     		ldr	r0, [r4]
- 290 006a FFF7FEFF 		bl	DJIMotorSetRef
- 291              	.LVL14:
+ 289              		.loc 1 156 13 view .LVU49
+ 290 0064 9FED3A0A 		vldr.32	s0, .L22+24
+ 291 0068 2068     		ldr	r0, [r4]
+ 292 006a FFF7FEFF 		bl	DJIMotorSetRef
+ 293              	.LVL14:
  157:application/paw/paw.c ****             break;
- 292              		.loc 1 157 13 view .LVU50
- 293              	.L13:
+ 294              		.loc 1 157 13 view .LVU50
+ 295              	.L13:
  158:application/paw/paw.c ****         case down:
  159:application/paw/paw.c ****             DJIMotorOuterLoop(paw0,  SPEED_LOOP);
  160:application/paw/paw.c ****             DJIMotorSetRef(paw0, 15000);
  161:application/paw/paw.c ****             break;
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 9
+
+
  162:application/paw/paw.c ****         case stand:
  163:application/paw/paw.c ****             DJIMotorOuterLoop(paw0,  SPEED_LOOP);
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 9
-
-
  164:application/paw/paw.c ****             DJIMotorSetRef(paw0, 0);
  165:application/paw/paw.c ****             break;
  166:application/paw/paw.c ****         default:
@@ -488,15 +490,15 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
  168:application/paw/paw.c ****             break;
  169:application/paw/paw.c ****     }
  170:application/paw/paw.c ****     switch(paw_cmd_recv.paw1location) {
- 294              		.loc 1 170 5 view .LVU51
- 295              		.loc 1 170 24 is_stmt 0 view .LVU52
- 296 006e 324B     		ldr	r3, .L22
- 297 0070 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 298              		.loc 1 170 5 view .LVU53
- 299 0072 002B     		cmp	r3, #0
- 300 0074 45D0     		beq	.L14
- 301 0076 012B     		cmp	r3, #1
- 302 0078 53D0     		beq	.L15
+ 296              		.loc 1 170 5 view .LVU51
+ 297              		.loc 1 170 24 is_stmt 0 view .LVU52
+ 298 006e 324B     		ldr	r3, .L22
+ 299 0070 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 300              		.loc 1 170 5 view .LVU53
+ 301 0072 002B     		cmp	r3, #0
+ 302 0074 45D0     		beq	.L14
+ 303 0076 012B     		cmp	r3, #1
+ 304 0078 53D0     		beq	.L15
  171:application/paw/paw.c ****         case up:
  172:application/paw/paw.c ****             DJIMotorOuterLoop(paw1,  SPEED_LOOP);
  173:application/paw/paw.c ****             DJIMotorSetRef(paw1, -15000);
@@ -507,128 +509,128 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
  178:application/paw/paw.c ****             break;
  179:application/paw/paw.c ****         default:
  180:application/paw/paw.c ****             DJIMotorOuterLoop(paw1,  SPEED_LOOP);
- 303              		.loc 1 180 13 is_stmt 1 view .LVU54
- 304 007a 324C     		ldr	r4, .L22+12
- 305 007c 0221     		movs	r1, #2
- 306 007e 2068     		ldr	r0, [r4]
- 307 0080 FFF7FEFF 		bl	DJIMotorOuterLoop
- 308              	.LVL15:
+ 305              		.loc 1 180 13 is_stmt 1 view .LVU54
+ 306 007a 324C     		ldr	r4, .L22+12
+ 307 007c 0221     		movs	r1, #2
+ 308 007e 2068     		ldr	r0, [r4]
+ 309 0080 FFF7FEFF 		bl	DJIMotorOuterLoop
+ 310              	.LVL15:
  181:application/paw/paw.c ****             DJIMotorSetRef(paw1, 0);
- 309              		.loc 1 181 13 view .LVU55
- 310 0084 9FED310A 		vldr.32	s0, .L22+20
- 311 0088 2068     		ldr	r0, [r4]
- 312 008a FFF7FEFF 		bl	DJIMotorSetRef
- 313              	.LVL16:
+ 311              		.loc 1 181 13 view .LVU55
+ 312 0084 9FED310A 		vldr.32	s0, .L22+20
+ 313 0088 2068     		ldr	r0, [r4]
+ 314 008a FFF7FEFF 		bl	DJIMotorSetRef
+ 315              	.LVL16:
  182:application/paw/paw.c ****             break;
- 314              		.loc 1 182 13 view .LVU56
- 315 008e 42E0     		b	.L17
- 316              	.L6:
+ 316              		.loc 1 182 13 view .LVU56
+ 317 008e 42E0     		b	.L17
+ 318              	.L6:
  123:application/paw/paw.c ****         DJIMotorEnable(paw1);
- 317              		.loc 1 123 9 view .LVU57
- 318 0090 2B4B     		ldr	r3, .L22+8
- 319 0092 1868     		ldr	r0, [r3]
- 320 0094 FFF7FEFF 		bl	DJIMotorEnable
- 321              	.LVL17:
+ 319              		.loc 1 123 9 view .LVU57
+ 320 0090 2B4B     		ldr	r3, .L22+8
+ 321 0092 1868     		ldr	r0, [r3]
+ 322 0094 FFF7FEFF 		bl	DJIMotorEnable
+ 323              	.LVL17:
  124:application/paw/paw.c ****         DJIMotorEnable(paw2);
- 322              		.loc 1 124 9 view .LVU58
- 323 0098 2A4B     		ldr	r3, .L22+12
- 324 009a 1868     		ldr	r0, [r3]
- 325 009c FFF7FEFF 		bl	DJIMotorEnable
- 326              	.LVL18:
+ 324              		.loc 1 124 9 view .LVU58
+ 325 0098 2A4B     		ldr	r3, .L22+12
+ 326 009a 1868     		ldr	r0, [r3]
+ 327 009c FFF7FEFF 		bl	DJIMotorEnable
+ 328              	.LVL18:
  125:application/paw/paw.c ****     }
- 327              		.loc 1 125 9 view .LVU59
- 328 00a0 294B     		ldr	r3, .L22+16
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 10
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 10
 
 
- 329 00a2 1868     		ldr	r0, [r3]
- 330 00a4 FFF7FEFF 		bl	DJIMotorEnable
- 331              	.LVL19:
- 332 00a8 C0E7     		b	.L7
- 333              	.L20:
+ 329              		.loc 1 125 9 view .LVU59
+ 330 00a0 294B     		ldr	r3, .L22+16
+ 331 00a2 1868     		ldr	r0, [r3]
+ 332 00a4 FFF7FEFF 		bl	DJIMotorEnable
+ 333              	.LVL19:
+ 334 00a8 C0E7     		b	.L7
+ 335              	.L20:
  142:application/paw/paw.c ****             DJIMotorSetRef(paw2, 15000);
- 334              		.loc 1 142 13 view .LVU60
- 335 00aa 274C     		ldr	r4, .L22+16
- 336 00ac 0221     		movs	r1, #2
- 337 00ae 2068     		ldr	r0, [r4]
- 338 00b0 FFF7FEFF 		bl	DJIMotorOuterLoop
- 339              	.LVL20:
+ 336              		.loc 1 142 13 view .LVU60
+ 337 00aa 274C     		ldr	r4, .L22+16
+ 338 00ac 0221     		movs	r1, #2
+ 339 00ae 2068     		ldr	r0, [r4]
+ 340 00b0 FFF7FEFF 		bl	DJIMotorOuterLoop
+ 341              	.LVL20:
  143:application/paw/paw.c ****             }else if(paw_cmd_recv.paw2location==down){
- 340              		.loc 1 143 13 view .LVU61
- 341 00b4 9FED270A 		vldr.32	s0, .L22+28
- 342 00b8 2068     		ldr	r0, [r4]
- 343 00ba FFF7FEFF 		bl	DJIMotorSetRef
- 344              	.LVL21:
- 345 00be C5E7     		b	.L9
- 346              	.L21:
+ 342              		.loc 1 143 13 view .LVU61
+ 343 00b4 9FED270A 		vldr.32	s0, .L22+28
+ 344 00b8 2068     		ldr	r0, [r4]
+ 345 00ba FFF7FEFF 		bl	DJIMotorSetRef
+ 346              	.LVL21:
+ 347 00be C5E7     		b	.L9
+ 348              	.L21:
  145:application/paw/paw.c ****                     DJIMotorSetRef(paw2, -15000);
- 347              		.loc 1 145 21 view .LVU62
- 348 00c0 214C     		ldr	r4, .L22+16
- 349 00c2 0221     		movs	r1, #2
- 350 00c4 2068     		ldr	r0, [r4]
- 351 00c6 FFF7FEFF 		bl	DJIMotorOuterLoop
- 352              	.LVL22:
+ 349              		.loc 1 145 21 view .LVU62
+ 350 00c0 214C     		ldr	r4, .L22+16
+ 351 00c2 0221     		movs	r1, #2
+ 352 00c4 2068     		ldr	r0, [r4]
+ 353 00c6 FFF7FEFF 		bl	DJIMotorOuterLoop
+ 354              	.LVL22:
  146:application/paw/paw.c ****             }else{
- 353              		.loc 1 146 21 view .LVU63
- 354 00ca 9FED210A 		vldr.32	s0, .L22+24
- 355 00ce 2068     		ldr	r0, [r4]
- 356 00d0 FFF7FEFF 		bl	DJIMotorSetRef
- 357              	.LVL23:
- 358 00d4 BAE7     		b	.L9
- 359              	.L11:
+ 355              		.loc 1 146 21 view .LVU63
+ 356 00ca 9FED210A 		vldr.32	s0, .L22+24
+ 357 00ce 2068     		ldr	r0, [r4]
+ 358 00d0 FFF7FEFF 		bl	DJIMotorSetRef
+ 359              	.LVL23:
+ 360 00d4 BAE7     		b	.L9
+ 361              	.L11:
  159:application/paw/paw.c ****             DJIMotorSetRef(paw0, 15000);
- 360              		.loc 1 159 13 view .LVU64
- 361 00d6 1A4C     		ldr	r4, .L22+8
- 362 00d8 0221     		movs	r1, #2
- 363 00da 2068     		ldr	r0, [r4]
- 364 00dc FFF7FEFF 		bl	DJIMotorOuterLoop
- 365              	.LVL24:
+ 362              		.loc 1 159 13 view .LVU64
+ 363 00d6 1A4C     		ldr	r4, .L22+8
+ 364 00d8 0221     		movs	r1, #2
+ 365 00da 2068     		ldr	r0, [r4]
+ 366 00dc FFF7FEFF 		bl	DJIMotorOuterLoop
+ 367              	.LVL24:
  160:application/paw/paw.c ****             break;
- 366              		.loc 1 160 13 view .LVU65
- 367 00e0 9FED1C0A 		vldr.32	s0, .L22+28
- 368 00e4 2068     		ldr	r0, [r4]
- 369 00e6 FFF7FEFF 		bl	DJIMotorSetRef
- 370              	.LVL25:
+ 368              		.loc 1 160 13 view .LVU65
+ 369 00e0 9FED1C0A 		vldr.32	s0, .L22+28
+ 370 00e4 2068     		ldr	r0, [r4]
+ 371 00e6 FFF7FEFF 		bl	DJIMotorSetRef
+ 372              	.LVL25:
  161:application/paw/paw.c ****         case stand:
- 371              		.loc 1 161 13 view .LVU66
- 372 00ea C0E7     		b	.L13
- 373              	.L12:
+ 373              		.loc 1 161 13 view .LVU66
+ 374 00ea C0E7     		b	.L13
+ 375              	.L12:
  163:application/paw/paw.c ****             DJIMotorSetRef(paw0, 0);
- 374              		.loc 1 163 13 view .LVU67
- 375 00ec 144C     		ldr	r4, .L22+8
- 376 00ee 0221     		movs	r1, #2
- 377 00f0 2068     		ldr	r0, [r4]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 11
+ 376              		.loc 1 163 13 view .LVU67
+ 377 00ec 144C     		ldr	r4, .L22+8
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 11
 
 
- 378 00f2 FFF7FEFF 		bl	DJIMotorOuterLoop
- 379              	.LVL26:
+ 378 00ee 0221     		movs	r1, #2
+ 379 00f0 2068     		ldr	r0, [r4]
+ 380 00f2 FFF7FEFF 		bl	DJIMotorOuterLoop
+ 381              	.LVL26:
  164:application/paw/paw.c ****             break;
- 380              		.loc 1 164 13 view .LVU68
- 381 00f6 9FED150A 		vldr.32	s0, .L22+20
- 382 00fa 2068     		ldr	r0, [r4]
- 383 00fc FFF7FEFF 		bl	DJIMotorSetRef
- 384              	.LVL27:
+ 382              		.loc 1 164 13 view .LVU68
+ 383 00f6 9FED150A 		vldr.32	s0, .L22+20
+ 384 00fa 2068     		ldr	r0, [r4]
+ 385 00fc FFF7FEFF 		bl	DJIMotorSetRef
+ 386              	.LVL27:
  165:application/paw/paw.c ****         default:
- 385              		.loc 1 165 13 view .LVU69
- 386 0100 B5E7     		b	.L13
- 387              	.L14:
+ 387              		.loc 1 165 13 view .LVU69
+ 388 0100 B5E7     		b	.L13
+ 389              	.L14:
  172:application/paw/paw.c ****             DJIMotorSetRef(paw1, -15000);
- 388              		.loc 1 172 13 view .LVU70
- 389 0102 104C     		ldr	r4, .L22+12
- 390 0104 0221     		movs	r1, #2
- 391 0106 2068     		ldr	r0, [r4]
- 392 0108 FFF7FEFF 		bl	DJIMotorOuterLoop
- 393              	.LVL28:
+ 390              		.loc 1 172 13 view .LVU70
+ 391 0102 104C     		ldr	r4, .L22+12
+ 392 0104 0221     		movs	r1, #2
+ 393 0106 2068     		ldr	r0, [r4]
+ 394 0108 FFF7FEFF 		bl	DJIMotorOuterLoop
+ 395              	.LVL28:
  173:application/paw/paw.c ****             break;
- 394              		.loc 1 173 13 view .LVU71
- 395 010c 9FED100A 		vldr.32	s0, .L22+24
- 396 0110 2068     		ldr	r0, [r4]
- 397 0112 FFF7FEFF 		bl	DJIMotorSetRef
- 398              	.LVL29:
+ 396              		.loc 1 173 13 view .LVU71
+ 397 010c 9FED100A 		vldr.32	s0, .L22+24
+ 398 0110 2068     		ldr	r0, [r4]
+ 399 0112 FFF7FEFF 		bl	DJIMotorSetRef
+ 400              	.LVL29:
  174:application/paw/paw.c ****         case down:
- 399              		.loc 1 174 13 view .LVU72
- 400              	.L17:
+ 401              		.loc 1 174 13 view .LVU72
+ 402              	.L17:
  183:application/paw/paw.c ****     }
  184:application/paw/paw.c ****     
  185:application/paw/paw.c ****     // if(paw_cmd_recv.paw0location==up && paw0->measure.total_angle < (paw0->measure.first_angle +
@@ -656,11 +658,11 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
  207:application/paw/paw.c ****     // 单发模式主要提供给能量机关激活使用(以及英雄的射击大部分处于单�
  208:application/paw/paw.c ****     // if (hibernate_time + dead_time > DWT_GetTimeline_ms())
  209:application/paw/paw.c ****     //     return;
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 12
+
+
  210:application/paw/paw.c **** 
  211:application/paw/paw.c ****     // 若不在休眠状态,根据robotCMD传来的控制模式进行拨盘电机参考值设定�
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 12
-
-
  212:application/paw/paw.c ****     // switch (paw_cmd_recv.load_mode)
  213:application/paw/paw.c ****     // {
  214:application/paw/paw.c ****     // // 停止拨盘
@@ -716,11 +718,11 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
  264:application/paw/paw.c ****         // case SMALL_AMU_30:
  265:application/paw/paw.c ****         //     DJIMotorSetRef(friction_l, 0);
  266:application/paw/paw.c ****         //     DJIMotorSetRef(friction_r, 0);
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 13
+
+
  267:application/paw/paw.c ****         //     break;
  268:application/paw/paw.c ****         // default: // 当前为了调试设定的默认值4000,因为还没有加入裁判系统�
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 13
-
-
  269:application/paw/paw.c ****         //     DJIMotorSetRef(friction_l, 30000);
  270:application/paw/paw.c ****         //     DJIMotorSetRef(friction_r, 30000);
  271:application/paw/paw.c ****         //     break;
@@ -744,127 +746,127 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 1
  289:application/paw/paw.c **** 
  290:application/paw/paw.c ****     // 反馈数据,目前暂时没有要设定的反馈数据,后续可能增加应用离线监测
  291:application/paw/paw.c ****     PubPushMessage(paw_pub, (void *)&paw_feedback_data);
- 401              		.loc 1 291 5 view .LVU73
- 402 0116 1049     		ldr	r1, .L22+32
- 403 0118 104B     		ldr	r3, .L22+36
- 404 011a 1868     		ldr	r0, [r3]
- 405 011c FFF7FEFF 		bl	PubPushMessage
- 406              	.LVL30:
+ 403              		.loc 1 291 5 view .LVU73
+ 404 0116 1049     		ldr	r1, .L22+32
+ 405 0118 104B     		ldr	r3, .L22+36
+ 406 011a 1868     		ldr	r0, [r3]
+ 407 011c FFF7FEFF 		bl	PubPushMessage
+ 408              	.LVL30:
  292:application/paw/paw.c **** }...
- 407              		.loc 1 292 1 is_stmt 0 view .LVU74
- 408 0120 10BD     		pop	{r4, pc}
- 409              	.L15:
+ 409              		.loc 1 292 1 is_stmt 0 view .LVU74
+ 410 0120 10BD     		pop	{r4, pc}
+ 411              	.L15:
  176:application/paw/paw.c ****             DJIMotorOuterLoop(paw1,  SPEED_LOOP);
- 410              		.loc 1 176 13 is_stmt 1 view .LVU75
- 411 0122 084C     		ldr	r4, .L22+12
- 412 0124 0221     		movs	r1, #2
- 413 0126 2068     		ldr	r0, [r4]
- 414 0128 FFF7FEFF 		bl	DJIMotorOuterLoop
- 415              	.LVL31:
+ 412              		.loc 1 176 13 is_stmt 1 view .LVU75
+ 413 0122 084C     		ldr	r4, .L22+12
+ 414 0124 0221     		movs	r1, #2
+ 415 0126 2068     		ldr	r0, [r4]
+ 416 0128 FFF7FEFF 		bl	DJIMotorOuterLoop
+ 417              	.LVL31:
  177:application/paw/paw.c ****             DJIMotorSetRef(paw1, 15000);
- 416              		.loc 1 177 13 view .LVU76
- 417 012c 9FED090A 		vldr.32	s0, .L22+28
- 418 0130 2068     		ldr	r0, [r4]
- 419 0132 FFF7FEFF 		bl	DJIMotorSetRef
- 420              	.LVL32:
+ 418              		.loc 1 177 13 view .LVU76
+ 419 012c 9FED090A 		vldr.32	s0, .L22+28
+ 420 0130 2068     		ldr	r0, [r4]
+ 421 0132 FFF7FEFF 		bl	DJIMotorSetRef
+ 422              	.LVL32:
  178:application/paw/paw.c ****             break;
- 421              		.loc 1 178 13 view .LVU77
- 422 0136 EEE7     		b	.L17
- 423              	.L23:
- 424              		.align	2
- 425              	.L22:
- 426 0138 00000000 		.word	paw_cmd_recv
- 427 013c 00000000 		.word	paw_sub
- 428 0140 00000000 		.word	paw0
- 429 0144 00000000 		.word	paw1
- 430 0148 00000000 		.word	paw2
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 14
+ 423              		.loc 1 178 13 view .LVU77
+ 424 0136 EEE7     		b	.L17
+ 425              	.L23:
+ 426              		.align	2
+ 427              	.L22:
+ 428 0138 00000000 		.word	paw_cmd_recv
+ 429 013c 00000000 		.word	paw_sub
+ 430 0140 00000000 		.word	paw0
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 14
 
 
- 431 014c 00000000 		.word	0
- 432 0150 00606AC6 		.word	-966107136
- 433 0154 00606A46 		.word	1181376512
- 434 0158 00000000 		.word	paw_feedback_data
- 435 015c 00000000 		.word	paw_pub
- 436              		.cfi_endproc
- 437              	.LFE168:
- 439              		.section	.bss.paw_feedback_data,"aw",%nobits
- 440              		.align	2
- 443              	paw_feedback_data:
- 444              		.section	.bss.paw_sub,"aw",%nobits
- 445              		.align	2
- 448              	paw_sub:
- 449 0000 00000000 		.space	4
- 450              		.section	.bss.paw_cmd_recv,"aw",%nobits
- 451              		.align	2
- 454              	paw_cmd_recv:
- 455 0000 00000000 		.space	12
- 455      00000000 
- 455      00000000 
- 456              		.section	.bss.paw_pub,"aw",%nobits
- 457              		.align	2
- 460              	paw_pub:
- 461 0000 00000000 		.space	4
- 462              		.section	.bss.paw2,"aw",%nobits
- 463              		.align	2
- 466              	paw2:
- 467 0000 00000000 		.space	4
- 468              		.section	.bss.paw1,"aw",%nobits
- 469              		.align	2
- 472              	paw1:
- 473 0000 00000000 		.space	4
- 474              		.section	.bss.paw0,"aw",%nobits
- 475              		.align	2
- 478              	paw0:
- 479 0000 00000000 		.space	4
- 480              		.text
- 481              	.Letext0:
- 482              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 483              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 484              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 485              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 486              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 487              		.file 7 "application/robot_def.h"
- 488              		.file 8 "bsp/can/bsp_can.h"
- 489              		.file 9 "moudels/algorithm/controller.h"
- 490              		.file 10 "moudels/motor/motor_def.h"
- 491              		.file 11 "moudels/daemon/daemon.h"
- 492              		.file 12 "moudels/motor/DJImotor/dji_motor.h"
- 493              		.file 13 "moudels/message_center/message_center.h"
- 494              		.file 14 "Core/Inc/can.h"
- 495              		.file 15 "<built-in>"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s 			page 15
+ 431 0144 00000000 		.word	paw1
+ 432 0148 00000000 		.word	paw2
+ 433 014c 00000000 		.word	0
+ 434 0150 00606AC6 		.word	-966107136
+ 435 0154 00606A46 		.word	1181376512
+ 436 0158 00000000 		.word	paw_feedback_data
+ 437 015c 00000000 		.word	paw_pub
+ 438              		.cfi_endproc
+ 439              	.LFE168:
+ 441              		.section	.bss.paw_feedback_data,"aw",%nobits
+ 442              		.align	2
+ 445              	paw_feedback_data:
+ 446              		.section	.bss.paw_sub,"aw",%nobits
+ 447              		.align	2
+ 450              	paw_sub:
+ 451 0000 00000000 		.space	4
+ 452              		.section	.bss.paw_cmd_recv,"aw",%nobits
+ 453              		.align	2
+ 456              	paw_cmd_recv:
+ 457 0000 00000000 		.space	12
+ 457      00000000 
+ 457      00000000 
+ 458              		.section	.bss.paw_pub,"aw",%nobits
+ 459              		.align	2
+ 462              	paw_pub:
+ 463 0000 00000000 		.space	4
+ 464              		.section	.bss.paw2,"aw",%nobits
+ 465              		.align	2
+ 468              	paw2:
+ 469 0000 00000000 		.space	4
+ 470              		.section	.bss.paw1,"aw",%nobits
+ 471              		.align	2
+ 474              	paw1:
+ 475 0000 00000000 		.space	4
+ 476              		.section	.bss.paw0,"aw",%nobits
+ 477              		.align	2
+ 480              	paw0:
+ 481 0000 00000000 		.space	4
+ 482              		.text
+ 483              	.Letext0:
+ 484              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 485              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 486              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 487              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 488              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 489              		.file 7 "application/robot_def.h"
+ 490              		.file 8 "bsp/can/bsp_can.h"
+ 491              		.file 9 "moudels/algorithm/controller.h"
+ 492              		.file 10 "moudels/motor/motor_def.h"
+ 493              		.file 11 "moudels/daemon/daemon.h"
+ 494              		.file 12 "moudels/motor/DJImotor/dji_motor.h"
+ 495              		.file 13 "moudels/message_center/message_center.h"
+ 496              		.file 14 "Core/Inc/can.h"
+ 497              		.file 15 "<built-in>"
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 paw.c
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:21     .rodata.PawInit.str1.4:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:28     .text.PawInit:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:34     .text.PawInit:00000000 PawInit
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:179    .text.PawInit:000000f4 $d
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:478    .bss.paw0:00000000 paw0
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:472    .bss.paw1:00000000 paw1
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:466    .bss.paw2:00000000 paw2
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:460    .bss.paw_pub:00000000 paw_pub
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:448    .bss.paw_sub:00000000 paw_sub
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:202    .text.PawTask:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:208    .text.PawTask:00000000 PawTask
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:426    .text.PawTask:00000138 $d
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:454    .bss.paw_cmd_recv:00000000 paw_cmd_recv
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:443    .bss.paw_feedback_data:00000000 paw_feedback_data
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:445    .bss.paw_sub:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:451    .bss.paw_cmd_recv:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:457    .bss.paw_pub:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:463    .bss.paw2:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:469    .bss.paw1:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccnZlzhy.s:475    .bss.paw0:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:21     .rodata.PawInit.str1.4:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:28     .text.PawInit:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:34     .text.PawInit:00000000 PawInit
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:181    .text.PawInit:000000f8 $d
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:480    .bss.paw0:00000000 paw0
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:474    .bss.paw1:00000000 paw1
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:468    .bss.paw2:00000000 paw2
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:462    .bss.paw_pub:00000000 paw_pub
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:450    .bss.paw_sub:00000000 paw_sub
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:204    .text.PawTask:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:210    .text.PawTask:00000000 PawTask
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:428    .text.PawTask:00000138 $d
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:456    .bss.paw_cmd_recv:00000000 paw_cmd_recv
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:445    .bss.paw_feedback_data:00000000 paw_feedback_data
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:447    .bss.paw_sub:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:453    .bss.paw_cmd_recv:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:459    .bss.paw_pub:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:465    .bss.paw2:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:471    .bss.paw1:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccJj0KHa.s:477    .bss.paw0:00000000 $d
 
 UNDEFINED SYMBOLS
 memset
 DJIMotorInit
 PubRegister
 SubRegister
-hcan1
+hcan2
 SubGetMessage
 DJIMotorStop
 DJIMotorOuterLoop

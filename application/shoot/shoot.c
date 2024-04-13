@@ -174,16 +174,21 @@ void ShootTask()
     if (shoot_cmd_recv.friction_mode == FRICTION_ON)
     {
         // 根据收到的弹速设置设定摩擦轮电机参考值,需实测后填入
-        if( shoot_cmd_recv.shoot_rate2!=0){
+        if( shoot_cmd_recv.shoot_rate2!=0 ){
          DJIMotorOuterLoop(friction_below, SPEED_LOOP);
-         DJIMotorOuterLoop(friction_up, SPEED_LOOP);
-         DJIMotorSetRef(friction_up, shoot_cmd_recv.shoot_rate1);
           DJIMotorSetRef(friction_below, shoot_cmd_recv.shoot_rate2);}
         else{
-        DJIMotorOuterLoop(friction_below, ANGLE_LOOP);
-        DJIMotorOuterLoop(friction_up, ANGLE_LOOP);
-        DJIMotorSetRef(friction_up, 0);
+        DJIMotorOuterLoop(friction_below, SPEED_LOOP);
         DJIMotorSetRef(friction_below, 0);}
+
+        if( shoot_cmd_recv.shoot_rate1!=0 ){
+         DJIMotorOuterLoop(friction_up, SPEED_LOOP);
+         DJIMotorSetRef(friction_up, shoot_cmd_recv.shoot_rate1);
+        }
+        else{
+        DJIMotorOuterLoop(friction_up, SPEED_LOOP);
+        DJIMotorSetRef(friction_up, 0);
+        }
         
 
         

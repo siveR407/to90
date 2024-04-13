@@ -100,6 +100,7 @@ moudels/algorithm/kalman_filter.c \
 moudels/algorithm/pid.c \
 moudels/algorithm/user_lib.c \
 moudels/daemon/daemon.c \
+moudels/distance/distance.c \
 moudels/imu/BMI088Middleware.c \
 moudels/imu/BMI088driver.c \
 moudels/imu/ins_task.c \
@@ -216,6 +217,7 @@ C_INCLUDES =  \
 -Imoudels/alarm \
 -Imoudels/algorithm \
 -Imoudels/daemon \
+-Imoudels/distance \
 -Imoudels/imu \
 -Imoudels/message_center \
 -Imoudels/motor \

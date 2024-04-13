@@ -36,6 +36,7 @@
         "moudels/alarm",
         "moudels/algorithm",
         "moudels/daemon",
+        "moudels/distance",
         "moudels/imu",
         "moudels/message_center",
         "moudels/motor",

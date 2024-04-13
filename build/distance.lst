@@ -1,0 +1,406 @@
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"distance.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "moudels/distance/distance.c"
+  20              		.section	.text.dtLostCallback,"ax",%progbits
+  21              		.align	1
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	dtLostCallback:
+  27              	.LVL0:
+  28              	.LFB139:
+   1:moudels/distance/distance.c **** #include "distance.h"
+   2:moudels/distance/distance.c **** #include "string.h"
+   3:moudels/distance/distance.c **** #include "bsp_usart.h"
+   4:moudels/distance/distance.c **** #include "memory.h"
+   5:moudels/distance/distance.c **** #include "stdlib.h"
+   6:moudels/distance/distance.c **** #include "daemon.h"
+   7:moudels/distance/distance.c **** #include "bsp_log.h"
+   8:moudels/distance/distance.c **** #include "stdio.h"
+   9:moudels/distance/distance.c ****     
+  10:moudels/distance/distance.c **** #define distance_size 18
+  11:moudels/distance/distance.c **** 
+  12:moudels/distance/distance.c **** // 传感器数据
+  13:moudels/distance/distance.c **** static Distance_data dt_da[2];      
+  14:moudels/distance/distance.c **** static uint8_t dt_init_flag = 0; 
+  15:moudels/distance/distance.c **** 
+  16:moudels/distance/distance.c **** static USARTInstance *dt_usart_instance;
+  17:moudels/distance/distance.c **** static DaemonInstance *dt_daemon_instance;
+  18:moudels/distance/distance.c **** 
+  19:moudels/distance/distance.c **** 
+  20:moudels/distance/distance.c ****  static void data_to_distance(const uint8_t*dt_data)
+  21:moudels/distance/distance.c ****  {      
+  22:moudels/distance/distance.c **** 
+  23:moudels/distance/distance.c ****         // static  char part1[5], part2[5], part3[5]; 
+  24:moudels/distance/distance.c ****         // strncpy(part1, dt_data, 4);    // 复制前4位
+  25:moudels/distance/distance.c ****         // part1[4] = '\0';           // 确保字符串正确结束
+  26:moudels/distance/distance.c ****         // strncpy(part2, dt_data + 4, 4); // 复制中间4位
+  27:moudels/distance/distance.c ****         //  part2[4] = '\0';           // 确保字符串正确结束
+  28:moudels/distance/distance.c ****         //  strncpy(part3, dt_data + 8, 4); // 复制最后4位
+  29:moudels/distance/distance.c ****         //  part3[4] = '\0';           // 确保字符串正确结束
+  30:moudels/distance/distance.c ****         sscanf(dt_data,"%4d%4d%4d",&dt_da[TEMP].l1,&dt_da[TEMP].l2,&dt_da[TEMP].r1);  //将数据�
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s 			page 2
+
+
+  31:moudels/distance/distance.c ****         // dt_da[TEMP].l1=atoi(part1) ;
+  32:moudels/distance/distance.c ****         // dt_da[TEMP].l2=atoi(part2) ;
+  33:moudels/distance/distance.c ****         // dt_da[TEMP].r1=atoi(part3);
+  34:moudels/distance/distance.c ****     // dt_da[TEMP].l1=dt_data[0];
+  35:moudels/distance/distance.c ****     // dt_da[TEMP].l2=dt_data[1];
+  36:moudels/distance/distance.c ****     memcpy(&dt_da[LAST],&dt_da[TEMP],sizeof(Distance_data));
+  37:moudels/distance/distance.c ****  }
+  38:moudels/distance/distance.c **** 
+  39:moudels/distance/distance.c ****  static void dtRxCallback()
+  40:moudels/distance/distance.c **** {
+  41:moudels/distance/distance.c ****     DaemonReload(dt_daemon_instance) ;         // 先喂狗
+  42:moudels/distance/distance.c ****     // if((dt_usart_instance->recv_buff[0]=0x0F) && (dt_usart_instance->recv_buff[10]=0x00 )){
+  43:moudels/distance/distance.c ****     //     dt_usart_instance->flag=1;
+  44:moudels/distance/distance.c ****     // }else{
+  45:moudels/distance/distance.c ****     //      dt_usart_instance->flag=0;
+  46:moudels/distance/distance.c ****     // }//----校验位
+  47:moudels/distance/distance.c ****     //  if( dt_usart_instance->flag=1){      
+  48:moudels/distance/distance.c ****     data_to_distance(dt_usart_instance->recv_buff); // 进行协议解析
+  49:moudels/distance/distance.c ****     // sbus_to_rc(rc_usart_instance->recv_buff); 
+  50:moudels/distance/distance.c ****     
+  51:moudels/distance/distance.c ****     // if((dt_usart_instance->recv_buff[10] != 0x00)){ dt_usart_instance->connect_flag = 0;}
+  52:moudels/distance/distance.c **** 	// 		else {dt_usart_instance->connect_flag = 1;
+  53:moudels/distance/distance.c **** 			    
+  54:moudels/distance/distance.c ****     //              }
+  55:moudels/distance/distance.c ****     //  dt_usart_instance->flag = 0;    
+  56:moudels/distance/distance.c ****     //  }
+  57:moudels/distance/distance.c **** }
+  58:moudels/distance/distance.c **** 
+  59:moudels/distance/distance.c ****  static void dtLostCallback(void *id)
+  60:moudels/distance/distance.c **** {
+  29              		.loc 1 60 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 60 1 is_stmt 0 view .LVU1
+  34 0000 08B5     		push	{r3, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  61:moudels/distance/distance.c ****     memset(dt_da, 0, sizeof(dt_da)); // 清空遥控器数据
+  38              		.loc 1 61 5 is_stmt 1 view .LVU2
+  39 0002 054B     		ldr	r3, .L3
+  40 0004 0022     		movs	r2, #0
+  41 0006 1A60     		str	r2, [r3]
+  42 0008 5A60     		str	r2, [r3, #4]
+  43 000a 9A60     		str	r2, [r3, #8]
+  62:moudels/distance/distance.c ****     USARTServiceInit(dt_usart_instance); // 尝试重新启动接收
+  44              		.loc 1 62 5 view .LVU3
+  45 000c 034B     		ldr	r3, .L3+4
+  46 000e 1868     		ldr	r0, [r3]
+  47              	.LVL1:
+  48              		.loc 1 62 5 is_stmt 0 view .LVU4
+  49 0010 FFF7FEFF 		bl	USARTServiceInit
+  50              	.LVL2:
+  63:moudels/distance/distance.c ****     LOGWARNING("[rc] remote control lost");
+  51              		.loc 1 63 43 is_stmt 1 view .LVU5
+  64:moudels/distance/distance.c **** }
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s 			page 3
+
+
+  52              		.loc 1 64 1 is_stmt 0 view .LVU6
+  53 0014 08BD     		pop	{r3, pc}
+  54              	.L4:
+  55 0016 00BF     		.align	2
+  56              	.L3:
+  57 0018 00000000 		.word	dt_da
+  58 001c 00000000 		.word	dt_usart_instance
+  59              		.cfi_endproc
+  60              	.LFE139:
+  62              		.section	.rodata.data_to_distance.str1.4,"aMS",%progbits,1
+  63              		.align	2
+  64              	.LC0:
+  65 0000 25346425 		.ascii	"%4d%4d%4d\000"
+  65      34642534 
+  65      6400
+  66              		.section	.text.data_to_distance,"ax",%progbits
+  67              		.align	1
+  68              		.syntax unified
+  69              		.thumb
+  70              		.thumb_func
+  72              	data_to_distance:
+  73              	.LVL3:
+  74              	.LFB137:
+  21:moudels/distance/distance.c **** 
+  75              		.loc 1 21 2 is_stmt 1 view -0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 0
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  21:moudels/distance/distance.c **** 
+  79              		.loc 1 21 2 is_stmt 0 view .LVU8
+  80 0000 30B5     		push	{r4, r5, lr}
+  81              		.cfi_def_cfa_offset 12
+  82              		.cfi_offset 4, -12
+  83              		.cfi_offset 5, -8
+  84              		.cfi_offset 14, -4
+  85 0002 83B0     		sub	sp, sp, #12
+  86              		.cfi_def_cfa_offset 24
+  30:moudels/distance/distance.c ****         // dt_da[TEMP].l1=atoi(part1) ;
+  87              		.loc 1 30 9 is_stmt 1 view .LVU9
+  88 0004 074C     		ldr	r4, .L7
+  89 0006 A51E     		subs	r5, r4, #2
+  90 0008 A31C     		adds	r3, r4, #2
+  91 000a 0093     		str	r3, [sp]
+  92 000c 2346     		mov	r3, r4
+  93 000e 2A46     		mov	r2, r5
+  94 0010 0549     		ldr	r1, .L7+4
+  95 0012 FFF7FEFF 		bl	sscanf
+  96              	.LVL4:
+  36:moudels/distance/distance.c ****  }
+  97              		.loc 1 36 5 view .LVU10
+  98 0016 54F8020C 		ldr	r0, [r4, #-2]
+  99 001a 6060     		str	r0, [r4, #4]	@ unaligned
+ 100 001c 6388     		ldrh	r3, [r4, #2]	@ unaligned
+ 101 001e 2381     		strh	r3, [r4, #8]	@ unaligned
+  37:moudels/distance/distance.c **** 
+ 102              		.loc 1 37 2 is_stmt 0 view .LVU11
+ 103 0020 03B0     		add	sp, sp, #12
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s 			page 4
+
+
+ 104              		.cfi_def_cfa_offset 12
+ 105              		@ sp needed
+ 106 0022 30BD     		pop	{r4, r5, pc}
+ 107              	.L8:
+ 108              		.align	2
+ 109              	.L7:
+ 110 0024 02000000 		.word	dt_da+2
+ 111 0028 00000000 		.word	.LC0
+ 112              		.cfi_endproc
+ 113              	.LFE137:
+ 115              		.section	.text.dtRxCallback,"ax",%progbits
+ 116              		.align	1
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	dtRxCallback:
+ 122              	.LFB138:
+  40:moudels/distance/distance.c ****     DaemonReload(dt_daemon_instance) ;         // 先喂狗
+ 123              		.loc 1 40 1 is_stmt 1 view -0
+ 124              		.cfi_startproc
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127 0000 08B5     		push	{r3, lr}
+ 128              		.cfi_def_cfa_offset 8
+ 129              		.cfi_offset 3, -8
+ 130              		.cfi_offset 14, -4
+  41:moudels/distance/distance.c ****     // if((dt_usart_instance->recv_buff[0]=0x0F) && (dt_usart_instance->recv_buff[10]=0x00 )){
+ 131              		.loc 1 41 5 view .LVU13
+ 132 0002 044B     		ldr	r3, .L11
+ 133 0004 1868     		ldr	r0, [r3]
+ 134 0006 FFF7FEFF 		bl	DaemonReload
+ 135              	.LVL5:
+  48:moudels/distance/distance.c ****     // sbus_to_rc(rc_usart_instance->recv_buff); 
+ 136              		.loc 1 48 5 view .LVU14
+ 137 000a 034B     		ldr	r3, .L11+4
+ 138 000c 1868     		ldr	r0, [r3]
+ 139 000e FFF7FEFF 		bl	data_to_distance
+ 140              	.LVL6:
+  57:moudels/distance/distance.c **** 
+ 141              		.loc 1 57 1 is_stmt 0 view .LVU15
+ 142 0012 08BD     		pop	{r3, pc}
+ 143              	.L12:
+ 144              		.align	2
+ 145              	.L11:
+ 146 0014 00000000 		.word	dt_daemon_instance
+ 147 0018 00000000 		.word	dt_usart_instance
+ 148              		.cfi_endproc
+ 149              	.LFE138:
+ 151              		.section	.text.dtInit,"ax",%progbits
+ 152              		.align	1
+ 153              		.global	dtInit
+ 154              		.syntax unified
+ 155              		.thumb
+ 156              		.thumb_func
+ 158              	dtInit:
+ 159              	.LVL7:
+ 160              	.LFB140:
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s 			page 5
+
+
+  65:moudels/distance/distance.c **** 
+  66:moudels/distance/distance.c **** 
+  67:moudels/distance/distance.c ****  Distance_data *dtInit(UART_HandleTypeDef *dt_usart_handle){
+ 161              		.loc 1 67 60 is_stmt 1 view -0
+ 162              		.cfi_startproc
+ 163              		@ args = 0, pretend = 0, frame = 24
+ 164              		@ frame_needed = 0, uses_anonymous_args = 0
+ 165              		.loc 1 67 60 is_stmt 0 view .LVU17
+ 166 0000 00B5     		push	{lr}
+ 167              		.cfi_def_cfa_offset 4
+ 168              		.cfi_offset 14, -4
+ 169 0002 87B0     		sub	sp, sp, #28
+ 170              		.cfi_def_cfa_offset 32
+  68:moudels/distance/distance.c ****     USART_Init_Config_s conf;
+ 171              		.loc 1 68 5 is_stmt 1 view .LVU18
+  69:moudels/distance/distance.c ****     conf.module_callback = dtRxCallback;
+ 172              		.loc 1 69 5 view .LVU19
+ 173              		.loc 1 69 26 is_stmt 0 view .LVU20
+ 174 0004 0F4B     		ldr	r3, .L15
+ 175 0006 0593     		str	r3, [sp, #20]
+  70:moudels/distance/distance.c ****     conf.usart_handle = dt_usart_handle;
+ 176              		.loc 1 70 5 is_stmt 1 view .LVU21
+ 177              		.loc 1 70 23 is_stmt 0 view .LVU22
+ 178 0008 0490     		str	r0, [sp, #16]
+  71:moudels/distance/distance.c ****     conf.recv_buff_size = 25;
+ 179              		.loc 1 71 5 is_stmt 1 view .LVU23
+ 180              		.loc 1 71 25 is_stmt 0 view .LVU24
+ 181 000a 1923     		movs	r3, #25
+ 182 000c 8DF80C30 		strb	r3, [sp, #12]
+  72:moudels/distance/distance.c ****     dt_usart_instance = USARTRegister(&conf);
+ 183              		.loc 1 72 5 is_stmt 1 view .LVU25
+ 184              		.loc 1 72 25 is_stmt 0 view .LVU26
+ 185 0010 03A8     		add	r0, sp, #12
+ 186              	.LVL8:
+ 187              		.loc 1 72 25 view .LVU27
+ 188 0012 FFF7FEFF 		bl	USARTRegister
+ 189              	.LVL9:
+ 190              		.loc 1 72 23 discriminator 1 view .LVU28
+ 191 0016 0C4B     		ldr	r3, .L15+4
+ 192 0018 1860     		str	r0, [r3]
+  73:moudels/distance/distance.c **** 
+  74:moudels/distance/distance.c ****     // 进行守护进程的注册,用于定时检查遥控器是否正常工作
+  75:moudels/distance/distance.c ****     Daemon_Init_Config_s daemon_conf = {
+ 193              		.loc 1 75 5 is_stmt 1 view .LVU29
+ 194              		.loc 1 75 26 is_stmt 0 view .LVU30
+ 195 001a 0023     		movs	r3, #0
+ 196 001c 0093     		str	r3, [sp]
+ 197 001e 0193     		str	r3, [sp, #4]
+ 198 0020 0293     		str	r3, [sp, #8]
+ 199 0022 0A23     		movs	r3, #10
+ 200 0024 ADF80030 		strh	r3, [sp]	@ movhi
+ 201 0028 084B     		ldr	r3, .L15+8
+ 202 002a 0193     		str	r3, [sp, #4]
+  76:moudels/distance/distance.c ****         .reload_count = 10, // 100ms未收到数据视为离线,遥控器的接收频率实际上�
+  77:moudels/distance/distance.c ****         .callback = dtLostCallback,
+  78:moudels/distance/distance.c ****         .owner_id = NULL, // 只有1个遥控器,不需要owner_id
+  79:moudels/distance/distance.c ****     };
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s 			page 6
+
+
+  80:moudels/distance/distance.c ****     dt_daemon_instance = DaemonRegister(&daemon_conf);
+ 203              		.loc 1 80 5 is_stmt 1 view .LVU31
+ 204              		.loc 1 80 26 is_stmt 0 view .LVU32
+ 205 002c 6846     		mov	r0, sp
+ 206 002e FFF7FEFF 		bl	DaemonRegister
+ 207              	.LVL10:
+ 208              		.loc 1 80 24 discriminator 1 view .LVU33
+ 209 0032 074B     		ldr	r3, .L15+12
+ 210 0034 1860     		str	r0, [r3]
+  81:moudels/distance/distance.c **** 
+  82:moudels/distance/distance.c ****     dt_init_flag = 1;
+ 211              		.loc 1 82 5 is_stmt 1 view .LVU34
+ 212              		.loc 1 82 18 is_stmt 0 view .LVU35
+ 213 0036 074B     		ldr	r3, .L15+16
+ 214 0038 0122     		movs	r2, #1
+ 215 003a 1A70     		strb	r2, [r3]
+  83:moudels/distance/distance.c ****     return dt_da;
+ 216              		.loc 1 83 5 is_stmt 1 view .LVU36
+  84:moudels/distance/distance.c ****  }
+ 217              		.loc 1 84 2 is_stmt 0 view .LVU37
+ 218 003c 0648     		ldr	r0, .L15+20
+ 219 003e 07B0     		add	sp, sp, #28
+ 220              		.cfi_def_cfa_offset 4
+ 221              		@ sp needed
+ 222 0040 5DF804FB 		ldr	pc, [sp], #4
+ 223              	.L16:
+ 224              		.align	2
+ 225              	.L15:
+ 226 0044 00000000 		.word	dtRxCallback
+ 227 0048 00000000 		.word	dt_usart_instance
+ 228 004c 00000000 		.word	dtLostCallback
+ 229 0050 00000000 		.word	dt_daemon_instance
+ 230 0054 00000000 		.word	dt_init_flag
+ 231 0058 00000000 		.word	dt_da
+ 232              		.cfi_endproc
+ 233              	.LFE140:
+ 235              		.section	.bss.dt_daemon_instance,"aw",%nobits
+ 236              		.align	2
+ 239              	dt_daemon_instance:
+ 240 0000 00000000 		.space	4
+ 241              		.section	.bss.dt_usart_instance,"aw",%nobits
+ 242              		.align	2
+ 245              	dt_usart_instance:
+ 246 0000 00000000 		.space	4
+ 247              		.section	.bss.dt_init_flag,"aw",%nobits
+ 250              	dt_init_flag:
+ 251 0000 00       		.space	1
+ 252              		.section	.bss.dt_da,"aw",%nobits
+ 253              		.align	2
+ 256              	dt_da:
+ 257 0000 00000000 		.space	12
+ 257      00000000 
+ 257      00000000 
+ 258              		.text
+ 259              	.Letext0:
+ 260              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 261              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s 			page 7
+
+
+ 262              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 263              		.file 5 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 264              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 265              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 266              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 267              		.file 9 "moudels/distance/distance.h"
+ 268              		.file 10 "bsp/usart/bsp_usart.h"
+ 269              		.file 11 "moudels/daemon/daemon.h"
+ 270              		.file 12 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
+ 271              		.file 13 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 distance.c
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:21     .text.dtLostCallback:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:26     .text.dtLostCallback:00000000 dtLostCallback
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:57     .text.dtLostCallback:00000018 $d
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:256    .bss.dt_da:00000000 dt_da
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:245    .bss.dt_usart_instance:00000000 dt_usart_instance
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:63     .rodata.data_to_distance.str1.4:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:67     .text.data_to_distance:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:72     .text.data_to_distance:00000000 data_to_distance
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:110    .text.data_to_distance:00000024 $d
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:116    .text.dtRxCallback:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:121    .text.dtRxCallback:00000000 dtRxCallback
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:146    .text.dtRxCallback:00000014 $d
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:239    .bss.dt_daemon_instance:00000000 dt_daemon_instance
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:152    .text.dtInit:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:158    .text.dtInit:00000000 dtInit
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:226    .text.dtInit:00000044 $d
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:250    .bss.dt_init_flag:00000000 dt_init_flag
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:236    .bss.dt_daemon_instance:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:242    .bss.dt_usart_instance:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:251    .bss.dt_init_flag:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\cc5Qo9BL.s:253    .bss.dt_da:00000000 $d
+
+UNDEFINED SYMBOLS
+USARTServiceInit
+sscanf
+DaemonReload
+USARTRegister
+DaemonRegister
