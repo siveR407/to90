@@ -11,7 +11,7 @@
 // 遥控器数据
 static RC_ctrl_t rc_ctrl[2];     //[0]:当前数据TEMP,[1]:上一次的数据LAST.用于按键持续按下和切换的判断
 static uint8_t rc_init_flag = 0; // 遥控器初始化标志位
-
+  
 // 遥控器拥有的串口实例,因为遥控器是单例,所以这里只有一个,就不封装了
 static USARTInstance *rc_usart_instance;
 static DaemonInstance *rc_daemon_instance;
@@ -57,7 +57,7 @@ static void sbus_to_rc(const uint8_t *sbus_rx_buf)
     rc_ctrl[TEMP].rc.rocker_l_ = ch[0] - RC_CH_VALUE_OFFSET; //!< Channel 2
     rc_ctrl[TEMP].rc.rocker_l1 = ch[2] - RC_CH_VALUE_OFFSET;                       //!< Channel 3
     rc_ctrl[TEMP].rc.SE = ch[8] - RC_CH_VALUE_OFFSET;     
-    rc_ctrl[TEMP].rc.SF = ch[9] - RC_CH_VALUE_OFFSET;                               // 应急开关
+    rc_ctrl[TEMP].rc.SF = ch[9] ;                               // 应急开关
     rc_ctrl[TEMP].rc.SB = ch[5]  ;                                 // 应急开关
     rc_ctrl[TEMP].rc.SC = ch[6] ;
     rc_ctrl[TEMP].rc.SA = ch[4]  ;     

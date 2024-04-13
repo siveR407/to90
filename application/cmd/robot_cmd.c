@@ -162,15 +162,21 @@ static void RemoteControlSet()
     // 底盘参数,目前没有加入小陀螺(调试似乎暂时没有必要),系数需要调整
     chassis_cmd_send.vx = 10.0f * (float)rc_data[TEMP].rc.rocker_r_; // _水平方向
     chassis_cmd_send.vy = 10.0f * (float)rc_data[TEMP].rc.rocker_r1; // 1数值方向
+     chassis_cmd_send.wz = 10.0f * (float)rc_data[TEMP].rc.rocker_l_;
       // 旋转方向
 
-    if(rc_data[TEMP].rc.SG>1000){
-        chassis_cmd_send.wz = 10.0f * (float)rc_data[TEMP].rc.rocker_l_;
-        shoot_cmd_send.shoot_rate1=0;
-        shoot_cmd_send.shoot_rate2= 0;
+    if(rc_data[TEMP].rc.SG>800){
+       
+        shoot_cmd_send.shoot_rate1=60.0f*124;
+        
     }else{
-        shoot_cmd_send.shoot_rate1=60.0f * (float)rc_data[TEMP].rc.rocker_l_;
-        shoot_cmd_send.shoot_rate2= 60.0f * (float)rc_data[TEMP].rc.rocker_r1;
+        shoot_cmd_send.shoot_rate1=0;
+        
+    }
+    if(rc_data[TEMP].rc.SF>800){
+        shoot_cmd_send.shoot_rate2= -60.0f *924;
+    }else{
+        shoot_cmd_send.shoot_rate2= 0;
     }
     // 发射参数
     // if (switch_is_up(rc_data[TEMP].rc.switch_right)) // 右侧开关状态[上],弹舱打开

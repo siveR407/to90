@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -41,7 +41,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
   11:moudels/remote/remote_control.c **** // 遥控器数据
   12:moudels/remote/remote_control.c **** static RC_ctrl_t rc_ctrl[2];     //[0]:当前数据TEMP,[1]:上一次的数据LAST.用于按键持�
   13:moudels/remote/remote_control.c **** static uint8_t rc_init_flag = 0; // 遥控器初始化标志位
-  14:moudels/remote/remote_control.c **** 
+  14:moudels/remote/remote_control.c ****   
   15:moudels/remote/remote_control.c **** // 遥控器拥有的串口实例,因为遥控器是单例,所以这里只有一个,就不封装了
   16:moudels/remote/remote_control.c **** static USARTInstance *rc_usart_instance;
   17:moudels/remote/remote_control.c **** static DaemonInstance *rc_daemon_instance;
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
   28:moudels/remote/remote_control.c **** }
   29:moudels/remote/remote_control.c **** 
   30:moudels/remote/remote_control.c **** /**
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 2
 
 
   31:moudels/remote/remote_control.c ****  * @brief 遥控器数据解析
@@ -88,163 +88,163 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
   37:moudels/remote/remote_control.c ****     ch[0] =((sbus_rx_buf[2]<<8)   + (sbus_rx_buf[1])) & 0x07ff;
   47              		.loc 1 37 5 is_stmt 1 view .LVU2
   48              		.loc 1 37 25 is_stmt 0 view .LVU3
-  49 0006 8478     		ldrb	r4, [r0, #2]	@ zero_extendqisi2
+  49 0006 90F802E0 		ldrb	lr, [r0, #2]	@ zero_extendqisi2
   50              		.loc 1 37 49 view .LVU4
-  51 0008 90F80180 		ldrb	r8, [r0, #1]	@ zero_extendqisi2
+  51 000a 90F80180 		ldrb	r8, [r0, #1]	@ zero_extendqisi2
   52              		.loc 1 37 35 view .LVU5
-  53 000c 08EB0428 		add	r8, r8, r4, lsl #8
+  53 000e 08EB0E28 		add	r8, r8, lr, lsl #8
   54              		.loc 1 37 55 view .LVU6
-  55 0010 C8F30A08 		ubfx	r8, r8, #0, #11
+  55 0012 C8F30A08 		ubfx	r8, r8, #0, #11
   56              		.loc 1 37 11 view .LVU7
-  57 0014 5F4B     		ldr	r3, .L3
-  58 0016 A3F80080 		strh	r8, [r3]	@ movhi
+  57 0016 5D4B     		ldr	r3, .L3
+  58 0018 A3F80080 		strh	r8, [r3]	@ movhi
   38:moudels/remote/remote_control.c ****     ch[1] =((sbus_rx_buf[3]<<5)   + (sbus_rx_buf[2]>>3)) & 0x07ff;
   59              		.loc 1 38 5 is_stmt 1 view .LVU8
   60              		.loc 1 38 25 is_stmt 0 view .LVU9
-  61 001a C178     		ldrb	r1, [r0, #3]	@ zero_extendqisi2
+  61 001c C178     		ldrb	r1, [r0, #3]	@ zero_extendqisi2
   62              		.loc 1 38 58 view .LVU10
-  63 001c E408     		lsrs	r4, r4, #3
+  63 001e 4FEADE0E 		lsr	lr, lr, #3
   64              		.loc 1 38 35 view .LVU11
-  65 001e 04EB4114 		add	r4, r4, r1, lsl #5
+  65 0022 0EEB411E 		add	lr, lr, r1, lsl #5
   66              		.loc 1 38 58 view .LVU12
-  67 0022 C4F30A02 		ubfx	r2, r4, #0, #11
+  67 0026 CEF30A0E 		ubfx	lr, lr, #0, #11
   68              		.loc 1 38 11 view .LVU13
-  69 0026 0092     		str	r2, [sp]
-  70 0028 5A80     		strh	r2, [r3, #2]	@ movhi
+  69 002a A3F802E0 		strh	lr, [r3, #2]	@ movhi
   39:moudels/remote/remote_control.c ****     ch[2] =((sbus_rx_buf[5]<<10)  + (sbus_rx_buf[4]<<2) + (sbus_rx_buf[3]>>6)) & 0x07ff;
-  71              		.loc 1 39 5 is_stmt 1 view .LVU14
-  72              		.loc 1 39 25 is_stmt 0 view .LVU15
-  73 002a 90F805E0 		ldrb	lr, [r0, #5]	@ zero_extendqisi2
-  74              		.loc 1 39 28 view .LVU16
-  75 002e 4FEA8E22 		lsl	r2, lr, #10
-  76 0032 92B2     		uxth	r2, r2
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 3
+  70              		.loc 1 39 5 is_stmt 1 view .LVU14
+  71              		.loc 1 39 25 is_stmt 0 view .LVU15
+  72 002e 90F805C0 		ldrb	ip, [r0, #5]	@ zero_extendqisi2
+  73              		.loc 1 39 28 view .LVU16
+  74 0032 4FEA8C22 		lsl	r2, ip, #10
+  75 0036 92B2     		uxth	r2, r2
+  76              		.loc 1 39 49 view .LVU17
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 3
 
 
-  77              		.loc 1 39 49 view .LVU17
-  78 0034 0579     		ldrb	r5, [r0, #4]	@ zero_extendqisi2
-  79              		.loc 1 39 35 view .LVU18
-  80 0036 02EB8502 		add	r2, r2, r5, lsl #2
-  81 003a 92B2     		uxth	r2, r2
-  82              		.loc 1 39 57 view .LVU19
-  83 003c 02EB9112 		add	r2, r2, r1, lsr #6
-  84              		.loc 1 39 80 view .LVU20
-  85 0040 C2F30A02 		ubfx	r2, r2, #0, #11
-  86              		.loc 1 39 11 view .LVU21
-  87 0044 9A80     		strh	r2, [r3, #4]	@ movhi
+  77 0038 0479     		ldrb	r4, [r0, #4]	@ zero_extendqisi2
+  78              		.loc 1 39 35 view .LVU18
+  79 003a 02EB8402 		add	r2, r2, r4, lsl #2
+  80 003e 92B2     		uxth	r2, r2
+  81              		.loc 1 39 57 view .LVU19
+  82 0040 02EB9112 		add	r2, r2, r1, lsr #6
+  83              		.loc 1 39 80 view .LVU20
+  84 0044 C2F30A02 		ubfx	r2, r2, #0, #11
+  85              		.loc 1 39 11 view .LVU21
+  86 0048 9A80     		strh	r2, [r3, #4]	@ movhi
   40:moudels/remote/remote_control.c ****     ch[3] =((sbus_rx_buf[6]<<7)   + (sbus_rx_buf[5]>>1)) & 0x07ff;
-  88              		.loc 1 40 5 is_stmt 1 view .LVU22
-  89              		.loc 1 40 25 is_stmt 0 view .LVU23
-  90 0046 8179     		ldrb	r1, [r0, #6]	@ zero_extendqisi2
-  91              		.loc 1 40 58 view .LVU24
-  92 0048 4FEA5E0E 		lsr	lr, lr, #1
-  93              		.loc 1 40 35 view .LVU25
-  94 004c 0EEBC11E 		add	lr, lr, r1, lsl #7
-  95              		.loc 1 40 58 view .LVU26
-  96 0050 CEF30A0E 		ubfx	lr, lr, #0, #11
-  97              		.loc 1 40 11 view .LVU27
-  98 0054 A3F806E0 		strh	lr, [r3, #6]	@ movhi
+  87              		.loc 1 40 5 is_stmt 1 view .LVU22
+  88              		.loc 1 40 25 is_stmt 0 view .LVU23
+  89 004a 8179     		ldrb	r1, [r0, #6]	@ zero_extendqisi2
+  90              		.loc 1 40 58 view .LVU24
+  91 004c 4FEA5C0C 		lsr	ip, ip, #1
+  92              		.loc 1 40 35 view .LVU25
+  93 0050 0CEBC11C 		add	ip, ip, r1, lsl #7
+  94              		.loc 1 40 58 view .LVU26
+  95 0054 CCF30A0C 		ubfx	ip, ip, #0, #11
+  96              		.loc 1 40 11 view .LVU27
+  97 0058 A3F806C0 		strh	ip, [r3, #6]	@ movhi
   41:moudels/remote/remote_control.c ****     ch[4] =((sbus_rx_buf[7]<<4)   + (sbus_rx_buf[6]>>4)) & 0x07ff;
-  99              		.loc 1 41 5 is_stmt 1 view .LVU28
- 100              		.loc 1 41 25 is_stmt 0 view .LVU29
- 101 0058 C679     		ldrb	r6, [r0, #7]	@ zero_extendqisi2
- 102              		.loc 1 41 58 view .LVU30
- 103 005a 0909     		lsrs	r1, r1, #4
- 104              		.loc 1 41 35 view .LVU31
- 105 005c 01EB0611 		add	r1, r1, r6, lsl #4
- 106              		.loc 1 41 58 view .LVU32
- 107 0060 C1F30A01 		ubfx	r1, r1, #0, #11
- 108              		.loc 1 41 11 view .LVU33
- 109 0064 0191     		str	r1, [sp, #4]
- 110 0066 1981     		strh	r1, [r3, #8]	@ movhi
+  98              		.loc 1 41 5 is_stmt 1 view .LVU28
+  99              		.loc 1 41 25 is_stmt 0 view .LVU29
+ 100 005c C579     		ldrb	r5, [r0, #7]	@ zero_extendqisi2
+ 101              		.loc 1 41 58 view .LVU30
+ 102 005e 0909     		lsrs	r1, r1, #4
+ 103              		.loc 1 41 35 view .LVU31
+ 104 0060 01EB0511 		add	r1, r1, r5, lsl #4
+ 105              		.loc 1 41 58 view .LVU32
+ 106 0064 C1F30A01 		ubfx	r1, r1, #0, #11
+ 107              		.loc 1 41 11 view .LVU33
+ 108 0068 0091     		str	r1, [sp]
+ 109 006a 1981     		strh	r1, [r3, #8]	@ movhi
   42:moudels/remote/remote_control.c ****     ch[5] =((sbus_rx_buf[9]<<9)   + (sbus_rx_buf[8]<<1) + (sbus_rx_buf[7]>>7)) & 0x07ff;
- 111              		.loc 1 42 5 is_stmt 1 view .LVU34
- 112              		.loc 1 42 25 is_stmt 0 view .LVU35
- 113 0068 457A     		ldrb	r5, [r0, #9]	@ zero_extendqisi2
- 114              		.loc 1 42 28 view .LVU36
- 115 006a 6902     		lsls	r1, r5, #9
- 116 006c 89B2     		uxth	r1, r1
- 117              		.loc 1 42 49 view .LVU37
- 118 006e 077A     		ldrb	r7, [r0, #8]	@ zero_extendqisi2
- 119              		.loc 1 42 35 view .LVU38
- 120 0070 01EB4701 		add	r1, r1, r7, lsl #1
- 121 0074 89B2     		uxth	r1, r1
- 122              		.loc 1 42 57 view .LVU39
- 123 0076 01EBD611 		add	r1, r1, r6, lsr #7
- 124              		.loc 1 42 80 view .LVU40
- 125 007a C1F30A06 		ubfx	r6, r1, #0, #11
- 126              		.loc 1 42 11 view .LVU41
- 127 007e 0296     		str	r6, [sp, #8]
- 128 0080 5E81     		strh	r6, [r3, #10]	@ movhi
+ 110              		.loc 1 42 5 is_stmt 1 view .LVU34
+ 111              		.loc 1 42 25 is_stmt 0 view .LVU35
+ 112 006c 447A     		ldrb	r4, [r0, #9]	@ zero_extendqisi2
+ 113              		.loc 1 42 28 view .LVU36
+ 114 006e 6102     		lsls	r1, r4, #9
+ 115 0070 89B2     		uxth	r1, r1
+ 116              		.loc 1 42 49 view .LVU37
+ 117 0072 067A     		ldrb	r6, [r0, #8]	@ zero_extendqisi2
+ 118              		.loc 1 42 35 view .LVU38
+ 119 0074 01EB4601 		add	r1, r1, r6, lsl #1
+ 120 0078 89B2     		uxth	r1, r1
+ 121              		.loc 1 42 57 view .LVU39
+ 122 007a 01EBD511 		add	r1, r1, r5, lsr #7
+ 123              		.loc 1 42 80 view .LVU40
+ 124 007e C1F30A05 		ubfx	r5, r1, #0, #11
+ 125              		.loc 1 42 11 view .LVU41
+ 126 0082 0195     		str	r5, [sp, #4]
+ 127 0084 5D81     		strh	r5, [r3, #10]	@ movhi
   43:moudels/remote/remote_control.c ****     ch[6] =((sbus_rx_buf[10]<<6)  + (sbus_rx_buf[9]>>2)) & 0x07ff;
- 129              		.loc 1 43 5 is_stmt 1 view .LVU42
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 4
+ 128              		.loc 1 43 5 is_stmt 1 view .LVU42
+ 129              		.loc 1 43 25 is_stmt 0 view .LVU43
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 4
 
 
- 130              		.loc 1 43 25 is_stmt 0 view .LVU43
- 131 0082 817A     		ldrb	r1, [r0, #10]	@ zero_extendqisi2
- 132              		.loc 1 43 58 view .LVU44
- 133 0084 AD08     		lsrs	r5, r5, #2
- 134              		.loc 1 43 35 view .LVU45
- 135 0086 05EB8115 		add	r5, r5, r1, lsl #6
- 136              		.loc 1 43 58 view .LVU46
- 137 008a C5F30A05 		ubfx	r5, r5, #0, #11
- 138              		.loc 1 43 11 view .LVU47
- 139 008e 0395     		str	r5, [sp, #12]
- 140 0090 9D81     		strh	r5, [r3, #12]	@ movhi
+ 130 0086 817A     		ldrb	r1, [r0, #10]	@ zero_extendqisi2
+ 131              		.loc 1 43 58 view .LVU44
+ 132 0088 A408     		lsrs	r4, r4, #2
+ 133              		.loc 1 43 35 view .LVU45
+ 134 008a 04EB8114 		add	r4, r4, r1, lsl #6
+ 135              		.loc 1 43 58 view .LVU46
+ 136 008e C4F30A04 		ubfx	r4, r4, #0, #11
+ 137              		.loc 1 43 11 view .LVU47
+ 138 0092 0294     		str	r4, [sp, #8]
+ 139 0094 9C81     		strh	r4, [r3, #12]	@ movhi
   44:moudels/remote/remote_control.c ****     ch[7] =((sbus_rx_buf[11]<<3)  + (sbus_rx_buf[10]>>5)) & 0x07ff;
- 141              		.loc 1 44 5 is_stmt 1 view .LVU48
- 142              		.loc 1 44 25 is_stmt 0 view .LVU49
- 143 0092 C57A     		ldrb	r5, [r0, #11]	@ zero_extendqisi2
- 144              		.loc 1 44 59 view .LVU50
- 145 0094 4909     		lsrs	r1, r1, #5
- 146              		.loc 1 44 35 view .LVU51
- 147 0096 01EBC501 		add	r1, r1, r5, lsl #3
- 148              		.loc 1 44 59 view .LVU52
- 149 009a C1F30A0B 		ubfx	fp, r1, #0, #11
- 150              		.loc 1 44 11 view .LVU53
- 151 009e A3F80EB0 		strh	fp, [r3, #14]	@ movhi
+ 140              		.loc 1 44 5 is_stmt 1 view .LVU48
+ 141              		.loc 1 44 25 is_stmt 0 view .LVU49
+ 142 0096 C47A     		ldrb	r4, [r0, #11]	@ zero_extendqisi2
+ 143              		.loc 1 44 59 view .LVU50
+ 144 0098 4909     		lsrs	r1, r1, #5
+ 145              		.loc 1 44 35 view .LVU51
+ 146 009a 01EBC401 		add	r1, r1, r4, lsl #3
+ 147              		.loc 1 44 59 view .LVU52
+ 148 009e C1F30A0B 		ubfx	fp, r1, #0, #11
+ 149              		.loc 1 44 11 view .LVU53
+ 150 00a2 A3F80EB0 		strh	fp, [r3, #14]	@ movhi
   45:moudels/remote/remote_control.c ****     ch[8] =((sbus_rx_buf[13]<<8)  + (sbus_rx_buf[12])) & 0x07ff;
- 152              		.loc 1 45 5 is_stmt 1 view .LVU54
- 153              		.loc 1 45 25 is_stmt 0 view .LVU55
- 154 00a2 90F80DC0 		ldrb	ip, [r0, #13]	@ zero_extendqisi2
- 155              		.loc 1 45 49 view .LVU56
- 156 00a6 077B     		ldrb	r7, [r0, #12]	@ zero_extendqisi2
- 157              		.loc 1 45 35 view .LVU57
- 158 00a8 07EB0C27 		add	r7, r7, ip, lsl #8
- 159              		.loc 1 45 56 view .LVU58
- 160 00ac C7F30A07 		ubfx	r7, r7, #0, #11
- 161              		.loc 1 45 11 view .LVU59
- 162 00b0 1F82     		strh	r7, [r3, #16]	@ movhi
+ 151              		.loc 1 45 5 is_stmt 1 view .LVU54
+ 152              		.loc 1 45 25 is_stmt 0 view .LVU55
+ 153 00a6 467B     		ldrb	r6, [r0, #13]	@ zero_extendqisi2
+ 154              		.loc 1 45 49 view .LVU56
+ 155 00a8 077B     		ldrb	r7, [r0, #12]	@ zero_extendqisi2
+ 156              		.loc 1 45 35 view .LVU57
+ 157 00aa 07EB0627 		add	r7, r7, r6, lsl #8
+ 158              		.loc 1 45 56 view .LVU58
+ 159 00ae C7F30A07 		ubfx	r7, r7, #0, #11
+ 160              		.loc 1 45 11 view .LVU59
+ 161 00b2 1F82     		strh	r7, [r3, #16]	@ movhi
   46:moudels/remote/remote_control.c ****     ch[9] =((sbus_rx_buf[14]<<5)  + (sbus_rx_buf[13]>>3)) & 0x07ff;
- 163              		.loc 1 46 5 is_stmt 1 view .LVU60
- 164              		.loc 1 46 25 is_stmt 0 view .LVU61
- 165 00b2 857B     		ldrb	r5, [r0, #14]	@ zero_extendqisi2
- 166              		.loc 1 46 59 view .LVU62
- 167 00b4 4FEADC0C 		lsr	ip, ip, #3
- 168              		.loc 1 46 35 view .LVU63
- 169 00b8 0CEB451C 		add	ip, ip, r5, lsl #5
- 170              		.loc 1 46 59 view .LVU64
- 171 00bc CCF30A0C 		ubfx	ip, ip, #0, #11
- 172              		.loc 1 46 11 view .LVU65
- 173 00c0 A3F812C0 		strh	ip, [r3, #18]	@ movhi
+ 162              		.loc 1 46 5 is_stmt 1 view .LVU60
+ 163              		.loc 1 46 25 is_stmt 0 view .LVU61
+ 164 00b4 847B     		ldrb	r4, [r0, #14]	@ zero_extendqisi2
+ 165              		.loc 1 46 59 view .LVU62
+ 166 00b6 F608     		lsrs	r6, r6, #3
+ 167              		.loc 1 46 35 view .LVU63
+ 168 00b8 06EB4416 		add	r6, r6, r4, lsl #5
+ 169              		.loc 1 46 59 view .LVU64
+ 170 00bc C6F30A01 		ubfx	r1, r6, #0, #11
+ 171              		.loc 1 46 11 view .LVU65
+ 172 00c0 0391     		str	r1, [sp, #12]
+ 173 00c2 5982     		strh	r1, [r3, #18]	@ movhi
   47:moudels/remote/remote_control.c ****     ch[10]=((sbus_rx_buf[16]<<10) + (sbus_rx_buf[15]<<2) + (sbus_rx_buf[14]>>6)) & 0x07ff;
  174              		.loc 1 47 5 is_stmt 1 view .LVU66
  175              		.loc 1 47 25 is_stmt 0 view .LVU67
- 176 00c4 067C     		ldrb	r6, [r0, #16]	@ zero_extendqisi2
+ 176 00c4 057C     		ldrb	r5, [r0, #16]	@ zero_extendqisi2
  177              		.loc 1 47 29 view .LVU68
- 178 00c6 B102     		lsls	r1, r6, #10
+ 178 00c6 A902     		lsls	r1, r5, #10
  179 00c8 89B2     		uxth	r1, r1
  180              		.loc 1 47 49 view .LVU69
  181 00ca 90F80F90 		ldrb	r9, [r0, #15]	@ zero_extendqisi2
  182              		.loc 1 47 35 view .LVU70
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 5
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 5
 
 
  183 00ce 01EB8901 		add	r1, r1, r9, lsl #2
  184 00d2 89B2     		uxth	r1, r1
  185              		.loc 1 47 58 view .LVU71
- 186 00d4 01EB9511 		add	r1, r1, r5, lsr #6
+ 186 00d4 01EB9411 		add	r1, r1, r4, lsr #6
  187              		.loc 1 47 82 view .LVU72
  188 00d8 C1F30A01 		ubfx	r1, r1, #0, #11
  189              		.loc 1 47 11 view .LVU73
@@ -252,56 +252,56 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
   48:moudels/remote/remote_control.c ****     ch[11]=((sbus_rx_buf[17]<<7)  + (sbus_rx_buf[16]>>1)) & 0x07ff;
  191              		.loc 1 48 5 is_stmt 1 view .LVU74
  192              		.loc 1 48 25 is_stmt 0 view .LVU75
- 193 00de 457C     		ldrb	r5, [r0, #17]	@ zero_extendqisi2
+ 193 00de 447C     		ldrb	r4, [r0, #17]	@ zero_extendqisi2
  194              		.loc 1 48 59 view .LVU76
- 195 00e0 7608     		lsrs	r6, r6, #1
+ 195 00e0 6D08     		lsrs	r5, r5, #1
  196              		.loc 1 48 35 view .LVU77
- 197 00e2 06EBC516 		add	r6, r6, r5, lsl #7
+ 197 00e2 05EBC415 		add	r5, r5, r4, lsl #7
  198              		.loc 1 48 59 view .LVU78
- 199 00e6 C6F30A06 		ubfx	r6, r6, #0, #11
+ 199 00e6 C5F30A05 		ubfx	r5, r5, #0, #11
  200              		.loc 1 48 11 view .LVU79
- 201 00ea DE82     		strh	r6, [r3, #22]	@ movhi
+ 201 00ea DD82     		strh	r5, [r3, #22]	@ movhi
   49:moudels/remote/remote_control.c ****     ch[12]=((sbus_rx_buf[18]<<4)  + (sbus_rx_buf[17]>>4)) & 0x07ff;
  202              		.loc 1 49 5 is_stmt 1 view .LVU80
  203              		.loc 1 49 25 is_stmt 0 view .LVU81
  204 00ec 90F812A0 		ldrb	r10, [r0, #18]	@ zero_extendqisi2
  205              		.loc 1 49 59 view .LVU82
- 206 00f0 2D09     		lsrs	r5, r5, #4
+ 206 00f0 2409     		lsrs	r4, r4, #4
  207              		.loc 1 49 35 view .LVU83
- 208 00f2 05EB0A15 		add	r5, r5, r10, lsl #4
+ 208 00f2 04EB0A14 		add	r4, r4, r10, lsl #4
  209              		.loc 1 49 59 view .LVU84
- 210 00f6 C5F30A05 		ubfx	r5, r5, #0, #11
+ 210 00f6 C4F30A04 		ubfx	r4, r4, #0, #11
  211              		.loc 1 49 11 view .LVU85
- 212 00fa 1D83     		strh	r5, [r3, #24]	@ movhi
+ 212 00fa 1C83     		strh	r4, [r3, #24]	@ movhi
   50:moudels/remote/remote_control.c ****     ch[13]=((sbus_rx_buf[20]<<9)  + (sbus_rx_buf[19]<<1) + (sbus_rx_buf[18]>>7)) & 0x07ff;
  213              		.loc 1 50 5 is_stmt 1 view .LVU86
  214              		.loc 1 50 25 is_stmt 0 view .LVU87
  215 00fc 90F81490 		ldrb	r9, [r0, #20]	@ zero_extendqisi2
  216              		.loc 1 50 29 view .LVU88
- 217 0100 4FEA4925 		lsl	r5, r9, #9
- 218 0104 ADB2     		uxth	r5, r5
+ 217 0100 4FEA4924 		lsl	r4, r9, #9
+ 218 0104 A4B2     		uxth	r4, r4
  219              		.loc 1 50 49 view .LVU89
- 220 0106 C47C     		ldrb	r4, [r0, #19]	@ zero_extendqisi2
+ 220 0106 C67C     		ldrb	r6, [r0, #19]	@ zero_extendqisi2
  221              		.loc 1 50 35 view .LVU90
- 222 0108 05EB4405 		add	r5, r5, r4, lsl #1
- 223 010c ADB2     		uxth	r5, r5
+ 222 0108 04EB4604 		add	r4, r4, r6, lsl #1
+ 223 010c A4B2     		uxth	r4, r4
  224              		.loc 1 50 58 view .LVU91
- 225 010e 05EBDA15 		add	r5, r5, r10, lsr #7
+ 225 010e 04EBDA14 		add	r4, r4, r10, lsr #7
  226              		.loc 1 50 82 view .LVU92
- 227 0112 C5F30A05 		ubfx	r5, r5, #0, #11
+ 227 0112 C4F30A04 		ubfx	r4, r4, #0, #11
  228              		.loc 1 50 11 view .LVU93
- 229 0116 5D83     		strh	r5, [r3, #26]	@ movhi
+ 229 0116 5C83     		strh	r4, [r3, #26]	@ movhi
   51:moudels/remote/remote_control.c ****     ch[14]=((sbus_rx_buf[21]<<6)  + (sbus_rx_buf[20]>>2)) & 0x07ff;
  230              		.loc 1 51 5 is_stmt 1 view .LVU94
  231              		.loc 1 51 25 is_stmt 0 view .LVU95
- 232 0118 457D     		ldrb	r5, [r0, #21]	@ zero_extendqisi2
+ 232 0118 447D     		ldrb	r4, [r0, #21]	@ zero_extendqisi2
  233              		.loc 1 51 59 view .LVU96
  234 011a 4FEA9909 		lsr	r9, r9, #2
  235              		.loc 1 51 35 view .LVU97
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 6
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 6
 
 
- 236 011e 09EB8519 		add	r9, r9, r5, lsl #6
+ 236 011e 09EB8419 		add	r9, r9, r4, lsl #6
  237              		.loc 1 51 59 view .LVU98
  238 0122 C9F30A09 		ubfx	r9, r9, #0, #11
  239              		.loc 1 51 11 view .LVU99
@@ -312,83 +312,81 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
  243 012a 807D     		ldrb	r0, [r0, #22]	@ zero_extendqisi2
  244              	.LVL1:
  245              		.loc 1 52 59 view .LVU102
- 246 012c 6D09     		lsrs	r5, r5, #5
+ 246 012c 6409     		lsrs	r4, r4, #5
  247              		.loc 1 52 35 view .LVU103
- 248 012e 05EBC005 		add	r5, r5, r0, lsl #3
+ 248 012e 04EBC004 		add	r4, r4, r0, lsl #3
  249              		.loc 1 52 59 view .LVU104
- 250 0132 C5F30A05 		ubfx	r5, r5, #0, #11
+ 250 0132 C4F30A04 		ubfx	r4, r4, #0, #11
  251              		.loc 1 52 11 view .LVU105
- 252 0136 DD83     		strh	r5, [r3, #30]	@ movhi
+ 252 0136 DC83     		strh	r4, [r3, #30]	@ movhi
   53:moudels/remote/remote_control.c ****      
   54:moudels/remote/remote_control.c ****     // 摇杆,直接解算时减去偏置
   55:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.rocker_r_ = ch[1] - RC_CH_VALUE_OFFSET;                              //!< Chan
  253              		.loc 1 55 5 is_stmt 1 view .LVU106
  254              		.loc 1 55 40 is_stmt 0 view .LVU107
- 255 0138 009B     		ldr	r3, [sp]
- 256 013a A3F58064 		sub	r4, r3, #1024
- 257              		.loc 1 55 32 view .LVU108
- 258 013e 164B     		ldr	r3, .L3+4
- 259 0140 9C80     		strh	r4, [r3, #4]	@ movhi
+ 255 0138 AEF5806E 		sub	lr, lr, #1024
+ 256              		.loc 1 55 32 view .LVU108
+ 257 013c 144C     		ldr	r4, .L3+4
+ 258 013e A4F804E0 		strh	lr, [r4, #4]	@ movhi
   56:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.rocker_r1 = ch[3]  - RC_CH_VALUE_OFFSET;                       //!< Channel 1
- 260              		.loc 1 56 5 is_stmt 1 view .LVU109
- 261              		.loc 1 56 41 is_stmt 0 view .LVU110
- 262 0142 AEF5806E 		sub	lr, lr, #1024
- 263              		.loc 1 56 32 view .LVU111
- 264 0146 A3F806E0 		strh	lr, [r3, #6]	@ movhi
+ 259              		.loc 1 56 5 is_stmt 1 view .LVU109
+ 260              		.loc 1 56 41 is_stmt 0 view .LVU110
+ 261 0142 ACF5806C 		sub	ip, ip, #1024
+ 262              		.loc 1 56 32 view .LVU111
+ 263 0146 A4F806C0 		strh	ip, [r4, #6]	@ movhi
   57:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.rocker_l_ = ch[0] - RC_CH_VALUE_OFFSET; //!< Channel 2
- 265              		.loc 1 57 5 is_stmt 1 view .LVU112
- 266              		.loc 1 57 40 is_stmt 0 view .LVU113
- 267 014a A8F58068 		sub	r8, r8, #1024
- 268              		.loc 1 57 32 view .LVU114
- 269 014e A3F80080 		strh	r8, [r3]	@ movhi
+ 264              		.loc 1 57 5 is_stmt 1 view .LVU112
+ 265              		.loc 1 57 40 is_stmt 0 view .LVU113
+ 266 014a A8F58068 		sub	r8, r8, #1024
+ 267              		.loc 1 57 32 view .LVU114
+ 268 014e A4F80080 		strh	r8, [r4]	@ movhi
   58:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.rocker_l1 = ch[2] - RC_CH_VALUE_OFFSET;                       //!< Channel 3
- 270              		.loc 1 58 5 is_stmt 1 view .LVU115
- 271              		.loc 1 58 40 is_stmt 0 view .LVU116
- 272 0152 A2F58062 		sub	r2, r2, #1024
- 273              		.loc 1 58 32 view .LVU117
- 274 0156 5A80     		strh	r2, [r3, #2]	@ movhi
+ 269              		.loc 1 58 5 is_stmt 1 view .LVU115
+ 270              		.loc 1 58 40 is_stmt 0 view .LVU116
+ 271 0152 A2F58062 		sub	r2, r2, #1024
+ 272              		.loc 1 58 32 view .LVU117
+ 273 0156 6280     		strh	r2, [r4, #2]	@ movhi
   59:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.SE = ch[8] - RC_CH_VALUE_OFFSET;     
- 275              		.loc 1 59 5 is_stmt 1 view .LVU118
- 276              		.loc 1 59 33 is_stmt 0 view .LVU119
- 277 0158 A7F58067 		sub	r7, r7, #1024
- 278              		.loc 1 59 25 view .LVU120
- 279 015c 5F81     		strh	r7, [r3, #10]	@ movhi
-  60:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.SF = ch[9] - RC_CH_VALUE_OFFSET;                               // 应急开关
- 280              		.loc 1 60 5 is_stmt 1 view .LVU121
- 281              		.loc 1 60 33 is_stmt 0 view .LVU122
- 282 015e ACF5806C 		sub	ip, ip, #1024
- 283              		.loc 1 60 25 view .LVU123
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 7
-
-
- 284 0162 A3F808C0 		strh	ip, [r3, #8]	@ movhi
+ 274              		.loc 1 59 5 is_stmt 1 view .LVU118
+ 275              		.loc 1 59 33 is_stmt 0 view .LVU119
+ 276 0158 A7F58067 		sub	r7, r7, #1024
+ 277              		.loc 1 59 25 view .LVU120
+ 278 015c 6781     		strh	r7, [r4, #10]	@ movhi
+  60:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.SF = ch[9] ;                               // 应急开关
+ 279              		.loc 1 60 5 is_stmt 1 view .LVU121
+ 280              		.loc 1 60 25 is_stmt 0 view .LVU122
+ 281 015e 039B     		ldr	r3, [sp, #12]
+ 282 0160 2381     		strh	r3, [r4, #8]	@ movhi
   61:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.SB = ch[5]  ;                                 // 应急开关
- 285              		.loc 1 61 5 is_stmt 1 view .LVU124
- 286              		.loc 1 61 25 is_stmt 0 view .LVU125
- 287 0166 0298     		ldr	r0, [sp, #8]
- 288 0168 5882     		strh	r0, [r3, #18]	@ movhi
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 7
+
+
+ 283              		.loc 1 61 5 is_stmt 1 view .LVU123
+ 284              		.loc 1 61 25 is_stmt 0 view .LVU124
+ 285 0162 019A     		ldr	r2, [sp, #4]
+ 286 0164 6282     		strh	r2, [r4, #18]	@ movhi
   62:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.SC = ch[6] ;
- 289              		.loc 1 62 5 is_stmt 1 view .LVU126
- 290              		.loc 1 62 25 is_stmt 0 view .LVU127
- 291 016a 039D     		ldr	r5, [sp, #12]
- 292 016c 9D82     		strh	r5, [r3, #20]	@ movhi
+ 287              		.loc 1 62 5 is_stmt 1 view .LVU125
+ 288              		.loc 1 62 25 is_stmt 0 view .LVU126
+ 289 0166 029A     		ldr	r2, [sp, #8]
+ 290 0168 A282     		strh	r2, [r4, #20]	@ movhi
   63:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.SA = ch[4]  ;     
- 293              		.loc 1 63 5 is_stmt 1 view .LVU128
- 294              		.loc 1 63 25 is_stmt 0 view .LVU129
- 295 016e 019A     		ldr	r2, [sp, #4]
- 296 0170 1A82     		strh	r2, [r3, #16]	@ movhi
+ 291              		.loc 1 63 5 is_stmt 1 view .LVU127
+ 292              		.loc 1 63 25 is_stmt 0 view .LVU128
+ 293 016a 009B     		ldr	r3, [sp]
+ 294 016c 2382     		strh	r3, [r4, #16]	@ movhi
   64:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.SD = ch[7]  ;     
- 297              		.loc 1 64 5 is_stmt 1 view .LVU130
- 298              		.loc 1 64 25 is_stmt 0 view .LVU131
- 299 0172 A3F816B0 		strh	fp, [r3, #22]	@ movhi
+ 295              		.loc 1 64 5 is_stmt 1 view .LVU129
+ 296              		.loc 1 64 25 is_stmt 0 view .LVU130
+ 297 016e A4F816B0 		strh	fp, [r4, #22]	@ movhi
   65:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.SG = ch[10]  ;   
- 300              		.loc 1 65 5 is_stmt 1 view .LVU132
- 301              		.loc 1 65 25 is_stmt 0 view .LVU133
- 302 0176 D981     		strh	r1, [r3, #14]	@ movhi
+ 298              		.loc 1 65 5 is_stmt 1 view .LVU131
+ 299              		.loc 1 65 25 is_stmt 0 view .LVU132
+ 300 0172 E181     		strh	r1, [r4, #14]	@ movhi
   66:moudels/remote/remote_control.c ****     rc_ctrl[TEMP].rc.SH = ch[11]  ;                          // 应急开关
- 303              		.loc 1 66 5 is_stmt 1 view .LVU134
- 304              		.loc 1 66 25 is_stmt 0 view .LVU135
- 305 0178 9E81     		strh	r6, [r3, #12]	@ movhi
+ 301              		.loc 1 66 5 is_stmt 1 view .LVU133
+ 302              		.loc 1 66 25 is_stmt 0 view .LVU134
+ 303 0174 A581     		strh	r5, [r4, #12]	@ movhi
   67:moudels/remote/remote_control.c ****     // RectifyRCjoystick();
   68:moudels/remote/remote_control.c ****     // // 开关,0左1右
   69:moudels/remote/remote_control.c ****     // rc_ctrl[TEMP].rc.switch_right = ((sbus_buf[5] >> 4) & 0x0003);     //!< Switch right
@@ -418,11 +416,11 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
   93:moudels/remote/remote_control.c ****     //     key_last_with_ctrl = rc_ctrl[LAST].key[KEY_PRESS_WITH_CTRL].keys,   // 上一次ctrl组�
   94:moudels/remote/remote_control.c ****     //     key_last_with_shift = rc_ctrl[LAST].key[KEY_PRESS_WITH_SHIFT].keys; // 上一次shift组
   95:moudels/remote/remote_control.c **** 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 8
-
-
   96:moudels/remote/remote_control.c ****     // for (uint16_t i = 0, j = 0x1; i < 16; j <<= 1, i++)
   97:moudels/remote/remote_control.c ****     // {
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 8
+
+
   98:moudels/remote/remote_control.c ****     //     if (i == 4 || i == 5) // 4,5位为ctrl和shift,直接跳过
   99:moudels/remote/remote_control.c ****     //         continue;
  100:moudels/remote/remote_control.c ****     //     // 如果当前按键按下,上一次按键没有按下,且ctrl和shift组合键没有�
@@ -437,34 +435,33 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
  109:moudels/remote/remote_control.c ****     // }
  110:moudels/remote/remote_control.c **** 
  111:moudels/remote/remote_control.c ****     memcpy(&rc_ctrl[LAST], &rc_ctrl[TEMP], sizeof(RC_ctrl_t)); // 保存上一次的数据,用于�
- 306              		.loc 1 111 5 is_stmt 1 view .LVU136
- 307 017a 03F11805 		add	r5, r3, #24
- 308 017e 1C46     		mov	r4, r3
- 309 0180 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
- 310 0182 0FC5     		stmia	r5!, {r0, r1, r2, r3}
- 311 0184 94E80300 		ldm	r4, {r0, r1}
- 312 0188 85E80300 		stm	r5, {r0, r1}
+ 304              		.loc 1 111 5 is_stmt 1 view .LVU135
+ 305 0176 04F11805 		add	r5, r4, #24
+ 306 017a 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 307 017c 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 308 017e 94E80300 		ldm	r4, {r0, r1}
+ 309 0182 85E80300 		stm	r5, {r0, r1}
  112:moudels/remote/remote_control.c **** }
- 313              		.loc 1 112 1 is_stmt 0 view .LVU137
- 314 018c 05B0     		add	sp, sp, #20
- 315              		.cfi_def_cfa_offset 36
- 316              		@ sp needed
- 317 018e BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
- 318              	.L4:
- 319 0192 00BF     		.align	2
- 320              	.L3:
- 321 0194 00000000 		.word	ch
- 322 0198 00000000 		.word	rc_ctrl
- 323              		.cfi_endproc
- 324              	.LFE138:
- 326              		.section	.text.RCLostCallback,"ax",%progbits
- 327              		.align	1
- 328              		.syntax unified
- 329              		.thumb
- 330              		.thumb_func
- 332              	RCLostCallback:
- 333              	.LVL2:
- 334              	.LFB140:
+ 310              		.loc 1 112 1 is_stmt 0 view .LVU136
+ 311 0186 05B0     		add	sp, sp, #20
+ 312              		.cfi_def_cfa_offset 36
+ 313              		@ sp needed
+ 314 0188 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 315              	.L4:
+ 316              		.align	2
+ 317              	.L3:
+ 318 018c 00000000 		.word	ch
+ 319 0190 00000000 		.word	rc_ctrl
+ 320              		.cfi_endproc
+ 321              	.LFE138:
+ 323              		.section	.text.RCLostCallback,"ax",%progbits
+ 324              		.align	1
+ 325              		.syntax unified
+ 326              		.thumb
+ 327              		.thumb_func
+ 329              	RCLostCallback:
+ 330              	.LVL2:
+ 331              	.LFB140:
  113:moudels/remote/remote_control.c **** 
  114:moudels/remote/remote_control.c **** /**
  115:moudels/remote/remote_control.c ****  * @brief 对sbus_to_rc的简单封装,用于注册到bsp_usart的回调函数中
@@ -478,12 +475,12 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
  123:moudels/remote/remote_control.c ****     }else{
  124:moudels/remote/remote_control.c ****          rc_usart_instance->flag=0;
  125:moudels/remote/remote_control.c ****     }//----校验位
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 9
-
-
  126:moudels/remote/remote_control.c ****     if( rc_usart_instance->flag=1){      
  127:moudels/remote/remote_control.c ****     sbus_to_rc(rc_usart_instance->recv_buff); 
  128:moudels/remote/remote_control.c ****     
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 9
+
+
  129:moudels/remote/remote_control.c ****     if((rc_usart_instance->recv_buff[21] != 0x00)){ rc_usart_instance->connect_flag = 0;}
  130:moudels/remote/remote_control.c **** 			else {rc_usart_instance->connect_flag = 1;
  131:moudels/remote/remote_control.c **** 			    
@@ -499,371 +496,371 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 1
  141:moudels/remote/remote_control.c ****  */
  142:moudels/remote/remote_control.c **** static void RCLostCallback(void *id)
  143:moudels/remote/remote_control.c **** {
- 335              		.loc 1 143 1 is_stmt 1 view -0
- 336              		.cfi_startproc
- 337              		@ args = 0, pretend = 0, frame = 0
- 338              		@ frame_needed = 0, uses_anonymous_args = 0
- 339              		.loc 1 143 1 is_stmt 0 view .LVU139
- 340 0000 08B5     		push	{r3, lr}
- 341              		.cfi_def_cfa_offset 8
- 342              		.cfi_offset 3, -8
- 343              		.cfi_offset 14, -4
+ 332              		.loc 1 143 1 is_stmt 1 view -0
+ 333              		.cfi_startproc
+ 334              		@ args = 0, pretend = 0, frame = 0
+ 335              		@ frame_needed = 0, uses_anonymous_args = 0
+ 336              		.loc 1 143 1 is_stmt 0 view .LVU138
+ 337 0000 08B5     		push	{r3, lr}
+ 338              		.cfi_def_cfa_offset 8
+ 339              		.cfi_offset 3, -8
+ 340              		.cfi_offset 14, -4
  144:moudels/remote/remote_control.c ****     memset(rc_ctrl, 0, sizeof(rc_ctrl)); // 清空遥控器数据
- 344              		.loc 1 144 5 is_stmt 1 view .LVU140
- 345 0002 3022     		movs	r2, #48
- 346 0004 0021     		movs	r1, #0
- 347 0006 0448     		ldr	r0, .L7
- 348              	.LVL3:
- 349              		.loc 1 144 5 is_stmt 0 view .LVU141
- 350 0008 FFF7FEFF 		bl	memset
- 351              	.LVL4:
+ 341              		.loc 1 144 5 is_stmt 1 view .LVU139
+ 342 0002 3022     		movs	r2, #48
+ 343 0004 0021     		movs	r1, #0
+ 344 0006 0448     		ldr	r0, .L7
+ 345              	.LVL3:
+ 346              		.loc 1 144 5 is_stmt 0 view .LVU140
+ 347 0008 FFF7FEFF 		bl	memset
+ 348              	.LVL4:
  145:moudels/remote/remote_control.c ****     USARTServiceInit(rc_usart_instance); // 尝试重新启动接收
- 352              		.loc 1 145 5 is_stmt 1 view .LVU142
- 353 000c 034B     		ldr	r3, .L7+4
- 354 000e 1868     		ldr	r0, [r3]
- 355 0010 FFF7FEFF 		bl	USARTServiceInit
- 356              	.LVL5:
+ 349              		.loc 1 145 5 is_stmt 1 view .LVU141
+ 350 000c 034B     		ldr	r3, .L7+4
+ 351 000e 1868     		ldr	r0, [r3]
+ 352 0010 FFF7FEFF 		bl	USARTServiceInit
+ 353              	.LVL5:
  146:moudels/remote/remote_control.c ****     LOGWARNING("[rc] remote control lost");
- 357              		.loc 1 146 43 view .LVU143
+ 354              		.loc 1 146 43 view .LVU142
  147:moudels/remote/remote_control.c **** }
- 358              		.loc 1 147 1 is_stmt 0 view .LVU144
- 359 0014 08BD     		pop	{r3, pc}
- 360              	.L8:
- 361 0016 00BF     		.align	2
- 362              	.L7:
- 363 0018 00000000 		.word	rc_ctrl
- 364 001c 00000000 		.word	rc_usart_instance
- 365              		.cfi_endproc
- 366              	.LFE140:
- 368              		.section	.text.RemoteControlRxCallback,"ax",%progbits
- 369              		.align	1
- 370              		.syntax unified
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 10
+ 355              		.loc 1 147 1 is_stmt 0 view .LVU143
+ 356 0014 08BD     		pop	{r3, pc}
+ 357              	.L8:
+ 358 0016 00BF     		.align	2
+ 359              	.L7:
+ 360 0018 00000000 		.word	rc_ctrl
+ 361 001c 00000000 		.word	rc_usart_instance
+ 362              		.cfi_endproc
+ 363              	.LFE140:
+ 365              		.section	.text.RemoteControlRxCallback,"ax",%progbits
+ 366              		.align	1
+ 367              		.syntax unified
+ 368              		.thumb
+ 369              		.thumb_func
+ 371              	RemoteControlRxCallback:
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 10
 
 
- 371              		.thumb
- 372              		.thumb_func
- 374              	RemoteControlRxCallback:
- 375              	.LFB139:
+ 372              	.LFB139:
  119:moudels/remote/remote_control.c ****     DaemonReload(rc_daemon_instance);// 先喂狗
- 376              		.loc 1 119 4 is_stmt 1 view -0
- 377              		.cfi_startproc
- 378              		@ args = 0, pretend = 0, frame = 0
- 379              		@ frame_needed = 0, uses_anonymous_args = 0
- 380 0000 10B5     		push	{r4, lr}
- 381              		.cfi_def_cfa_offset 8
- 382              		.cfi_offset 4, -8
- 383              		.cfi_offset 14, -4
+ 373              		.loc 1 119 4 is_stmt 1 view -0
+ 374              		.cfi_startproc
+ 375              		@ args = 0, pretend = 0, frame = 0
+ 376              		@ frame_needed = 0, uses_anonymous_args = 0
+ 377 0000 10B5     		push	{r4, lr}
+ 378              		.cfi_def_cfa_offset 8
+ 379              		.cfi_offset 4, -8
+ 380              		.cfi_offset 14, -4
  120:moudels/remote/remote_control.c ****     if((rc_usart_instance->recv_buff[0]=0x0F) && (rc_usart_instance->recv_buff[24]=0x00 )){
- 384              		.loc 1 120 5 view .LVU146
- 385 0002 0F4B     		ldr	r3, .L13
- 386 0004 1868     		ldr	r0, [r3]
- 387 0006 FFF7FEFF 		bl	DaemonReload
- 388              	.LVL6:
+ 381              		.loc 1 120 5 view .LVU145
+ 382 0002 0F4B     		ldr	r3, .L13
+ 383 0004 1868     		ldr	r0, [r3]
+ 384 0006 FFF7FEFF 		bl	DaemonReload
+ 385              	.LVL6:
  121:moudels/remote/remote_control.c ****         rc_usart_instance->flag=1;
- 389              		.loc 1 121 5 view .LVU147
+ 386              		.loc 1 121 5 view .LVU146
  121:moudels/remote/remote_control.c ****         rc_usart_instance->flag=1;
- 390              		.loc 1 121 26 is_stmt 0 view .LVU148
- 391 000a 0E4C     		ldr	r4, .L13+4
- 392 000c 2068     		ldr	r0, [r4]
+ 387              		.loc 1 121 26 is_stmt 0 view .LVU147
+ 388 000a 0E4C     		ldr	r4, .L13+4
+ 389 000c 2068     		ldr	r0, [r4]
  121:moudels/remote/remote_control.c ****         rc_usart_instance->flag=1;
- 393              		.loc 1 121 40 view .LVU149
- 394 000e 0F23     		movs	r3, #15
- 395 0010 0370     		strb	r3, [r0]
+ 390              		.loc 1 121 40 view .LVU148
+ 391 000e 0F23     		movs	r3, #15
+ 392 0010 0370     		strb	r3, [r0]
  121:moudels/remote/remote_control.c ****         rc_usart_instance->flag=1;
- 396              		.loc 1 121 83 discriminator 1 view .LVU150
- 397 0012 0023     		movs	r3, #0
- 398 0014 0376     		strb	r3, [r0, #24]
+ 393              		.loc 1 121 83 discriminator 1 view .LVU149
+ 394 0012 0023     		movs	r3, #0
+ 395 0014 0376     		strb	r3, [r0, #24]
  124:moudels/remote/remote_control.c ****     }//----校验位
- 399              		.loc 1 124 10 is_stmt 1 view .LVU151
+ 396              		.loc 1 124 10 is_stmt 1 view .LVU150
  124:moudels/remote/remote_control.c ****     }//----校验位
- 400              		.loc 1 124 33 is_stmt 0 view .LVU152
- 401 0016 C0F80C31 		str	r3, [r0, #268]
+ 397              		.loc 1 124 33 is_stmt 0 view .LVU151
+ 398 0016 C0F80C31 		str	r3, [r0, #268]
  126:moudels/remote/remote_control.c ****     sbus_to_rc(rc_usart_instance->recv_buff); 
- 402              		.loc 1 126 5 is_stmt 1 view .LVU153
+ 399              		.loc 1 126 5 is_stmt 1 view .LVU152
  126:moudels/remote/remote_control.c ****     sbus_to_rc(rc_usart_instance->recv_buff); 
- 403              		.loc 1 126 32 is_stmt 0 view .LVU154
- 404 001a 0123     		movs	r3, #1
- 405 001c C0F80C31 		str	r3, [r0, #268]
+ 400              		.loc 1 126 32 is_stmt 0 view .LVU153
+ 401 001a 0123     		movs	r3, #1
+ 402 001c C0F80C31 		str	r3, [r0, #268]
  127:moudels/remote/remote_control.c ****     
- 406              		.loc 1 127 5 is_stmt 1 view .LVU155
- 407 0020 FFF7FEFF 		bl	sbus_to_rc
- 408              	.LVL7:
+ 403              		.loc 1 127 5 is_stmt 1 view .LVU154
+ 404 0020 FFF7FEFF 		bl	sbus_to_rc
+ 405              	.LVL7:
  129:moudels/remote/remote_control.c **** 			else {rc_usart_instance->connect_flag = 1;
- 409              		.loc 1 129 5 view .LVU156
+ 406              		.loc 1 129 5 view .LVU155
  129:moudels/remote/remote_control.c **** 			else {rc_usart_instance->connect_flag = 1;
- 410              		.loc 1 129 26 is_stmt 0 view .LVU157
- 411 0024 2368     		ldr	r3, [r4]
+ 407              		.loc 1 129 26 is_stmt 0 view .LVU156
+ 408 0024 2368     		ldr	r3, [r4]
  129:moudels/remote/remote_control.c **** 			else {rc_usart_instance->connect_flag = 1;
- 412              		.loc 1 129 37 view .LVU158
- 413 0026 5A7D     		ldrb	r2, [r3, #21]	@ zero_extendqisi2
+ 409              		.loc 1 129 37 view .LVU157
+ 410 0026 5A7D     		ldrb	r2, [r3, #21]	@ zero_extendqisi2
  129:moudels/remote/remote_control.c **** 			else {rc_usart_instance->connect_flag = 1;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 11
+ 411              		.loc 1 129 7 view .LVU158
+ 412 0028 32B1     		cbz	r2, .L10
+ 129:moudels/remote/remote_control.c **** 			else {rc_usart_instance->connect_flag = 1;
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 11
 
 
- 414              		.loc 1 129 7 view .LVU159
- 415 0028 32B1     		cbz	r2, .L10
+ 413              		.loc 1 129 53 is_stmt 1 discriminator 1 view .LVU159
  129:moudels/remote/remote_control.c **** 			else {rc_usart_instance->connect_flag = 1;
- 416              		.loc 1 129 53 is_stmt 1 discriminator 1 view .LVU160
- 129:moudels/remote/remote_control.c **** 			else {rc_usart_instance->connect_flag = 1;
- 417              		.loc 1 129 85 is_stmt 0 discriminator 1 view .LVU161
- 418 002a 0022     		movs	r2, #0
- 419 002c C3F81021 		str	r2, [r3, #272]
- 420              	.L11:
+ 414              		.loc 1 129 85 is_stmt 0 discriminator 1 view .LVU160
+ 415 002a 0022     		movs	r2, #0
+ 416 002c C3F81021 		str	r2, [r3, #272]
+ 417              	.L11:
  133:moudels/remote/remote_control.c ****         
- 421              		.loc 1 133 6 is_stmt 1 view .LVU162
+ 418              		.loc 1 133 6 is_stmt 1 view .LVU161
  133:moudels/remote/remote_control.c ****         
- 422              		.loc 1 133 30 is_stmt 0 view .LVU163
- 423 0030 0022     		movs	r2, #0
- 424 0032 C3F80C21 		str	r2, [r3, #268]
+ 419              		.loc 1 133 30 is_stmt 0 view .LVU162
+ 420 0030 0022     		movs	r2, #0
+ 421 0032 C3F80C21 		str	r2, [r3, #268]
  136:moudels/remote/remote_control.c **** 
- 425              		.loc 1 136 1 view .LVU164
- 426 0036 10BD     		pop	{r4, pc}
- 427              	.L10:
+ 422              		.loc 1 136 1 view .LVU163
+ 423 0036 10BD     		pop	{r4, pc}
+ 424              	.L10:
  130:moudels/remote/remote_control.c **** 			    
- 428              		.loc 1 130 10 is_stmt 1 view .LVU165
+ 425              		.loc 1 130 10 is_stmt 1 view .LVU164
  130:moudels/remote/remote_control.c **** 			    
- 429              		.loc 1 130 42 is_stmt 0 view .LVU166
- 430 0038 0122     		movs	r2, #1
- 431 003a C3F81021 		str	r2, [r3, #272]
- 432 003e F7E7     		b	.L11
- 433              	.L14:
- 434              		.align	2
- 435              	.L13:
- 436 0040 00000000 		.word	rc_daemon_instance
- 437 0044 00000000 		.word	rc_usart_instance
- 438              		.cfi_endproc
- 439              	.LFE139:
- 441              		.section	.text.RemoteControlInit,"ax",%progbits
- 442              		.align	1
- 443              		.global	RemoteControlInit
- 444              		.syntax unified
- 445              		.thumb
- 446              		.thumb_func
- 448              	RemoteControlInit:
- 449              	.LVL8:
- 450              	.LFB141:
+ 426              		.loc 1 130 42 is_stmt 0 view .LVU165
+ 427 0038 0122     		movs	r2, #1
+ 428 003a C3F81021 		str	r2, [r3, #272]
+ 429 003e F7E7     		b	.L11
+ 430              	.L14:
+ 431              		.align	2
+ 432              	.L13:
+ 433 0040 00000000 		.word	rc_daemon_instance
+ 434 0044 00000000 		.word	rc_usart_instance
+ 435              		.cfi_endproc
+ 436              	.LFE139:
+ 438              		.section	.text.RemoteControlInit,"ax",%progbits
+ 439              		.align	1
+ 440              		.global	RemoteControlInit
+ 441              		.syntax unified
+ 442              		.thumb
+ 443              		.thumb_func
+ 445              	RemoteControlInit:
+ 446              	.LVL8:
+ 447              	.LFB141:
  148:moudels/remote/remote_control.c **** 
  149:moudels/remote/remote_control.c **** RC_ctrl_t *RemoteControlInit(UART_HandleTypeDef *rc_usart_handle)
  150:moudels/remote/remote_control.c **** {
- 451              		.loc 1 150 1 is_stmt 1 view -0
- 452              		.cfi_startproc
- 453              		@ args = 0, pretend = 0, frame = 24
- 454              		@ frame_needed = 0, uses_anonymous_args = 0
- 455              		.loc 1 150 1 is_stmt 0 view .LVU168
- 456 0000 00B5     		push	{lr}
- 457              		.cfi_def_cfa_offset 4
- 458              		.cfi_offset 14, -4
- 459 0002 87B0     		sub	sp, sp, #28
- 460              		.cfi_def_cfa_offset 32
+ 448              		.loc 1 150 1 is_stmt 1 view -0
+ 449              		.cfi_startproc
+ 450              		@ args = 0, pretend = 0, frame = 24
+ 451              		@ frame_needed = 0, uses_anonymous_args = 0
+ 452              		.loc 1 150 1 is_stmt 0 view .LVU167
+ 453 0000 00B5     		push	{lr}
+ 454              		.cfi_def_cfa_offset 4
+ 455              		.cfi_offset 14, -4
+ 456 0002 87B0     		sub	sp, sp, #28
+ 457              		.cfi_def_cfa_offset 32
  151:moudels/remote/remote_control.c ****     USART_Init_Config_s conf;
- 461              		.loc 1 151 5 is_stmt 1 view .LVU169
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 12
-
-
+ 458              		.loc 1 151 5 is_stmt 1 view .LVU168
  152:moudels/remote/remote_control.c ****     conf.module_callback = RemoteControlRxCallback;
- 462              		.loc 1 152 5 view .LVU170
- 463              		.loc 1 152 26 is_stmt 0 view .LVU171
- 464 0004 0F4B     		ldr	r3, .L17
- 465 0006 0593     		str	r3, [sp, #20]
+ 459              		.loc 1 152 5 view .LVU169
+ 460              		.loc 1 152 26 is_stmt 0 view .LVU170
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 12
+
+
+ 461 0004 0F4B     		ldr	r3, .L17
+ 462 0006 0593     		str	r3, [sp, #20]
  153:moudels/remote/remote_control.c ****     conf.usart_handle = rc_usart_handle;
- 466              		.loc 1 153 5 is_stmt 1 view .LVU172
- 467              		.loc 1 153 23 is_stmt 0 view .LVU173
- 468 0008 0490     		str	r0, [sp, #16]
+ 463              		.loc 1 153 5 is_stmt 1 view .LVU171
+ 464              		.loc 1 153 23 is_stmt 0 view .LVU172
+ 465 0008 0490     		str	r0, [sp, #16]
  154:moudels/remote/remote_control.c ****     conf.recv_buff_size = REMOTE_CONTROL_FRAME_SIZE;
- 469              		.loc 1 154 5 is_stmt 1 view .LVU174
- 470              		.loc 1 154 25 is_stmt 0 view .LVU175
- 471 000a 1923     		movs	r3, #25
- 472 000c 8DF80C30 		strb	r3, [sp, #12]
+ 466              		.loc 1 154 5 is_stmt 1 view .LVU173
+ 467              		.loc 1 154 25 is_stmt 0 view .LVU174
+ 468 000a 1923     		movs	r3, #25
+ 469 000c 8DF80C30 		strb	r3, [sp, #12]
  155:moudels/remote/remote_control.c ****     rc_usart_instance = USARTRegister(&conf);
- 473              		.loc 1 155 5 is_stmt 1 view .LVU176
- 474              		.loc 1 155 25 is_stmt 0 view .LVU177
- 475 0010 03A8     		add	r0, sp, #12
- 476              	.LVL9:
- 477              		.loc 1 155 25 view .LVU178
- 478 0012 FFF7FEFF 		bl	USARTRegister
- 479              	.LVL10:
- 480              		.loc 1 155 23 discriminator 1 view .LVU179
- 481 0016 0C4B     		ldr	r3, .L17+4
- 482 0018 1860     		str	r0, [r3]
+ 470              		.loc 1 155 5 is_stmt 1 view .LVU175
+ 471              		.loc 1 155 25 is_stmt 0 view .LVU176
+ 472 0010 03A8     		add	r0, sp, #12
+ 473              	.LVL9:
+ 474              		.loc 1 155 25 view .LVU177
+ 475 0012 FFF7FEFF 		bl	USARTRegister
+ 476              	.LVL10:
+ 477              		.loc 1 155 23 discriminator 1 view .LVU178
+ 478 0016 0C4B     		ldr	r3, .L17+4
+ 479 0018 1860     		str	r0, [r3]
  156:moudels/remote/remote_control.c ****      
  157:moudels/remote/remote_control.c ****     // 进行守护进程的注册,用于定时检查遥控器是否正常工作
  158:moudels/remote/remote_control.c ****     Daemon_Init_Config_s daemon_conf = {
- 483              		.loc 1 158 5 is_stmt 1 view .LVU180
- 484              		.loc 1 158 26 is_stmt 0 view .LVU181
- 485 001a 0023     		movs	r3, #0
- 486 001c 0093     		str	r3, [sp]
- 487 001e 0193     		str	r3, [sp, #4]
- 488 0020 0293     		str	r3, [sp, #8]
- 489 0022 0A23     		movs	r3, #10
- 490 0024 ADF80030 		strh	r3, [sp]	@ movhi
- 491 0028 084B     		ldr	r3, .L17+8
- 492 002a 0193     		str	r3, [sp, #4]
+ 480              		.loc 1 158 5 is_stmt 1 view .LVU179
+ 481              		.loc 1 158 26 is_stmt 0 view .LVU180
+ 482 001a 0023     		movs	r3, #0
+ 483 001c 0093     		str	r3, [sp]
+ 484 001e 0193     		str	r3, [sp, #4]
+ 485 0020 0293     		str	r3, [sp, #8]
+ 486 0022 0A23     		movs	r3, #10
+ 487 0024 ADF80030 		strh	r3, [sp]	@ movhi
+ 488 0028 084B     		ldr	r3, .L17+8
+ 489 002a 0193     		str	r3, [sp, #4]
  159:moudels/remote/remote_control.c ****         .reload_count = 10, // 100ms未收到数据视为离线,遥控器的接收频率实际上�
  160:moudels/remote/remote_control.c ****         .callback = RCLostCallback,
  161:moudels/remote/remote_control.c ****         .owner_id = NULL, // 只有1个遥控器,不需要owner_id
  162:moudels/remote/remote_control.c ****     };
  163:moudels/remote/remote_control.c ****     rc_daemon_instance = DaemonRegister(&daemon_conf);
- 493              		.loc 1 163 5 is_stmt 1 view .LVU182
- 494              		.loc 1 163 26 is_stmt 0 view .LVU183
- 495 002c 6846     		mov	r0, sp
- 496 002e FFF7FEFF 		bl	DaemonRegister
- 497              	.LVL11:
- 498              		.loc 1 163 24 discriminator 1 view .LVU184
- 499 0032 074B     		ldr	r3, .L17+12
- 500 0034 1860     		str	r0, [r3]
+ 490              		.loc 1 163 5 is_stmt 1 view .LVU181
+ 491              		.loc 1 163 26 is_stmt 0 view .LVU182
+ 492 002c 6846     		mov	r0, sp
+ 493 002e FFF7FEFF 		bl	DaemonRegister
+ 494              	.LVL11:
+ 495              		.loc 1 163 24 discriminator 1 view .LVU183
+ 496 0032 074B     		ldr	r3, .L17+12
+ 497 0034 1860     		str	r0, [r3]
  164:moudels/remote/remote_control.c ****     rc_init_flag = 1;
- 501              		.loc 1 164 5 is_stmt 1 view .LVU185
- 502              		.loc 1 164 18 is_stmt 0 view .LVU186
- 503 0036 074B     		ldr	r3, .L17+16
- 504 0038 0122     		movs	r2, #1
- 505 003a 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 13
-
-
+ 498              		.loc 1 164 5 is_stmt 1 view .LVU184
+ 499              		.loc 1 164 18 is_stmt 0 view .LVU185
+ 500 0036 074B     		ldr	r3, .L17+16
+ 501 0038 0122     		movs	r2, #1
+ 502 003a 1A70     		strb	r2, [r3]
  165:moudels/remote/remote_control.c ****     return rc_ctrl;
- 506              		.loc 1 165 5 is_stmt 1 view .LVU187
+ 503              		.loc 1 165 5 is_stmt 1 view .LVU186
  166:moudels/remote/remote_control.c **** }
- 507              		.loc 1 166 1 is_stmt 0 view .LVU188
- 508 003c 0648     		ldr	r0, .L17+20
- 509 003e 07B0     		add	sp, sp, #28
- 510              		.cfi_def_cfa_offset 4
- 511              		@ sp needed
- 512 0040 5DF804FB 		ldr	pc, [sp], #4
- 513              	.L18:
- 514              		.align	2
- 515              	.L17:
- 516 0044 00000000 		.word	RemoteControlRxCallback
- 517 0048 00000000 		.word	rc_usart_instance
- 518 004c 00000000 		.word	RCLostCallback
- 519 0050 00000000 		.word	rc_daemon_instance
- 520 0054 00000000 		.word	rc_init_flag
- 521 0058 00000000 		.word	rc_ctrl
- 522              		.cfi_endproc
- 523              	.LFE141:
- 525              		.section	.text.RemoteControlIsOnline,"ax",%progbits
- 526              		.align	1
- 527              		.global	RemoteControlIsOnline
- 528              		.syntax unified
- 529              		.thumb
- 530              		.thumb_func
- 532              	RemoteControlIsOnline:
- 533              	.LFB142:
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 13
+
+
+ 504              		.loc 1 166 1 is_stmt 0 view .LVU187
+ 505 003c 0648     		ldr	r0, .L17+20
+ 506 003e 07B0     		add	sp, sp, #28
+ 507              		.cfi_def_cfa_offset 4
+ 508              		@ sp needed
+ 509 0040 5DF804FB 		ldr	pc, [sp], #4
+ 510              	.L18:
+ 511              		.align	2
+ 512              	.L17:
+ 513 0044 00000000 		.word	RemoteControlRxCallback
+ 514 0048 00000000 		.word	rc_usart_instance
+ 515 004c 00000000 		.word	RCLostCallback
+ 516 0050 00000000 		.word	rc_daemon_instance
+ 517 0054 00000000 		.word	rc_init_flag
+ 518 0058 00000000 		.word	rc_ctrl
+ 519              		.cfi_endproc
+ 520              	.LFE141:
+ 522              		.section	.text.RemoteControlIsOnline,"ax",%progbits
+ 523              		.align	1
+ 524              		.global	RemoteControlIsOnline
+ 525              		.syntax unified
+ 526              		.thumb
+ 527              		.thumb_func
+ 529              	RemoteControlIsOnline:
+ 530              	.LFB142:
  167:moudels/remote/remote_control.c **** 
  168:moudels/remote/remote_control.c **** uint8_t RemoteControlIsOnline()
  169:moudels/remote/remote_control.c **** {
- 534              		.loc 1 169 1 is_stmt 1 view -0
- 535              		.cfi_startproc
- 536              		@ args = 0, pretend = 0, frame = 0
- 537              		@ frame_needed = 0, uses_anonymous_args = 0
- 538 0000 08B5     		push	{r3, lr}
- 539              		.cfi_def_cfa_offset 8
- 540              		.cfi_offset 3, -8
- 541              		.cfi_offset 14, -4
+ 531              		.loc 1 169 1 is_stmt 1 view -0
+ 532              		.cfi_startproc
+ 533              		@ args = 0, pretend = 0, frame = 0
+ 534              		@ frame_needed = 0, uses_anonymous_args = 0
+ 535 0000 08B5     		push	{r3, lr}
+ 536              		.cfi_def_cfa_offset 8
+ 537              		.cfi_offset 3, -8
+ 538              		.cfi_offset 14, -4
  170:moudels/remote/remote_control.c ****     if (rc_init_flag)
- 542              		.loc 1 170 5 view .LVU190
- 543              		.loc 1 170 9 is_stmt 0 view .LVU191
- 544 0002 044B     		ldr	r3, .L23
- 545 0004 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 546              		.loc 1 170 8 view .LVU192
- 547 0006 00B9     		cbnz	r0, .L22
- 548              	.L20:
+ 539              		.loc 1 170 5 view .LVU189
+ 540              		.loc 1 170 9 is_stmt 0 view .LVU190
+ 541 0002 044B     		ldr	r3, .L23
+ 542 0004 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 543              		.loc 1 170 8 view .LVU191
+ 544 0006 00B9     		cbnz	r0, .L22
+ 545              	.L20:
  171:moudels/remote/remote_control.c ****         return DaemonIsOnline(rc_daemon_instance);
  172:moudels/remote/remote_control.c ****     return 0;
  173:moudels/remote/remote_control.c **** }...
- 549              		.loc 1 173 1 view .LVU193
- 550 0008 08BD     		pop	{r3, pc}
- 551              	.L22:
+ 546              		.loc 1 173 1 view .LVU192
+ 547 0008 08BD     		pop	{r3, pc}
+ 548              	.L22:
  171:moudels/remote/remote_control.c ****         return DaemonIsOnline(rc_daemon_instance);
- 552              		.loc 1 171 9 is_stmt 1 view .LVU194
+ 549              		.loc 1 171 9 is_stmt 1 view .LVU193
  171:moudels/remote/remote_control.c ****         return DaemonIsOnline(rc_daemon_instance);
- 553              		.loc 1 171 16 is_stmt 0 view .LVU195
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 14
+ 550              		.loc 1 171 16 is_stmt 0 view .LVU194
+ 551 000a 034B     		ldr	r3, .L23+4
+ 552 000c 1868     		ldr	r0, [r3]
+ 553 000e FFF7FEFF 		bl	DaemonIsOnline
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 14
 
 
- 554 000a 034B     		ldr	r3, .L23+4
- 555 000c 1868     		ldr	r0, [r3]
- 556 000e FFF7FEFF 		bl	DaemonIsOnline
- 557              	.LVL12:
- 558 0012 F9E7     		b	.L20
- 559              	.L24:
- 560              		.align	2
- 561              	.L23:
- 562 0014 00000000 		.word	rc_init_flag
- 563 0018 00000000 		.word	rc_daemon_instance
- 564              		.cfi_endproc
- 565              	.LFE142:
- 567              		.section	.bss.ch,"aw",%nobits
- 568              		.align	2
- 571              	ch:
- 572 0000 00000000 		.space	32
- 572      00000000 
- 572      00000000 
- 572      00000000 
- 572      00000000 
- 573              		.section	.bss.rc_daemon_instance,"aw",%nobits
- 574              		.align	2
- 577              	rc_daemon_instance:
- 578 0000 00000000 		.space	4
- 579              		.section	.bss.rc_usart_instance,"aw",%nobits
- 580              		.align	2
- 583              	rc_usart_instance:
- 584 0000 00000000 		.space	4
- 585              		.section	.bss.rc_init_flag,"aw",%nobits
- 588              	rc_init_flag:
- 589 0000 00       		.space	1
- 590              		.section	.bss.rc_ctrl,"aw",%nobits
- 591              		.align	2
- 594              	rc_ctrl:
- 595 0000 00000000 		.space	48
- 595      00000000 
- 595      00000000 
- 595      00000000 
- 595      00000000 
- 596              		.text
- 597              	.Letext0:
- 598              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 599              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 600              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 601              		.file 5 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 602              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 603              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 604              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 605              		.file 9 "moudels/remote/remote_control.h"
- 606              		.file 10 "bsp/usart/bsp_usart.h"
- 607              		.file 11 "moudels/daemon/daemon.h"
- 608              		.file 12 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
- 609              		.file 13 "<built-in>"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s 			page 15
+ 554              	.LVL12:
+ 555 0012 F9E7     		b	.L20
+ 556              	.L24:
+ 557              		.align	2
+ 558              	.L23:
+ 559 0014 00000000 		.word	rc_init_flag
+ 560 0018 00000000 		.word	rc_daemon_instance
+ 561              		.cfi_endproc
+ 562              	.LFE142:
+ 564              		.section	.bss.ch,"aw",%nobits
+ 565              		.align	2
+ 568              	ch:
+ 569 0000 00000000 		.space	32
+ 569      00000000 
+ 569      00000000 
+ 569      00000000 
+ 569      00000000 
+ 570              		.section	.bss.rc_daemon_instance,"aw",%nobits
+ 571              		.align	2
+ 574              	rc_daemon_instance:
+ 575 0000 00000000 		.space	4
+ 576              		.section	.bss.rc_usart_instance,"aw",%nobits
+ 577              		.align	2
+ 580              	rc_usart_instance:
+ 581 0000 00000000 		.space	4
+ 582              		.section	.bss.rc_init_flag,"aw",%nobits
+ 585              	rc_init_flag:
+ 586 0000 00       		.space	1
+ 587              		.section	.bss.rc_ctrl,"aw",%nobits
+ 588              		.align	2
+ 591              	rc_ctrl:
+ 592 0000 00000000 		.space	48
+ 592      00000000 
+ 592      00000000 
+ 592      00000000 
+ 592      00000000 
+ 593              		.text
+ 594              	.Letext0:
+ 595              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 596              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 597              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 598              		.file 5 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 599              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 600              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 601              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 602              		.file 9 "moudels/remote/remote_control.h"
+ 603              		.file 10 "bsp/usart/bsp_usart.h"
+ 604              		.file 11 "moudels/daemon/daemon.h"
+ 605              		.file 12 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
+ 606              		.file 13 "<built-in>"
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccsuprur.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 remote_control.c
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:21     .text.sbus_to_rc:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:26     .text.sbus_to_rc:00000000 sbus_to_rc
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:321    .text.sbus_to_rc:00000194 $d
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:571    .bss.ch:00000000 ch
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:594    .bss.rc_ctrl:00000000 rc_ctrl
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:327    .text.RCLostCallback:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:332    .text.RCLostCallback:00000000 RCLostCallback
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:363    .text.RCLostCallback:00000018 $d
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:583    .bss.rc_usart_instance:00000000 rc_usart_instance
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:369    .text.RemoteControlRxCallback:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:374    .text.RemoteControlRxCallback:00000000 RemoteControlRxCallback
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:436    .text.RemoteControlRxCallback:00000040 $d
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:577    .bss.rc_daemon_instance:00000000 rc_daemon_instance
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:442    .text.RemoteControlInit:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:448    .text.RemoteControlInit:00000000 RemoteControlInit
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:516    .text.RemoteControlInit:00000044 $d
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:588    .bss.rc_init_flag:00000000 rc_init_flag
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:526    .text.RemoteControlIsOnline:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:532    .text.RemoteControlIsOnline:00000000 RemoteControlIsOnline
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:562    .text.RemoteControlIsOnline:00000014 $d
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:568    .bss.ch:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:574    .bss.rc_daemon_instance:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:580    .bss.rc_usart_instance:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:589    .bss.rc_init_flag:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccu6YKob.s:591    .bss.rc_ctrl:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:21     .text.sbus_to_rc:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:26     .text.sbus_to_rc:00000000 sbus_to_rc
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:318    .text.sbus_to_rc:0000018c $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:568    .bss.ch:00000000 ch
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:591    .bss.rc_ctrl:00000000 rc_ctrl
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:324    .text.RCLostCallback:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:329    .text.RCLostCallback:00000000 RCLostCallback
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:360    .text.RCLostCallback:00000018 $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:580    .bss.rc_usart_instance:00000000 rc_usart_instance
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:366    .text.RemoteControlRxCallback:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:371    .text.RemoteControlRxCallback:00000000 RemoteControlRxCallback
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:433    .text.RemoteControlRxCallback:00000040 $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:574    .bss.rc_daemon_instance:00000000 rc_daemon_instance
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:439    .text.RemoteControlInit:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:445    .text.RemoteControlInit:00000000 RemoteControlInit
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:513    .text.RemoteControlInit:00000044 $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:585    .bss.rc_init_flag:00000000 rc_init_flag
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:523    .text.RemoteControlIsOnline:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:529    .text.RemoteControlIsOnline:00000000 RemoteControlIsOnline
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:559    .text.RemoteControlIsOnline:00000014 $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:565    .bss.ch:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:571    .bss.rc_daemon_instance:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:577    .bss.rc_usart_instance:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:586    .bss.rc_init_flag:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccsuprur.s:588    .bss.rc_ctrl:00000000 $d
 
 UNDEFINED SYMBOLS
 memset

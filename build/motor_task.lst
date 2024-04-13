@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccakkXec.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc4nHfcs.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccakkXec.s 			page 1
   17:moudels/motor/motor_task.c **** 
   18:moudels/motor/motor_task.c ****     // legacy support
   19:moudels/motor/motor_task.c ****     // 由于ht04电机的反馈方式为接收到一帧消息后立刻回传,以此方式连续发
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccakkXec.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc4nHfcs.s 			page 2
 
 
   20:moudels/motor/motor_task.c ****     // 为了保证高频率控制,HTMotor中提供了以任务方式启动控制的接口,可通�
@@ -76,13 +76,13 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccakkXec.s 			page 1
   45              		.text
   46              	.Letext0:
   47              		.file 2 "moudels/motor/DJImotor/dji_motor.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccakkXec.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc4nHfcs.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 motor_task.c
-C:\Users\Sive\AppData\Local\Temp\ccakkXec.s:21     .text.MotorControlTask:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccakkXec.s:27     .text.MotorControlTask:00000000 MotorControlTask
+C:\Users\Sive\AppData\Local\Temp\cc4nHfcs.s:21     .text.MotorControlTask:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\cc4nHfcs.s:27     .text.MotorControlTask:00000000 MotorControlTask
 
 UNDEFINED SYMBOLS
 DJIMotorControl
