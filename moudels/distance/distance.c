@@ -38,22 +38,10 @@ static DaemonInstance *dt_daemon_instance;
 
  static void dtRxCallback()
 {
-    DaemonReload(dt_daemon_instance) ;         // 先喂狗
-    // if((dt_usart_instance->recv_buff[0]=0x0F) && (dt_usart_instance->recv_buff[10]=0x00 )){
-    //     dt_usart_instance->flag=1;
-    // }else{
-    //      dt_usart_instance->flag=0;
-    // }//----校验位
-    //  if( dt_usart_instance->flag=1){      
-    data_to_distance(dt_usart_instance->recv_buff); // 进行协议解析
-    // sbus_to_rc(rc_usart_instance->recv_buff); 
+    DaemonReload(dt_daemon_instance) ;       
+
+    data_to_distance(dt_usart_instance->recv_buff); 
     
-    // if((dt_usart_instance->recv_buff[10] != 0x00)){ dt_usart_instance->connect_flag = 0;}
-	// 		else {dt_usart_instance->connect_flag = 1;
-			    
-    //              }
-    //  dt_usart_instance->flag = 0;    
-    //  }
 }
 
  static void dtLostCallback(void *id)

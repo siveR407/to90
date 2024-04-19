@@ -6,15 +6,16 @@
 #include "message_center.h"
 #include "ins_task.h"
 #include "arm_math.h"
+#include "distance.h"
 /* 根据robot_def.h中的macro自动计算的参数 */
 #define HALF_WHEEL_BASE (WHEEL_BASE / 2.0f)     // 半轴距
 #define HALF_TRACK_WIDTH (TRACK_WIDTH / 2.0f)   // 半轮距
 #define PERIMETER_WHEEL (RADIUS_WHEEL * 2 * PI) // 轮子周长
 
 /* 私有函数计算的中介变量,设为静态避免参数传递的开销 */
-static float chassis_vx, chassis_vy;     // 将云台系的速度投影到底盘
+static float chassis_x, chassis_y, chassis_z; // 底盘的位置和角度
+static float chassis_vx, chassis_vy,chassis_wz;     // 解算后的底盘速度
 static float vt_lf, vt_rf, vt_lb, vt_rb; // 底盘速度解算后的临时输出,待进行限幅
-
 #ifdef ONE_BOARD
 static Publisher_t *chassis_pub;                    // 用于发布底盘的数据
 static Subscriber_t *chassis_sub;                   // 用于订阅底盘的控制命令
@@ -22,12 +23,19 @@ static Subscriber_t *chassis_sub;                   // 用于订阅底盘的控�
 static Chassis_Ctrl_Cmd_s chassis_cmd_recv;         // 底盘接收到的控制命令
 static Chassis_Upload_Data_s chassis_feedback_data; // 底盘回传的反馈数据
 static PIDInstance chassis_angle_pid;                     // 底盘的PID控制器
-// static PIDInstance chassis_speed_pid;                      // 底盘的PID控制器
+static PIDInstance chassis_distance_pid;                      // 底盘的PID控制器
 
 static DJIMotorInstance *motor_lf, *motor_rf, *motor_lb, *motor_rb; // left right forward back
  
 void ChassisInit()
-{       //底盘角度环pid初始化
+{       
+        //底盘距离环pid初始化、
+        chassis_distance_pid.Kp=10;
+        chassis_distance_pid.Ki=0.01  ;
+        chassis_distance_pid.Kd=0;
+        chassis_distance_pid.IntegralLimit = 10000;
+        chassis_distance_pid.MaxOut = 30000;
+        //底盘角度环pid初始化
         chassis_angle_pid.Kp=700;
         chassis_angle_pid.Ki=0  ;   
         chassis_angle_pid.Kd=4;
@@ -139,7 +147,18 @@ static void LimitChassisOutput()
 
 
 /**
- * @brief 对控制的底盘角度进行结算
+ * @brief 对控制的底盘距离进行解算
+ *          
+ *
+ */
+
+static void EstimateChassisDistance(PIDInstance *chassis_distance_pid,float distance_measure,float distance_ref){
+        chassis_cmd_recv.vy= -1*PIDCalculate(chassis_distance_pid, distance_measure, distance_ref);
+}
+
+
+/**
+ * @brief 对控制的底盘角度进行解算
  *          
  *
  */
@@ -186,7 +205,8 @@ void ChassisTask()
         DJIMotorEnable(motor_lb);
         DJIMotorEnable(motor_rb);
     }
-
+    chassis_x=chassis_cmd_recv.x;
+    chassis_z=INS.total_angle;
     // 根据控制模式设定旋转速度
     // switch (chassis_cmd_recv.chassis_mode)
     // {
@@ -208,7 +228,8 @@ void ChassisTask()
     // {intergal=intergal+(90-abs(INS.Yaw));}
     // chassis_cmd_recv.wz=(90-abs(INS.Yaw))*10+intergal*0.05;
     // chassis_cmd_recv.wz=PIDCalculate(&chassis_angle_pid, INS.Yaw,90);
-    EstimateChassisAngle(&chassis_angle_pid,INS.total_angle,0.01*chassis_cmd_recv.wz);
+    EstimateChassisAngle(&chassis_angle_pid,chassis_z,0);
+    EstimateChassisDistance(&chassis_distance_pid, chassis_x,1000);
     chassis_vx=3.0*chassis_cmd_recv.vy;
     chassis_vy=-3.0*chassis_cmd_recv.vx;
     // chassis_wz=chassis_cmd_recv.wz;

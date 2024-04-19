@@ -37,7 +37,8 @@ build/chassis.o: application/chassis/chassis.c \
  bsp/can/bsp_can.h Core/Inc/can.h Core/Inc/main.h \
  moudels/algorithm/controller.h bsp/dwt/bsp_dwt.h \
  moudels/motor/motor_def.h moudels/daemon/daemon.h moudels/general_def.h \
- moudels/message_center/message_center.h moudels/imu/ins_task.h
+ moudels/message_center/message_center.h moudels/imu/ins_task.h \
+ moudels/distance/distance.h Core/Inc/usart.h
 application/chassis/chassis.h:
 application/robot_def.h:
 moudels/imu/INS_task.h:
@@ -90,3 +91,5 @@ moudels/daemon/daemon.h:
 moudels/general_def.h:
 moudels/message_center/message_center.h:
 moudels/imu/ins_task.h:
+moudels/distance/distance.h:
+Core/Inc/usart.h:

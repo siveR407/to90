@@ -12,7 +12,7 @@
 // bsp
 #include "bsp_dwt.h"
 #include "bsp_log.h"
-
+#include "ins_task.h"
 #ifdef ONE_BOARD
 static Subscriber_t *chassis_feed_sub; // 底盘反馈信息订阅者
 static Publisher_t *chassis_cmd_pub;   // 底盘控制消息发布者
@@ -38,7 +38,7 @@ static Robot_Status_e robot_state; // 机器人整体工作状态
 void RobotCMDInit()
 {
     rc_data = RemoteControlInit(&huart3);   // 修改为对应串口,注意如果是自研板dbus协议串口需选用添加了反相器的那个
-    dt_data = dtInit(&huart1);
+    dt_data = dtInit(&huart1); //获得测距传感器数据
     // vision_recv_data = VisionInit(&huart1); // 视觉通信串口
 
     // gimbal_cmd_pub = PubRegister("gimbal_cmd", sizeof(Gimbal_Ctrl_Cmd_s));
@@ -95,6 +95,16 @@ static void EmergencyHandler()//----设置急停
          LOGINFO("[CMD] reinstate, robot ready");
     }
 }
+
+/**
+ * @brief 获得底盘的当前角度和距离
+ *
+ */
+static void CalcOffsetAngleDistance(){
+    chassis_cmd_send.x=(dt_data[TEMP].l2+dt_data[TEMP].r1)/2;
+}
+
+
 /**
  * @brief 控制输入为遥控器(调试时)的模式和控制量设置
  *
@@ -215,7 +225,7 @@ void RobotCMDTask()
     // SubGetMessage(gimbal_feed_sub, &gimbal_fetch_data);
 
     // 根据gimbal的反馈值计算云台和底盘正方向的夹角,不需要传参,通过static私有变量完成
-    // CalcOffsetAngle();
+        CalcOffsetAngleDistance();
     // // 根据遥控器左侧开关,确定当前使用的控制模式为遥控器调试还是键鼠
     // if (switch_is_down(rc_data[TEMP].rc.switch_left)) // 遥控器左侧开关状态为[下],遥控器控制
         RemoteControlSet();

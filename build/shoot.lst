@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
   17:application/shoot/shoot.c **** 
   18:application/shoot/shoot.c **** // dwt定时,计算冷却用
   19:application/shoot/shoot.c **** static float hibernate_time = 0, dead_time = 0;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 2
 
 
   20:application/shoot/shoot.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
   30:application/shoot/shoot.c ****                 .Kp = 0.1, // 20
   31:application/shoot/shoot.c ****                 .Ki = 0.001, // 1
   32:application/shoot/shoot.c ****                 .Kd = 0.05,
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 3
 
 
   33:application/shoot/shoot.c ****                 .Improve = PID_Integral_Limit,
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  103 006a 4A46     		mov	r2, r9
  104 006c 0021     		movs	r1, #0
  105 006e 6846     		mov	r0, sp
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 4
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 4
 
 
  106 0070 FFF7FEFF 		bl	memset
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
   93:application/shoot/shoot.c ****         .controller_setting_init_config = {
   94:application/shoot/shoot.c ****             .angle_feedback_source = MOTOR_FEED, .speed_feedback_source = MOTOR_FEED,
   95:application/shoot/shoot.c ****             .outer_loop_type = SPEED_LOOP, // 初始化成SPEED_LOOP,让拨盘停在原地,防止�
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 5
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 5
 
 
   96:application/shoot/shoot.c ****             .close_loop_type =  SPEED_LOOP,
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  174 00f4 00000000 		.word	friction_below
  175 00f8 3333333F 		.word	1060320051
  176 00fc 0AD7233C 		.word	1008981770
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 6
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 6
 
 
  177 0100 00409C45 		.word	1167867904
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  116:application/shoot/shoot.c ****     {
  117:application/shoot/shoot.c ****         DJIMotorStop(friction_up);
  224              		.loc 1 117 9 is_stmt 1 view .LVU31
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 7
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 7
 
 
  225 0016 4F4B     		ldr	r3, .L17+8
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  253              	.LVL11:
  144:application/shoot/shoot.c ****         DJIMotorSetRef(loader,60000); // 控制量增加一发弹丸的角度
  254              		.loc 1 144 9 view .LVU38
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 8
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 8
 
 
  255 0042 9FED470A 		vldr.32	s0, .L17+20
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  156:application/shoot/shoot.c ****     // // 连发模式,对速度闭环,射频后续修改为可变,目前固定为1Hz
  157:application/shoot/shoot.c ****     // case LOAD_BURSTFIRE:
  158:application/shoot/shoot.c ****     //     DJIMotorOuterLoop(loader, SPEED_LOOP);
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 9
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 9
 
 
  159:application/shoot/shoot.c ****     //     DJIMotorSetRef(loader, shoot_cmd_recv.shoot_rate * 360 * REDUCTION_RATIO_LOADER / 8);
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  183:application/shoot/shoot.c **** 
  184:application/shoot/shoot.c ****         if( shoot_cmd_recv.shoot_rate1!=0 ){
  322              		.loc 1 184 9 view .LVU54
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 10
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 10
 
 
  323              		.loc 1 184 27 is_stmt 0 view .LVU55
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  369              	.LVL25:
  370 010c 15E0     		b	.L15
  371              	.L11:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 11
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 11
 
 
  191:application/shoot/shoot.c ****         }
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  402 013e 1868     		ldr	r0, [r3]
  403 0140 FFF7FEFF 		bl	PubPushMessage
  404              	.LVL30:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 12
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 12
 
 
  215:application/shoot/shoot.c **** }...
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  470              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
  471              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
  472              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 13
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 13
 
 
  473              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
@@ -731,31 +731,31 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 1
  480              		.file 13 "moudels/message_center/message_center.h"
  481              		.file 14 "Core/Inc/can.h"
  482              		.file 15 "<built-in>"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s 			page 14
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 shoot.c
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:21     .rodata.ShootInit.str1.4:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:28     .text.ShootInit:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:34     .text.ShootInit:00000000 ShootInit
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:168    .text.ShootInit:000000dc $d
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:465    .bss.friction_up:00000000 friction_up
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:459    .bss.friction_below:00000000 friction_below
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:453    .bss.loader:00000000 loader
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:447    .bss.shoot_pub:00000000 shoot_pub
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:435    .bss.shoot_sub:00000000 shoot_sub
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:190    .text.ShootTask:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:196    .text.ShootTask:00000000 ShootTask
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:414    .text.ShootTask:0000014c $d
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:441    .bss.shoot_cmd_recv:00000000 shoot_cmd_recv
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:430    .bss.shoot_feedback_data:00000000 shoot_feedback_data
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:432    .bss.shoot_sub:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:438    .bss.shoot_cmd_recv:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:444    .bss.shoot_pub:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:450    .bss.loader:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:456    .bss.friction_below:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccryXD8i.s:462    .bss.friction_up:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:21     .rodata.ShootInit.str1.4:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:28     .text.ShootInit:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:34     .text.ShootInit:00000000 ShootInit
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:168    .text.ShootInit:000000dc $d
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:465    .bss.friction_up:00000000 friction_up
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:459    .bss.friction_below:00000000 friction_below
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:453    .bss.loader:00000000 loader
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:447    .bss.shoot_pub:00000000 shoot_pub
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:435    .bss.shoot_sub:00000000 shoot_sub
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:190    .text.ShootTask:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:196    .text.ShootTask:00000000 ShootTask
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:414    .text.ShootTask:0000014c $d
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:441    .bss.shoot_cmd_recv:00000000 shoot_cmd_recv
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:430    .bss.shoot_feedback_data:00000000 shoot_feedback_data
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:432    .bss.shoot_sub:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:438    .bss.shoot_cmd_recv:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:444    .bss.shoot_pub:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:450    .bss.loader:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:456    .bss.friction_below:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccMz0uqY.s:462    .bss.friction_up:00000000 $d
 
 UNDEFINED SYMBOLS
 memset

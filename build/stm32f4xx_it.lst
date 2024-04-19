@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
   28:Core/Src/stm32f4xx_it.c **** 
   29:Core/Src/stm32f4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
   30:Core/Src/stm32f4xx_it.c **** /* USER CODE BEGIN TD */
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 2
 
 
   31:Core/Src/stm32f4xx_it.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
   30              		.cfi_startproc
   31              		@ Volatile: function does not return.
   32              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 3
 
 
   33              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
   64              	.LFE140:
   66              		.section	.text.MemManage_Handler,"ax",%progbits
   67              		.align	1
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 4
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 4
 
 
   68              		.global	MemManage_Handler
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  102              		@ frame_needed = 0, uses_anonymous_args = 0
  103              		@ link register save eliminated.
  104              	.L8:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 5
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 5
 
 
  129:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN BusFault_IRQn 0 */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  137              		.global	DebugMon_Handler
  138              		.syntax unified
  139              		.thumb
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 6
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 6
 
 
  140              		.thumb_func
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  173              	.LVL0:
  176:Core/Src/stm32f4xx_it.c **** #if (INCLUDE_xTaskGetSchedulerState == 1 )
  177:Core/Src/stm32f4xx_it.c ****   if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 7
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 7
 
 
  174              		.loc 1 177 3 view .LVU24
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  206 0000 08B5     		push	{r3, lr}
  207              		.cfi_def_cfa_offset 8
  208              		.cfi_offset 3, -8
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 8
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 8
 
 
  209              		.cfi_offset 14, -4
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  243              	.LFE147:
  245              		.section	.text.EXTI4_IRQHandler,"ax",%progbits
  246              		.align	1
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 9
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 9
 
 
  247              		.global	EXTI4_IRQHandler
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  284 0000 08B5     		push	{r3, lr}
  285              		.cfi_def_cfa_offset 8
  286              		.cfi_offset 3, -8
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 10
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 10
 
 
  287              		.cfi_offset 14, -4
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  264:Core/Src/stm32f4xx_it.c **** }
  322              		.loc 1 264 1 is_stmt 0 view .LVU44
  323 0008 08BD     		pop	{r3, pc}
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 11
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 11
 
 
  324              	.L29:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  368              	CAN1_RX1_IRQHandler:
  369              	.LFB152:
  279:Core/Src/stm32f4xx_it.c **** 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 12
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 12
 
 
  280:Core/Src/stm32f4xx_it.c **** /**
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  407              		.cfi_offset 14, -4
  299:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN CAN1_SCE_IRQn 0 */
  300:Core/Src/stm32f4xx_it.c **** 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 13
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 13
 
 
  301:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN1_SCE_IRQn 0 */
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  444              		.cfi_endproc
  445              	.LFE154:
  447              		.section	.text.USART1_IRQHandler,"ax",%progbits
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 14
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 14
 
 
  448              		.align	1
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  340:Core/Src/stm32f4xx_it.c **** {
  486              		.loc 1 340 1 is_stmt 1 view -0
  487              		.cfi_startproc
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 15
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 15
 
 
  488              		@ args = 0, pretend = 0, frame = 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  526 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
  527              	.LVL14:
  359:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream1_IRQn 1 */
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 16
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 16
 
 
  360:Core/Src/stm32f4xx_it.c **** 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  568              		.align	1
  569              		.global	DMA2_Stream3_IRQHandler
  570              		.syntax unified
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 17
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 17
 
 
  571              		.thumb
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  608              		@ args = 0, pretend = 0, frame = 0
  609              		@ frame_needed = 0, uses_anonymous_args = 0
  610 0000 08B5     		push	{r3, lr}
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 18
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 18
 
 
  611              		.cfi_def_cfa_offset 8
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  416:Core/Src/stm32f4xx_it.c **** 
  417:Core/Src/stm32f4xx_it.c ****   /* USER CODE END CAN2_RX0_IRQn 1 */
  418:Core/Src/stm32f4xx_it.c **** }
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 19
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 19
 
 
  648              		.loc 1 418 1 is_stmt 0 view .LVU77
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  691              		.thumb
  692              		.thumb_func
  694              	CAN2_SCE_IRQHandler:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 20
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 20
 
 
  695              	.LFB163:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  731              		.cfi_def_cfa_offset 8
  732              		.cfi_offset 3, -8
  733              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 21
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 21
 
 
  453:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream5_IRQn 0 */
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  768              		.loc 1 474 1 is_stmt 0 view .LVU89
  769 0008 08BD     		pop	{r3, pc}
  770              	.L87:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 22
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 22
 
 
  771 000a 00BF     		.align	2
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  815              	.LFB167:
  489:Core/Src/stm32f4xx_it.c **** 
  490:Core/Src/stm32f4xx_it.c **** /**
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 23
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 23
 
 
  491:Core/Src/stm32f4xx_it.c ****   * @brief This function handles USART6 global interrupt.
@@ -1368,90 +1368,90 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 1
  849              		.file 12 "Core/Inc/FreeRTOSConfig.h"
  850              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
  851              		.file 14 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 24
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_it.c
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:21     .text.NMI_Handler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:27     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:44     .text.HardFault_Handler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:67     .text.MemManage_Handler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:90     .text.BusFault_Handler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:113    .text.UsageFault_Handler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:136    .text.DebugMon_Handler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:142    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:155    .text.SysTick_Handler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:161    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:194    .text.EXTI0_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:200    .text.EXTI0_IRQHandler:00000000 EXTI0_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:220    .text.EXTI3_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:226    .text.EXTI3_IRQHandler:00000000 EXTI3_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:246    .text.EXTI4_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:252    .text.EXTI4_IRQHandler:00000000 EXTI4_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:272    .text.DMA1_Stream1_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:278    .text.DMA1_Stream1_IRQHandler:00000000 DMA1_Stream1_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:297    .text.DMA1_Stream1_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:302    .text.CAN1_TX_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:308    .text.CAN1_TX_IRQHandler:00000000 CAN1_TX_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:327    .text.CAN1_TX_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:332    .text.CAN1_RX0_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:338    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:357    .text.CAN1_RX0_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:362    .text.CAN1_RX1_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:368    .text.CAN1_RX1_IRQHandler:00000000 CAN1_RX1_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:387    .text.CAN1_RX1_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:392    .text.CAN1_SCE_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:398    .text.CAN1_SCE_IRQHandler:00000000 CAN1_SCE_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:417    .text.CAN1_SCE_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:422    .text.EXTI9_5_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:428    .text.EXTI9_5_IRQHandler:00000000 EXTI9_5_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:448    .text.USART1_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:454    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:473    .text.USART1_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:478    .text.USART3_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:484    .text.USART3_IRQHandler:00000000 USART3_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:503    .text.USART3_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:508    .text.DMA2_Stream1_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:514    .text.DMA2_Stream1_IRQHandler:00000000 DMA2_Stream1_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:533    .text.DMA2_Stream1_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:538    .text.DMA2_Stream2_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:544    .text.DMA2_Stream2_IRQHandler:00000000 DMA2_Stream2_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:563    .text.DMA2_Stream2_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:568    .text.DMA2_Stream3_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:574    .text.DMA2_Stream3_IRQHandler:00000000 DMA2_Stream3_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:593    .text.DMA2_Stream3_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:598    .text.CAN2_TX_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:604    .text.CAN2_TX_IRQHandler:00000000 CAN2_TX_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:623    .text.CAN2_TX_IRQHandler:0000000c $d
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s 			page 25
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:21     .text.NMI_Handler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:27     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:44     .text.HardFault_Handler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:67     .text.MemManage_Handler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:90     .text.BusFault_Handler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:113    .text.UsageFault_Handler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:136    .text.DebugMon_Handler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:142    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:155    .text.SysTick_Handler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:161    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:194    .text.EXTI0_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:200    .text.EXTI0_IRQHandler:00000000 EXTI0_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:220    .text.EXTI3_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:226    .text.EXTI3_IRQHandler:00000000 EXTI3_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:246    .text.EXTI4_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:252    .text.EXTI4_IRQHandler:00000000 EXTI4_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:272    .text.DMA1_Stream1_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:278    .text.DMA1_Stream1_IRQHandler:00000000 DMA1_Stream1_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:297    .text.DMA1_Stream1_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:302    .text.CAN1_TX_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:308    .text.CAN1_TX_IRQHandler:00000000 CAN1_TX_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:327    .text.CAN1_TX_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:332    .text.CAN1_RX0_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:338    .text.CAN1_RX0_IRQHandler:00000000 CAN1_RX0_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:357    .text.CAN1_RX0_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:362    .text.CAN1_RX1_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:368    .text.CAN1_RX1_IRQHandler:00000000 CAN1_RX1_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:387    .text.CAN1_RX1_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:392    .text.CAN1_SCE_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:398    .text.CAN1_SCE_IRQHandler:00000000 CAN1_SCE_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:417    .text.CAN1_SCE_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:422    .text.EXTI9_5_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:428    .text.EXTI9_5_IRQHandler:00000000 EXTI9_5_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:448    .text.USART1_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:454    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:473    .text.USART1_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:478    .text.USART3_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:484    .text.USART3_IRQHandler:00000000 USART3_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:503    .text.USART3_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:508    .text.DMA2_Stream1_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:514    .text.DMA2_Stream1_IRQHandler:00000000 DMA2_Stream1_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:533    .text.DMA2_Stream1_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:538    .text.DMA2_Stream2_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:544    .text.DMA2_Stream2_IRQHandler:00000000 DMA2_Stream2_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:563    .text.DMA2_Stream2_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:568    .text.DMA2_Stream3_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:574    .text.DMA2_Stream3_IRQHandler:00000000 DMA2_Stream3_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:593    .text.DMA2_Stream3_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:598    .text.CAN2_TX_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:604    .text.CAN2_TX_IRQHandler:00000000 CAN2_TX_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:623    .text.CAN2_TX_IRQHandler:0000000c $d
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s 			page 25
 
 
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:628    .text.CAN2_RX0_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:634    .text.CAN2_RX0_IRQHandler:00000000 CAN2_RX0_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:653    .text.CAN2_RX0_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:658    .text.CAN2_RX1_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:664    .text.CAN2_RX1_IRQHandler:00000000 CAN2_RX1_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:683    .text.CAN2_RX1_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:688    .text.CAN2_SCE_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:694    .text.CAN2_SCE_IRQHandler:00000000 CAN2_SCE_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:713    .text.CAN2_SCE_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:718    .text.DMA2_Stream5_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:724    .text.DMA2_Stream5_IRQHandler:00000000 DMA2_Stream5_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:743    .text.DMA2_Stream5_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:748    .text.DMA2_Stream6_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:754    .text.DMA2_Stream6_IRQHandler:00000000 DMA2_Stream6_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:773    .text.DMA2_Stream6_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:778    .text.DMA2_Stream7_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:784    .text.DMA2_Stream7_IRQHandler:00000000 DMA2_Stream7_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:803    .text.DMA2_Stream7_IRQHandler:0000000c $d
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:808    .text.USART6_IRQHandler:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:814    .text.USART6_IRQHandler:00000000 USART6_IRQHandler
-C:\Users\Sive\AppData\Local\Temp\ccOA6SnI.s:833    .text.USART6_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:628    .text.CAN2_RX0_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:634    .text.CAN2_RX0_IRQHandler:00000000 CAN2_RX0_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:653    .text.CAN2_RX0_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:658    .text.CAN2_RX1_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:664    .text.CAN2_RX1_IRQHandler:00000000 CAN2_RX1_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:683    .text.CAN2_RX1_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:688    .text.CAN2_SCE_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:694    .text.CAN2_SCE_IRQHandler:00000000 CAN2_SCE_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:713    .text.CAN2_SCE_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:718    .text.DMA2_Stream5_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:724    .text.DMA2_Stream5_IRQHandler:00000000 DMA2_Stream5_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:743    .text.DMA2_Stream5_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:748    .text.DMA2_Stream6_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:754    .text.DMA2_Stream6_IRQHandler:00000000 DMA2_Stream6_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:773    .text.DMA2_Stream6_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:778    .text.DMA2_Stream7_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:784    .text.DMA2_Stream7_IRQHandler:00000000 DMA2_Stream7_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:803    .text.DMA2_Stream7_IRQHandler:0000000c $d
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:808    .text.USART6_IRQHandler:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:814    .text.USART6_IRQHandler:00000000 USART6_IRQHandler
+C:\Users\Sive\AppData\Local\Temp\ccMRYTef.s:833    .text.USART6_IRQHandler:0000000c $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick

@@ -157,6 +157,9 @@ typedef struct
     float chassis_angle;//底盘角度
     chassis_mode_e chassis_mode;
     int chassis_speed_buff;
+    float x;
+    float y;
+    float angle;
     // UI部分
     //  ...
 
