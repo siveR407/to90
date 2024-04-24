@@ -41,6 +41,7 @@
         "moudels/message_center",
         "moudels/motor",
         "moudels/motor/DJImotor",
+        "moudels/motor/MImotor",
         "moudels/remote"
       ],
       "defines": [

@@ -7,6 +7,7 @@
 #include "ins_task.h"
 #include "arm_math.h"
 #include "distance.h"
+#include "MImotor.h"
 /* 根据robot_def.h中的macro自动计算的参数 */
 #define HALF_WHEEL_BASE (WHEEL_BASE / 2.0f)     // 半轴距
 #define HALF_TRACK_WIDTH (TRACK_WIDTH / 2.0f)   // 半轮距
@@ -25,7 +26,8 @@ static Chassis_Upload_Data_s chassis_feedback_data; // 底盘回传的反馈数�
 static PIDInstance chassis_angle_pid;                     // 底盘的PID控制器
 static PIDInstance chassis_distance_pid;                      // 底盘的PID控制器
 
-static DJIMotorInstance *motor_lf, *motor_rf, *motor_lb, *motor_rb; // left right forward back
+static DJIMotorInstance  *motor_rf, *motor_lb, *motor_rb; // left right forward back
+static MIMotorInstance  *motor_lf;
  
 void ChassisInit()
 {       
@@ -71,9 +73,9 @@ void ChassisInit()
         .motor_type = M3508,
     };
     //  @todo: 当前还没有设置电机的正反转,仍然需要手动添加reference的正负号,需要电机module的支持,待修改.
-    chassis_motor_config.can_init_config.tx_id = 1;
-    chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
-    motor_lf = DJIMotorInit(&chassis_motor_config);
+    // chassis_motor_config.can_init_config.tx_id = 1;
+    // chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
+    // motor_lf = DJIMotorInit(&chassis_motor_config);
 
     chassis_motor_config.can_init_config.tx_id = 2;
     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
@@ -86,7 +88,38 @@ void ChassisInit()
     chassis_motor_config.can_init_config.tx_id = 3;
     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
     motor_rb = DJIMotorInit(&chassis_motor_config);
-
+    //----------------测试小米电机------------------
+    Motor_Init_Config_s mi__motor_config = {
+        .can_init_config.can_handle = &hcan1,
+        .controller_param_init_config = {
+            .speed_PID = {
+                .Kp = 10, // 4.5
+                .Ki = 0,  // 0
+                .Kd = 0,  // 0
+                .IntegralLimit = 3000,
+                .Improve = PID_Trapezoid_Intergral | PID_Integral_Limit | PID_Derivative_On_Measurement,
+                .MaxOut = 12000,
+            },
+            .current_PID = {
+                .Kp = 0.5, // 0.4
+                .Ki = 0,   // 0
+                .Kd = 0,
+                .IntegralLimit = 3000,
+                .Improve = PID_Trapezoid_Intergral | PID_Integral_Limit | PID_Derivative_On_Measurement,
+                .MaxOut = 15000,
+            },
+        },
+        .controller_setting_init_config = {
+            .angle_feedback_source = MOTOR_FEED,
+            .speed_feedback_source = MOTOR_FEED,
+            .outer_loop_type = SPEED_LOOP,
+            .close_loop_type = SPEED_LOOP 
+        },
+        .motor_type =  MI,
+    };
+    chassis_motor_config.can_init_config.tx_id = 1;
+    chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
+    motor_lf = MIMotorInit(&mi__motor_config);
    
 #ifdef CHASSIS_BOARD
     Chassis_IMU_data = INS_Init(); // 底盘IMU初始化

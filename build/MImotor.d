@@ -1,7 +1,6 @@
-build/chassis.o: application/chassis/chassis.c \
- application/chassis/chassis.h application/robot_def.h \
- moudels/imu/INS_task.h moudels/imu/BMI088driver.h Core/Inc/main.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+build/MImotor.o: moudels/motor/MImotor/MImotor.c \
+ moudels/motor/MImotor/MImotor.h bsp/can/bsp_can.h Core/Inc/can.h \
+ Core/Inc/main.h Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  Core/Inc/stm32f4xx_hal_conf.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -31,19 +30,14 @@ build/chassis.o: application/chassis/chassis.c \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- moudels/algorithm/QuaternionEKF.h moudels/algorithm/kalman_filter.h \
- Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h \
- Middlewares/ST/ARM/DSP/Inc/arm_math.h moudels/motor/DJImotor/dji_motor.h \
- bsp/can/bsp_can.h Core/Inc/can.h Core/Inc/main.h \
- moudels/algorithm/controller.h bsp/dwt/bsp_dwt.h \
+ moudels/algorithm/controller.h Core/Inc/main.h bsp/dwt/bsp_dwt.h \
  moudels/motor/motor_def.h moudels/daemon/daemon.h moudels/general_def.h \
- moudels/message_center/message_center.h moudels/imu/ins_task.h \
- moudels/distance/distance.h Core/Inc/usart.h \
- moudels/motor/MImotor/MImotor.h
-application/chassis/chassis.h:
-application/robot_def.h:
-moudels/imu/INS_task.h:
-moudels/imu/BMI088driver.h:
+ bsp/log/bsp_log.h Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.h \
+ Middlewares/Third_Party/SEGGER/RTT/../Config/SEGGER_RTT_Conf.h \
+ Middlewares/Third_Party/SEGGER/Config/SEGGER_RTT_Conf.h
+moudels/motor/MImotor/MImotor.h:
+bsp/can/bsp_can.h:
+Core/Inc/can.h:
 Core/Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 Core/Inc/stm32f4xx_hal_conf.h:
@@ -77,21 +71,13 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-moudels/algorithm/QuaternionEKF.h:
-moudels/algorithm/kalman_filter.h:
-Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h:
-Middlewares/ST/ARM/DSP/Inc/arm_math.h:
-moudels/motor/DJImotor/dji_motor.h:
-bsp/can/bsp_can.h:
-Core/Inc/can.h:
-Core/Inc/main.h:
 moudels/algorithm/controller.h:
+Core/Inc/main.h:
 bsp/dwt/bsp_dwt.h:
 moudels/motor/motor_def.h:
 moudels/daemon/daemon.h:
 moudels/general_def.h:
-moudels/message_center/message_center.h:
-moudels/imu/ins_task.h:
-moudels/distance/distance.h:
-Core/Inc/usart.h:
-moudels/motor/MImotor/MImotor.h:
+bsp/log/bsp_log.h:
+Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.h:
+Middlewares/Third_Party/SEGGER/RTT/../Config/SEGGER_RTT_Conf.h:
+Middlewares/Third_Party/SEGGER/Config/SEGGER_RTT_Conf.h:

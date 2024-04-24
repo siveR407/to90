@@ -106,6 +106,7 @@ moudels/imu/BMI088driver.c \
 moudels/imu/ins_task.c \
 moudels/message_center/message_center.c \
 moudels/motor/DJImotor/dji_motor.c \
+moudels/motor/MImotor/MImotor.c \
 moudels/motor/motor_task.c \
 moudels/remote/remote_control.c
 
@@ -222,6 +223,7 @@ C_INCLUDES =  \
 -Imoudels/message_center \
 -Imoudels/motor \
 -Imoudels/motor/DJImotor \
+-Imoudels/motor/MImotor \
 -Imoudels/remote
 
 

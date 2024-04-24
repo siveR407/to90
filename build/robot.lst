@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
   26:application/robot_task.h **** void StartINSTASK(void const *argument);
   27:application/robot_task.h **** void StartMOTORTASK(void const *argument);
   28:application/robot_task.h **** void StartDAEMONTASK(void const *argument);
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 2
 
 
   29:application/robot_task.h **** void StartROBOTTASK(void const *argument);
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
   66:application/robot_task.h ****         ins_start = DWT_GetTimeline_ms();
   48              		.loc 2 66 9 view .LVU6
   49              		.loc 2 66 21 is_stmt 0 view .LVU7
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 3
 
 
   50 0006 FFF7FEFF 		bl	DWT_GetTimeline_ms
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
   94              		@ Volatile: function does not return.
   95              		@ args = 0, pretend = 0, frame = 0
   96              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 4
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 4
 
 
   97              	.LVL6:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  139 0030 00000000 		.word	motor_dt.4
  140              		.cfi_endproc
  141              	.LFE177:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 5
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 5
 
 
  143              		.section	.text.StartDAEMONTASK,"ax",%progbits
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  116:application/robot_task.h ****         daemon_start = DWT_GetTimeline_ms();
  171              		.loc 2 116 9 view .LVU40
  172              		.loc 2 116 24 is_stmt 0 view .LVU41
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 6
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 6
 
 
  173 0006 FFF7FEFF 		bl	DWT_GetTimeline_ms
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  221              		@ frame_needed = 0, uses_anonymous_args = 0
  222 0000 10B5     		push	{r4, lr}
  223              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 7
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 7
 
 
  224              		.cfi_offset 4, -8
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  268              		.loc 2 46 5 view .LVU62
   46:application/robot_task.h **** 
  269              		.loc 2 46 24 is_stmt 0 view .LVU63
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 8
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 8
 
 
  270 0064 0021     		movs	r1, #0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
    2:bsp/usart/bsp_init.h **** #define BSP_INIT_h
    3:bsp/usart/bsp_init.h **** 
    4:bsp/usart/bsp_init.h **** #include "bsp_init.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 9
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 9
 
 
    5:bsp/usart/bsp_init.h **** // #include "bsp_log.h"
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
   12:application/robot.c **** #if defined(ONE_BOARD) || defined(CHASSIS_BOARD)
   13:application/robot.c **** #include "chassis.h"
   14:application/robot.c **** #endif
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 10
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 10
 
 
   15:application/robot.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
   28:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ignore some GCC warnings */
   29:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic push
   30:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 11
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 11
 
 
   31:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
   85:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   86:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_READ
   87:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 12
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 12
 
 
   88:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  142:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t* dest;
  143:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t  wlen;
  144:Drivers/CMSIS/Include/cmsis_gcc.h ****   } __zero_table_t;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 13
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 13
 
 
  145:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  199:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_STACKSEAL_S (uint32_t* stackTop) {
  200:Drivers/CMSIS/Include/cmsis_gcc.h ****   *((uint64_t *)stackTop) = __TZ_STACK_SEAL_VALUE;
  201:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 14
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 14
 
 
  202:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  256:Drivers/CMSIS/Include/cmsis_gcc.h ****            after the instruction has been completed.
  257:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  258:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __ISB(void)
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 15
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 15
 
 
  259:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  313:Drivers/CMSIS/Include/cmsis_gcc.h ****   uint32_t result;
  314:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  315:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM ("rev16 %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 16
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 16
 
 
  316:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  370:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    value  Value to reverse
  371:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Reversed value
  372:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 17
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 17
 
 
  373:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __RBIT(uint32_t value)
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  427:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   LDR Exclusive (8 bit)
  428:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a exclusive LDR instruction for 8 bit value.
  429:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to data
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 18
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 18
 
 
  430:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return             value of type uint8_t at (*ptr)
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  484:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  485:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  486:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   STR Exclusive (8 bit)
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 19
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 19
 
 
  487:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a exclusive STR instruction for 8 bit values.
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  541:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  542:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("clrex" ::: "memory");
  543:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 20
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 20
 
 
  544:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  598:Drivers/CMSIS/Include/cmsis_gcc.h ****   return(result);
  599:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  600:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 21
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 21
 
 
  601:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  655:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  656:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldrt %0, %1" : "=r" (result) : "Q" (*ptr) );
  657:Drivers/CMSIS/Include/cmsis_gcc.h ****    return(result);
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 22
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 22
 
 
  658:Drivers/CMSIS/Include/cmsis_gcc.h **** }
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  712:Drivers/CMSIS/Include/cmsis_gcc.h ****     const int32_t min = -1 - max ;
  713:Drivers/CMSIS/Include/cmsis_gcc.h ****     if (val > max)
  714:Drivers/CMSIS/Include/cmsis_gcc.h ****     {
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 23
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 23
 
 
  715:Drivers/CMSIS/Include/cmsis_gcc.h ****       return max;
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  769:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  770:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  771:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 24
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 24
 
 
  772:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Load-Acquire (16 bit)
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  826:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Store-Release (32 bit)
  827:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a STL instruction for 32 bit values.
  828:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 25
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 25
 
 
  829:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to location
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  883:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Store-Release Exclusive (8 bit)
  884:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a STLB exclusive instruction for 8 bit values.
  885:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 26
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 26
 
 
  886:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to location
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  940:Drivers/CMSIS/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
  941:Drivers/CMSIS/Include/cmsis_gcc.h ****   @{
  942:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 27
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 27
 
 
  943:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
   41:application/robot.c ****     ChassisInit();
  383              		.loc 1 41 5 view .LVU82
  384 0014 FFF7FEFF 		bl	ChassisInit
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 28
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 28
 
 
  385              	.LVL29:
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  427              	.LVL31:
   54:application/robot.c ****     // GimbalTask();
   55:application/robot.c ****     PawTask();
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 29
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 29
 
 
  428              		.loc 1 55 5 view .LVU90
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
   99:application/robot_task.h ****         RobotTask();
  469              		.loc 2 99 23 is_stmt 0 view .LVU101
  470 0002 FFF7FEFF 		bl	DWT_GetTimeline_ms
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 30
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 30
 
 
  471              	.LVL37:
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  526              		.section	.bss.motor_dt.4,"aw",%nobits
  527              		.align	2
  530              	motor_dt.4:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 31
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 31
 
 
  531 0000 00000000 		.space	4
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  592              		.section	.bss.insTaskHandle,"aw",%nobits
  593              		.align	2
  596              	insTaskHandle:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 32
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 32
 
 
  597 0000 00000000 		.space	4
@@ -1911,77 +1911,78 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 1
  644              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
  645              		.file 11 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
  646              		.file 12 "application/chassis/chassis.h"
- 647              		.file 13 "application/paw/paw.h"
- 648              		.file 14 "application/cmd/robot_cmd.h"
- 649              		.file 15 "bsp/log/bsp_log.h"
- 650              		.file 16 "bsp/dwt/bsp_dwt.h"
+ 647              		.file 13 "application/shoot/shoot.h"
+ 648              		.file 14 "application/paw/paw.h"
+ 649              		.file 15 "application/cmd/robot_cmd.h"
+ 650              		.file 16 "bsp/log/bsp_log.h"
  651              		.file 17 "moudels/alarm/buzzer.h"
  652              		.file 18 "moudels/daemon/daemon.h"
  653              		.file 19 "moudels/motor/motor_task.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 33
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 33
 
 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 34
+ 654              		.file 20 "bsp/dwt/bsp_dwt.h"
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 34
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 robot.c
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:21     .text.StartINSTASK:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:27     .text.StartINSTASK:00000000 StartINSTASK
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:78     .text.StartINSTASK:00000030 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:548    .bss.ins_start.7:00000000 ins_start.7
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:542    .bss.ins_dt.6:00000000 ins_dt.6
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:84     .text.StartMOTORTASK:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:90     .text.StartMOTORTASK:00000000 StartMOTORTASK
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:138    .text.StartMOTORTASK:0000002c $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:536    .bss.motor_start.5:00000000 motor_start.5
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:530    .bss.motor_dt.4:00000000 motor_dt.4
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:144    .text.StartDAEMONTASK:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:150    .text.StartDAEMONTASK:00000000 StartDAEMONTASK
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:204    .text.StartDAEMONTASK:00000034 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:512    .bss.daemon_start.1:00000000 daemon_start.1
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:506    .bss.daemon_dt.0:00000000 daemon_dt.0
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:210    .text.OSTaskInit:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:216    .text.OSTaskInit:00000000 OSTaskInit
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:301    .text.OSTaskInit:00000098 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:596    .bss.insTaskHandle:00000000 insTaskHandle
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:582    .bss.motorTaskHandle:00000000 motorTaskHandle
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:575    .bss.daemonTaskHandle:00000000 daemonTaskHandle
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:589    .bss.robotTaskHandle:00000000 robotTaskHandle
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:310    .text.BSPInit:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:316    .text.BSPInit:00000000 BSPInit
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:340    .text.RobotInit:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:346    .text.RobotInit:00000000 RobotInit
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:409    .text.RobotTask:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:415    .text.RobotTask:00000000 RobotTask
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:443    .text.StartROBOTTASK:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:449    .text.StartROBOTTASK:00000000 StartROBOTTASK
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:497    .text.StartROBOTTASK:0000002c $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:524    .bss.robot_start.3:00000000 robot_start.3
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:518    .bss.robot_dt.2:00000000 robot_dt.2
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:503    .bss.daemon_dt.0:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:509    .bss.daemon_start.1:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:515    .bss.robot_dt.2:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:521    .bss.robot_start.3:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:527    .bss.motor_dt.4:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:533    .bss.motor_start.5:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:539    .bss.ins_dt.6:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:545    .bss.ins_start.7:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:551    .rodata.str1.4:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:568    .bss.uiTaskHandle:00000000 uiTaskHandle
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:565    .bss.uiTaskHandle:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:572    .bss.daemonTaskHandle:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:579    .bss.motorTaskHandle:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:586    .bss.robotTaskHandle:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:593    .bss.insTaskHandle:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s:599    .rodata:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:21     .text.StartINSTASK:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:27     .text.StartINSTASK:00000000 StartINSTASK
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:78     .text.StartINSTASK:00000030 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:548    .bss.ins_start.7:00000000 ins_start.7
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:542    .bss.ins_dt.6:00000000 ins_dt.6
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:84     .text.StartMOTORTASK:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:90     .text.StartMOTORTASK:00000000 StartMOTORTASK
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:138    .text.StartMOTORTASK:0000002c $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:536    .bss.motor_start.5:00000000 motor_start.5
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:530    .bss.motor_dt.4:00000000 motor_dt.4
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:144    .text.StartDAEMONTASK:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:150    .text.StartDAEMONTASK:00000000 StartDAEMONTASK
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:204    .text.StartDAEMONTASK:00000034 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:512    .bss.daemon_start.1:00000000 daemon_start.1
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:506    .bss.daemon_dt.0:00000000 daemon_dt.0
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:210    .text.OSTaskInit:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:216    .text.OSTaskInit:00000000 OSTaskInit
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:301    .text.OSTaskInit:00000098 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:596    .bss.insTaskHandle:00000000 insTaskHandle
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:582    .bss.motorTaskHandle:00000000 motorTaskHandle
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:575    .bss.daemonTaskHandle:00000000 daemonTaskHandle
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:589    .bss.robotTaskHandle:00000000 robotTaskHandle
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:310    .text.BSPInit:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:316    .text.BSPInit:00000000 BSPInit
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:340    .text.RobotInit:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:346    .text.RobotInit:00000000 RobotInit
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:409    .text.RobotTask:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:415    .text.RobotTask:00000000 RobotTask
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:443    .text.StartROBOTTASK:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:449    .text.StartROBOTTASK:00000000 StartROBOTTASK
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:497    .text.StartROBOTTASK:0000002c $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:524    .bss.robot_start.3:00000000 robot_start.3
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:518    .bss.robot_dt.2:00000000 robot_dt.2
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:503    .bss.daemon_dt.0:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:509    .bss.daemon_start.1:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:515    .bss.robot_dt.2:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:521    .bss.robot_start.3:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:527    .bss.motor_dt.4:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:533    .bss.motor_start.5:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:539    .bss.ins_dt.6:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:545    .bss.ins_start.7:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:551    .rodata.str1.4:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:568    .bss.uiTaskHandle:00000000 uiTaskHandle
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:565    .bss.uiTaskHandle:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:572    .bss.daemonTaskHandle:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:579    .bss.motorTaskHandle:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:586    .bss.robotTaskHandle:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:593    .bss.insTaskHandle:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s:599    .rodata:00000000 $d
 
 UNDEFINED SYMBOLS
 INS_Init
 DWT_GetTimeline_ms
 INS_Task
 osDelay
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccGIPAbY.s 			page 35
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccRR2m1w.s 			page 35
 
 
 MotorControlTask
