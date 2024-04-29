@@ -3,7 +3,8 @@
 #include "bsp_dwt.h"
 #include "bsp_log.h"
 #include "string.h"
-static uint8_t idx = 0; 
+
+static uint8_t idx=0 ; 
 static MIMotorInstance *mi_motor_instance[MI_MOTOR_CNT] = {NULL}; 
 uint8_t MI_MASTERID = 1; //master id 发送指令时EXTID的bit8:15,反馈的bit0:7
 /**
@@ -79,10 +80,10 @@ MIMotorInstance *MIMotorInit(Motor_Init_Config_s *config)
     config->can_init_config.rx_id=config->can_init_config.tx_id;
     config->can_init_config.can_module_callback=DecodeMIMotor;
     config->can_init_config.id=instance;   
-    config->can_init_config.EXT_ID.motor_id=config->can_init_config.tx_id;
-    config->can_init_config.EXT_ID.data=0;
-    config->can_init_config.EXT_ID.mode=3;
-    config->can_init_config.EXT_ID.res=0;
+    config->can_init_config.EXT_ID.fields.motor_id=config->can_init_config.tx_id;
+    config->can_init_config.EXT_ID.fields.data=0;
+    config->can_init_config.EXT_ID.fields.mode=3;
+    config->can_init_config.EXT_ID.fields.res=0;
     instance->motor_can_instance = CANRegister(&config->can_init_config);//注册小米电机到can总线
     // 注册守护线程
     Daemon_Init_Config_s daemon_config = {
@@ -100,10 +101,10 @@ MIMotorInstance *MIMotorInit(Motor_Init_Config_s *config)
 void MIMotorControl()
 {
     MIMotorInstance *motor;
-    Motor_Control_Setting_s *motor_setting; // 电机控制参数
+    Motor_Control_Setting_s *motor_setting;// 电机控制参数
     // Motor_Controller_s *motor_controller;   // 电机控制器
     // MI_Motor_Measure_s *measure;           // 电机测量值
-    float ref;
+    static float ref;
     for(size_t i=0;i<idx;++i)
     {
         motor = mi_motor_instance[i];
@@ -111,16 +112,34 @@ void MIMotorControl()
         // motor_controller = &motor->motor_controller;
         // measure = &motor->measure;
         ref = motor->motor_controller.pid_ref; // 保存设定值,防止motor_controller->pid_ref在计算过程中被修改
-        if((motor_setting->close_loop_type&&ANGLE_LOOP)){
-                MI_motor_LocationControl(motor, ref);
-        }
-        if(motor_setting->close_loop_type&&SPEED_LOOP){
-                MI_motor_SpeedControl(motor, ref);
-        }
-        if(motor_setting->close_loop_type&&CURRENT_LOOP){
-            MI_motor_TorqueControl(motor, ref);
-        }
+        if(motor->stop_flag == MOTOR_STOP){
+              MI_motor_stop(motor);
+              motor_setting->ifsetflag=0;
+        }else if(motor->stop_flag == MOTOR_ENALBED&&motor_setting->ifsetflag==0){
+            if((motor_setting->close_loop_type==ANGLE_LOOP)){
+                    MI_motor_LocationControl(motor);
+                    motor_setting->ifsetflag=1;
+            }else if(motor_setting->close_loop_type==SPEED_LOOP)
+            {
+                    MI_motor_SpeedControl(motor);
+                    motor_setting->ifsetflag=1;
+            }else if(motor_setting->close_loop_type==CURRENT_LOOP)
+           {
+                    MI_motor_TorqueControl(motor);
+                    motor_setting->ifsetflag=1;
+            }
+         }
+         if(motor->stop_flag == MOTOR_ENALBED&&motor_setting->ifsetflag==1){
+            if((motor_setting->close_loop_type==ANGLE_LOOP)){
+                    MI_motor_Modeset(motor,ref,0x7016);
+            }else if(motor_setting->close_loop_type==SPEED_LOOP){
+                    MI_motor_Modeset(motor,ref,0x700A);
+            }else if(motor_setting->close_loop_type==CURRENT_LOOP){
+                    MI_motor_Modeset(motor,ref,0x7006);
+            }
+         }
     }
+    
 }
 void MIMotorStop(MIMotorInstance *motor)
 {
@@ -186,14 +205,14 @@ float RangeRestrict(float x, float x_min, float x_max)
   * @param[in]      hmotor 电机结构体
   * @retval         none
   */
-void MI_motor_GetID(MIMotorInstance  *hmotor)
+static void MI_motor_GetID(MIMotorInstance  *hmotor)
 {   
-    static EXT_ID_T *EXT;
-    EXT->mode=0;
-    EXT->data=0;
-    EXT->motor_id=0;
-    EXT->res=0;
-    hmotor->motor_can_instance->txconf.ExtId=((uint32_t)(EXT));
+    static EXT_ID_T EXT  ;
+    EXT.fields.mode=0;
+    EXT.fields.data=0;
+    EXT.fields.motor_id=0;
+    EXT.fields.res=0;
+    hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
     // hmotor->EXT_ID.mode = 0;
     // hmotor->EXT_ID.data = 0;
     // hmotor->EXT_ID.motor_id = 0;
@@ -204,6 +223,7 @@ void MI_motor_GetID(MIMotorInstance  *hmotor)
         hmotor->motor_can_instance->tx_buff[i]=0;
     }
     CANTransmit(hmotor->motor_can_instance,1);
+     
     
 }
 
@@ -217,14 +237,14 @@ void MI_motor_GetID(MIMotorInstance  *hmotor)
   * @param[in]      kd 
   * @retval         none
   */
-void MI_motor_Control(MIMotorInstance* hmotor, float torque, float MechPosition , float speed , float kp , float kd)
+static void MI_motor_Control(MIMotorInstance* hmotor, float torque, float MechPosition , float speed , float kp , float kd)
 {  
-    static EXT_ID_T *EXT;
-    EXT->mode=1;
-    EXT->data=FloatToUint(torque,T_MIN,T_MAX,16);
-    EXT->motor_id=hmotor->motor_can_instance->tx_id;
-    EXT->res=0;
-    hmotor->motor_can_instance->txconf.ExtId=((uint32_t)(EXT));
+    static EXT_ID_T EXT  ;
+    EXT.fields.mode=1;
+    EXT.fields.data=FloatToUint(torque,T_MIN,T_MAX,16);
+    EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+    EXT.fields.res=0;
+    hmotor->motor_can_instance->txconf.ExtId=EXT.raw;
     // hmotor->EXT_ID.mode = 1;
     // hmotor->EXT_ID.motor_id = hmotor->motor_id;
     // hmotor->EXT_ID.data = FloatToUint(torque,T_MIN,T_MAX,16);
@@ -238,6 +258,7 @@ void MI_motor_Control(MIMotorInstance* hmotor, float torque, float MechPosition 
     hmotor->motor_can_instance->tx_buff[6]=FloatToUint(kd,KD_MIN,KD_MAX,16)>>8;
     hmotor->motor_can_instance->tx_buff[7]=FloatToUint(kd,KD_MIN,KD_MAX,16);
     CANTransmit(hmotor->motor_can_instance,1);
+    
 }
 
 /**
@@ -246,36 +267,41 @@ void MI_motor_Control(MIMotorInstance* hmotor, float torque, float MechPosition 
   * @param[in]      id 电机id
   * @retval         none
   */
- void MI_motor_Enable(MIMotorInstance* hmotor)
+ static void MI_motor_Enable(MIMotorInstance* hmotor)
 {   
     
-    static EXT_ID_T *EXT;
-    EXT->mode=3;
-    EXT->data=MI_MASTERID;
-    EXT->motor_id=hmotor->motor_can_instance->tx_id;
-    EXT->res=0;
-    hmotor->motor_can_instance->txconf.ExtId=((uint32_t)(EXT));
+    static EXT_ID_T EXT  ;
+    EXT.fields.mode=3;
+    EXT.fields.data=MI_MASTERID;
+    EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+    EXT.fields.res=0;
+    hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
     for(uint8_t i=0; i<8; i++)
     {
         hmotor->motor_can_instance->tx_buff[i]=0;
     }
 
-    CANTransmit(hmotor->motor_can_instance,1);
+    if(!CANTransmit(hmotor->motor_can_instance,1)){
+        while(1){
+
+        }
+    }
+     
 }
 /**
   * @brief          电机停止运行帧（通信类型4）
   * @param[in]      hmotor 电机结构体
   * @retval         none
   */
-void MI_motor_Stop(MIMotorInstance* hmotor)
+static void MI_motor_Stop(MIMotorInstance* hmotor)
 
 {   
-    static EXT_ID_T *EXT;
-    EXT->mode=4;
-    EXT->data=MI_MASTERID;
-    EXT->motor_id=hmotor->motor_can_instance->tx_id;
-    EXT->res=0;
-    hmotor->motor_can_instance->txconf.ExtId=((uint32_t)(EXT));
+    static EXT_ID_T EXT;
+    EXT.fields.mode=4;
+    EXT.fields.data=MI_MASTERID;
+    EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+    EXT.fields.res=0;
+    hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
     for(uint8_t i=0; i<8; i++)
     {
         hmotor->motor_can_instance->tx_buff[i]=0;
@@ -288,14 +314,14 @@ void MI_motor_Stop(MIMotorInstance* hmotor)
   * @param[in]      hmotor 电机结构体
   * @retval         none
   */
-void MI_motor_SetMechPositionToZero(MIMotorInstance* hmotor)
+static void MI_motor_SetMechPositionToZero(MIMotorInstance* hmotor)
 {
-    static EXT_ID_T *EXT;
-    EXT->mode=6;
-    EXT->data=MI_MASTERID;
-    EXT->motor_id=hmotor->motor_can_instance->tx_id;
-    EXT->res=0;
-    hmotor->motor_can_instance->txconf.ExtId=((uint32_t)(EXT));
+    static EXT_ID_T EXT ;
+    EXT.fields.mode=6;
+    EXT.fields.data=MI_MASTERID;
+    EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+    EXT.fields.res=0;
+    hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
     hmotor->motor_can_instance->tx_buff[0]=1;
     for(uint8_t i=1; i<8; i++)
     {
@@ -303,6 +329,7 @@ void MI_motor_SetMechPositionToZero(MIMotorInstance* hmotor)
     }
 
     CANTransmit(hmotor->motor_can_instance,1);
+     
 }
 
 /**
@@ -311,14 +338,14 @@ void MI_motor_SetMechPositionToZero(MIMotorInstance* hmotor)
   * @param[in]      index 功能码
   * @retval         none
   */
-void MI_motor_ReadParam(MIMotorInstance* hmotor,uint16_t index)
+static void MI_motor_ReadParam(MIMotorInstance* hmotor,uint16_t index)
 {
-    static EXT_ID_T *EXT;
-    EXT->mode=17;
-    EXT->data=MI_MASTERID;
-    EXT->motor_id=hmotor->motor_can_instance->tx_id;
-    EXT->res=0;
-    hmotor->motor_can_instance->txconf.ExtId=((uint32_t)(EXT));
+    static EXT_ID_T EXT ;
+    EXT.fields.mode=17;
+    EXT.fields.data=MI_MASTERID;
+    EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+    EXT.fields.res=0;
+    hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
 
     memcpy(&hmotor->motor_can_instance->tx_buff[0],&index,2);
     for(uint8_t i=2; i<8; i++)
@@ -327,6 +354,7 @@ void MI_motor_ReadParam(MIMotorInstance* hmotor,uint16_t index)
     }
 
     CANTransmit(hmotor->motor_can_instance,1);
+    // free(EXT);
 }
 
 /**
@@ -336,14 +364,15 @@ void MI_motor_ReadParam(MIMotorInstance* hmotor,uint16_t index)
   * @note           通信类型18 （掉电丢失）
   * @retval         none
   */
-void MI_motor_ModeSwitch(MIMotorInstance* hmotor, uint8_t run_mode,uint16_t index)
+static void MI_motor_ModeSwitch(MIMotorInstance* hmotor, uint8_t run_mode,uint16_t index)
 {
-    static EXT_ID_T *EXT;
-    EXT->mode=18;
-    EXT->data=MI_MASTERID;
-    EXT->motor_id=hmotor->motor_can_instance->tx_id;
-    EXT->res=0;
-    hmotor->motor_can_instance->txconf.ExtId=((uint32_t)(EXT));
+     
+    static EXT_ID_T EXT ;
+    EXT.fields.mode=18;
+    EXT.fields.data=MI_MASTERID;
+    EXT.fields.motor_id=(hmotor->motor_can_instance->tx_id) ;
+    EXT.fields.res=0;
+    hmotor->motor_can_instance->txconf.ExtId=EXT.raw;
 
     
     for(uint8_t i=2; i<8; i++)
@@ -352,16 +381,20 @@ void MI_motor_ModeSwitch(MIMotorInstance* hmotor, uint8_t run_mode,uint16_t inde
     }
     memcpy(&hmotor->motor_can_instance->tx_buff[0],&index,2);
     memcpy(&hmotor->motor_can_instance->tx_buff[4],&run_mode,1);
-    CANTransmit(hmotor->motor_can_instance,1);
+    if(!CANTransmit(hmotor->motor_can_instance,1)){
+        while(1){
+
+        }
+    }
 }
-void MI_motor_Modeset(MIMotorInstance* hmotor,float param,uint16_t index)
+ void MI_motor_Modeset(MIMotorInstance* hmotor,float param,uint16_t index)
 {
-    static EXT_ID_T *EXT;
-    EXT->mode=18;
-    EXT->data=MI_MASTERID;
-    EXT->motor_id=hmotor->motor_can_instance->tx_id;
-    EXT->res=0;
-    hmotor->motor_can_instance->txconf.ExtId=((uint32_t)(EXT));
+    static EXT_ID_T  EXT;
+    EXT.fields.mode=18;
+    EXT.fields.data=MI_MASTERID;
+    EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+    EXT.fields.res=0;
+    hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
 
     
     for(uint8_t i=2; i<8; i++)
@@ -370,7 +403,11 @@ void MI_motor_Modeset(MIMotorInstance* hmotor,float param,uint16_t index)
     }
     memcpy(&hmotor->motor_can_instance->tx_buff[0],&index,2);
     memcpy(&hmotor->motor_can_instance->tx_buff[4],&param,4);
-    CANTransmit(hmotor->motor_can_instance,1);
+    if(!CANTransmit(hmotor->motor_can_instance,1)){
+        while(1){
+
+        }
+    }
 }
 /*-------------------- 封装的一些控制函数 --------------------*/
 
@@ -380,11 +417,22 @@ void MI_motor_Modeset(MIMotorInstance* hmotor,float param,uint16_t index)
   * @param[in]      torque 目标力矩
   * @retval         none
   */
-void MI_motor_TorqueControl(MIMotorInstance* hmotor, float torque)
+void  MI_motor_TorqueControl(MIMotorInstance* hmotor)
 {
     MI_motor_ModeSwitch(hmotor, 3,0x7005);
     MI_motor_Enable ( hmotor);
-    MI_motor_Modeset(hmotor, 2,0x7006);
+    // MI_motor_Modeset(hmotor, torque,0x7006);
+}
+
+/**
+  * @brief          小米电机力矩控制模式控制指令
+  * @param[in]      hmotor 电机结构体
+  * @param[in]      torque 目标力矩
+  * @retval         none
+  */
+void  MI_motor_stop(MIMotorInstance* hmotor)
+{
+    MI_motor_Stop( hmotor);
 }
 
 /**
@@ -395,12 +443,12 @@ void MI_motor_TorqueControl(MIMotorInstance* hmotor, float torque)
   * @param[in]      kd 电机阻尼，过小会震荡，过大电机会震动明显。一般取0.5左右
   * @retval         none
   */
-void MI_motor_LocationControl(MIMotorInstance* hmotor, float location)
+void  MI_motor_LocationControl(MIMotorInstance* hmotor)
 {
    MI_motor_ModeSwitch(hmotor, 1,0x7005);
    MI_motor_Enable ( hmotor);
    MI_motor_Modeset(hmotor, 30,0x7017);//最大速度
-    MI_motor_Modeset(hmotor, location,0x7016);//速度
+    // MI_motor_Modeset(hmotor, location,0x7016);//速度
 
 }
 
@@ -411,12 +459,12 @@ void MI_motor_LocationControl(MIMotorInstance* hmotor, float location)
   * @param[in]      kd 响应速度，一般取0.1-1
   * @retval         none
   */
-void MI_motor_SpeedControl(MIMotorInstance* hmotor, float speed)
+void  MI_motor_SpeedControl(MIMotorInstance* hmotor)
 {
     MI_motor_ModeSwitch(hmotor, 2,0x7005);
    MI_motor_Enable ( hmotor);
    MI_motor_Modeset(hmotor, 23,0x7018);//最大dianliu
-    MI_motor_Modeset(hmotor,speed,0x700A);//速度
+    // MI_motor_Modeset(hmotor,speed,0x700A);//速度
 }
 
 // /**

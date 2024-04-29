@@ -11,6 +11,10 @@
         "general_def.h": "c",
         "stm32f4xx.h": "c",
         "message_center.h": "c",
-        "usart.h": "c"
+        "usart.h": "c",
+        "mimotor.h": "c",
+        "controller.h": "c",
+        "distance.h": "c",
+        "bsp_dwt.h": "c"
     }
 }

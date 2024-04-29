@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 1
   29:application/chassis/chassis.c **** static DJIMotorInstance  *motor_rf, *motor_lb, *motor_rb; // left right forward back
   30:application/chassis/chassis.c **** static MIMotorInstance  *motor_lf;
   31:application/chassis/chassis.c ****  
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 2
 
 
   32:application/chassis/chassis.c **** void ChassisInit()
@@ -108,7 +108,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 1
   76:application/chassis/chassis.c ****     // chassis_motor_config.can_init_config.tx_id = 1;
   77:application/chassis/chassis.c ****     // chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REV
   78:application/chassis/chassis.c ****     // motor_lf = DJIMotorInit(&chassis_motor_config);
-  79:application/chassis/chassis.c **** 
+  79:application/chassis/chassis.c ****     chassis_motor_config.can_init_config.tx_ide=CAN_ID_STD;
   80:application/chassis/chassis.c ****     chassis_motor_config.can_init_config.tx_id = 2;
   81:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
   82:application/chassis/chassis.c ****     motor_rf = DJIMotorInit(&chassis_motor_config);
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 1
   86:application/chassis/chassis.c ****     motor_lb = DJIMotorInit(&chassis_motor_config);
   87:application/chassis/chassis.c **** 
   88:application/chassis/chassis.c ****     chassis_motor_config.can_init_config.tx_id = 3;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 3
 
 
   89:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
@@ -145,109 +145,111 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 1
  110:application/chassis/chassis.c ****             },
  111:application/chassis/chassis.c ****         },
  112:application/chassis/chassis.c ****         .controller_setting_init_config = {
- 113:application/chassis/chassis.c ****             .angle_feedback_source = MOTOR_FEED,
- 114:application/chassis/chassis.c ****             .speed_feedback_source = MOTOR_FEED,
- 115:application/chassis/chassis.c ****             .outer_loop_type = SPEED_LOOP,
- 116:application/chassis/chassis.c ****             .close_loop_type = SPEED_LOOP 
- 117:application/chassis/chassis.c ****         },
- 118:application/chassis/chassis.c ****         .motor_type =  MI,
- 119:application/chassis/chassis.c ****     };
- 120:application/chassis/chassis.c ****     chassis_motor_config.can_init_config.tx_id = 1;
- 121:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
- 122:application/chassis/chassis.c ****     motor_lf = MIMotorInit(&mi__motor_config);
- 123:application/chassis/chassis.c ****    
- 124:application/chassis/chassis.c **** #ifdef CHASSIS_BOARD
- 125:application/chassis/chassis.c ****     Chassis_IMU_data = INS_Init(); // 底盘IMU初始化
- 126:application/chassis/chassis.c **** 
- 127:application/chassis/chassis.c ****     CANComm_Init_Config_s comm_conf = {
- 128:application/chassis/chassis.c ****         .can_config = {
- 129:application/chassis/chassis.c ****             .can_handle = &hcan2,
- 130:application/chassis/chassis.c ****             .tx_id = 0x311, 
- 131:application/chassis/chassis.c ****             .rx_id = 0x312,
- 132:application/chassis/chassis.c ****         },
- 133:application/chassis/chassis.c ****         .recv_data_len = sizeof(Chassis_Ctrl_Cmd_s),
- 134:application/chassis/chassis.c ****         .send_data_len = sizeof(Chassis_Upload_Data_s),
- 135:application/chassis/chassis.c ****     };
- 136:application/chassis/chassis.c ****     chasiss_can_comm = CANCommInit(&comm_conf); // can comm初始化
- 137:application/chassis/chassis.c **** #endif                                          // CHASSIS_BOARD
- 138:application/chassis/chassis.c **** 
- 139:application/chassis/chassis.c **** #ifdef ONE_BOARD // 单板控制整车,则通过pubsub来传递消息
- 140:application/chassis/chassis.c ****     chassis_sub = SubRegister("chassis_cmd", sizeof(Chassis_Ctrl_Cmd_s));
- 141:application/chassis/chassis.c ****     chassis_pub = PubRegister("chassis_feed", sizeof(Chassis_Upload_Data_s));
- 142:application/chassis/chassis.c **** #endif // ONE_BOARD
- 143:application/chassis/chassis.c **** }
- 144:application/chassis/chassis.c **** #define LF_CENTER ((HALF_TRACK_WIDTH + CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE - CENTER_GIMBAL_OFF
- 145:application/chassis/chassis.c **** #define RF_CENTER ((HALF_TRACK_WIDTH - CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE - CENTER_GIMBAL_OFF
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 4
+ 113:application/chassis/chassis.c ****             .ifsetflag=0,  
+ 114:application/chassis/chassis.c ****             .angle_feedback_source = MOTOR_FEED,
+ 115:application/chassis/chassis.c ****             .speed_feedback_source = MOTOR_FEED,
+ 116:application/chassis/chassis.c ****             .outer_loop_type = ANGLE_LOOP,
+ 117:application/chassis/chassis.c ****             .close_loop_type =  ANGLE_LOOP, 
+ 118:application/chassis/chassis.c ****         },
+ 119:application/chassis/chassis.c ****         .motor_type =  MI,
+ 120:application/chassis/chassis.c ****     };
+ 121:application/chassis/chassis.c ****     mi__motor_config.can_init_config.tx_id = 1;
+ 122:application/chassis/chassis.c ****     mi__motor_config.can_init_config.tx_ide=CAN_ID_EXT;
+ 123:application/chassis/chassis.c ****     mi__motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
+ 124:application/chassis/chassis.c ****     motor_lf = MIMotorInit(&mi__motor_config);
+ 125:application/chassis/chassis.c ****    
+ 126:application/chassis/chassis.c **** #ifdef CHASSIS_BOARD
+ 127:application/chassis/chassis.c ****     Chassis_IMU_data = INS_Init(); // 底盘IMU初始化
+ 128:application/chassis/chassis.c **** 
+ 129:application/chassis/chassis.c ****     CANComm_Init_Config_s comm_conf = {
+ 130:application/chassis/chassis.c ****         .can_config = {
+ 131:application/chassis/chassis.c ****             .can_handle = &hcan2,
+ 132:application/chassis/chassis.c ****             .tx_id = 0x311, 
+ 133:application/chassis/chassis.c ****             .rx_id = 0x312,
+ 134:application/chassis/chassis.c ****         },
+ 135:application/chassis/chassis.c ****         .recv_data_len = sizeof(Chassis_Ctrl_Cmd_s),
+ 136:application/chassis/chassis.c ****         .send_data_len = sizeof(Chassis_Upload_Data_s),
+ 137:application/chassis/chassis.c ****     };
+ 138:application/chassis/chassis.c ****     chasiss_can_comm = CANCommInit(&comm_conf); // can comm初始化
+ 139:application/chassis/chassis.c **** #endif                                          // CHASSIS_BOARD
+ 140:application/chassis/chassis.c **** 
+ 141:application/chassis/chassis.c **** #ifdef ONE_BOARD // 单板控制整车,则通过pubsub来传递消息
+ 142:application/chassis/chassis.c ****     chassis_sub = SubRegister("chassis_cmd", sizeof(Chassis_Ctrl_Cmd_s));
+ 143:application/chassis/chassis.c ****     chassis_pub = PubRegister("chassis_feed", sizeof(Chassis_Upload_Data_s));
+ 144:application/chassis/chassis.c **** #endif // ONE_BOARD
+ 145:application/chassis/chassis.c **** }
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 4
 
 
- 146:application/chassis/chassis.c **** #define LB_CENTER ((HALF_TRACK_WIDTH + CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE + CENTER_GIMBAL_OFF
- 147:application/chassis/chassis.c **** #define RB_CENTER ((HALF_TRACK_WIDTH - CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE + CENTER_GIMBAL_OFF
- 148:application/chassis/chassis.c **** /**
- 149:application/chassis/chassis.c ****  * @brief 计算每个轮毂电机的输出,正运动学解算
- 150:application/chassis/chassis.c ****  *        用宏进行预替换减小开销,运动解算具体过程参考教程
- 151:application/chassis/chassis.c ****  */
- 152:application/chassis/chassis.c **** static void MecanumCalculate()
- 153:application/chassis/chassis.c **** {  
-  28              		.loc 1 153 1 view -0
+ 146:application/chassis/chassis.c **** #define LF_CENTER ((HALF_TRACK_WIDTH + CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE - CENTER_GIMBAL_OFF
+ 147:application/chassis/chassis.c **** #define RF_CENTER ((HALF_TRACK_WIDTH - CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE - CENTER_GIMBAL_OFF
+ 148:application/chassis/chassis.c **** #define LB_CENTER ((HALF_TRACK_WIDTH + CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE + CENTER_GIMBAL_OFF
+ 149:application/chassis/chassis.c **** #define RB_CENTER ((HALF_TRACK_WIDTH - CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE + CENTER_GIMBAL_OFF
+ 150:application/chassis/chassis.c **** /**
+ 151:application/chassis/chassis.c ****  * @brief 计算每个轮毂电机的输出,正运动学解算
+ 152:application/chassis/chassis.c ****  *        用宏进行预替换减小开销,运动解算具体过程参考教程
+ 153:application/chassis/chassis.c ****  */
+ 154:application/chassis/chassis.c **** static void MecanumCalculate()
+ 155:application/chassis/chassis.c **** {  
+  28              		.loc 1 155 1 view -0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
- 154:application/chassis/chassis.c ****     // vt_lf = -chassis_vx - chassis_vy - chassis_cmd_recv.wz * LF_CENTER;
- 155:application/chassis/chassis.c ****     // vt_rf = -chassis_vx + chassis_vy - chassis_cmd_recv.wz * RF_CENTER;
- 156:application/chassis/chassis.c ****     // vt_lb = chassis_vx - chassis_vy - chassis_cmd_recv.wz * LB_CENTER;
- 157:application/chassis/chassis.c ****     // vt_rb = chassis_vx + chassis_vy - chassis_cmd_recv.wz * RB_CENTER;
- 158:application/chassis/chassis.c ****     vt_lf = -chassis_vx - chassis_vy - chassis_cmd_recv.wz  ;
-  33              		.loc 1 158 5 view .LVU1
-  34              		.loc 1 158 13 is_stmt 0 view .LVU2
+ 156:application/chassis/chassis.c ****     // vt_lf = -chassis_vx - chassis_vy - chassis_cmd_recv.wz * LF_CENTER;
+ 157:application/chassis/chassis.c ****     // vt_rf = -chassis_vx + chassis_vy - chassis_cmd_recv.wz * RF_CENTER;
+ 158:application/chassis/chassis.c ****     // vt_lb = chassis_vx - chassis_vy - chassis_cmd_recv.wz * LB_CENTER;
+ 159:application/chassis/chassis.c ****     // vt_rb = chassis_vx + chassis_vy - chassis_cmd_recv.wz * RB_CENTER;
+ 160:application/chassis/chassis.c ****     vt_lf = -chassis_vx - chassis_vy - chassis_cmd_recv.wz  ;
+  33              		.loc 1 160 5 view .LVU1
+  34              		.loc 1 160 13 is_stmt 0 view .LVU2
   35 0000 134B     		ldr	r3, .L2
   36 0002 D3ED007A 		vldr.32	s15, [r3]
   37 0006 B1EE677A 		vneg.f32	s14, s15
-  38              		.loc 1 158 25 view .LVU3
+  38              		.loc 1 160 25 view .LVU3
   39 000a 124B     		ldr	r3, .L2+4
   40 000c 93ED006A 		vldr.32	s12, [r3]
   41 0010 37EE467A 		vsub.f32	s14, s14, s12
-  42              		.loc 1 158 56 view .LVU4
+  42              		.loc 1 160 56 view .LVU4
   43 0014 104B     		ldr	r3, .L2+8
   44 0016 D3ED026A 		vldr.32	s13, [r3, #8]
-  45              		.loc 1 158 38 view .LVU5
+  45              		.loc 1 160 38 view .LVU5
   46 001a 37EE667A 		vsub.f32	s14, s14, s13
-  47              		.loc 1 158 11 view .LVU6
+  47              		.loc 1 160 11 view .LVU6
   48 001e 0F4B     		ldr	r3, .L2+12
   49 0020 83ED007A 		vstr.32	s14, [r3]
- 159:application/chassis/chassis.c ****     vt_rf = -chassis_vx + chassis_vy - chassis_cmd_recv.wz ;
-  50              		.loc 1 159 5 is_stmt 1 view .LVU7
-  51              		.loc 1 159 25 is_stmt 0 view .LVU8
+ 161:application/chassis/chassis.c ****     vt_rf = -chassis_vx + chassis_vy - chassis_cmd_recv.wz ;
+  50              		.loc 1 161 5 is_stmt 1 view .LVU7
+  51              		.loc 1 161 25 is_stmt 0 view .LVU8
   52 0024 36EE677A 		vsub.f32	s14, s12, s15
-  53              		.loc 1 159 38 view .LVU9
+  53              		.loc 1 161 38 view .LVU9
   54 0028 37EE667A 		vsub.f32	s14, s14, s13
-  55              		.loc 1 159 11 view .LVU10
+  55              		.loc 1 161 11 view .LVU10
   56 002c 0C4B     		ldr	r3, .L2+16
   57 002e 83ED007A 		vstr.32	s14, [r3]
- 160:application/chassis/chassis.c ****     vt_lb = chassis_vx - chassis_vy - chassis_cmd_recv.wz  ;
-  58              		.loc 1 160 5 is_stmt 1 view .LVU11
-  59              		.loc 1 160 24 is_stmt 0 view .LVU12
+ 162:application/chassis/chassis.c ****     vt_lb = chassis_vx - chassis_vy - chassis_cmd_recv.wz  ;
+  58              		.loc 1 162 5 is_stmt 1 view .LVU11
+  59              		.loc 1 162 24 is_stmt 0 view .LVU12
   60 0032 37EEC67A 		vsub.f32	s14, s15, s12
-  61              		.loc 1 160 37 view .LVU13
+  61              		.loc 1 162 37 view .LVU13
   62 0036 37EE667A 		vsub.f32	s14, s14, s13
-  63              		.loc 1 160 11 view .LVU14
+  63              		.loc 1 162 11 view .LVU14
   64 003a 0A4B     		ldr	r3, .L2+20
   65 003c 83ED007A 		vstr.32	s14, [r3]
- 161:application/chassis/chassis.c ****     vt_rb = chassis_vx + chassis_vy - chassis_cmd_recv.wz ;
-  66              		.loc 1 161 5 is_stmt 1 view .LVU15
-  67              		.loc 1 161 24 is_stmt 0 view .LVU16
+ 163:application/chassis/chassis.c ****     vt_rb = chassis_vx + chassis_vy - chassis_cmd_recv.wz ;
+  66              		.loc 1 163 5 is_stmt 1 view .LVU15
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 5
+
+
+  67              		.loc 1 163 24 is_stmt 0 view .LVU16
   68 0040 77EE867A 		vadd.f32	s15, s15, s12
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 5
-
-
-  69              		.loc 1 161 37 view .LVU17
+  69              		.loc 1 163 37 view .LVU17
   70 0044 77EEE67A 		vsub.f32	s15, s15, s13
-  71              		.loc 1 161 11 view .LVU18
+  71              		.loc 1 163 11 view .LVU18
   72 0048 074B     		ldr	r3, .L2+24
   73 004a C3ED007A 		vstr.32	s15, [r3]
- 162:application/chassis/chassis.c **** }
-  74              		.loc 1 162 1 view .LVU19
+ 164:application/chassis/chassis.c **** }
+  74              		.loc 1 164 1 view .LVU19
   75 004e 7047     		bx	lr
   76              	.L3:
   77              		.align	2
@@ -261,964 +263,864 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 1
   85 0068 00000000 		.word	vt_rb
   86              		.cfi_endproc
   87              	.LFE168:
-  89              		.section	.text.EstimateChassisAngle,"ax",%progbits
+  89              		.section	.text.LimitChassisOutput,"ax",%progbits
   90              		.align	1
   91              		.syntax unified
   92              		.thumb
   93              		.thumb_func
-  95              	EstimateChassisAngle:
-  96              	.LVL0:
-  97              	.LFB171:
- 163:application/chassis/chassis.c **** 
- 164:application/chassis/chassis.c **** /**
- 165:application/chassis/chassis.c ****  * @brief 根据裁判系统和电容剩余容量对输出进行限制并设置电机参考值
- 166:application/chassis/chassis.c ****  *
- 167:application/chassis/chassis.c ****  */
- 168:application/chassis/chassis.c **** static void LimitChassisOutput()
- 169:application/chassis/chassis.c **** {
- 170:application/chassis/chassis.c ****     // 功率限制待添加
- 171:application/chassis/chassis.c ****     // referee_data->PowerHeatData.chassis_power;
- 172:application/chassis/chassis.c ****     // referee_data->PowerHeatData.chassis_power_buffer;
- 173:application/chassis/chassis.c **** 
- 174:application/chassis/chassis.c ****     // 完成功率限制后进行电机参考输入设定
- 175:application/chassis/chassis.c ****     DJIMotorSetRef(motor_lf, vt_lf);
- 176:application/chassis/chassis.c ****     DJIMotorSetRef(motor_rf, vt_rf);
- 177:application/chassis/chassis.c ****     DJIMotorSetRef(motor_lb, vt_lb);
- 178:application/chassis/chassis.c ****     DJIMotorSetRef(motor_rb, vt_rb);
- 179:application/chassis/chassis.c **** }
- 180:application/chassis/chassis.c **** 
- 181:application/chassis/chassis.c **** 
- 182:application/chassis/chassis.c **** /**
- 183:application/chassis/chassis.c ****  * @brief 对控制的底盘距离进行解算
- 184:application/chassis/chassis.c ****  *          
- 185:application/chassis/chassis.c ****  *
- 186:application/chassis/chassis.c ****  */
- 187:application/chassis/chassis.c **** 
- 188:application/chassis/chassis.c **** static void EstimateChassisDistance(PIDInstance *chassis_distance_pid,float distance_measure,float 
- 189:application/chassis/chassis.c ****         chassis_cmd_recv.vy= -1*PIDCalculate(chassis_distance_pid, distance_measure, distance_ref);
- 190:application/chassis/chassis.c **** }
- 191:application/chassis/chassis.c **** 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 6
+  95              	LimitChassisOutput:
+  96              	.LFB169:
+ 165:application/chassis/chassis.c **** 
+ 166:application/chassis/chassis.c **** /**
+ 167:application/chassis/chassis.c ****  * @brief 根据裁判系统和电容剩余容量对输出进行限制并设置电机参考值
+ 168:application/chassis/chassis.c ****  *
+ 169:application/chassis/chassis.c ****  */
+ 170:application/chassis/chassis.c **** static void LimitChassisOutput()
+ 171:application/chassis/chassis.c **** {
+  97              		.loc 1 171 1 is_stmt 1 view -0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 0
+ 100              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101 0000 08B5     		push	{r3, lr}
+ 102              		.cfi_def_cfa_offset 8
+ 103              		.cfi_offset 3, -8
+ 104              		.cfi_offset 14, -4
+ 172:application/chassis/chassis.c ****     // 功率限制待添加
+ 173:application/chassis/chassis.c ****     // referee_data->PowerHeatData.chassis_power;
+ 174:application/chassis/chassis.c ****     // referee_data->PowerHeatData.chassis_power_buffer;
+ 175:application/chassis/chassis.c **** 
+ 176:application/chassis/chassis.c ****     // 完成功率限制后进行电机参考输入设定
+ 177:application/chassis/chassis.c ****     MIMotorSetRef(motor_lf, vt_lf);
+ 105              		.loc 1 177 5 view .LVU21
+ 106 0002 0E4B     		ldr	r3, .L6
+ 107 0004 93ED000A 		vldr.32	s0, [r3]
+ 108 0008 0D4B     		ldr	r3, .L6+4
+ 109 000a 1868     		ldr	r0, [r3]
+ 110 000c FFF7FEFF 		bl	MIMotorSetRef
+ 111              	.LVL0:
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 6
 
 
- 192:application/chassis/chassis.c **** 
- 193:application/chassis/chassis.c **** /**
- 194:application/chassis/chassis.c ****  * @brief 对控制的底盘角度进行解算
- 195:application/chassis/chassis.c ****  *          
- 196:application/chassis/chassis.c ****  *
- 197:application/chassis/chassis.c ****  */
- 198:application/chassis/chassis.c **** 
- 199:application/chassis/chassis.c **** static void EstimateChassisAngle(PIDInstance *chassis_angle_pid,float angle_measure,float angle_ref
-  98              		.loc 1 199 101 is_stmt 1 view -0
-  99              		.cfi_startproc
- 100              		@ args = 0, pretend = 0, frame = 0
- 101              		@ frame_needed = 0, uses_anonymous_args = 0
- 102              		.loc 1 199 101 is_stmt 0 view .LVU21
- 103 0000 08B5     		push	{r3, lr}
- 104              		.cfi_def_cfa_offset 8
- 105              		.cfi_offset 3, -8
- 106              		.cfi_offset 14, -4
- 200:application/chassis/chassis.c ****         chassis_cmd_recv.wz= -1*PIDCalculate(chassis_angle_pid, angle_measure, angle_ref);
- 107              		.loc 1 200 9 is_stmt 1 view .LVU22
- 108              		.loc 1 200 33 is_stmt 0 view .LVU23
- 109 0002 FFF7FEFF 		bl	PIDCalculate
- 110              	.LVL1:
- 111              		.loc 1 200 32 discriminator 1 view .LVU24
- 112 0006 B1EE400A 		vneg.f32	s0, s0
- 113              		.loc 1 200 28 discriminator 1 view .LVU25
- 114 000a 024B     		ldr	r3, .L6
- 115 000c 83ED020A 		vstr.32	s0, [r3, #8]
- 201:application/chassis/chassis.c **** }
- 116              		.loc 1 201 1 view .LVU26
- 117 0010 08BD     		pop	{r3, pc}
- 118              	.L7:
- 119 0012 00BF     		.align	2
- 120              	.L6:
- 121 0014 00000000 		.word	chassis_cmd_recv
- 122              		.cfi_endproc
- 123              	.LFE171:
- 125              		.section	.text.EstimateChassisDistance,"ax",%progbits
- 126              		.align	1
- 127              		.syntax unified
- 128              		.thumb
- 129              		.thumb_func
- 131              	EstimateChassisDistance:
- 132              	.LVL2:
- 133              	.LFB170:
- 188:application/chassis/chassis.c ****         chassis_cmd_recv.vy= -1*PIDCalculate(chassis_distance_pid, distance_measure, distance_ref);
- 134              		.loc 1 188 113 is_stmt 1 view -0
- 135              		.cfi_startproc
- 136              		@ args = 0, pretend = 0, frame = 0
- 137              		@ frame_needed = 0, uses_anonymous_args = 0
- 188:application/chassis/chassis.c ****         chassis_cmd_recv.vy= -1*PIDCalculate(chassis_distance_pid, distance_measure, distance_ref);
- 138              		.loc 1 188 113 is_stmt 0 view .LVU28
- 139 0000 08B5     		push	{r3, lr}
- 140              		.cfi_def_cfa_offset 8
- 141              		.cfi_offset 3, -8
- 142              		.cfi_offset 14, -4
- 189:application/chassis/chassis.c **** }
- 143              		.loc 1 189 9 is_stmt 1 view .LVU29
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 7
+ 178:application/chassis/chassis.c ****     DJIMotorSetRef(motor_rf, vt_rf);
+ 112              		.loc 1 178 5 view .LVU22
+ 113 0010 0C4B     		ldr	r3, .L6+8
+ 114 0012 93ED000A 		vldr.32	s0, [r3]
+ 115 0016 0C4B     		ldr	r3, .L6+12
+ 116 0018 1868     		ldr	r0, [r3]
+ 117 001a FFF7FEFF 		bl	DJIMotorSetRef
+ 118              	.LVL1:
+ 179:application/chassis/chassis.c ****     DJIMotorSetRef(motor_lb, vt_lb);
+ 119              		.loc 1 179 5 view .LVU23
+ 120 001e 0B4B     		ldr	r3, .L6+16
+ 121 0020 93ED000A 		vldr.32	s0, [r3]
+ 122 0024 0A4B     		ldr	r3, .L6+20
+ 123 0026 1868     		ldr	r0, [r3]
+ 124 0028 FFF7FEFF 		bl	DJIMotorSetRef
+ 125              	.LVL2:
+ 180:application/chassis/chassis.c ****     DJIMotorSetRef(motor_rb, vt_rb);
+ 126              		.loc 1 180 5 view .LVU24
+ 127 002c 094B     		ldr	r3, .L6+24
+ 128 002e 93ED000A 		vldr.32	s0, [r3]
+ 129 0032 094B     		ldr	r3, .L6+28
+ 130 0034 1868     		ldr	r0, [r3]
+ 131 0036 FFF7FEFF 		bl	DJIMotorSetRef
+ 132              	.LVL3:
+ 181:application/chassis/chassis.c **** }
+ 133              		.loc 1 181 1 is_stmt 0 view .LVU25
+ 134 003a 08BD     		pop	{r3, pc}
+ 135              	.L7:
+ 136              		.align	2
+ 137              	.L6:
+ 138 003c 00000000 		.word	vt_lf
+ 139 0040 00000000 		.word	motor_lf
+ 140 0044 00000000 		.word	vt_rf
+ 141 0048 00000000 		.word	motor_rf
+ 142 004c 00000000 		.word	vt_lb
+ 143 0050 00000000 		.word	motor_lb
+ 144 0054 00000000 		.word	vt_rb
+ 145 0058 00000000 		.word	motor_rb
+ 146              		.cfi_endproc
+ 147              	.LFE169:
+ 149              		.section	.rodata.ChassisInit.str1.4,"aMS",%progbits,1
+ 150              		.align	2
+ 151              	.LC0:
+ 152 0000 63686173 		.ascii	"chassis_cmd\000"
+ 152      7369735F 
+ 152      636D6400 
+ 153              		.align	2
+ 154              	.LC1:
+ 155 000c 63686173 		.ascii	"chassis_feed\000"
+ 155      7369735F 
+ 155      66656564 
+ 155      00
+ 156              		.section	.text.ChassisInit,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	ChassisInit
+ 159              		.syntax unified
+ 160              		.thumb
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 7
 
 
- 189:application/chassis/chassis.c **** }
- 144              		.loc 1 189 33 is_stmt 0 view .LVU30
- 145 0002 FFF7FEFF 		bl	PIDCalculate
- 146              	.LVL3:
- 189:application/chassis/chassis.c **** }
- 147              		.loc 1 189 32 discriminator 1 view .LVU31
- 148 0006 B1EE400A 		vneg.f32	s0, s0
- 189:application/chassis/chassis.c **** }
- 149              		.loc 1 189 28 discriminator 1 view .LVU32
- 150 000a 024B     		ldr	r3, .L10
- 151 000c 83ED010A 		vstr.32	s0, [r3, #4]
- 190:application/chassis/chassis.c **** 
- 152              		.loc 1 190 1 view .LVU33
- 153 0010 08BD     		pop	{r3, pc}
- 154              	.L11:
- 155 0012 00BF     		.align	2
- 156              	.L10:
- 157 0014 00000000 		.word	chassis_cmd_recv
- 158              		.cfi_endproc
- 159              	.LFE170:
- 161              		.section	.text.LimitChassisOutput,"ax",%progbits
- 162              		.align	1
- 163              		.syntax unified
- 164              		.thumb
- 165              		.thumb_func
- 167              	LimitChassisOutput:
- 168              	.LFB169:
- 169:application/chassis/chassis.c ****     // 功率限制待添加
- 169              		.loc 1 169 1 is_stmt 1 view -0
- 170              		.cfi_startproc
- 171              		@ args = 0, pretend = 0, frame = 0
- 172              		@ frame_needed = 0, uses_anonymous_args = 0
- 173 0000 08B5     		push	{r3, lr}
- 174              		.cfi_def_cfa_offset 8
- 175              		.cfi_offset 3, -8
- 176              		.cfi_offset 14, -4
- 175:application/chassis/chassis.c ****     DJIMotorSetRef(motor_rf, vt_rf);
- 177              		.loc 1 175 5 view .LVU35
- 178 0002 0E4B     		ldr	r3, .L14
- 179 0004 93ED000A 		vldr.32	s0, [r3]
- 180 0008 0D4B     		ldr	r3, .L14+4
- 181 000a 1868     		ldr	r0, [r3]
- 182 000c FFF7FEFF 		bl	DJIMotorSetRef
- 183              	.LVL4:
- 176:application/chassis/chassis.c ****     DJIMotorSetRef(motor_lb, vt_lb);
- 184              		.loc 1 176 5 view .LVU36
- 185 0010 0C4B     		ldr	r3, .L14+8
- 186 0012 93ED000A 		vldr.32	s0, [r3]
- 187 0016 0C4B     		ldr	r3, .L14+12
- 188 0018 1868     		ldr	r0, [r3]
- 189 001a FFF7FEFF 		bl	DJIMotorSetRef
- 190              	.LVL5:
- 177:application/chassis/chassis.c ****     DJIMotorSetRef(motor_rb, vt_rb);
- 191              		.loc 1 177 5 view .LVU37
- 192 001e 0B4B     		ldr	r3, .L14+16
- 193 0020 93ED000A 		vldr.32	s0, [r3]
- 194 0024 0A4B     		ldr	r3, .L14+20
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 8
-
-
- 195 0026 1868     		ldr	r0, [r3]
- 196 0028 FFF7FEFF 		bl	DJIMotorSetRef
- 197              	.LVL6:
- 178:application/chassis/chassis.c **** }
- 198              		.loc 1 178 5 view .LVU38
- 199 002c 094B     		ldr	r3, .L14+24
- 200 002e 93ED000A 		vldr.32	s0, [r3]
- 201 0032 094B     		ldr	r3, .L14+28
- 202 0034 1868     		ldr	r0, [r3]
- 203 0036 FFF7FEFF 		bl	DJIMotorSetRef
- 204              	.LVL7:
- 179:application/chassis/chassis.c **** 
- 205              		.loc 1 179 1 is_stmt 0 view .LVU39
- 206 003a 08BD     		pop	{r3, pc}
- 207              	.L15:
- 208              		.align	2
- 209              	.L14:
- 210 003c 00000000 		.word	vt_lf
- 211 0040 00000000 		.word	motor_lf
- 212 0044 00000000 		.word	vt_rf
- 213 0048 00000000 		.word	motor_rf
- 214 004c 00000000 		.word	vt_lb
- 215 0050 00000000 		.word	motor_lb
- 216 0054 00000000 		.word	vt_rb
- 217 0058 00000000 		.word	motor_rb
- 218              		.cfi_endproc
- 219              	.LFE169:
- 221              		.section	.rodata.ChassisInit.str1.4,"aMS",%progbits,1
- 222              		.align	2
- 223              	.LC0:
- 224 0000 63686173 		.ascii	"chassis_cmd\000"
- 224      7369735F 
- 224      636D6400 
- 225              		.align	2
- 226              	.LC1:
- 227 000c 63686173 		.ascii	"chassis_feed\000"
- 227      7369735F 
- 227      66656564 
- 227      00
- 228              		.section	.text.ChassisInit,"ax",%progbits
- 229              		.align	1
- 230              		.global	ChassisInit
- 231              		.syntax unified
- 232              		.thumb
- 233              		.thumb_func
- 235              	ChassisInit:
- 236              	.LFB167:
+ 161              		.thumb_func
+ 163              	ChassisInit:
+ 164              	.LFB167:
   33:application/chassis/chassis.c ****         //底盘距离环pid初始化、
- 237              		.loc 1 33 1 is_stmt 1 view -0
- 238              		.cfi_startproc
- 239              		@ args = 0, pretend = 0, frame = 368
- 240              		@ frame_needed = 0, uses_anonymous_args = 0
- 241 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
- 242              		.cfi_def_cfa_offset 36
- 243              		.cfi_offset 4, -36
- 244              		.cfi_offset 5, -32
- 245              		.cfi_offset 6, -28
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 9
-
-
- 246              		.cfi_offset 7, -24
- 247              		.cfi_offset 8, -20
- 248              		.cfi_offset 9, -16
- 249              		.cfi_offset 10, -12
- 250              		.cfi_offset 11, -8
- 251              		.cfi_offset 14, -4
- 252 0004 2DED048B 		vpush.64	{d8, d9}
- 253              		.cfi_def_cfa_offset 52
- 254              		.cfi_offset 80, -52
- 255              		.cfi_offset 81, -48
- 256              		.cfi_offset 82, -44
- 257              		.cfi_offset 83, -40
- 258 0008 DDB0     		sub	sp, sp, #372
- 259              		.cfi_def_cfa_offset 424
+ 165              		.loc 1 33 1 is_stmt 1 view -0
+ 166              		.cfi_startproc
+ 167              		@ args = 0, pretend = 0, frame = 360
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 170              		.cfi_def_cfa_offset 36
+ 171              		.cfi_offset 4, -36
+ 172              		.cfi_offset 5, -32
+ 173              		.cfi_offset 6, -28
+ 174              		.cfi_offset 7, -24
+ 175              		.cfi_offset 8, -20
+ 176              		.cfi_offset 9, -16
+ 177              		.cfi_offset 10, -12
+ 178              		.cfi_offset 11, -8
+ 179              		.cfi_offset 14, -4
+ 180 0004 2DED048B 		vpush.64	{d8, d9}
+ 181              		.cfi_def_cfa_offset 52
+ 182              		.cfi_offset 80, -52
+ 183              		.cfi_offset 81, -48
+ 184              		.cfi_offset 82, -44
+ 185              		.cfi_offset 83, -40
+ 186 0008 DBB0     		sub	sp, sp, #364
+ 187              		.cfi_def_cfa_offset 416
   35:application/chassis/chassis.c ****         chassis_distance_pid.Ki=0.01  ;
- 260              		.loc 1 35 9 view .LVU41
+ 188              		.loc 1 35 9 view .LVU27
   35:application/chassis/chassis.c ****         chassis_distance_pid.Ki=0.01  ;
- 261              		.loc 1 35 32 is_stmt 0 view .LVU42
- 262 000a 4A4B     		ldr	r3, .L18
- 263 000c B2EE048A 		vmov.f32	s16, #1.0e+1
- 264 0010 83ED008A 		vstr.32	s16, [r3]
+ 189              		.loc 1 35 32 is_stmt 0 view .LVU28
+ 190 000a 4C4B     		ldr	r3, .L10
+ 191 000c DFF87081 		ldr	r8, .L10+68
+ 192 0010 C3F80080 		str	r8, [r3]	@ float
   36:application/chassis/chassis.c ****         chassis_distance_pid.Kd=0;
- 265              		.loc 1 36 9 is_stmt 1 view .LVU43
+ 193              		.loc 1 36 9 is_stmt 1 view .LVU29
   36:application/chassis/chassis.c ****         chassis_distance_pid.Kd=0;
- 266              		.loc 1 36 32 is_stmt 0 view .LVU44
- 267 0014 484A     		ldr	r2, .L18+4
- 268 0016 5A60     		str	r2, [r3, #4]	@ float
+ 194              		.loc 1 36 32 is_stmt 0 view .LVU30
+ 195 0014 4A4A     		ldr	r2, .L10+4
+ 196 0016 5A60     		str	r2, [r3, #4]	@ float
   37:application/chassis/chassis.c ****         chassis_distance_pid.IntegralLimit = 10000;
- 269              		.loc 1 37 9 is_stmt 1 view .LVU45
+ 197              		.loc 1 37 9 is_stmt 1 view .LVU31
   37:application/chassis/chassis.c ****         chassis_distance_pid.IntegralLimit = 10000;
- 270              		.loc 1 37 32 is_stmt 0 view .LVU46
- 271 0018 0020     		movs	r0, #0
- 272 001a 9860     		str	r0, [r3, #8]	@ float
+ 198              		.loc 1 37 32 is_stmt 0 view .LVU32
+ 199 0018 0020     		movs	r0, #0
+ 200 001a 9860     		str	r0, [r3, #8]	@ float
   38:application/chassis/chassis.c ****         chassis_distance_pid.MaxOut = 30000;
- 273              		.loc 1 38 9 is_stmt 1 view .LVU47
+ 201              		.loc 1 38 9 is_stmt 1 view .LVU33
   38:application/chassis/chassis.c ****         chassis_distance_pid.MaxOut = 30000;
- 274              		.loc 1 38 44 is_stmt 0 view .LVU48
- 275 001c 4749     		ldr	r1, .L18+8
- 276 001e 9961     		str	r1, [r3, #24]	@ float
+ 202              		.loc 1 38 44 is_stmt 0 view .LVU34
+ 203 001c 4949     		ldr	r1, .L10+8
+ 204 001e 9961     		str	r1, [r3, #24]	@ float
   39:application/chassis/chassis.c ****         //底盘角度环pid初始化
- 277              		.loc 1 39 9 is_stmt 1 view .LVU49
+ 205              		.loc 1 39 9 is_stmt 1 view .LVU35
   39:application/chassis/chassis.c ****         //底盘角度环pid初始化
- 278              		.loc 1 39 37 is_stmt 0 view .LVU50
- 279 0020 474A     		ldr	r2, .L18+12
- 280 0022 DA60     		str	r2, [r3, #12]	@ float
-  41:application/chassis/chassis.c ****         chassis_angle_pid.Ki=0  ;   
- 281              		.loc 1 41 9 is_stmt 1 view .LVU51
-  41:application/chassis/chassis.c ****         chassis_angle_pid.Ki=0  ;   
- 282              		.loc 1 41 29 is_stmt 0 view .LVU52
- 283 0024 474B     		ldr	r3, .L18+16
- 284 0026 484C     		ldr	r4, .L18+20
- 285 0028 1C60     		str	r4, [r3]	@ float
-  42:application/chassis/chassis.c ****         chassis_angle_pid.Kd=4;
- 286              		.loc 1 42 9 is_stmt 1 view .LVU53
-  42:application/chassis/chassis.c ****         chassis_angle_pid.Kd=4;
- 287              		.loc 1 42 29 is_stmt 0 view .LVU54
- 288 002a 5860     		str	r0, [r3, #4]	@ float
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 10
+ 206              		.loc 1 39 37 is_stmt 0 view .LVU36
+ 207 0020 494A     		ldr	r2, .L10+12
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 8
 
 
+ 208 0022 DA60     		str	r2, [r3, #12]	@ float
+  41:application/chassis/chassis.c ****         chassis_angle_pid.Ki=0  ;   
+ 209              		.loc 1 41 9 is_stmt 1 view .LVU37
+  41:application/chassis/chassis.c ****         chassis_angle_pid.Ki=0  ;   
+ 210              		.loc 1 41 29 is_stmt 0 view .LVU38
+ 211 0024 494B     		ldr	r3, .L10+16
+ 212 0026 4A4C     		ldr	r4, .L10+20
+ 213 0028 1C60     		str	r4, [r3]	@ float
+  42:application/chassis/chassis.c ****         chassis_angle_pid.Kd=4;
+ 214              		.loc 1 42 9 is_stmt 1 view .LVU39
+  42:application/chassis/chassis.c ****         chassis_angle_pid.Kd=4;
+ 215              		.loc 1 42 29 is_stmt 0 view .LVU40
+ 216 002a 5860     		str	r0, [r3, #4]	@ float
   43:application/chassis/chassis.c ****         chassis_angle_pid.IntegralLimit = 10000;
- 289              		.loc 1 43 9 is_stmt 1 view .LVU55
+ 217              		.loc 1 43 9 is_stmt 1 view .LVU41
   43:application/chassis/chassis.c ****         chassis_angle_pid.IntegralLimit = 10000;
- 290              		.loc 1 43 29 is_stmt 0 view .LVU56
- 291 002c 4FF08140 		mov	r0, #1082130432
- 292 0030 9860     		str	r0, [r3, #8]	@ float
+ 218              		.loc 1 43 29 is_stmt 0 view .LVU42
+ 219 002c 4FF08140 		mov	r0, #1082130432
+ 220 0030 9860     		str	r0, [r3, #8]	@ float
   44:application/chassis/chassis.c ****         chassis_angle_pid.MaxOut = 30000;
- 293              		.loc 1 44 9 is_stmt 1 view .LVU57
+ 221              		.loc 1 44 9 is_stmt 1 view .LVU43
   44:application/chassis/chassis.c ****         chassis_angle_pid.MaxOut = 30000;
- 294              		.loc 1 44 41 is_stmt 0 view .LVU58
- 295 0032 9961     		str	r1, [r3, #24]	@ float
+ 222              		.loc 1 44 41 is_stmt 0 view .LVU44
+ 223 0032 9961     		str	r1, [r3, #24]	@ float
   45:application/chassis/chassis.c ****     // 四个轮子的参数一样,改tx_id和反转标志位即可
- 296              		.loc 1 45 9 is_stmt 1 view .LVU59
+ 224              		.loc 1 45 9 is_stmt 1 view .LVU45
   45:application/chassis/chassis.c ****     // 四个轮子的参数一样,改tx_id和反转标志位即可
- 297              		.loc 1 45 34 is_stmt 0 view .LVU60
- 298 0034 DA60     		str	r2, [r3, #12]	@ float
+ 225              		.loc 1 45 34 is_stmt 0 view .LVU46
+ 226 0034 DA60     		str	r2, [r3, #12]	@ float
   47:application/chassis/chassis.c ****         .can_init_config.can_handle = &hcan1,
- 299              		.loc 1 47 5 is_stmt 1 view .LVU61
+ 227              		.loc 1 47 5 is_stmt 1 view .LVU47
   47:application/chassis/chassis.c ****         .can_init_config.can_handle = &hcan1,
- 300              		.loc 1 47 25 is_stmt 0 view .LVU62
- 301 0036 4FF0B80A 		mov	r10, #184
- 302 003a 5246     		mov	r2, r10
- 303 003c 0021     		movs	r1, #0
- 304 003e 0DEB0A00 		add	r0, sp, r10
- 305 0042 FFF7FEFF 		bl	memset
+ 228              		.loc 1 47 25 is_stmt 0 view .LVU48
+ 229 0036 4FF0B40A 		mov	r10, #180
+ 230 003a 5246     		mov	r2, r10
+ 231 003c 0021     		movs	r1, #0
+ 232 003e 0DEB0A00 		add	r0, sp, r10
+ 233 0042 FFF7FEFF 		bl	memset
+ 234              	.LVL4:
+ 235 0046 B6EE009A 		vmov.f32	s18, #5.0e-1
+ 236 004a 8DED319A 		vstr.32	s18, [sp, #196]
+ 237 004e DFED418A 		vldr.32	s17, .L10+24
+ 238 0052 CDED348A 		vstr.32	s17, [sp, #208]
+ 239 0056 0727     		movs	r7, #7
+ 240 0058 8DF8D870 		strb	r7, [sp, #216]
+ 241 005c 3E4E     		ldr	r6, .L10+28
+ 242 005e 3796     		str	r6, [sp, #220]	@ float
+ 243 0060 CDF8F080 		str	r8, [sp, #240]	@ float
+ 244 0064 9FED3D8A 		vldr.32	s16, .L10+32
+ 245 0068 8DED3F8A 		vstr.32	s16, [sp, #252]
+ 246 006c 8DF80471 		strb	r7, [sp, #260]
+ 247 0070 4296     		str	r6, [sp, #264]	@ float
+ 248 0072 0223     		movs	r3, #2
+ 249 0074 8DF84831 		strb	r3, [sp, #328]
+ 250 0078 4FF0030B 		mov	fp, #3
+ 251 007c 8DF849B1 		strb	fp, [sp, #329]
+ 252 0080 8DF85031 		strb	r3, [sp, #336]
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 9
+
+
+ 253 0084 DFF8FC90 		ldr	r9, .L10+72
+ 254 0088 CDF85491 		str	r9, [sp, #340]
+  79:application/chassis/chassis.c ****     chassis_motor_config.can_init_config.tx_id = 2;
+ 255              		.loc 1 79 5 is_stmt 1 view .LVU49
+  80:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
+ 256              		.loc 1 80 5 view .LVU50
+  80:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
+ 257              		.loc 1 80 48 is_stmt 0 view .LVU51
+ 258 008c 8DF85931 		strb	r3, [sp, #345]
+  81:application/chassis/chassis.c ****     motor_rf = DJIMotorInit(&chassis_motor_config);
+ 259              		.loc 1 81 5 is_stmt 1 view .LVU52
+  81:application/chassis/chassis.c ****     motor_rf = DJIMotorInit(&chassis_motor_config);
+ 260              		.loc 1 81 76 is_stmt 0 view .LVU53
+ 261 0090 0124     		movs	r4, #1
+ 262 0092 8DF84A41 		strb	r4, [sp, #330]
+  82:application/chassis/chassis.c **** 
+ 263              		.loc 1 82 5 is_stmt 1 view .LVU54
+  82:application/chassis/chassis.c **** 
+ 264              		.loc 1 82 16 is_stmt 0 view .LVU55
+ 265 0096 0DEB0A00 		add	r0, sp, r10
+ 266 009a FFF7FEFF 		bl	DJIMotorInit
+ 267              	.LVL5:
+  82:application/chassis/chassis.c **** 
+ 268              		.loc 1 82 14 discriminator 1 view .LVU56
+ 269 009e 304B     		ldr	r3, .L10+36
+ 270 00a0 1860     		str	r0, [r3]
+  84:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
+ 271              		.loc 1 84 5 is_stmt 1 view .LVU57
+  84:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
+ 272              		.loc 1 84 48 is_stmt 0 view .LVU58
+ 273 00a2 0425     		movs	r5, #4
+ 274 00a4 8DF85951 		strb	r5, [sp, #345]
+  85:application/chassis/chassis.c ****     motor_lb = DJIMotorInit(&chassis_motor_config);
+ 275              		.loc 1 85 5 is_stmt 1 view .LVU59
+  85:application/chassis/chassis.c ****     motor_lb = DJIMotorInit(&chassis_motor_config);
+ 276              		.loc 1 85 76 is_stmt 0 view .LVU60
+ 277 00a8 8DF84A41 		strb	r4, [sp, #330]
+  86:application/chassis/chassis.c **** 
+ 278              		.loc 1 86 5 is_stmt 1 view .LVU61
+  86:application/chassis/chassis.c **** 
+ 279              		.loc 1 86 16 is_stmt 0 view .LVU62
+ 280 00ac 0DEB0A00 		add	r0, sp, r10
+ 281 00b0 FFF7FEFF 		bl	DJIMotorInit
+ 282              	.LVL6:
+  86:application/chassis/chassis.c **** 
+ 283              		.loc 1 86 14 discriminator 1 view .LVU63
+ 284 00b4 2B4B     		ldr	r3, .L10+40
+ 285 00b6 1860     		str	r0, [r3]
+  88:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
+ 286              		.loc 1 88 5 is_stmt 1 view .LVU64
+  88:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
+ 287              		.loc 1 88 48 is_stmt 0 view .LVU65
+ 288 00b8 8DF859B1 		strb	fp, [sp, #345]
+  89:application/chassis/chassis.c ****     motor_rb = DJIMotorInit(&chassis_motor_config);
+ 289              		.loc 1 89 5 is_stmt 1 view .LVU66
+  89:application/chassis/chassis.c ****     motor_rb = DJIMotorInit(&chassis_motor_config);
+ 290              		.loc 1 89 76 is_stmt 0 view .LVU67
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 10
+
+
+ 291 00bc 8DF84A41 		strb	r4, [sp, #330]
+  90:application/chassis/chassis.c ****     //----------------测试小米电机------------------
+ 292              		.loc 1 90 5 is_stmt 1 view .LVU68
+  90:application/chassis/chassis.c ****     //----------------测试小米电机------------------
+ 293              		.loc 1 90 16 is_stmt 0 view .LVU69
+ 294 00c0 0DEB0A00 		add	r0, sp, r10
+ 295 00c4 FFF7FEFF 		bl	DJIMotorInit
+ 296              	.LVL7:
+  90:application/chassis/chassis.c ****     //----------------测试小米电机------------------
+ 297              		.loc 1 90 14 discriminator 1 view .LVU70
+ 298 00c8 274B     		ldr	r3, .L10+44
+ 299 00ca 1860     		str	r0, [r3]
+  92:application/chassis/chassis.c ****         .can_init_config.can_handle = &hcan1,
+ 300              		.loc 1 92 5 is_stmt 1 view .LVU71
+  92:application/chassis/chassis.c ****         .can_init_config.can_handle = &hcan1,
+ 301              		.loc 1 92 25 is_stmt 0 view .LVU72
+ 302 00cc 5246     		mov	r2, r10
+ 303 00ce 0021     		movs	r1, #0
+ 304 00d0 6846     		mov	r0, sp
+ 305 00d2 FFF7FEFF 		bl	memset
  306              	.LVL8:
- 307 0046 F6EE009A 		vmov.f32	s19, #5.0e-1
- 308 004a CDED329A 		vstr.32	s19, [sp, #200]
- 309 004e 9FED3F9A 		vldr.32	s18, .L18+24
- 310 0052 8DED359A 		vstr.32	s18, [sp, #212]
- 311 0056 0727     		movs	r7, #7
- 312 0058 8DF8DC70 		strb	r7, [sp, #220]
- 313 005c 3C4E     		ldr	r6, .L18+28
- 314 005e 3896     		str	r6, [sp, #224]	@ float
- 315 0060 8DED3D8A 		vstr.32	s16, [sp, #244]
- 316 0064 DFED3B8A 		vldr.32	s17, .L18+32
- 317 0068 CDED408A 		vstr.32	s17, [sp, #256]
- 318 006c 8DF80871 		strb	r7, [sp, #264]
- 319 0070 4396     		str	r6, [sp, #268]	@ float
- 320 0072 0225     		movs	r5, #2
- 321 0074 8DF84C51 		strb	r5, [sp, #332]
- 322 0078 4FF0030B 		mov	fp, #3
- 323 007c 8DF84DB1 		strb	fp, [sp, #333]
- 324 0080 8DF85351 		strb	r5, [sp, #339]
- 325 0084 DFF8F080 		ldr	r8, .L18+68
- 326 0088 CDF85481 		str	r8, [sp, #340]
-  80:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
- 327              		.loc 1 80 5 is_stmt 1 view .LVU63
-  80:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
- 328              		.loc 1 80 48 is_stmt 0 view .LVU64
- 329 008c 5795     		str	r5, [sp, #348]
-  81:application/chassis/chassis.c ****     motor_rf = DJIMotorInit(&chassis_motor_config);
- 330              		.loc 1 81 5 is_stmt 1 view .LVU65
-  81:application/chassis/chassis.c ****     motor_rf = DJIMotorInit(&chassis_motor_config);
- 331              		.loc 1 81 76 is_stmt 0 view .LVU66
- 332 008e 0124     		movs	r4, #1
- 333 0090 8DF84E41 		strb	r4, [sp, #334]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 11
+ 307 00d6 8DED049A 		vstr.32	s18, [sp, #16]
+ 308 00da CDED078A 		vstr.32	s17, [sp, #28]
+ 309 00de 8DF82470 		strb	r7, [sp, #36]
+ 310 00e2 0A96     		str	r6, [sp, #40]	@ float
+ 311 00e4 CDF83C80 		str	r8, [sp, #60]	@ float
+ 312 00e8 8DED128A 		vstr.32	s16, [sp, #72]
+ 313 00ec 8DF85070 		strb	r7, [sp, #80]
+ 314 00f0 1596     		str	r6, [sp, #84]	@ float
+ 315 00f2 8DF89450 		strb	r5, [sp, #148]
+ 316 00f6 8DF89550 		strb	r5, [sp, #149]
+ 317 00fa 8DF89C50 		strb	r5, [sp, #156]
+ 318 00fe CDF8A090 		str	r9, [sp, #160]
+ 121:application/chassis/chassis.c ****     mi__motor_config.can_init_config.tx_ide=CAN_ID_EXT;
+ 319              		.loc 1 121 5 is_stmt 1 view .LVU73
+ 121:application/chassis/chassis.c ****     mi__motor_config.can_init_config.tx_ide=CAN_ID_EXT;
+ 320              		.loc 1 121 44 is_stmt 0 view .LVU74
+ 321 0102 8DF8A540 		strb	r4, [sp, #165]
+ 122:application/chassis/chassis.c ****     mi__motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
+ 322              		.loc 1 122 5 is_stmt 1 view .LVU75
+ 122:application/chassis/chassis.c ****     mi__motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
+ 323              		.loc 1 122 44 is_stmt 0 view .LVU76
+ 324 0106 8DF8A450 		strb	r5, [sp, #164]
+ 123:application/chassis/chassis.c ****     motor_lf = MIMotorInit(&mi__motor_config);
+ 325              		.loc 1 123 5 is_stmt 1 view .LVU77
+ 123:application/chassis/chassis.c ****     motor_lf = MIMotorInit(&mi__motor_config);
+ 326              		.loc 1 123 72 is_stmt 0 view .LVU78
+ 327 010a 8DF89640 		strb	r4, [sp, #150]
+ 124:application/chassis/chassis.c ****    
+ 328              		.loc 1 124 5 is_stmt 1 view .LVU79
+ 124:application/chassis/chassis.c ****    
+ 329              		.loc 1 124 16 is_stmt 0 view .LVU80
+ 330 010e 6846     		mov	r0, sp
+ 331 0110 FFF7FEFF 		bl	MIMotorInit
+ 332              	.LVL9:
+ 124:application/chassis/chassis.c ****    
+ 333              		.loc 1 124 14 discriminator 1 view .LVU81
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 11
 
 
-  82:application/chassis/chassis.c **** 
- 334              		.loc 1 82 5 is_stmt 1 view .LVU67
-  82:application/chassis/chassis.c **** 
- 335              		.loc 1 82 16 is_stmt 0 view .LVU68
- 336 0094 0DEB0A00 		add	r0, sp, r10
- 337 0098 FFF7FEFF 		bl	DJIMotorInit
- 338              	.LVL9:
-  82:application/chassis/chassis.c **** 
- 339              		.loc 1 82 14 discriminator 1 view .LVU69
- 340 009c 2E4B     		ldr	r3, .L18+36
- 341 009e 1860     		str	r0, [r3]
-  84:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
- 342              		.loc 1 84 5 is_stmt 1 view .LVU70
-  84:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
- 343              		.loc 1 84 48 is_stmt 0 view .LVU71
- 344 00a0 4FF00409 		mov	r9, #4
- 345 00a4 CDF85C91 		str	r9, [sp, #348]
-  85:application/chassis/chassis.c ****     motor_lb = DJIMotorInit(&chassis_motor_config);
- 346              		.loc 1 85 5 is_stmt 1 view .LVU72
-  85:application/chassis/chassis.c ****     motor_lb = DJIMotorInit(&chassis_motor_config);
- 347              		.loc 1 85 76 is_stmt 0 view .LVU73
- 348 00a8 8DF84E41 		strb	r4, [sp, #334]
-  86:application/chassis/chassis.c **** 
- 349              		.loc 1 86 5 is_stmt 1 view .LVU74
-  86:application/chassis/chassis.c **** 
- 350              		.loc 1 86 16 is_stmt 0 view .LVU75
- 351 00ac 0DEB0A00 		add	r0, sp, r10
- 352 00b0 FFF7FEFF 		bl	DJIMotorInit
- 353              	.LVL10:
-  86:application/chassis/chassis.c **** 
- 354              		.loc 1 86 14 discriminator 1 view .LVU76
- 355 00b4 294B     		ldr	r3, .L18+40
- 356 00b6 1860     		str	r0, [r3]
-  88:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
- 357              		.loc 1 88 5 is_stmt 1 view .LVU77
-  88:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
- 358              		.loc 1 88 48 is_stmt 0 view .LVU78
- 359 00b8 CDF85CB1 		str	fp, [sp, #348]
-  89:application/chassis/chassis.c ****     motor_rb = DJIMotorInit(&chassis_motor_config);
- 360              		.loc 1 89 5 is_stmt 1 view .LVU79
-  89:application/chassis/chassis.c ****     motor_rb = DJIMotorInit(&chassis_motor_config);
- 361              		.loc 1 89 76 is_stmt 0 view .LVU80
- 362 00bc 8DF84E41 		strb	r4, [sp, #334]
-  90:application/chassis/chassis.c ****     //----------------测试小米电机------------------
- 363              		.loc 1 90 5 is_stmt 1 view .LVU81
-  90:application/chassis/chassis.c ****     //----------------测试小米电机------------------
- 364              		.loc 1 90 16 is_stmt 0 view .LVU82
- 365 00c0 0DEB0A00 		add	r0, sp, r10
- 366 00c4 FFF7FEFF 		bl	DJIMotorInit
- 367              	.LVL11:
-  90:application/chassis/chassis.c ****     //----------------测试小米电机------------------
- 368              		.loc 1 90 14 discriminator 1 view .LVU83
- 369 00c8 254B     		ldr	r3, .L18+44
- 370 00ca 1860     		str	r0, [r3]
-  92:application/chassis/chassis.c ****         .can_init_config.can_handle = &hcan1,
- 371              		.loc 1 92 5 is_stmt 1 view .LVU84
-  92:application/chassis/chassis.c ****         .can_init_config.can_handle = &hcan1,
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 12
+ 334 0114 154B     		ldr	r3, .L10+48
+ 335 0116 1860     		str	r0, [r3]
+ 142:application/chassis/chassis.c ****     chassis_pub = PubRegister("chassis_feed", sizeof(Chassis_Upload_Data_s));
+ 336              		.loc 1 142 5 is_stmt 1 view .LVU82
+ 142:application/chassis/chassis.c ****     chassis_pub = PubRegister("chassis_feed", sizeof(Chassis_Upload_Data_s));
+ 337              		.loc 1 142 19 is_stmt 0 view .LVU83
+ 338 0118 2521     		movs	r1, #37
+ 339 011a 1548     		ldr	r0, .L10+52
+ 340 011c FFF7FEFF 		bl	SubRegister
+ 341              	.LVL10:
+ 142:application/chassis/chassis.c ****     chassis_pub = PubRegister("chassis_feed", sizeof(Chassis_Upload_Data_s));
+ 342              		.loc 1 142 17 discriminator 1 view .LVU84
+ 343 0120 144B     		ldr	r3, .L10+56
+ 344 0122 1860     		str	r0, [r3]
+ 143:application/chassis/chassis.c **** #endif // ONE_BOARD
+ 345              		.loc 1 143 5 is_stmt 1 view .LVU85
+ 143:application/chassis/chassis.c **** #endif // ONE_BOARD
+ 346              		.loc 1 143 19 is_stmt 0 view .LVU86
+ 347 0124 2146     		mov	r1, r4
+ 348 0126 1448     		ldr	r0, .L10+60
+ 349 0128 FFF7FEFF 		bl	PubRegister
+ 350              	.LVL11:
+ 143:application/chassis/chassis.c **** #endif // ONE_BOARD
+ 351              		.loc 1 143 17 discriminator 1 view .LVU87
+ 352 012c 134B     		ldr	r3, .L10+64
+ 353 012e 1860     		str	r0, [r3]
+ 145:application/chassis/chassis.c **** #define LF_CENTER ((HALF_TRACK_WIDTH + CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE - CENTER_GIMBAL_OFF
+ 354              		.loc 1 145 1 view .LVU88
+ 355 0130 5BB0     		add	sp, sp, #364
+ 356              		.cfi_def_cfa_offset 52
+ 357              		@ sp needed
+ 358 0132 BDEC048B 		vldm	sp!, {d8-d9}
+ 359              		.cfi_restore 82
+ 360              		.cfi_restore 83
+ 361              		.cfi_restore 80
+ 362              		.cfi_restore 81
+ 363              		.cfi_def_cfa_offset 36
+ 364 0136 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 365              	.L11:
+ 366 013a 00BF     		.align	2
+ 367              	.L10:
+ 368 013c 00000000 		.word	chassis_distance_pid
+ 369 0140 0AD7233C 		.word	1008981770
+ 370 0144 00401C46 		.word	1176256512
+ 371 0148 0060EA46 		.word	1189765120
+ 372 014c 00000000 		.word	chassis_angle_pid
+ 373 0150 00002F44 		.word	1143930880
+ 374 0154 00606A46 		.word	1181376512
+ 375 0158 00803B45 		.word	1161527296
+ 376 015c 00803B46 		.word	1178304512
+ 377 0160 00000000 		.word	motor_rf
+ 378 0164 00000000 		.word	motor_lb
+ 379 0168 00000000 		.word	motor_rb
+ 380 016c 00000000 		.word	motor_lf
+ 381 0170 00000000 		.word	.LC0
+ 382 0174 00000000 		.word	chassis_sub
+ 383 0178 0C000000 		.word	.LC1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 12
 
 
- 372              		.loc 1 92 25 is_stmt 0 view .LVU85
- 373 00cc 5246     		mov	r2, r10
- 374 00ce 0021     		movs	r1, #0
- 375 00d0 6846     		mov	r0, sp
- 376 00d2 FFF7FEFF 		bl	memset
- 377              	.LVL12:
- 378 00d6 CDED049A 		vstr.32	s19, [sp, #16]
- 379 00da 8DED079A 		vstr.32	s18, [sp, #28]
- 380 00de 8DF82470 		strb	r7, [sp, #36]
- 381 00e2 0A96     		str	r6, [sp, #40]	@ float
- 382 00e4 8DED0F8A 		vstr.32	s16, [sp, #60]
- 383 00e8 CDED128A 		vstr.32	s17, [sp, #72]
- 384 00ec 8DF85070 		strb	r7, [sp, #80]
- 385 00f0 1596     		str	r6, [sp, #84]	@ float
- 386 00f2 8DF89450 		strb	r5, [sp, #148]
- 387 00f6 8DF89550 		strb	r5, [sp, #149]
- 388 00fa 8DF89B90 		strb	r9, [sp, #155]
- 389 00fe CDF89C80 		str	r8, [sp, #156]
- 120:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
- 390              		.loc 1 120 5 is_stmt 1 view .LVU86
- 120:application/chassis/chassis.c ****     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERS
- 391              		.loc 1 120 48 is_stmt 0 view .LVU87
- 392 0102 5794     		str	r4, [sp, #348]
- 121:application/chassis/chassis.c ****     motor_lf = MIMotorInit(&mi__motor_config);
- 393              		.loc 1 121 5 is_stmt 1 view .LVU88
- 121:application/chassis/chassis.c ****     motor_lf = MIMotorInit(&mi__motor_config);
- 394              		.loc 1 121 76 is_stmt 0 view .LVU89
- 395 0104 8DF84E41 		strb	r4, [sp, #334]
- 122:application/chassis/chassis.c ****    
- 396              		.loc 1 122 5 is_stmt 1 view .LVU90
- 122:application/chassis/chassis.c ****    
- 397              		.loc 1 122 16 is_stmt 0 view .LVU91
- 398 0108 6846     		mov	r0, sp
- 399 010a FFF7FEFF 		bl	MIMotorInit
- 400              	.LVL13:
- 122:application/chassis/chassis.c ****    
- 401              		.loc 1 122 14 discriminator 1 view .LVU92
- 402 010e 154B     		ldr	r3, .L18+48
- 403 0110 1860     		str	r0, [r3]
- 140:application/chassis/chassis.c ****     chassis_pub = PubRegister("chassis_feed", sizeof(Chassis_Upload_Data_s));
- 404              		.loc 1 140 5 is_stmt 1 view .LVU93
- 140:application/chassis/chassis.c ****     chassis_pub = PubRegister("chassis_feed", sizeof(Chassis_Upload_Data_s));
- 405              		.loc 1 140 19 is_stmt 0 view .LVU94
- 406 0112 2521     		movs	r1, #37
- 407 0114 1448     		ldr	r0, .L18+52
- 408 0116 FFF7FEFF 		bl	SubRegister
- 409              	.LVL14:
- 140:application/chassis/chassis.c ****     chassis_pub = PubRegister("chassis_feed", sizeof(Chassis_Upload_Data_s));
- 410              		.loc 1 140 17 discriminator 1 view .LVU95
- 411 011a 144B     		ldr	r3, .L18+56
- 412 011c 1860     		str	r0, [r3]
- 141:application/chassis/chassis.c **** #endif // ONE_BOARD
- 413              		.loc 1 141 5 is_stmt 1 view .LVU96
- 141:application/chassis/chassis.c **** #endif // ONE_BOARD
- 414              		.loc 1 141 19 is_stmt 0 view .LVU97
- 415 011e 2146     		mov	r1, r4
- 416 0120 1348     		ldr	r0, .L18+60
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 13
+ 384 017c 00000000 		.word	chassis_pub
+ 385 0180 00002041 		.word	1092616192
+ 386 0184 00000000 		.word	hcan1
+ 387              		.cfi_endproc
+ 388              	.LFE167:
+ 390              		.section	.text.ChassisTask,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	ChassisTask
+ 393              		.syntax unified
+ 394              		.thumb
+ 395              		.thumb_func
+ 397              	ChassisTask:
+ 398              	.LFB173:
+ 182:application/chassis/chassis.c **** 
+ 183:application/chassis/chassis.c **** 
+ 184:application/chassis/chassis.c **** /**
+ 185:application/chassis/chassis.c ****  * @brief 对控制的底盘距离进行解算
+ 186:application/chassis/chassis.c ****  *          
+ 187:application/chassis/chassis.c ****  *
+ 188:application/chassis/chassis.c ****  */
+ 189:application/chassis/chassis.c **** 
+ 190:application/chassis/chassis.c **** static void EstimateChassisDistance(PIDInstance *chassis_distance_pid,float distance_measure,float 
+ 191:application/chassis/chassis.c ****         chassis_cmd_recv.vy= -1*PIDCalculate(chassis_distance_pid, distance_measure, distance_ref);
+ 192:application/chassis/chassis.c **** }
+ 193:application/chassis/chassis.c **** 
+ 194:application/chassis/chassis.c **** 
+ 195:application/chassis/chassis.c **** /**
+ 196:application/chassis/chassis.c ****  * @brief 对控制的底盘角度进行解算
+ 197:application/chassis/chassis.c ****  *          
+ 198:application/chassis/chassis.c ****  *
+ 199:application/chassis/chassis.c ****  */
+ 200:application/chassis/chassis.c **** 
+ 201:application/chassis/chassis.c **** static void EstimateChassisAngle(PIDInstance *chassis_angle_pid,float angle_measure,float angle_ref
+ 202:application/chassis/chassis.c ****         chassis_cmd_recv.wz= -1*PIDCalculate(chassis_angle_pid, angle_measure, angle_ref);
+ 203:application/chassis/chassis.c **** }
+ 204:application/chassis/chassis.c **** 
+ 205:application/chassis/chassis.c **** /**
+ 206:application/chassis/chassis.c ****  * @brief 根据每个轮子的速度反馈,计算底盘的实际运动速度,逆运动解算
+ 207:application/chassis/chassis.c ****  *        对于双板的情况,考虑增加来自底盘板IMU的数据
+ 208:application/chassis/chassis.c ****  *
+ 209:application/chassis/chassis.c ****  */
+ 210:application/chassis/chassis.c **** static void EstimateSpeed()
+ 211:application/chassis/chassis.c ****     // 根据电机速度和陀螺仪的角速度进行解算,还可以利用加速度计判断是�
+ 212:application/chassis/chassis.c **** {
+ 213:application/chassis/chassis.c ****     // chassis_feedback_data.vx vy wz =
+ 214:application/chassis/chassis.c ****     //  ...
+ 215:application/chassis/chassis.c **** }
+ 216:application/chassis/chassis.c **** 
+ 217:application/chassis/chassis.c **** /* 机器人底盘控制核心任务 */
+ 218:application/chassis/chassis.c **** void ChassisTask()
+ 219:application/chassis/chassis.c **** {
+ 399              		.loc 1 219 1 is_stmt 1 view -0
+ 400              		.cfi_startproc
+ 401              		@ args = 0, pretend = 0, frame = 0
+ 402              		@ frame_needed = 0, uses_anonymous_args = 0
+ 403 0000 10B5     		push	{r4, lr}
+ 404              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 13
 
 
- 417 0122 FFF7FEFF 		bl	PubRegister
- 418              	.LVL15:
- 141:application/chassis/chassis.c **** #endif // ONE_BOARD
- 419              		.loc 1 141 17 discriminator 1 view .LVU98
- 420 0126 134B     		ldr	r3, .L18+64
- 421 0128 1860     		str	r0, [r3]
- 143:application/chassis/chassis.c **** #define LF_CENTER ((HALF_TRACK_WIDTH + CENTER_GIMBAL_OFFSET_X + HALF_WHEEL_BASE - CENTER_GIMBAL_OFF
- 422              		.loc 1 143 1 view .LVU99
- 423 012a 5DB0     		add	sp, sp, #372
- 424              		.cfi_def_cfa_offset 52
- 425              		@ sp needed
- 426 012c BDEC048B 		vldm	sp!, {d8-d9}
- 427              		.cfi_restore 82
- 428              		.cfi_restore 83
- 429              		.cfi_restore 80
- 430              		.cfi_restore 81
- 431              		.cfi_def_cfa_offset 36
- 432 0130 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
- 433              	.L19:
- 434              		.align	2
- 435              	.L18:
- 436 0134 00000000 		.word	chassis_distance_pid
- 437 0138 0AD7233C 		.word	1008981770
- 438 013c 00401C46 		.word	1176256512
- 439 0140 0060EA46 		.word	1189765120
- 440 0144 00000000 		.word	chassis_angle_pid
- 441 0148 00002F44 		.word	1143930880
- 442 014c 00606A46 		.word	1181376512
- 443 0150 00803B45 		.word	1161527296
- 444 0154 00803B46 		.word	1178304512
- 445 0158 00000000 		.word	motor_rf
- 446 015c 00000000 		.word	motor_lb
- 447 0160 00000000 		.word	motor_rb
- 448 0164 00000000 		.word	motor_lf
- 449 0168 00000000 		.word	.LC0
- 450 016c 00000000 		.word	chassis_sub
- 451 0170 0C000000 		.word	.LC1
- 452 0174 00000000 		.word	chassis_pub
- 453 0178 00000000 		.word	hcan1
- 454              		.cfi_endproc
- 455              	.LFE167:
- 457              		.section	.text.ChassisTask,"ax",%progbits
- 458              		.align	1
- 459              		.global	ChassisTask
- 460              		.syntax unified
- 461              		.thumb
- 462              		.thumb_func
- 464              	ChassisTask:
- 465              	.LFB173:
- 202:application/chassis/chassis.c **** 
- 203:application/chassis/chassis.c **** /**
- 204:application/chassis/chassis.c ****  * @brief 根据每个轮子的速度反馈,计算底盘的实际运动速度,逆运动解算
- 205:application/chassis/chassis.c ****  *        对于双板的情况,考虑增加来自底盘板IMU的数据
- 206:application/chassis/chassis.c ****  *
- 207:application/chassis/chassis.c ****  */
- 208:application/chassis/chassis.c **** static void EstimateSpeed()
- 209:application/chassis/chassis.c ****     // 根据电机速度和陀螺仪的角速度进行解算,还可以利用加速度计判断是�
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 14
+ 405              		.cfi_offset 4, -8
+ 406              		.cfi_offset 14, -4
+ 220:application/chassis/chassis.c ****     // 后续增加没收到消息的处理(双板的情况)
+ 221:application/chassis/chassis.c ****     // 获取新的控制信息
+ 222:application/chassis/chassis.c **** #ifdef ONE_BOARD
+ 223:application/chassis/chassis.c ****     SubGetMessage(chassis_sub, &chassis_cmd_recv);
+ 407              		.loc 1 223 5 view .LVU90
+ 408 0002 284C     		ldr	r4, .L16
+ 409 0004 2146     		mov	r1, r4
+ 410 0006 284B     		ldr	r3, .L16+4
+ 411 0008 1868     		ldr	r0, [r3]
+ 412 000a FFF7FEFF 		bl	SubGetMessage
+ 413              	.LVL12:
+ 224:application/chassis/chassis.c **** #endif   
+ 225:application/chassis/chassis.c **** #ifdef CHASSIS_BOARD
+ 226:application/chassis/chassis.c ****     chassis_cmd_recv = *(Chassis_Ctrl_Cmd_s *)CANCommGet(chasiss_can_comm);
+ 227:application/chassis/chassis.c **** #endif // CHASSIS_BOARD
+ 228:application/chassis/chassis.c **** 
+ 229:application/chassis/chassis.c ****     if (chassis_cmd_recv.chassis_mode == CHASSIS_ZERO_FORCE)
+ 414              		.loc 1 229 5 view .LVU91
+ 415              		.loc 1 229 25 is_stmt 0 view .LVU92
+ 416 000e 237D     		ldrb	r3, [r4, #20]	@ zero_extendqisi2
+ 417              		.loc 1 229 8 view .LVU93
+ 418 0010 002B     		cmp	r3, #0
+ 419 0012 35D1     		bne	.L13
+ 230:application/chassis/chassis.c ****     { // 如果出现重要模块离线或遥控器设置为急停,让电机停止
+ 231:application/chassis/chassis.c ****         MIMotorStop(motor_lf);
+ 420              		.loc 1 231 9 is_stmt 1 view .LVU94
+ 421 0014 254B     		ldr	r3, .L16+8
+ 422 0016 1868     		ldr	r0, [r3]
+ 423 0018 FFF7FEFF 		bl	MIMotorStop
+ 424              	.LVL13:
+ 232:application/chassis/chassis.c ****         DJIMotorStop(motor_rf);
+ 425              		.loc 1 232 9 view .LVU95
+ 426 001c 244B     		ldr	r3, .L16+12
+ 427 001e 1868     		ldr	r0, [r3]
+ 428 0020 FFF7FEFF 		bl	DJIMotorStop
+ 429              	.LVL14:
+ 233:application/chassis/chassis.c ****         DJIMotorStop(motor_lb);
+ 430              		.loc 1 233 9 view .LVU96
+ 431 0024 234B     		ldr	r3, .L16+16
+ 432 0026 1868     		ldr	r0, [r3]
+ 433 0028 FFF7FEFF 		bl	DJIMotorStop
+ 434              	.LVL15:
+ 234:application/chassis/chassis.c ****         DJIMotorStop(motor_rb);
+ 435              		.loc 1 234 9 view .LVU97
+ 436 002c 224B     		ldr	r3, .L16+20
+ 437 002e 1868     		ldr	r0, [r3]
+ 438 0030 FFF7FEFF 		bl	DJIMotorStop
+ 439              	.LVL16:
+ 440              	.L14:
+ 235:application/chassis/chassis.c ****     }
+ 236:application/chassis/chassis.c ****     else
+ 237:application/chassis/chassis.c ****     { // 正常工作
+ 238:application/chassis/chassis.c ****         MIMotorEnable(motor_lf);
+ 239:application/chassis/chassis.c ****         DJIMotorEnable(motor_rf);
+ 240:application/chassis/chassis.c ****         DJIMotorEnable(motor_lb);
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 14
 
 
- 210:application/chassis/chassis.c **** {
- 211:application/chassis/chassis.c ****     // chassis_feedback_data.vx vy wz =
- 212:application/chassis/chassis.c ****     //  ...
- 213:application/chassis/chassis.c **** }
- 214:application/chassis/chassis.c **** 
- 215:application/chassis/chassis.c **** /* 机器人底盘控制核心任务 */
- 216:application/chassis/chassis.c **** void ChassisTask()
- 217:application/chassis/chassis.c **** {
- 466              		.loc 1 217 1 is_stmt 1 view -0
- 467              		.cfi_startproc
- 468              		@ args = 0, pretend = 0, frame = 0
- 469              		@ frame_needed = 0, uses_anonymous_args = 0
- 470 0000 38B5     		push	{r3, r4, r5, lr}
- 471              		.cfi_def_cfa_offset 16
- 472              		.cfi_offset 3, -16
- 473              		.cfi_offset 4, -12
- 474              		.cfi_offset 5, -8
- 475              		.cfi_offset 14, -4
- 218:application/chassis/chassis.c ****     // 后续增加没收到消息的处理(双板的情况)
- 219:application/chassis/chassis.c ****     // 获取新的控制信息
- 220:application/chassis/chassis.c **** #ifdef ONE_BOARD
- 221:application/chassis/chassis.c ****     SubGetMessage(chassis_sub, &chassis_cmd_recv);
- 476              		.loc 1 221 5 view .LVU101
- 477 0002 2E4C     		ldr	r4, .L24
- 478 0004 2146     		mov	r1, r4
- 479 0006 2E4B     		ldr	r3, .L24+4
- 480 0008 1868     		ldr	r0, [r3]
- 481 000a FFF7FEFF 		bl	SubGetMessage
- 482              	.LVL16:
- 222:application/chassis/chassis.c **** #endif   
- 223:application/chassis/chassis.c **** #ifdef CHASSIS_BOARD
- 224:application/chassis/chassis.c ****     chassis_cmd_recv = *(Chassis_Ctrl_Cmd_s *)CANCommGet(chasiss_can_comm);
- 225:application/chassis/chassis.c **** #endif // CHASSIS_BOARD
- 226:application/chassis/chassis.c **** 
- 227:application/chassis/chassis.c ****     if (chassis_cmd_recv.chassis_mode == CHASSIS_ZERO_FORCE)
- 483              		.loc 1 227 5 view .LVU102
- 484              		.loc 1 227 25 is_stmt 0 view .LVU103
- 485 000e 237D     		ldrb	r3, [r4, #20]	@ zero_extendqisi2
- 486              		.loc 1 227 8 view .LVU104
- 487 0010 002B     		cmp	r3, #0
- 488 0012 42D1     		bne	.L21
- 228:application/chassis/chassis.c ****     { // 如果出现重要模块离线或遥控器设置为急停,让电机停止
- 229:application/chassis/chassis.c ****         DJIMotorStop(motor_lf);
- 489              		.loc 1 229 9 is_stmt 1 view .LVU105
- 490 0014 2B4B     		ldr	r3, .L24+8
- 491 0016 1868     		ldr	r0, [r3]
- 492 0018 FFF7FEFF 		bl	DJIMotorStop
- 493              	.LVL17:
- 230:application/chassis/chassis.c ****         DJIMotorStop(motor_rf);
- 494              		.loc 1 230 9 view .LVU106
- 495 001c 2A4B     		ldr	r3, .L24+12
- 496 001e 1868     		ldr	r0, [r3]
- 497 0020 FFF7FEFF 		bl	DJIMotorStop
- 498              	.LVL18:
- 231:application/chassis/chassis.c ****         DJIMotorStop(motor_lb);
- 499              		.loc 1 231 9 view .LVU107
- 500 0024 294B     		ldr	r3, .L24+16
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 15
-
-
- 501 0026 1868     		ldr	r0, [r3]
- 502 0028 FFF7FEFF 		bl	DJIMotorStop
- 503              	.LVL19:
- 232:application/chassis/chassis.c ****         DJIMotorStop(motor_rb);
- 504              		.loc 1 232 9 view .LVU108
- 505 002c 284B     		ldr	r3, .L24+20
- 506 002e 1868     		ldr	r0, [r3]
- 507 0030 FFF7FEFF 		bl	DJIMotorStop
- 508              	.LVL20:
- 509              	.L22:
- 233:application/chassis/chassis.c ****     }
- 234:application/chassis/chassis.c ****     else
- 235:application/chassis/chassis.c ****     { // 正常工作
- 236:application/chassis/chassis.c ****         DJIMotorEnable(motor_lf);
- 237:application/chassis/chassis.c ****         DJIMotorEnable(motor_rf);
- 238:application/chassis/chassis.c ****         DJIMotorEnable(motor_lb);
- 239:application/chassis/chassis.c ****         DJIMotorEnable(motor_rb);
- 240:application/chassis/chassis.c ****     }
- 241:application/chassis/chassis.c ****     chassis_x=chassis_cmd_recv.x;
- 510              		.loc 1 241 5 view .LVU109
- 511              		.loc 1 241 31 is_stmt 0 view .LVU110
- 512 0034 214C     		ldr	r4, .L24
- 513 0036 D4F81930 		ldr	r3, [r4, #25]	@ unaligned
- 514              		.loc 1 241 14 view .LVU111
- 515 003a 264D     		ldr	r5, .L24+24
- 516 003c 2B60     		str	r3, [r5]	@ float
- 242:application/chassis/chassis.c ****     chassis_z=INS.total_angle;
- 517              		.loc 1 242 5 is_stmt 1 view .LVU112
- 518              		.loc 1 242 18 is_stmt 0 view .LVU113
- 519 003e 264B     		ldr	r3, .L24+28
- 520 0040 93ED200A 		vldr.32	s0, [r3, #128]
- 521              		.loc 1 242 14 view .LVU114
- 522 0044 254B     		ldr	r3, .L24+32
- 523 0046 83ED000A 		vstr.32	s0, [r3]
- 243:application/chassis/chassis.c ****     // 根据控制模式设定旋转速度
- 244:application/chassis/chassis.c ****     // switch (chassis_cmd_recv.chassis_mode)
- 245:application/chassis/chassis.c ****     // {
- 246:application/chassis/chassis.c ****     // case CHASSIS_NO_FOLLOW: // 底盘不旋转,但维持全向机动,一般用于调整云台姿
- 247:application/chassis/chassis.c ****     //     chassis_cmd_recv.wz = 0;
- 248:application/chassis/chassis.c ****     //     break;
- 249:application/chassis/chassis.c ****     // case CHASSIS_FOLLOW_GIMBAL_YAW: // 跟随云台,不单独设置pid,以误差角度平方为�
- 250:application/chassis/chassis.c ****     //     chassis_cmd_recv.wz = -1.5f * chassis_cmd_recv.offset_angle * abs(chassis_cmd_recv.offse
- 251:application/chassis/chassis.c ****     //     break;
- 252:application/chassis/chassis.c ****     // case CHASSIS_ROTATE: // 自旋,同时保持全向机动;当前wz维持定值,后续增加不
- 253:application/chassis/chassis.c ****     //     chassis_cmd_recv.wz = 4000;
- 254:application/chassis/chassis.c ****     //     break;
- 255:application/chassis/chassis.c ****     // default:
+ 241:application/chassis/chassis.c ****         DJIMotorEnable(motor_rb);
+ 242:application/chassis/chassis.c ****     }
+ 243:application/chassis/chassis.c ****     chassis_x=chassis_cmd_recv.x;
+ 441              		.loc 1 243 5 view .LVU98
+ 442              		.loc 1 243 31 is_stmt 0 view .LVU99
+ 443 0034 1B4B     		ldr	r3, .L16
+ 444 0036 D3F81910 		ldr	r1, [r3, #25]	@ unaligned
+ 445              		.loc 1 243 14 view .LVU100
+ 446 003a 204A     		ldr	r2, .L16+24
+ 447 003c 1160     		str	r1, [r2]	@ float
+ 244:application/chassis/chassis.c ****     chassis_z=INS.total_angle;
+ 448              		.loc 1 244 5 is_stmt 1 view .LVU101
+ 449              		.loc 1 244 18 is_stmt 0 view .LVU102
+ 450 003e 204A     		ldr	r2, .L16+28
+ 451 0040 D2F88010 		ldr	r1, [r2, #128]	@ float
+ 452              		.loc 1 244 14 view .LVU103
+ 453 0044 1F4A     		ldr	r2, .L16+32
+ 454 0046 1160     		str	r1, [r2]	@ float
+ 245:application/chassis/chassis.c ****     // 根据控制模式设定旋转速度
+ 246:application/chassis/chassis.c ****     // switch (chassis_cmd_recv.chassis_mode)
+ 247:application/chassis/chassis.c ****     // {
+ 248:application/chassis/chassis.c ****     // case CHASSIS_NO_FOLLOW: // 底盘不旋转,但维持全向机动,一般用于调整云台姿
+ 249:application/chassis/chassis.c ****     //     chassis_cmd_recv.wz = 0;
+ 250:application/chassis/chassis.c ****     //     break;
+ 251:application/chassis/chassis.c ****     // case CHASSIS_FOLLOW_GIMBAL_YAW: // 跟随云台,不单独设置pid,以误差角度平方为�
+ 252:application/chassis/chassis.c ****     //     chassis_cmd_recv.wz = -1.5f * chassis_cmd_recv.offset_angle * abs(chassis_cmd_recv.offse
+ 253:application/chassis/chassis.c ****     //     break;
+ 254:application/chassis/chassis.c ****     // case CHASSIS_ROTATE: // 自旋,同时保持全向机动;当前wz维持定值,后续增加不
+ 255:application/chassis/chassis.c ****     //     chassis_cmd_recv.wz = 4000;
  256:application/chassis/chassis.c ****     //     break;
- 257:application/chassis/chassis.c ****     // }
- 258:application/chassis/chassis.c ****     // if((90-abs(INS.Yaw))>30){----底盘转90°
- 259:application/chassis/chassis.c **** 
- 260:application/chassis/chassis.c ****     // }else
- 261:application/chassis/chassis.c ****     // {intergal=intergal+(90-abs(INS.Yaw));}
- 262:application/chassis/chassis.c ****     // chassis_cmd_recv.wz=(90-abs(INS.Yaw))*10+intergal*0.05;
- 263:application/chassis/chassis.c ****     // chassis_cmd_recv.wz=PIDCalculate(&chassis_angle_pid, INS.Yaw,90);
- 264:application/chassis/chassis.c ****     EstimateChassisAngle(&chassis_angle_pid,chassis_z,0);
- 524              		.loc 1 264 5 is_stmt 1 view .LVU115
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 16
+ 257:application/chassis/chassis.c ****     // default:
+ 258:application/chassis/chassis.c ****     //     break;
+ 259:application/chassis/chassis.c ****     // }
+ 260:application/chassis/chassis.c ****     // if((90-abs(INS.Yaw))>30){----底盘转90°
+ 261:application/chassis/chassis.c **** 
+ 262:application/chassis/chassis.c ****     // }else
+ 263:application/chassis/chassis.c ****     // {intergal=intergal+(90-abs(INS.Yaw));}
+ 264:application/chassis/chassis.c ****     // chassis_cmd_recv.wz=(90-abs(INS.Yaw))*10+intergal*0.05;
+ 265:application/chassis/chassis.c ****     // chassis_cmd_recv.wz=PIDCalculate(&chassis_angle_pid, INS.Yaw,90);
+ 266:application/chassis/chassis.c ****     // EstimateChassisAngle(&chassis_angle_pid,chassis_z,0);
+ 267:application/chassis/chassis.c ****     // EstimateChassisDistance(&chassis_distance_pid, chassis_x,1000);
+ 268:application/chassis/chassis.c ****     chassis_vx=3.0*chassis_cmd_recv.vy;
+ 455              		.loc 1 268 5 is_stmt 1 view .LVU104
+ 456              		.loc 1 268 36 is_stmt 0 view .LVU105
+ 457 0048 D3ED017A 		vldr.32	s15, [r3, #4]
+ 458              		.loc 1 268 19 view .LVU106
+ 459 004c B0EE087A 		vmov.f32	s14, #3.0e+0
+ 460 0050 67EE877A 		vmul.f32	s15, s15, s14
+ 461              		.loc 1 268 15 view .LVU107
+ 462 0054 1C4A     		ldr	r2, .L16+36
+ 463 0056 C2ED007A 		vstr.32	s15, [r2]
+ 269:application/chassis/chassis.c ****     chassis_vy=-3.0*chassis_cmd_recv.vx;
+ 464              		.loc 1 269 5 is_stmt 1 view .LVU108
+ 465              		.loc 1 269 37 is_stmt 0 view .LVU109
+ 466 005a D3ED007A 		vldr.32	s15, [r3]
+ 467              		.loc 1 269 20 view .LVU110
+ 468 005e B8EE087A 		vmov.f32	s14, #-3.0e+0
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 15
 
 
- 525 004a DFED250A 		vldr.32	s1, .L24+36
- 526 004e 2548     		ldr	r0, .L24+40
- 527 0050 FFF7FEFF 		bl	EstimateChassisAngle
- 528              	.LVL21:
- 265:application/chassis/chassis.c ****     EstimateChassisDistance(&chassis_distance_pid, chassis_x,1000);
- 529              		.loc 1 265 5 view .LVU116
- 530 0054 DFED240A 		vldr.32	s1, .L24+44
- 531 0058 95ED000A 		vldr.32	s0, [r5]
- 532 005c 2348     		ldr	r0, .L24+48
- 533 005e FFF7FEFF 		bl	EstimateChassisDistance
- 534              	.LVL22:
- 266:application/chassis/chassis.c ****     chassis_vx=3.0*chassis_cmd_recv.vy;
- 535              		.loc 1 266 5 view .LVU117
- 536              		.loc 1 266 36 is_stmt 0 view .LVU118
- 537 0062 D4ED017A 		vldr.32	s15, [r4, #4]
- 538              		.loc 1 266 19 view .LVU119
- 539 0066 B0EE087A 		vmov.f32	s14, #3.0e+0
- 540 006a 67EE877A 		vmul.f32	s15, s15, s14
- 541              		.loc 1 266 15 view .LVU120
- 542 006e 204B     		ldr	r3, .L24+52
- 543 0070 C3ED007A 		vstr.32	s15, [r3]
- 267:application/chassis/chassis.c ****     chassis_vy=-3.0*chassis_cmd_recv.vx;
- 544              		.loc 1 267 5 is_stmt 1 view .LVU121
- 545              		.loc 1 267 37 is_stmt 0 view .LVU122
- 546 0074 D4ED007A 		vldr.32	s15, [r4]
- 547              		.loc 1 267 20 view .LVU123
- 548 0078 B8EE087A 		vmov.f32	s14, #-3.0e+0
- 549 007c 67EE877A 		vmul.f32	s15, s15, s14
- 550              		.loc 1 267 15 view .LVU124
- 551 0080 1C4B     		ldr	r3, .L24+56
- 552 0082 C3ED007A 		vstr.32	s15, [r3]
- 268:application/chassis/chassis.c ****     // chassis_wz=chassis_cmd_recv.wz;
- 269:application/chassis/chassis.c ****     //  chassis_cmd_recv.wz=0;
- 270:application/chassis/chassis.c ****     // 根据云台和底盘的角度offset将控制量映射到底盘坐标系上
- 271:application/chassis/chassis.c ****     // 底盘逆时针旋转为角度正方向;云台命令的方向以云台指向的方向为x,�
- 272:application/chassis/chassis.c ****     // static float sin_theta, cos_theta;
- 273:application/chassis/chassis.c ****     // cos_theta = arm_cos_f32(chassis_cmd_recv.offset_angle * DEGREE_2_RAD);
- 274:application/chassis/chassis.c ****     // sin_theta = arm_sin_f32(chassis_cmd_recv.offset_angle * DEGREE_2_RAD);
- 275:application/chassis/chassis.c ****     // chassis_vx = chassis_cmd_recv.vx * cos_theta - chassis_cmd_recv.vy * sin_theta;
- 276:application/chassis/chassis.c ****     // chassis_vy = chassis_cmd_recv.vx * sin_theta + chassis_cmd_recv.vy * cos_theta;
- 277:application/chassis/chassis.c ****     
- 278:application/chassis/chassis.c **** 
- 279:application/chassis/chassis.c ****     // 根据控制模式进行正运动学解算,计算底盘输出
- 280:application/chassis/chassis.c ****     MecanumCalculate();
- 553              		.loc 1 280 5 is_stmt 1 view .LVU125
- 554 0086 FFF7FEFF 		bl	MecanumCalculate
- 555              	.LVL23:
- 281:application/chassis/chassis.c **** 
- 282:application/chassis/chassis.c ****     // 根据裁判系统的反馈数据和电容数据对输出限幅并设定闭环参考值
- 283:application/chassis/chassis.c ****     LimitChassisOutput();
- 556              		.loc 1 283 5 view .LVU126
- 557 008a FFF7FEFF 		bl	LimitChassisOutput
- 558              	.LVL24:
- 284:application/chassis/chassis.c **** 
- 285:application/chassis/chassis.c ****     // 根据电机的反馈速度和IMU(如果有)计算真实速度
- 286:application/chassis/chassis.c ****     EstimateSpeed();
- 559              		.loc 1 286 5 view .LVU127
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 17
+ 469 0062 67EE877A 		vmul.f32	s15, s15, s14
+ 470              		.loc 1 269 15 view .LVU111
+ 471 0066 194B     		ldr	r3, .L16+40
+ 472 0068 C3ED007A 		vstr.32	s15, [r3]
+ 270:application/chassis/chassis.c ****     // chassis_wz=chassis_cmd_recv.wz;
+ 271:application/chassis/chassis.c ****     //  chassis_cmd_recv.wz=0;
+ 272:application/chassis/chassis.c ****     // 根据云台和底盘的角度offset将控制量映射到底盘坐标系上
+ 273:application/chassis/chassis.c ****     // 底盘逆时针旋转为角度正方向;云台命令的方向以云台指向的方向为x,�
+ 274:application/chassis/chassis.c ****     // static float sin_theta, cos_theta;
+ 275:application/chassis/chassis.c ****     // cos_theta = arm_cos_f32(chassis_cmd_recv.offset_angle * DEGREE_2_RAD);
+ 276:application/chassis/chassis.c ****     // sin_theta = arm_sin_f32(chassis_cmd_recv.offset_angle * DEGREE_2_RAD);
+ 277:application/chassis/chassis.c ****     // chassis_vx = chassis_cmd_recv.vx * cos_theta - chassis_cmd_recv.vy * sin_theta;
+ 278:application/chassis/chassis.c ****     // chassis_vy = chassis_cmd_recv.vx * sin_theta + chassis_cmd_recv.vy * cos_theta;
+ 279:application/chassis/chassis.c ****     
+ 280:application/chassis/chassis.c **** 
+ 281:application/chassis/chassis.c ****     // 根据控制模式进行正运动学解算,计算底盘输出
+ 282:application/chassis/chassis.c ****     MecanumCalculate();
+ 473              		.loc 1 282 5 is_stmt 1 view .LVU112
+ 474 006c FFF7FEFF 		bl	MecanumCalculate
+ 475              	.LVL17:
+ 283:application/chassis/chassis.c **** 
+ 284:application/chassis/chassis.c ****     // 根据裁判系统的反馈数据和电容数据对输出限幅并设定闭环参考值
+ 285:application/chassis/chassis.c ****     LimitChassisOutput();
+ 476              		.loc 1 285 5 view .LVU113
+ 477 0070 FFF7FEFF 		bl	LimitChassisOutput
+ 478              	.LVL18:
+ 286:application/chassis/chassis.c **** 
+ 287:application/chassis/chassis.c ****     // 根据电机的反馈速度和IMU(如果有)计算真实速度
+ 288:application/chassis/chassis.c ****     EstimateSpeed();
+ 479              		.loc 1 288 5 view .LVU114
+ 289:application/chassis/chassis.c **** 
+ 290:application/chassis/chassis.c ****     // // 获取裁判系统数据   建议将裁判系统与底盘分离，所以此处数据应�
+ 291:application/chassis/chassis.c ****     // // 我方颜色id小于7是红色,大于7是蓝色,注意这里发送的是对方的颜色, 
+ 292:application/chassis/chassis.c ****     // chassis_feedback_data.enemy_color = referee_data->GameRobotState.robot_id > 7 ? 1 : 0;
+ 293:application/chassis/chassis.c ****     // // 当前只做了17mm热量的数据获取,后续根据robot_def中的宏切换双枪管和
+ 294:application/chassis/chassis.c ****     // chassis_feedback_data.bullet_speed = referee_data->GameRobotState.shooter_id1_17mm_speed_lim
+ 295:application/chassis/chassis.c ****     // chassis_feedback_data.rest_heat = referee_data->PowerHeatData.shooter_heat0;
+ 296:application/chassis/chassis.c **** 
+ 297:application/chassis/chassis.c ****     // 推送反馈消息
+ 298:application/chassis/chassis.c **** #ifdef ONE_BOARD
+ 299:application/chassis/chassis.c ****     PubPushMessage(chassis_pub, (void *)&chassis_feedback_data);
+ 480              		.loc 1 299 5 view .LVU115
+ 481 0074 1649     		ldr	r1, .L16+44
+ 482 0076 174B     		ldr	r3, .L16+48
+ 483 0078 1868     		ldr	r0, [r3]
+ 484 007a FFF7FEFF 		bl	PubPushMessage
+ 485              	.LVL19:
+ 300:application/chassis/chassis.c **** #endif
+ 301:application/chassis/chassis.c **** #ifdef CHASSIS_BOARD
+ 302:application/chassis/chassis.c ****     CANCommSend(chasiss_can_comm, (void *)&chassis_feedback_data);
+ 303:application/chassis/chassis.c **** #endif // CHASSIS_BOARD
+ 304:application/chassis/chassis.c **** }...
+ 486              		.loc 1 304 1 is_stmt 0 view .LVU116
+ 487 007e 10BD     		pop	{r4, pc}
+ 488              	.L13:
+ 238:application/chassis/chassis.c ****         MIMotorEnable(motor_lf);
+ 489              		.loc 1 238 9 is_stmt 1 view .LVU117
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 16
 
 
- 287:application/chassis/chassis.c **** 
- 288:application/chassis/chassis.c ****     // // 获取裁判系统数据   建议将裁判系统与底盘分离，所以此处数据应�
- 289:application/chassis/chassis.c ****     // // 我方颜色id小于7是红色,大于7是蓝色,注意这里发送的是对方的颜色, 
- 290:application/chassis/chassis.c ****     // chassis_feedback_data.enemy_color = referee_data->GameRobotState.robot_id > 7 ? 1 : 0;
- 291:application/chassis/chassis.c ****     // // 当前只做了17mm热量的数据获取,后续根据robot_def中的宏切换双枪管和
- 292:application/chassis/chassis.c ****     // chassis_feedback_data.bullet_speed = referee_data->GameRobotState.shooter_id1_17mm_speed_lim
- 293:application/chassis/chassis.c ****     // chassis_feedback_data.rest_heat = referee_data->PowerHeatData.shooter_heat0;
- 294:application/chassis/chassis.c **** 
- 295:application/chassis/chassis.c ****     // 推送反馈消息
- 296:application/chassis/chassis.c **** #ifdef ONE_BOARD
- 297:application/chassis/chassis.c ****     PubPushMessage(chassis_pub, (void *)&chassis_feedback_data);
- 560              		.loc 1 297 5 view .LVU128
- 561 008e 1A49     		ldr	r1, .L24+60
- 562 0090 1A4B     		ldr	r3, .L24+64
- 563 0092 1868     		ldr	r0, [r3]
- 564 0094 FFF7FEFF 		bl	PubPushMessage
- 565              	.LVL25:
- 298:application/chassis/chassis.c **** #endif
- 299:application/chassis/chassis.c **** #ifdef CHASSIS_BOARD
- 300:application/chassis/chassis.c ****     CANCommSend(chasiss_can_comm, (void *)&chassis_feedback_data);
- 301:application/chassis/chassis.c **** #endif // CHASSIS_BOARD
- 302:application/chassis/chassis.c **** }...
- 566              		.loc 1 302 1 is_stmt 0 view .LVU129
- 567 0098 38BD     		pop	{r3, r4, r5, pc}
- 568              	.L21:
- 236:application/chassis/chassis.c ****         DJIMotorEnable(motor_lf);
- 569              		.loc 1 236 9 is_stmt 1 view .LVU130
- 570 009a 0A4B     		ldr	r3, .L24+8
- 571 009c 1868     		ldr	r0, [r3]
- 572 009e FFF7FEFF 		bl	DJIMotorEnable
- 573              	.LVL26:
- 237:application/chassis/chassis.c ****         DJIMotorEnable(motor_rf);
- 574              		.loc 1 237 9 view .LVU131
- 575 00a2 094B     		ldr	r3, .L24+12
- 576 00a4 1868     		ldr	r0, [r3]
- 577 00a6 FFF7FEFF 		bl	DJIMotorEnable
- 578              	.LVL27:
- 238:application/chassis/chassis.c ****         DJIMotorEnable(motor_lb);
- 579              		.loc 1 238 9 view .LVU132
- 580 00aa 084B     		ldr	r3, .L24+16
- 581 00ac 1868     		ldr	r0, [r3]
- 582 00ae FFF7FEFF 		bl	DJIMotorEnable
- 583              	.LVL28:
- 239:application/chassis/chassis.c ****         DJIMotorEnable(motor_rb);
- 584              		.loc 1 239 9 view .LVU133
- 585 00b2 074B     		ldr	r3, .L24+20
- 586 00b4 1868     		ldr	r0, [r3]
- 587 00b6 FFF7FEFF 		bl	DJIMotorEnable
- 588              	.LVL29:
- 589 00ba BBE7     		b	.L22
- 590              	.L25:
- 591              		.align	2
- 592              	.L24:
- 593 00bc 00000000 		.word	chassis_cmd_recv
- 594 00c0 00000000 		.word	chassis_sub
- 595 00c4 00000000 		.word	motor_lf
- 596 00c8 00000000 		.word	motor_rf
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 18
+ 490 0080 0A4B     		ldr	r3, .L16+8
+ 491 0082 1868     		ldr	r0, [r3]
+ 492 0084 FFF7FEFF 		bl	MIMotorEnable
+ 493              	.LVL20:
+ 239:application/chassis/chassis.c ****         DJIMotorEnable(motor_rf);
+ 494              		.loc 1 239 9 view .LVU118
+ 495 0088 094B     		ldr	r3, .L16+12
+ 496 008a 1868     		ldr	r0, [r3]
+ 497 008c FFF7FEFF 		bl	DJIMotorEnable
+ 498              	.LVL21:
+ 240:application/chassis/chassis.c ****         DJIMotorEnable(motor_lb);
+ 499              		.loc 1 240 9 view .LVU119
+ 500 0090 084B     		ldr	r3, .L16+16
+ 501 0092 1868     		ldr	r0, [r3]
+ 502 0094 FFF7FEFF 		bl	DJIMotorEnable
+ 503              	.LVL22:
+ 241:application/chassis/chassis.c ****         DJIMotorEnable(motor_rb);
+ 504              		.loc 1 241 9 view .LVU120
+ 505 0098 074B     		ldr	r3, .L16+20
+ 506 009a 1868     		ldr	r0, [r3]
+ 507 009c FFF7FEFF 		bl	DJIMotorEnable
+ 508              	.LVL23:
+ 509 00a0 C8E7     		b	.L14
+ 510              	.L17:
+ 511 00a2 00BF     		.align	2
+ 512              	.L16:
+ 513 00a4 00000000 		.word	chassis_cmd_recv
+ 514 00a8 00000000 		.word	chassis_sub
+ 515 00ac 00000000 		.word	motor_lf
+ 516 00b0 00000000 		.word	motor_rf
+ 517 00b4 00000000 		.word	motor_lb
+ 518 00b8 00000000 		.word	motor_rb
+ 519 00bc 00000000 		.word	chassis_x
+ 520 00c0 00000000 		.word	INS
+ 521 00c4 00000000 		.word	chassis_z
+ 522 00c8 00000000 		.word	chassis_vx
+ 523 00cc 00000000 		.word	chassis_vy
+ 524 00d0 00000000 		.word	chassis_feedback_data
+ 525 00d4 00000000 		.word	chassis_pub
+ 526              		.cfi_endproc
+ 527              	.LFE173:
+ 529              		.section	.bss.motor_lf,"aw",%nobits
+ 530              		.align	2
+ 533              	motor_lf:
+ 534 0000 00000000 		.space	4
+ 535              		.section	.bss.motor_rb,"aw",%nobits
+ 536              		.align	2
+ 539              	motor_rb:
+ 540 0000 00000000 		.space	4
+ 541              		.section	.bss.motor_lb,"aw",%nobits
+ 542              		.align	2
+ 545              	motor_lb:
+ 546 0000 00000000 		.space	4
+ 547              		.section	.bss.motor_rf,"aw",%nobits
+ 548              		.align	2
+ 551              	motor_rf:
+ 552 0000 00000000 		.space	4
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 17
 
 
- 597 00cc 00000000 		.word	motor_lb
- 598 00d0 00000000 		.word	motor_rb
- 599 00d4 00000000 		.word	chassis_x
- 600 00d8 00000000 		.word	INS
- 601 00dc 00000000 		.word	chassis_z
- 602 00e0 00000000 		.word	0
- 603 00e4 00000000 		.word	chassis_angle_pid
- 604 00e8 00007A44 		.word	1148846080
- 605 00ec 00000000 		.word	chassis_distance_pid
- 606 00f0 00000000 		.word	chassis_vx
- 607 00f4 00000000 		.word	chassis_vy
- 608 00f8 00000000 		.word	chassis_feedback_data
- 609 00fc 00000000 		.word	chassis_pub
- 610              		.cfi_endproc
- 611              	.LFE173:
- 613              		.section	.bss.motor_lf,"aw",%nobits
+ 553              		.section	.bss.chassis_distance_pid,"aw",%nobits
+ 554              		.align	3
+ 557              	chassis_distance_pid:
+ 558 0000 00000000 		.space	120
+ 558      00000000 
+ 558      00000000 
+ 558      00000000 
+ 558      00000000 
+ 559              		.section	.bss.chassis_angle_pid,"aw",%nobits
+ 560              		.align	3
+ 563              	chassis_angle_pid:
+ 564 0000 00000000 		.space	120
+ 564      00000000 
+ 564      00000000 
+ 564      00000000 
+ 564      00000000 
+ 565              		.section	.bss.chassis_feedback_data,"aw",%nobits
+ 566              		.align	2
+ 569              	chassis_feedback_data:
+ 570 0000 00       		.space	1
+ 571              		.section	.bss.chassis_cmd_recv,"aw",%nobits
+ 572              		.align	2
+ 575              	chassis_cmd_recv:
+ 576 0000 00000000 		.space	37
+ 576      00000000 
+ 576      00000000 
+ 576      00000000 
+ 576      00000000 
+ 577              		.section	.bss.chassis_sub,"aw",%nobits
+ 578              		.align	2
+ 581              	chassis_sub:
+ 582 0000 00000000 		.space	4
+ 583              		.section	.bss.chassis_pub,"aw",%nobits
+ 584              		.align	2
+ 587              	chassis_pub:
+ 588 0000 00000000 		.space	4
+ 589              		.section	.bss.vt_rb,"aw",%nobits
+ 590              		.align	2
+ 593              	vt_rb:
+ 594 0000 00000000 		.space	4
+ 595              		.section	.bss.vt_lb,"aw",%nobits
+ 596              		.align	2
+ 599              	vt_lb:
+ 600 0000 00000000 		.space	4
+ 601              		.section	.bss.vt_rf,"aw",%nobits
+ 602              		.align	2
+ 605              	vt_rf:
+ 606 0000 00000000 		.space	4
+ 607              		.section	.bss.vt_lf,"aw",%nobits
+ 608              		.align	2
+ 611              	vt_lf:
+ 612 0000 00000000 		.space	4
+ 613              		.section	.bss.chassis_vy,"aw",%nobits
  614              		.align	2
- 617              	motor_lf:
+ 617              	chassis_vy:
  618 0000 00000000 		.space	4
- 619              		.section	.bss.motor_rb,"aw",%nobits
+ 619              		.section	.bss.chassis_vx,"aw",%nobits
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 18
+
+
  620              		.align	2
- 623              	motor_rb:
+ 623              	chassis_vx:
  624 0000 00000000 		.space	4
- 625              		.section	.bss.motor_lb,"aw",%nobits
+ 625              		.section	.bss.chassis_z,"aw",%nobits
  626              		.align	2
- 629              	motor_lb:
+ 629              	chassis_z:
  630 0000 00000000 		.space	4
- 631              		.section	.bss.motor_rf,"aw",%nobits
+ 631              		.section	.bss.chassis_x,"aw",%nobits
  632              		.align	2
- 635              	motor_rf:
+ 635              	chassis_x:
  636 0000 00000000 		.space	4
- 637              		.section	.bss.chassis_distance_pid,"aw",%nobits
- 638              		.align	3
- 641              	chassis_distance_pid:
- 642 0000 00000000 		.space	120
- 642      00000000 
- 642      00000000 
- 642      00000000 
- 642      00000000 
- 643              		.section	.bss.chassis_angle_pid,"aw",%nobits
- 644              		.align	3
- 647              	chassis_angle_pid:
- 648 0000 00000000 		.space	120
- 648      00000000 
- 648      00000000 
- 648      00000000 
- 648      00000000 
- 649              		.section	.bss.chassis_feedback_data,"aw",%nobits
- 650              		.align	2
- 653              	chassis_feedback_data:
- 654 0000 00       		.space	1
- 655              		.section	.bss.chassis_cmd_recv,"aw",%nobits
- 656              		.align	2
- 659              	chassis_cmd_recv:
- 660 0000 00000000 		.space	37
- 660      00000000 
- 660      00000000 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 19
-
-
- 660      00000000 
- 660      00000000 
- 661              		.section	.bss.chassis_sub,"aw",%nobits
- 662              		.align	2
- 665              	chassis_sub:
- 666 0000 00000000 		.space	4
- 667              		.section	.bss.chassis_pub,"aw",%nobits
- 668              		.align	2
- 671              	chassis_pub:
- 672 0000 00000000 		.space	4
- 673              		.section	.bss.vt_rb,"aw",%nobits
- 674              		.align	2
- 677              	vt_rb:
- 678 0000 00000000 		.space	4
- 679              		.section	.bss.vt_lb,"aw",%nobits
- 680              		.align	2
- 683              	vt_lb:
- 684 0000 00000000 		.space	4
- 685              		.section	.bss.vt_rf,"aw",%nobits
- 686              		.align	2
- 689              	vt_rf:
- 690 0000 00000000 		.space	4
- 691              		.section	.bss.vt_lf,"aw",%nobits
- 692              		.align	2
- 695              	vt_lf:
- 696 0000 00000000 		.space	4
- 697              		.section	.bss.chassis_vy,"aw",%nobits
- 698              		.align	2
- 701              	chassis_vy:
- 702 0000 00000000 		.space	4
- 703              		.section	.bss.chassis_vx,"aw",%nobits
- 704              		.align	2
- 707              	chassis_vx:
- 708 0000 00000000 		.space	4
- 709              		.section	.bss.chassis_z,"aw",%nobits
- 710              		.align	2
- 713              	chassis_z:
- 714 0000 00000000 		.space	4
- 715              		.section	.bss.chassis_x,"aw",%nobits
- 716              		.align	2
- 719              	chassis_x:
- 720 0000 00000000 		.space	4
- 721              		.text
- 722              	.Letext0:
- 723              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 724              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 725              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 726              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 727              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 728              		.file 7 "moudels/imu/INS_task.h"
- 729              		.file 8 "application/robot_def.h"
- 730              		.file 9 "bsp/can/bsp_can.h"
- 731              		.file 10 "moudels/algorithm/controller.h"
- 732              		.file 11 "moudels/motor/motor_def.h"
- 733              		.file 12 "moudels/daemon/daemon.h"
- 734              		.file 13 "moudels/motor/DJImotor/dji_motor.h"
- 735              		.file 14 "moudels/message_center/message_center.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 20
-
-
- 736              		.file 15 "moudels/motor/MImotor/MImotor.h"
- 737              		.file 16 "Core/Inc/can.h"
- 738              		.file 17 "<built-in>"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 21
+ 637              		.text
+ 638              	.Letext0:
+ 639              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 640              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 641              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 642              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 643              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 644              		.file 7 "moudels/imu/INS_task.h"
+ 645              		.file 8 "application/robot_def.h"
+ 646              		.file 9 "bsp/can/bsp_can.h"
+ 647              		.file 10 "moudels/algorithm/controller.h"
+ 648              		.file 11 "moudels/motor/motor_def.h"
+ 649              		.file 12 "moudels/daemon/daemon.h"
+ 650              		.file 13 "moudels/motor/DJImotor/dji_motor.h"
+ 651              		.file 14 "moudels/message_center/message_center.h"
+ 652              		.file 15 "moudels/motor/MImotor/MImotor.h"
+ 653              		.file 16 "Core/Inc/can.h"
+ 654              		.file 17 "<built-in>"
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 chassis.c
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:21     .text.MecanumCalculate:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:26     .text.MecanumCalculate:00000000 MecanumCalculate
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:79     .text.MecanumCalculate:00000050 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:707    .bss.chassis_vx:00000000 chassis_vx
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:701    .bss.chassis_vy:00000000 chassis_vy
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:659    .bss.chassis_cmd_recv:00000000 chassis_cmd_recv
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:695    .bss.vt_lf:00000000 vt_lf
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:689    .bss.vt_rf:00000000 vt_rf
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:683    .bss.vt_lb:00000000 vt_lb
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:677    .bss.vt_rb:00000000 vt_rb
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:90     .text.EstimateChassisAngle:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:95     .text.EstimateChassisAngle:00000000 EstimateChassisAngle
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:121    .text.EstimateChassisAngle:00000014 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:126    .text.EstimateChassisDistance:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:131    .text.EstimateChassisDistance:00000000 EstimateChassisDistance
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:157    .text.EstimateChassisDistance:00000014 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:162    .text.LimitChassisOutput:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:167    .text.LimitChassisOutput:00000000 LimitChassisOutput
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:210    .text.LimitChassisOutput:0000003c $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:617    .bss.motor_lf:00000000 motor_lf
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:635    .bss.motor_rf:00000000 motor_rf
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:629    .bss.motor_lb:00000000 motor_lb
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:623    .bss.motor_rb:00000000 motor_rb
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:222    .rodata.ChassisInit.str1.4:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:229    .text.ChassisInit:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:235    .text.ChassisInit:00000000 ChassisInit
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:436    .text.ChassisInit:00000134 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:641    .bss.chassis_distance_pid:00000000 chassis_distance_pid
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:647    .bss.chassis_angle_pid:00000000 chassis_angle_pid
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:665    .bss.chassis_sub:00000000 chassis_sub
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:671    .bss.chassis_pub:00000000 chassis_pub
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:458    .text.ChassisTask:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:464    .text.ChassisTask:00000000 ChassisTask
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:593    .text.ChassisTask:000000bc $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:719    .bss.chassis_x:00000000 chassis_x
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:713    .bss.chassis_z:00000000 chassis_z
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:653    .bss.chassis_feedback_data:00000000 chassis_feedback_data
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:614    .bss.motor_lf:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:620    .bss.motor_rb:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:626    .bss.motor_lb:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:632    .bss.motor_rf:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:638    .bss.chassis_distance_pid:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:644    .bss.chassis_angle_pid:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:650    .bss.chassis_feedback_data:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:656    .bss.chassis_cmd_recv:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:662    .bss.chassis_sub:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:668    .bss.chassis_pub:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:674    .bss.vt_rb:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:680    .bss.vt_lb:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:686    .bss.vt_rf:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:692    .bss.vt_lf:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:698    .bss.chassis_vy:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:704    .bss.chassis_vx:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:710    .bss.chassis_z:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s:716    .bss.chassis_x:00000000 $d
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccZLgzAm.s 			page 22
-
-
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:21     .text.MecanumCalculate:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:26     .text.MecanumCalculate:00000000 MecanumCalculate
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:79     .text.MecanumCalculate:00000050 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:623    .bss.chassis_vx:00000000 chassis_vx
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:617    .bss.chassis_vy:00000000 chassis_vy
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:575    .bss.chassis_cmd_recv:00000000 chassis_cmd_recv
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:611    .bss.vt_lf:00000000 vt_lf
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:605    .bss.vt_rf:00000000 vt_rf
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:599    .bss.vt_lb:00000000 vt_lb
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:593    .bss.vt_rb:00000000 vt_rb
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:90     .text.LimitChassisOutput:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:95     .text.LimitChassisOutput:00000000 LimitChassisOutput
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:138    .text.LimitChassisOutput:0000003c $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:533    .bss.motor_lf:00000000 motor_lf
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:551    .bss.motor_rf:00000000 motor_rf
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:545    .bss.motor_lb:00000000 motor_lb
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:539    .bss.motor_rb:00000000 motor_rb
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:150    .rodata.ChassisInit.str1.4:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:157    .text.ChassisInit:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:163    .text.ChassisInit:00000000 ChassisInit
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:368    .text.ChassisInit:0000013c $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:557    .bss.chassis_distance_pid:00000000 chassis_distance_pid
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:563    .bss.chassis_angle_pid:00000000 chassis_angle_pid
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:581    .bss.chassis_sub:00000000 chassis_sub
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:587    .bss.chassis_pub:00000000 chassis_pub
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:391    .text.ChassisTask:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:397    .text.ChassisTask:00000000 ChassisTask
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:513    .text.ChassisTask:000000a4 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:635    .bss.chassis_x:00000000 chassis_x
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:629    .bss.chassis_z:00000000 chassis_z
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:569    .bss.chassis_feedback_data:00000000 chassis_feedback_data
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:530    .bss.motor_lf:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:536    .bss.motor_rb:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:542    .bss.motor_lb:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:548    .bss.motor_rf:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:554    .bss.chassis_distance_pid:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:560    .bss.chassis_angle_pid:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:566    .bss.chassis_feedback_data:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:572    .bss.chassis_cmd_recv:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:578    .bss.chassis_sub:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:584    .bss.chassis_pub:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:590    .bss.vt_rb:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:596    .bss.vt_lb:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:602    .bss.vt_rf:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:608    .bss.vt_lf:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:614    .bss.chassis_vy:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:620    .bss.chassis_vx:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:626    .bss.chassis_z:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s:632    .bss.chassis_x:00000000 $d
 
 UNDEFINED SYMBOLS
-PIDCalculate
+MIMotorSetRef
 DJIMotorSetRef
 memset
 DJIMotorInit
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpku1K6.s 			page 20
+
+
 MIMotorInit
 SubRegister
 PubRegister
 hcan1
 SubGetMessage
+MIMotorStop
 DJIMotorStop
 PubPushMessage
+MIMotorEnable
 DJIMotorEnable
 INS

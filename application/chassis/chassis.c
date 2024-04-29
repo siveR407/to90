@@ -76,7 +76,7 @@ void ChassisInit()
     // chassis_motor_config.can_init_config.tx_id = 1;
     // chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
     // motor_lf = DJIMotorInit(&chassis_motor_config);
-
+    chassis_motor_config.can_init_config.tx_ide=CAN_ID_STD;
     chassis_motor_config.can_init_config.tx_id = 2;
     chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
     motor_rf = DJIMotorInit(&chassis_motor_config);
@@ -110,15 +110,17 @@ void ChassisInit()
             },
         },
         .controller_setting_init_config = {
+            .ifsetflag=0,  
             .angle_feedback_source = MOTOR_FEED,
             .speed_feedback_source = MOTOR_FEED,
-            .outer_loop_type = SPEED_LOOP,
-            .close_loop_type = SPEED_LOOP 
+            .outer_loop_type = ANGLE_LOOP,
+            .close_loop_type =  ANGLE_LOOP, 
         },
         .motor_type =  MI,
     };
-    chassis_motor_config.can_init_config.tx_id = 1;
-    chassis_motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
+    mi__motor_config.can_init_config.tx_id = 1;
+    mi__motor_config.can_init_config.tx_ide=CAN_ID_EXT;
+    mi__motor_config.controller_setting_init_config.motor_reverse_flag = MOTOR_DIRECTION_REVERSE;
     motor_lf = MIMotorInit(&mi__motor_config);
    
 #ifdef CHASSIS_BOARD
@@ -172,7 +174,7 @@ static void LimitChassisOutput()
     // referee_data->PowerHeatData.chassis_power_buffer;
 
     // 完成功率限制后进行电机参考输入设定
-    DJIMotorSetRef(motor_lf, vt_lf);
+    MIMotorSetRef(motor_lf, vt_lf);
     DJIMotorSetRef(motor_rf, vt_rf);
     DJIMotorSetRef(motor_lb, vt_lb);
     DJIMotorSetRef(motor_rb, vt_rb);
@@ -226,14 +228,14 @@ void ChassisTask()
 
     if (chassis_cmd_recv.chassis_mode == CHASSIS_ZERO_FORCE)
     { // 如果出现重要模块离线或遥控器设置为急停,让电机停止
-        DJIMotorStop(motor_lf);
+        MIMotorStop(motor_lf);
         DJIMotorStop(motor_rf);
         DJIMotorStop(motor_lb);
         DJIMotorStop(motor_rb);
     }
     else
     { // 正常工作
-        DJIMotorEnable(motor_lf);
+        MIMotorEnable(motor_lf);
         DJIMotorEnable(motor_rf);
         DJIMotorEnable(motor_lb);
         DJIMotorEnable(motor_rb);
@@ -261,8 +263,8 @@ void ChassisTask()
     // {intergal=intergal+(90-abs(INS.Yaw));}
     // chassis_cmd_recv.wz=(90-abs(INS.Yaw))*10+intergal*0.05;
     // chassis_cmd_recv.wz=PIDCalculate(&chassis_angle_pid, INS.Yaw,90);
-    EstimateChassisAngle(&chassis_angle_pid,chassis_z,0);
-    EstimateChassisDistance(&chassis_distance_pid, chassis_x,1000);
+    // EstimateChassisAngle(&chassis_angle_pid,chassis_z,0);
+    // EstimateChassisDistance(&chassis_distance_pid, chassis_x,1000);
     chassis_vx=3.0*chassis_cmd_recv.vy;
     chassis_vy=-3.0*chassis_cmd_recv.vx;
     // chassis_wz=chassis_cmd_recv.wz;

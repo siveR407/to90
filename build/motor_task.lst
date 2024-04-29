@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccbs6ldf.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -34,10 +34,11 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccbs6ldf.s 			page 1
    4:moudels/motor/motor_task.c **** #include "dji_motor.h"
    5:moudels/motor/motor_task.c **** // #include "step_motor.h"
    6:moudels/motor/motor_task.c **** // #include "servo_motor.h"
-   7:moudels/motor/motor_task.c **** 
-   8:moudels/motor/motor_task.c **** void MotorControlTask()
-   9:moudels/motor/motor_task.c **** {
-  29              		.loc 1 9 1 view -0
+   7:moudels/motor/motor_task.c **** #include"MImotor.h"
+   8:moudels/motor/motor_task.c **** 
+   9:moudels/motor/motor_task.c **** void MotorControlTask()
+  10:moudels/motor/motor_task.c **** {
+  29              		.loc 1 10 1 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -45,44 +46,48 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccbs6ldf.s 			page 1
   34              		.cfi_def_cfa_offset 8
   35              		.cfi_offset 3, -8
   36              		.cfi_offset 14, -4
-  10:moudels/motor/motor_task.c ****     // static uint8_t cnt = 0; 设定不同电机的任务频率
-  11:moudels/motor/motor_task.c ****     // if(cnt%5==0) //200hz
-  12:moudels/motor/motor_task.c ****     // if(cnt%10==0) //100hz
-  13:moudels/motor/motor_task.c ****     DJIMotorControl();
-  37              		.loc 1 13 5 view .LVU1
+  11:moudels/motor/motor_task.c ****     // static uint8_t cnt = 0; 设定不同电机的任务频率
+  12:moudels/motor/motor_task.c ****     // if(cnt%5==0) //200hz
+  13:moudels/motor/motor_task.c ****     // if(cnt%10==0) //100hz
+  14:moudels/motor/motor_task.c ****     DJIMotorControl();
+  37              		.loc 1 14 5 view .LVU1
   38 0002 FFF7FEFF 		bl	DJIMotorControl
   39              	.LVL0:
-  14:moudels/motor/motor_task.c **** 
-  15:moudels/motor/motor_task.c ****     /* 如果有对应的电机则取消注释,可以加入条件编译或者register对应的idx�
-  16:moudels/motor/motor_task.c ****     // LKMotorControl();
-  17:moudels/motor/motor_task.c **** 
-  18:moudels/motor/motor_task.c ****     // legacy support
-  19:moudels/motor/motor_task.c ****     // 由于ht04电机的反馈方式为接收到一帧消息后立刻回传,以此方式连续发
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccbs6ldf.s 			page 2
+  15:moudels/motor/motor_task.c ****     MIMotorControl();
+  40              		.loc 1 15 5 view .LVU2
+  41 0006 FFF7FEFF 		bl	MIMotorControl
+  42              	.LVL1:
+  16:moudels/motor/motor_task.c ****     /* 如果有对应的电机则取消注释,可以加入条件编译或者register对应的idx�
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s 			page 2
 
 
-  20:moudels/motor/motor_task.c ****     // 为了保证高频率控制,HTMotor中提供了以任务方式启动控制的接口,可通�
-  21:moudels/motor/motor_task.c ****     // HTMotorControl();
-  22:moudels/motor/motor_task.c ****     // 将所有的CAN设备集中在一处发送,最高反馈频率仅能达到500Hz,为了更好�
-  23:moudels/motor/motor_task.c **** 
-  24:moudels/motor/motor_task.c ****     // ServeoMotorControl();
-  25:moudels/motor/motor_task.c **** 
-  26:moudels/motor/motor_task.c ****     // StepMotorControl();
-  27:moudels/motor/motor_task.c **** }
-  40              		.loc 1 27 1 is_stmt 0 view .LVU2
-  41 0006 08BD     		pop	{r3, pc}
-  42              		.cfi_endproc
-  43              	.LFE134:
-  45              		.text
-  46              	.Letext0:
-  47              		.file 2 "moudels/motor/DJImotor/dji_motor.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccbs6ldf.s 			page 3
+  17:moudels/motor/motor_task.c ****     // LKMotorControl();
+  18:moudels/motor/motor_task.c **** 
+  19:moudels/motor/motor_task.c ****     // legacy support
+  20:moudels/motor/motor_task.c ****     // 由于ht04电机的反馈方式为接收到一帧消息后立刻回传,以此方式连续发
+  21:moudels/motor/motor_task.c ****     // 为了保证高频率控制,HTMotor中提供了以任务方式启动控制的接口,可通�
+  22:moudels/motor/motor_task.c ****     // HTMotorControl();
+  23:moudels/motor/motor_task.c ****     // 将所有的CAN设备集中在一处发送,最高反馈频率仅能达到500Hz,为了更好�
+  24:moudels/motor/motor_task.c **** 
+  25:moudels/motor/motor_task.c ****     // ServeoMotorControl();
+  26:moudels/motor/motor_task.c **** 
+  27:moudels/motor/motor_task.c ****     // StepMotorControl();
+  28:moudels/motor/motor_task.c **** }
+  43              		.loc 1 28 1 is_stmt 0 view .LVU3
+  44 000a 08BD     		pop	{r3, pc}
+  45              		.cfi_endproc
+  46              	.LFE134:
+  48              		.text
+  49              	.Letext0:
+  50              		.file 2 "moudels/motor/DJImotor/dji_motor.h"
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 motor_task.c
-C:\Users\Sive\AppData\Local\Temp\ccbs6ldf.s:21     .text.MotorControlTask:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccbs6ldf.s:27     .text.MotorControlTask:00000000 MotorControlTask
+C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s:21     .text.MotorControlTask:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s:27     .text.MotorControlTask:00000000 MotorControlTask
 
 UNDEFINED SYMBOLS
 DJIMotorControl
+MIMotorControl

@@ -104,8 +104,11 @@ CANInstance *CANRegister(CAN_Init_Config_s *config)
     CANInstance *instance = (CANInstance *)malloc(sizeof(CANInstance)); // 分配空间
     memset(instance, 0, sizeof(CANInstance));                           // 分配的空间未必是0,所以要先清空
     // 进行发送报文的配置
-    instance->txconf.ExtId = *((uint32_t*)&(config->EXT_ID));;
-    instance->txconf.StdId = config->tx_id; // 发送id
+    if(config->tx_ide==CAN_ID_EXT){
+        instance->txconf.ExtId = config->EXT_ID.raw;
+    }else if(config->tx_ide==CAN_ID_STD){
+        instance->txconf.StdId = config->tx_id; // 发送id
+    }
     instance->txconf.IDE = config->tx_ide;      // 使用标准id,扩展id则使用CAN_ID_EXT(目前没有需求)
     instance->txconf.RTR = CAN_RTR_DATA;    // 发送数据帧
     instance->txconf.DLC = 0x08;            // 默认发送长度为8
@@ -191,7 +194,7 @@ static void CANFIFOxCallback(CAN_HandleTypeDef *_hcan, uint32_t fifox)
                 }
                 return;
             }
-            if(_hcan == can_instance[i]->can_handle&&(rxconf.ExtId&0xFF)==can_instance[i]->rx_id)//扩展id
+            if(_hcan == can_instance[i]->can_handle&&(rxconf.ExtId&&0xFF)==can_instance[i]->rx_id)//扩展id
             {
                 if (can_instance[i]->can_module_callback != NULL) // 回调函数不为空就调用
                 {

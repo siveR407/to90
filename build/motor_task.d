@@ -31,7 +31,8 @@ build/motor_task.o: moudels/motor/motor_task.c moudels/motor/motor_task.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  moudels/algorithm/controller.h Core/Inc/main.h bsp/dwt/bsp_dwt.h \
- moudels/motor/motor_def.h moudels/daemon/daemon.h
+ moudels/motor/motor_def.h moudels/daemon/daemon.h \
+ moudels/motor/MImotor/MImotor.h
 moudels/motor/motor_task.h:
 moudels/motor/DJImotor/dji_motor.h:
 bsp/can/bsp_can.h:
@@ -74,3 +75,4 @@ Core/Inc/main.h:
 bsp/dwt/bsp_dwt.h:
 moudels/motor/motor_def.h:
 moudels/daemon/daemon.h:
+moudels/motor/MImotor/MImotor.h:

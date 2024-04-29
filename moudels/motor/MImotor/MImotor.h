@@ -3,7 +3,7 @@
 #include "motor_def.h"
 #include "stdint.h"
 #include "daemon.h"
-#define MI_MOTOR_CNT 2
+#define MI_MOTOR_CNT 8
 
 #define P_MIN -12.5f
 #define P_MAX 12.5f
@@ -35,8 +35,8 @@ typedef struct
     // uint16_t ecd;             // 0-8191,刻度总共有8192格
     float angle_single_round; // 单圈角度
     float speed_aps;          // 角速度,单位为:度/秒
-    int16_t real_current;     // 实际电流
-    uint8_t temperature;      // 温度 Celsius
+    float real_current;     // 实际电流
+    float temperature;      // 温度 Celsius
     float motor_id;
     float index;
     float param;
@@ -111,10 +111,11 @@ typedef struct
     float param;
 }__attribute__((packed))  RxCAN_info_type_17_s;// 通信类型17解码内容
 MIMotorInstance *MIMotorInit(Motor_Init_Config_s *config);
-void MIMotorSetRef(MIMotorInstance *motor, float ref);
-void MI_motor_RxDecode(RxCAN_info_type_2_s* RxCAN_info,uint8_t rx_data[8]);
-
+void  MI_motor_TorqueControl(MIMotorInstance* hmotor);
+void  MI_motor_LocationControl(MIMotorInstance* hmotor);
+void  MI_motor_SpeedControl(MIMotorInstance* hmotor);
+ void MI_motor_Modeset(MIMotorInstance* hmotor,float param,uint16_t index);
+void MIMotorStop(MIMotorInstance *motor);
 void MIMotorEnable(MIMotorInstance *motor);
-void MI_motor_TorqueControl(MIMotorInstance* hmotor, float torque);
-void MI_motor_LocationControl(MIMotorInstance* hmotor, float location);
-void MI_motor_SpeedControl(MIMotorInstance* hmotor, float speed);
+void MIMotorSetRef(MIMotorInstance *motor, float ref);
+void  MI_motor_stop(MIMotorInstance* hmotor);
