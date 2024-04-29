@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccBPCTJD.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s 			page 1
   41 0006 FFF7FEFF 		bl	MIMotorControl
   42              	.LVL1:
   16:moudels/motor/motor_task.c ****     /* 如果有对应的电机则取消注释,可以加入条件编译或者register对应的idx�
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccBPCTJD.s 			page 2
 
 
   17:moudels/motor/motor_task.c ****     // LKMotorControl();
@@ -80,13 +80,13 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s 			page 1
   48              		.text
   49              	.Letext0:
   50              		.file 2 "moudels/motor/DJImotor/dji_motor.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccBPCTJD.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 motor_task.c
-C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s:21     .text.MotorControlTask:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccqILFqK.s:27     .text.MotorControlTask:00000000 MotorControlTask
+C:\Users\Sive\AppData\Local\Temp\ccBPCTJD.s:21     .text.MotorControlTask:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccBPCTJD.s:27     .text.MotorControlTask:00000000 MotorControlTask
 
 UNDEFINED SYMBOLS
 DJIMotorControl

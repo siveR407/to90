@@ -78,7 +78,7 @@ typedef struct
     Feedback_Source_e angle_feedback_source;       // 角度反馈类型
     Feedback_Source_e speed_feedback_source;       // 速度反馈类型
     Feedfoward_Type_e feedforward_flag;            // 前馈标志
-    uint8_t ifsetflag;
+    float ifsetflag;
 
 } Motor_Control_Setting_s;
 

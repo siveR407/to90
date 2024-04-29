@@ -50,9 +50,9 @@ static void EXTCANAddFilter(CANInstance *_instance){
     excan_filter_conf.FilterFIFOAssignment = (_instance->tx_id & 1) ? CAN_RX_FIFO0 : CAN_RX_FIFO1;              // 奇数id的模块会被分配到FIFO0,偶数id的模块会被分配到FIFO1
     excan_filter_conf.SlaveStartFilterBank = 14;                                                                // 从第14个过滤器开始配置从机过滤器(在STM32的BxCAN控制器中CAN2是CAN1的从机)
     excan_filter_conf.FilterIdHigh = 0x0000;  // 高位ID不关心
-    excan_filter_conf.FilterIdLow = _instance->rx_id << 21;  // 低8位左移21位（使其在29位ID中的0~7位位置）
+    excan_filter_conf.FilterIdLow =(_instance->rx_id << 13) & 0xFFE00000;  // 低8位左移21位（使其在29位ID中的0~7位位置）
     excan_filter_conf.FilterMaskIdHigh = 0x0000;  // 高位掩码不关心
-    excan_filter_conf.FilterMaskIdLow = 0xFF << 21;  // 掩码，只关心最低8位
+    excan_filter_conf.FilterMaskIdLow = 0xFFE00000;  // 掩码，只关心最低8位
     excan_filter_conf.FilterBank = _instance->can_handle == &hcan1 ? (can1_filter_idx++) : (can2_filter_idx++); // 根据can_handle判断是CAN1还是CAN2,然后自增
     excan_filter_conf.FilterActivation = CAN_FILTER_ENABLE;                                                     // 启用过滤器
     HAL_CAN_ConfigFilter(_instance->can_handle, &excan_filter_conf);
@@ -194,7 +194,7 @@ static void CANFIFOxCallback(CAN_HandleTypeDef *_hcan, uint32_t fifox)
                 }
                 return;
             }
-            if(_hcan == can_instance[i]->can_handle&&(rxconf.ExtId&&0xFF)==can_instance[i]->rx_id)//扩展id
+            if(_hcan == can_instance[i]->can_handle&&((rxconf.ExtId>>8)&0xFF)==can_instance[i]->rx_id)//扩展id
             {
                 if (can_instance[i]->can_module_callback != NULL) // 回调函数不为空就调用
                 {

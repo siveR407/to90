@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
   28:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c **** *                                                                    *
   29:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c **** * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND             *
   30:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c **** * CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,        *
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 2
 
 
   31:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c **** * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF           *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
   85:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c **** typedef struct {
   86:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****   char*     pBuffer;
   87:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****   unsigned  BufferSize;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 3
 
 
   88:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****   unsigned  Cnt;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
   53              		.loc 1 117 5 is_stmt 1 view .LVU9
   54              		.loc 1 117 8 is_stmt 0 view .LVU10
   55 000e 2068     		ldr	r0, [r4]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 4
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 4
 
 
   56              		.loc 1 117 25 view .LVU11
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
   92 002c A368     		ldr	r3, [r4, #8]
  125:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****     if (SEGGER_RTT_Write(p->RTTBufferIndex, p->pBuffer, p->Cnt) != p->Cnt) {
   93              		.loc 1 125 8 discriminator 1 view .LVU26
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 5
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 5
 
 
   94 002e 9842     		cmp	r0, r3
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  140 000a 1E46     		mov	r6, r3
  141 000c DDF828A0 		ldr	r10, [sp, #40]
  142 0010 0B9A     		ldr	r2, [sp, #44]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 6
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 6
 
 
  143              	.LVL9:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  176              		.loc 1 155 6 is_stmt 0 view .LVU53
  177 0026 B045     		cmp	r8, r6
  178 0028 00D2     		bcs	.L10
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 7
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 7
 
 
  156:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****     Width = NumDigits;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  218              	.LVL17:
  171:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****         if (pBufferDesc->ReturnValue < 0) {
  219              		.loc 1 171 9 view .LVU68
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 8
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 8
 
 
  220              		.loc 1 171 24 is_stmt 0 view .LVU69
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  251              	.LVL22:
  183:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****       if (NumDigits > 1u) {       // User specified a min number of digits to print? => Make sure w
  252              		.loc 1 183 11 is_stmt 1 view .LVU80
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 9
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 9
 
 
  253              	.L19:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  283 0092 124A     		ldr	r2, .L29
  284 0094 D15C     		ldrb	r1, [r2, r3]	@ zero_extendqisi2
  285 0096 4846     		mov	r0, r9
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 10
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 10
 
 
  286 0098 FFF7FEFF 		bl	_StoreChar
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  319 00c0 FAD0     		beq	.L7
  211:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****         while ((FieldWidth != 0u) && (Width < FieldWidth)) {
  320              		.loc 1 211 35 is_stmt 0 discriminator 1 view .LVU106
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 11
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 11
 
 
  321 00c2 C245     		cmp	r10, r8
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  365              		.cfi_offset 7, -20
  366              		.cfi_offset 8, -16
  367              		.cfi_offset 9, -12
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 12
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 12
 
 
  368              		.cfi_offset 10, -8
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  406              		.loc 1 241 6 is_stmt 0 view .LVU129
  407 002a 4C45     		cmp	r4, r9
  408 002c 00D2     		bcs	.L34
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 13
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 13
 
 
  242:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****     Width = NumDigits;
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  261:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****   }
  262:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****   //
  263:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****   // Print sign if necessary
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 14
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 14
 
 
  264:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****   //
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  289:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****       if (pBufferDesc->ReturnValue >= 0) {
  473              		.loc 1 289 7 is_stmt 1 view .LVU157
  474              		.loc 1 289 22 is_stmt 0 view .LVU158
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 15
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 15
 
 
  475 0074 FB68     		ldr	r3, [r7, #12]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  512              		.loc 1 267 7 is_stmt 1 view .LVU169
  267:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****       _StoreChar(pBufferDesc, '-');
  513              		.loc 1 267 9 is_stmt 0 view .LVU170
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 16
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 16
 
 
  514 009a C8F10008 		rsb	r8, r8, #0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  283:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****               break;
  556              		.loc 1 283 16 view .LVU183
  557 00d0 002B     		cmp	r3, #0
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 17
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 17
 
 
  558 00d2 F3DA     		bge	.L45
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  588              		@ frame_needed = 0, uses_anonymous_args = 0
  589              		.loc 1 322 90 is_stmt 0 view .LVU187
  590 0000 F0B5     		push	{r4, r5, r6, r7, lr}
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 18
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 18
 
 
  591              		.cfi_def_cfa_offset 20
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  338:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****     c = *sFormat;
  339:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****     sFormat++;
  340:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****     if (c == 0u) {
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 19
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 19
 
 
  341:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****       break;
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  670 0038 04E0     		b	.L56
  671              	.LVL63:
  672              	.L61:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 20
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 20
 
 
  355:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****         case '#': FormatFlags |= FORMAT_FLAG_ALTERNATE;    sFormat++; break;
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  718 0084 43000000 		.word	.L84+1
  719 0088 2B000000 		.word	.L57+1
  720              	.LVL70:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 21
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 21
 
 
  721              		.p2align 1
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  755              		.loc 1 376 7 view .LVU248
  377:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****       if (c == '.') {
  756              		.loc 1 377 7 view .LVU249
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 22
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 22
 
 
  757              		.loc 1 377 10 is_stmt 0 view .LVU250
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  788              		.loc 1 385 33 is_stmt 0 view .LVU262
  789 00ba 03EB8303 		add	r3, r3, r3, lsl #2
  790              	.LVL84:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 23
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 23
 
 
  385:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****         } while (1);
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  393:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****           sFormat++;
  827              		.loc 1 393 24 discriminator 1 view .LVU280
  828 00e0 6829     		cmp	r1, #104
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 24
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 24
 
 
  829 00e2 F9D0     		beq	.L67
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  875 011a 18       		.byte	(.L71-.L73)/2
  876 011b 18       		.byte	(.L71-.L73)/2
  877 011c 3D       		.byte	(.L72-.L73)/2
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 25
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 25
 
 
  878 011d 00       		.p2align 1
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  430:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****             if (c == '\0') {
  431:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****               break;
  432:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****             }
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 26
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 26
 
 
  433:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****            _StoreChar(&BufferDesc, c);
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  932              		.loc 1 449 7 is_stmt 1 view .LVU307
  933 0142 13A8     		add	r0, sp, #76
  934 0144 FFF7FEFF 		bl	_StoreChar
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 27
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 27
 
 
  935              	.LVL99:
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  977              	.LVL109:
  417:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c ****         break;
  978              		.loc 1 417 9 is_stmt 0 view .LVU320
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 28
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 28
 
 
  979 016e 13A8     		add	r0, sp, #76
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  1020              		.loc 1 426 24 view .LVU333
  1021 0190 2A60     		str	r2, [r5]
  1022 0192 1F68     		ldr	r7, [r3]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 29
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 29
 
 
  1023              	.LVL121:
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  1061              		.loc 1 439 9 is_stmt 1 view .LVU349
  1062 01b2 0023     		movs	r3, #0
  1063 01b4 0193     		str	r3, [sp, #4]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 30
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 30
 
 
  1064 01b6 0823     		movs	r3, #8
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  1103 01d8 169B     		ldr	r3, [sp, #88]
  1104 01da 159A     		ldr	r2, [sp, #84]
  1105 01dc 1344     		add	r3, r3, r2
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 31
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 31
 
 
  1106 01de 1693     		str	r3, [sp, #88]
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  484:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c **** *    (2) Supported flags:
  485:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c **** *          -: Left justify within the field width
  486:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c **** *          +: Always print sign extension for signed conversions
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 32
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 32
 
 
  487:Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT_printf.c **** *          0: Pad with 0 instead of spaces. Ignored when using '-'-flag or precision
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  1174              		.cfi_restore 3
  1175              		.cfi_restore 2
  1176              		.cfi_restore 1
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 33
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 33
 
 
  1177              		.cfi_def_cfa_offset 0
@@ -1937,29 +1937,29 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 1
  1190              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
  1191              		.file 3 "<built-in>"
  1192              		.file 4 "Middlewares/Third_Party/SEGGER/RTT/SEGGER_RTT.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s 			page 34
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s 			page 34
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 SEGGER_RTT_printf.c
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:21     .text._StoreChar:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:26     .text._StoreChar:00000000 _StoreChar
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:112    .text._PrintUnsigned:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:117    .text._PrintUnsigned:00000000 _PrintUnsigned
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:342    .text._PrintUnsigned:000000dc $d
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:1186   .rodata._aV2C.0:00000000 _aV2C.0
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:347    .text._PrintInt:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:352    .text._PrintInt:00000000 _PrintInt
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:576    .text.SEGGER_RTT_vprintf:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:582    .text.SEGGER_RTT_vprintf:00000000 SEGGER_RTT_vprintf
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:706    .text.SEGGER_RTT_vprintf:00000054 $d
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:721    .text.SEGGER_RTT_vprintf:0000008c $t
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:845    .text.SEGGER_RTT_vprintf:000000fc $d
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:1129   .text.SEGGER_RTT_printf:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:1135   .text.SEGGER_RTT_printf:00000000 SEGGER_RTT_printf
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:1183   .rodata._aV2C.0:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:878    .text.SEGGER_RTT_vprintf:0000011d $d
-C:\Users\Sive\AppData\Local\Temp\ccpyaMj0.s:878    .text.SEGGER_RTT_vprintf:0000011e $t
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:21     .text._StoreChar:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:26     .text._StoreChar:00000000 _StoreChar
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:112    .text._PrintUnsigned:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:117    .text._PrintUnsigned:00000000 _PrintUnsigned
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:342    .text._PrintUnsigned:000000dc $d
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:1186   .rodata._aV2C.0:00000000 _aV2C.0
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:347    .text._PrintInt:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:352    .text._PrintInt:00000000 _PrintInt
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:576    .text.SEGGER_RTT_vprintf:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:582    .text.SEGGER_RTT_vprintf:00000000 SEGGER_RTT_vprintf
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:706    .text.SEGGER_RTT_vprintf:00000054 $d
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:721    .text.SEGGER_RTT_vprintf:0000008c $t
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:845    .text.SEGGER_RTT_vprintf:000000fc $d
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:1129   .text.SEGGER_RTT_printf:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:1135   .text.SEGGER_RTT_printf:00000000 SEGGER_RTT_printf
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:1183   .rodata._aV2C.0:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:878    .text.SEGGER_RTT_vprintf:0000011d $d
+C:\Users\Sive\AppData\Local\Temp\ccQLKqBM.s:878    .text.SEGGER_RTT_vprintf:0000011e $t
 
 UNDEFINED SYMBOLS
 SEGGER_RTT_Write

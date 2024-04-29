@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -36,7 +36,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
    6:moudels/motor/MImotor/MImotor.c **** 
    7:moudels/motor/MImotor/MImotor.c **** static uint8_t idx=0 ; 
    8:moudels/motor/MImotor/MImotor.c **** static MIMotorInstance *mi_motor_instance[MI_MOTOR_CNT] = {NULL}; 
-   9:moudels/motor/MImotor/MImotor.c **** uint8_t MI_MASTERID = 1; //master id 发送指令时EXTID的bit8:15,反馈的bit0:7
+   9:moudels/motor/MImotor/MImotor.c **** uint8_t MI_MASTERID = 0; //master id 发送指令时EXTID的bit8:15,反馈的bit0:7
   10:moudels/motor/MImotor/MImotor.c **** /**
   11:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机反馈帧解码（通信类型2）
   12:moudels/motor/MImotor/MImotor.c ****   * @param[in]      Rx_can_info 接受到的电机数据结构体
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
   28:moudels/motor/MImotor/MImotor.c **** 
   29:moudels/motor/MImotor/MImotor.c ****     decode_temp_mi = (rx_data[6] << 8 | rx_data[7]);
   30:moudels/motor/MImotor/MImotor.c ****     RxCAN_info->temperature = (float)decode_temp_mi/10.0f;//摄氏度
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 2
 
 
   31:moudels/motor/MImotor/MImotor.c ****  }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
   42              		.section	.text.MI_motor_ModeSwitch,"ax",%progbits
   43              		.align	1
   44              		.syntax unified
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 3
 
 
   45              		.thumb
@@ -161,7 +161,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  105:moudels/motor/MImotor/MImotor.c ****     // Motor_Controller_s *motor_controller;   // 电机控制器
  106:moudels/motor/MImotor/MImotor.c ****     // MI_Motor_Measure_s *measure;           // 电机测量值
  107:moudels/motor/MImotor/MImotor.c ****     static float ref;
- 108:moudels/motor/MImotor/MImotor.c ****     for(size_t i=0;i<idx;++i)
+ 108:moudels/motor/MImotor/MImotor.c ****     for(size_t i=0;i<idx;i++)
  109:moudels/motor/MImotor/MImotor.c ****     {
  110:moudels/motor/MImotor/MImotor.c ****         motor = mi_motor_instance[i];
  111:moudels/motor/MImotor/MImotor.c ****         motor_setting = &motor->motor_settings;
@@ -172,17 +172,17 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  116:moudels/motor/MImotor/MImotor.c ****               MI_motor_stop(motor);
  117:moudels/motor/MImotor/MImotor.c ****               motor_setting->ifsetflag=0;
  118:moudels/motor/MImotor/MImotor.c ****         }else if(motor->stop_flag == MOTOR_ENALBED&&motor_setting->ifsetflag==0){
- 119:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
+ 119:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP&&motor_setting->ifsetflag==0)){
  120:moudels/motor/MImotor/MImotor.c ****                     MI_motor_LocationControl(motor);
  121:moudels/motor/MImotor/MImotor.c ****                     motor_setting->ifsetflag=1;
- 122:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==SPEED_LOOP)
+ 122:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==SPEED_LOOP&&motor_setting->ifsetflag==0)
  123:moudels/motor/MImotor/MImotor.c ****             {
  124:moudels/motor/MImotor/MImotor.c ****                     MI_motor_SpeedControl(motor);
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 4
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 4
 
 
  125:moudels/motor/MImotor/MImotor.c ****                     motor_setting->ifsetflag=1;
- 126:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==CURRENT_LOOP)
+ 126:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==CURRENT_LOOP&&motor_setting->ifsetflag==0)
  127:moudels/motor/MImotor/MImotor.c ****            {
  128:moudels/motor/MImotor/MImotor.c ****                     MI_motor_TorqueControl(motor);
  129:moudels/motor/MImotor/MImotor.c ****                     motor_setting->ifsetflag=1;
@@ -190,381 +190,380 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  131:moudels/motor/MImotor/MImotor.c ****          }
  132:moudels/motor/MImotor/MImotor.c ****          if(motor->stop_flag == MOTOR_ENALBED&&motor_setting->ifsetflag==1){
  133:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
- 134:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor, 6.28,0x7016);
+ 134:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x7016);
  135:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==SPEED_LOOP){
  136:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x700A);
  137:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==CURRENT_LOOP){
- 138:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,0,0x7006);
+ 138:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x7006);
  139:moudels/motor/MImotor/MImotor.c ****             }
  140:moudels/motor/MImotor/MImotor.c ****          }
  141:moudels/motor/MImotor/MImotor.c ****     }
- 142:moudels/motor/MImotor/MImotor.c ****     ref==0;
- 143:moudels/motor/MImotor/MImotor.c ****     
- 144:moudels/motor/MImotor/MImotor.c **** }
- 145:moudels/motor/MImotor/MImotor.c **** void MIMotorStop(MIMotorInstance *motor)
- 146:moudels/motor/MImotor/MImotor.c **** {
- 147:moudels/motor/MImotor/MImotor.c ****     motor->stop_flag = MOTOR_STOP;
- 148:moudels/motor/MImotor/MImotor.c **** }
- 149:moudels/motor/MImotor/MImotor.c **** 
- 150:moudels/motor/MImotor/MImotor.c **** void MIMotorEnable(MIMotorInstance *motor)
- 151:moudels/motor/MImotor/MImotor.c **** {
- 152:moudels/motor/MImotor/MImotor.c ****     motor->stop_flag = MOTOR_ENALBED;
- 153:moudels/motor/MImotor/MImotor.c **** }
- 154:moudels/motor/MImotor/MImotor.c **** 
- 155:moudels/motor/MImotor/MImotor.c **** /* 修改电机的实际闭环对象 */
- 156:moudels/motor/MImotor/MImotor.c **** void MIMotorOuterLoop(MIMotorInstance *motor, Closeloop_Type_e outer_loop)
- 157:moudels/motor/MImotor/MImotor.c **** {
- 158:moudels/motor/MImotor/MImotor.c ****     motor->motor_settings.outer_loop_type = outer_loop;
- 159:moudels/motor/MImotor/MImotor.c **** }
- 160:moudels/motor/MImotor/MImotor.c **** 
- 161:moudels/motor/MImotor/MImotor.c **** // 设置参考值
- 162:moudels/motor/MImotor/MImotor.c **** void MIMotorSetRef(MIMotorInstance *motor, float ref)
- 163:moudels/motor/MImotor/MImotor.c **** {
- 164:moudels/motor/MImotor/MImotor.c ****     motor->motor_controller.pid_ref = ref;
- 165:moudels/motor/MImotor/MImotor.c **** }
- 166:moudels/motor/MImotor/MImotor.c **** 
- 167:moudels/motor/MImotor/MImotor.c **** // 为所有电机实例计算三环PID,发送控制报文
- 168:moudels/motor/MImotor/MImotor.c **** 
- 169:moudels/motor/MImotor/MImotor.c **** //--------
- 170:moudels/motor/MImotor/MImotor.c **** /**
- 171:moudels/motor/MImotor/MImotor.c ****   * @brief          float转int，数据打包用
- 172:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x float数值
- 173:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x_min float数值的最小值
- 174:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x_max float数值的最大值
- 175:moudels/motor/MImotor/MImotor.c ****   * @param[in]      bits  int的数据位数
- 176:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 177:moudels/motor/MImotor/MImotor.c ****   */
- 178:moudels/motor/MImotor/MImotor.c **** uint32_t FloatToUint(float x, float x_min, float x_max, int bits)
- 179:moudels/motor/MImotor/MImotor.c **** {
- 180:moudels/motor/MImotor/MImotor.c ****     float span = x_max - x_min;
- 181:moudels/motor/MImotor/MImotor.c ****     float offset = x_min;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 5
+ 142:moudels/motor/MImotor/MImotor.c ****     
+ 143:moudels/motor/MImotor/MImotor.c **** }
+ 144:moudels/motor/MImotor/MImotor.c **** void MIMotorStop(MIMotorInstance *motor)
+ 145:moudels/motor/MImotor/MImotor.c **** {
+ 146:moudels/motor/MImotor/MImotor.c ****     motor->stop_flag = MOTOR_STOP;
+ 147:moudels/motor/MImotor/MImotor.c **** }
+ 148:moudels/motor/MImotor/MImotor.c **** 
+ 149:moudels/motor/MImotor/MImotor.c **** void MIMotorEnable(MIMotorInstance *motor)
+ 150:moudels/motor/MImotor/MImotor.c **** {
+ 151:moudels/motor/MImotor/MImotor.c ****     motor->stop_flag = MOTOR_ENALBED;
+ 152:moudels/motor/MImotor/MImotor.c **** }
+ 153:moudels/motor/MImotor/MImotor.c **** 
+ 154:moudels/motor/MImotor/MImotor.c **** /* 修改电机的实际闭环对象 */
+ 155:moudels/motor/MImotor/MImotor.c **** void MIMotorOuterLoop(MIMotorInstance *motor, Closeloop_Type_e outer_loop)
+ 156:moudels/motor/MImotor/MImotor.c **** {
+ 157:moudels/motor/MImotor/MImotor.c ****     motor->motor_settings.outer_loop_type = outer_loop;
+ 158:moudels/motor/MImotor/MImotor.c **** }
+ 159:moudels/motor/MImotor/MImotor.c **** 
+ 160:moudels/motor/MImotor/MImotor.c **** // 设置参考值
+ 161:moudels/motor/MImotor/MImotor.c **** void MIMotorSetRef(MIMotorInstance *motor, float ref)
+ 162:moudels/motor/MImotor/MImotor.c **** {
+ 163:moudels/motor/MImotor/MImotor.c ****     motor->motor_controller.pid_ref = ref;
+ 164:moudels/motor/MImotor/MImotor.c **** }
+ 165:moudels/motor/MImotor/MImotor.c **** 
+ 166:moudels/motor/MImotor/MImotor.c **** // 为所有电机实例计算三环PID,发送控制报文
+ 167:moudels/motor/MImotor/MImotor.c **** 
+ 168:moudels/motor/MImotor/MImotor.c **** //--------
+ 169:moudels/motor/MImotor/MImotor.c **** /**
+ 170:moudels/motor/MImotor/MImotor.c ****   * @brief          float转int，数据打包用
+ 171:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x float数值
+ 172:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x_min float数值的最小值
+ 173:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x_max float数值的最大值
+ 174:moudels/motor/MImotor/MImotor.c ****   * @param[in]      bits  int的数据位数
+ 175:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 176:moudels/motor/MImotor/MImotor.c ****   */
+ 177:moudels/motor/MImotor/MImotor.c **** uint32_t FloatToUint(float x, float x_min, float x_max, int bits)
+ 178:moudels/motor/MImotor/MImotor.c **** {
+ 179:moudels/motor/MImotor/MImotor.c ****     float span = x_max - x_min;
+ 180:moudels/motor/MImotor/MImotor.c ****     float offset = x_min;
+ 181:moudels/motor/MImotor/MImotor.c ****     if(x > x_max) x=x_max;
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 5
 
 
- 182:moudels/motor/MImotor/MImotor.c ****     if(x > x_max) x=x_max;
- 183:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) x=x_min;
- 184:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
- 185:moudels/motor/MImotor/MImotor.c **** }
- 186:moudels/motor/MImotor/MImotor.c **** 
- 187:moudels/motor/MImotor/MImotor.c **** /**
- 188:moudels/motor/MImotor/MImotor.c ****   * @brief          输入范围限制
- 189:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x 输入数值
- 190:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x_min 输入数值的最小值
- 191:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x_max 输入数值的最大值
- 192:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 193:moudels/motor/MImotor/MImotor.c ****   */
- 194:moudels/motor/MImotor/MImotor.c **** float RangeRestrict(float x, float x_min, float x_max)
- 195:moudels/motor/MImotor/MImotor.c **** {
- 196:moudels/motor/MImotor/MImotor.c ****     float res;
- 197:moudels/motor/MImotor/MImotor.c ****     if(x > x_max) res=x_max;
- 198:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) res=x_min;
- 199:moudels/motor/MImotor/MImotor.c ****     else res = x;
- 200:moudels/motor/MImotor/MImotor.c ****     return res;
- 201:moudels/motor/MImotor/MImotor.c **** }
- 202:moudels/motor/MImotor/MImotor.c **** 
- 203:moudels/motor/MImotor/MImotor.c **** //------------------通讯类型魔改小米文档-------------
- 204:moudels/motor/MImotor/MImotor.c **** /**
- 205:moudels/motor/MImotor/MImotor.c ****   * @brief          获取设备ID （通信类型0），需在电机使能前使用
- 206:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 207:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 208:moudels/motor/MImotor/MImotor.c ****   */
- 209:moudels/motor/MImotor/MImotor.c **** static void MI_motor_GetID(MIMotorInstance  *hmotor)
- 210:moudels/motor/MImotor/MImotor.c **** {   
- 211:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT  ;
- 212:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=0;
- 213:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=0;
- 214:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=0;
- 215:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 216:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 217:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.mode = 0;
- 218:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.data = 0;
- 219:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.motor_id = 0;
- 220:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.res = 0;
- 221:moudels/motor/MImotor/MImotor.c ****  
- 222:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
- 223:moudels/motor/MImotor/MImotor.c ****     {
- 224:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
- 225:moudels/motor/MImotor/MImotor.c ****     }
- 226:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
- 227:moudels/motor/MImotor/MImotor.c ****      
- 228:moudels/motor/MImotor/MImotor.c ****     
- 229:moudels/motor/MImotor/MImotor.c **** }
- 230:moudels/motor/MImotor/MImotor.c **** 
- 231:moudels/motor/MImotor/MImotor.c **** /**
- 232:moudels/motor/MImotor/MImotor.c ****   * @brief          运控模式电机控制指令（通信类型1）
- 233:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 234:moudels/motor/MImotor/MImotor.c ****   * @param[in]      torque 目标力矩
- 235:moudels/motor/MImotor/MImotor.c ****   * @param[in]      MechPosition 
- 236:moudels/motor/MImotor/MImotor.c ****   * @param[in]      speed 
- 237:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kp 
- 238:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kd 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 6
+ 182:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) x=x_min;
+ 183:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
+ 184:moudels/motor/MImotor/MImotor.c **** }
+ 185:moudels/motor/MImotor/MImotor.c **** 
+ 186:moudels/motor/MImotor/MImotor.c **** /**
+ 187:moudels/motor/MImotor/MImotor.c ****   * @brief          输入范围限制
+ 188:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x 输入数值
+ 189:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x_min 输入数值的最小值
+ 190:moudels/motor/MImotor/MImotor.c ****   * @param[in]      x_max 输入数值的最大值
+ 191:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 192:moudels/motor/MImotor/MImotor.c ****   */
+ 193:moudels/motor/MImotor/MImotor.c **** float RangeRestrict(float x, float x_min, float x_max)
+ 194:moudels/motor/MImotor/MImotor.c **** {
+ 195:moudels/motor/MImotor/MImotor.c ****     float res;
+ 196:moudels/motor/MImotor/MImotor.c ****     if(x > x_max) res=x_max;
+ 197:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) res=x_min;
+ 198:moudels/motor/MImotor/MImotor.c ****     else res = x;
+ 199:moudels/motor/MImotor/MImotor.c ****     return res;
+ 200:moudels/motor/MImotor/MImotor.c **** }
+ 201:moudels/motor/MImotor/MImotor.c **** 
+ 202:moudels/motor/MImotor/MImotor.c **** //------------------通讯类型魔改小米文档-------------
+ 203:moudels/motor/MImotor/MImotor.c **** /**
+ 204:moudels/motor/MImotor/MImotor.c ****   * @brief          获取设备ID （通信类型0），需在电机使能前使用
+ 205:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 206:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 207:moudels/motor/MImotor/MImotor.c ****   */
+ 208:moudels/motor/MImotor/MImotor.c **** static void MI_motor_GetID(MIMotorInstance  *hmotor)
+ 209:moudels/motor/MImotor/MImotor.c **** {   
+ 210:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT  ;
+ 211:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=0;
+ 212:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=0;
+ 213:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=0;
+ 214:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 215:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 216:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.mode = 0;
+ 217:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.data = 0;
+ 218:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.motor_id = 0;
+ 219:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.res = 0;
+ 220:moudels/motor/MImotor/MImotor.c ****  
+ 221:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
+ 222:moudels/motor/MImotor/MImotor.c ****     {
+ 223:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
+ 224:moudels/motor/MImotor/MImotor.c ****     }
+ 225:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
+ 226:moudels/motor/MImotor/MImotor.c ****      
+ 227:moudels/motor/MImotor/MImotor.c ****     
+ 228:moudels/motor/MImotor/MImotor.c **** }
+ 229:moudels/motor/MImotor/MImotor.c **** 
+ 230:moudels/motor/MImotor/MImotor.c **** /**
+ 231:moudels/motor/MImotor/MImotor.c ****   * @brief          运控模式电机控制指令（通信类型1）
+ 232:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 233:moudels/motor/MImotor/MImotor.c ****   * @param[in]      torque 目标力矩
+ 234:moudels/motor/MImotor/MImotor.c ****   * @param[in]      MechPosition 
+ 235:moudels/motor/MImotor/MImotor.c ****   * @param[in]      speed 
+ 236:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kp 
+ 237:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kd 
+ 238:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 6
 
 
- 239:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 240:moudels/motor/MImotor/MImotor.c ****   */
- 241:moudels/motor/MImotor/MImotor.c **** static void MI_motor_Control(MIMotorInstance* hmotor, float torque, float MechPosition , float spee
- 242:moudels/motor/MImotor/MImotor.c **** {  
- 243:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT  ;
- 244:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=1;
- 245:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=FloatToUint(torque,T_MIN,T_MAX,16);
- 246:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 247:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 248:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId=EXT.raw;
- 249:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.mode = 1;
- 250:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.motor_id = hmotor->motor_id;
- 251:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.data = FloatToUint(torque,T_MIN,T_MAX,16);
- 252:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.res = 0;
- 253:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[0]=FloatToUint(MechPosition,P_MIN,P_MAX,16)>>8;
- 254:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[1]=FloatToUint(MechPosition,P_MIN,P_MAX,16);
- 255:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[2]=FloatToUint(speed,V_MIN,V_MAX,16)>>8;
- 256:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[3]=FloatToUint(speed,V_MIN,V_MAX,16);
- 257:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[4]=FloatToUint(kp,KP_MIN,KP_MAX,16)>>8;
- 258:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[5]=FloatToUint(kp,KP_MIN,KP_MAX,16);
- 259:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[6]=FloatToUint(kd,KD_MIN,KD_MAX,16)>>8;
- 260:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[7]=FloatToUint(kd,KD_MIN,KD_MAX,16);
- 261:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
- 262:moudels/motor/MImotor/MImotor.c ****     
- 263:moudels/motor/MImotor/MImotor.c **** }
- 264:moudels/motor/MImotor/MImotor.c **** 
- 265:moudels/motor/MImotor/MImotor.c **** /**
- 266:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机使能（通信类型 3）
- 267:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 268:moudels/motor/MImotor/MImotor.c ****   * @param[in]      id 电机id
- 269:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 270:moudels/motor/MImotor/MImotor.c ****   */
- 271:moudels/motor/MImotor/MImotor.c ****  static void MI_motor_Enable(MIMotorInstance* hmotor)
- 272:moudels/motor/MImotor/MImotor.c **** {   
- 273:moudels/motor/MImotor/MImotor.c ****     
- 274:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT  ;
- 275:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=3;
- 276:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
- 277:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 278:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 279:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 280:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
- 281:moudels/motor/MImotor/MImotor.c ****     {
- 282:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
- 283:moudels/motor/MImotor/MImotor.c ****     }
- 284:moudels/motor/MImotor/MImotor.c **** 
- 285:moudels/motor/MImotor/MImotor.c ****     if(!CANTransmit(hmotor->motor_can_instance,1)){
- 286:moudels/motor/MImotor/MImotor.c ****         while(1){
- 287:moudels/motor/MImotor/MImotor.c **** 
- 288:moudels/motor/MImotor/MImotor.c ****         }
- 289:moudels/motor/MImotor/MImotor.c ****     }
- 290:moudels/motor/MImotor/MImotor.c ****      
- 291:moudels/motor/MImotor/MImotor.c **** }
- 292:moudels/motor/MImotor/MImotor.c **** /**
- 293:moudels/motor/MImotor/MImotor.c ****   * @brief          电机停止运行帧（通信类型4）
- 294:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 295:moudels/motor/MImotor/MImotor.c ****   * @retval         none
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 7
+ 239:moudels/motor/MImotor/MImotor.c ****   */
+ 240:moudels/motor/MImotor/MImotor.c **** static void MI_motor_Control(MIMotorInstance* hmotor, float torque, float MechPosition , float spee
+ 241:moudels/motor/MImotor/MImotor.c **** {  
+ 242:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT  ;
+ 243:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=1;
+ 244:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=FloatToUint(torque,T_MIN,T_MAX,16);
+ 245:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 246:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 247:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId=EXT.raw;
+ 248:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.mode = 1;
+ 249:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.motor_id = hmotor->motor_id;
+ 250:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.data = FloatToUint(torque,T_MIN,T_MAX,16);
+ 251:moudels/motor/MImotor/MImotor.c ****     // hmotor->EXT_ID.res = 0;
+ 252:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[0]=FloatToUint(MechPosition,P_MIN,P_MAX,16)>>8;
+ 253:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[1]=FloatToUint(MechPosition,P_MIN,P_MAX,16);
+ 254:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[2]=FloatToUint(speed,V_MIN,V_MAX,16)>>8;
+ 255:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[3]=FloatToUint(speed,V_MIN,V_MAX,16);
+ 256:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[4]=FloatToUint(kp,KP_MIN,KP_MAX,16)>>8;
+ 257:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[5]=FloatToUint(kp,KP_MIN,KP_MAX,16);
+ 258:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[6]=FloatToUint(kd,KD_MIN,KD_MAX,16)>>8;
+ 259:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[7]=FloatToUint(kd,KD_MIN,KD_MAX,16);
+ 260:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
+ 261:moudels/motor/MImotor/MImotor.c ****     
+ 262:moudels/motor/MImotor/MImotor.c **** }
+ 263:moudels/motor/MImotor/MImotor.c **** 
+ 264:moudels/motor/MImotor/MImotor.c **** /**
+ 265:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机使能（通信类型 3）
+ 266:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 267:moudels/motor/MImotor/MImotor.c ****   * @param[in]      id 电机id
+ 268:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 269:moudels/motor/MImotor/MImotor.c ****   */
+ 270:moudels/motor/MImotor/MImotor.c ****  static void MI_motor_Enable(MIMotorInstance* hmotor)
+ 271:moudels/motor/MImotor/MImotor.c **** {   
+ 272:moudels/motor/MImotor/MImotor.c ****     
+ 273:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT  ;
+ 274:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=3;
+ 275:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+ 276:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 277:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 278:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 279:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
+ 280:moudels/motor/MImotor/MImotor.c ****     {
+ 281:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
+ 282:moudels/motor/MImotor/MImotor.c ****     }
+ 283:moudels/motor/MImotor/MImotor.c **** 
+ 284:moudels/motor/MImotor/MImotor.c ****     if(!CANTransmit(hmotor->motor_can_instance,1)){
+ 285:moudels/motor/MImotor/MImotor.c ****         while(1){
+ 286:moudels/motor/MImotor/MImotor.c **** 
+ 287:moudels/motor/MImotor/MImotor.c ****         }
+ 288:moudels/motor/MImotor/MImotor.c ****     }
+ 289:moudels/motor/MImotor/MImotor.c ****      
+ 290:moudels/motor/MImotor/MImotor.c **** }
+ 291:moudels/motor/MImotor/MImotor.c **** /**
+ 292:moudels/motor/MImotor/MImotor.c ****   * @brief          电机停止运行帧（通信类型4）
+ 293:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 294:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 295:moudels/motor/MImotor/MImotor.c ****   */
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 7
 
 
- 296:moudels/motor/MImotor/MImotor.c ****   */
- 297:moudels/motor/MImotor/MImotor.c **** static void MI_motor_Stop(MIMotorInstance* hmotor)
- 298:moudels/motor/MImotor/MImotor.c **** 
- 299:moudels/motor/MImotor/MImotor.c **** {   
- 300:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT;
- 301:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=4;
- 302:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
- 303:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 304:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 305:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 306:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
- 307:moudels/motor/MImotor/MImotor.c ****     {
- 308:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
- 309:moudels/motor/MImotor/MImotor.c ****     }
- 310:moudels/motor/MImotor/MImotor.c **** 
- 311:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
- 312:moudels/motor/MImotor/MImotor.c **** }
- 313:moudels/motor/MImotor/MImotor.c **** /**
- 314:moudels/motor/MImotor/MImotor.c ****   * @brief          设置电机机械零位（通信类型6）会把当前电机位置设为机械
- 315:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 316:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 317:moudels/motor/MImotor/MImotor.c ****   */
- 318:moudels/motor/MImotor/MImotor.c **** static void MI_motor_SetMechPositionToZero(MIMotorInstance* hmotor)
- 319:moudels/motor/MImotor/MImotor.c **** {
- 320:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT ;
- 321:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=6;
- 322:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
- 323:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 324:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 325:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 326:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[0]=1;
- 327:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=1; i<8; i++)
- 328:moudels/motor/MImotor/MImotor.c ****     {
- 329:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
- 330:moudels/motor/MImotor/MImotor.c ****     }
- 331:moudels/motor/MImotor/MImotor.c **** 
- 332:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
- 333:moudels/motor/MImotor/MImotor.c ****      
- 334:moudels/motor/MImotor/MImotor.c **** }
- 335:moudels/motor/MImotor/MImotor.c **** 
- 336:moudels/motor/MImotor/MImotor.c **** /**
- 337:moudels/motor/MImotor/MImotor.c ****   * @brief          单个参数读取（通信类型17）
- 338:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 339:moudels/motor/MImotor/MImotor.c ****   * @param[in]      index 功能码
- 340:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 341:moudels/motor/MImotor/MImotor.c ****   */
- 342:moudels/motor/MImotor/MImotor.c **** static void MI_motor_ReadParam(MIMotorInstance* hmotor,uint16_t index)
- 343:moudels/motor/MImotor/MImotor.c **** {
- 344:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT ;
- 345:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=17;
- 346:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
- 347:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 348:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 349:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 350:moudels/motor/MImotor/MImotor.c **** 
- 351:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[0],&index,2);
- 352:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=2; i<8; i++)
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 8
+ 296:moudels/motor/MImotor/MImotor.c **** static void MI_motor_Stop(MIMotorInstance* hmotor)
+ 297:moudels/motor/MImotor/MImotor.c **** 
+ 298:moudels/motor/MImotor/MImotor.c **** {   
+ 299:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT;
+ 300:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=4;
+ 301:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+ 302:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 303:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 304:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 305:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
+ 306:moudels/motor/MImotor/MImotor.c ****     {
+ 307:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
+ 308:moudels/motor/MImotor/MImotor.c ****     }
+ 309:moudels/motor/MImotor/MImotor.c **** 
+ 310:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
+ 311:moudels/motor/MImotor/MImotor.c **** }
+ 312:moudels/motor/MImotor/MImotor.c **** /**
+ 313:moudels/motor/MImotor/MImotor.c ****   * @brief          设置电机机械零位（通信类型6）会把当前电机位置设为机械
+ 314:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 315:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 316:moudels/motor/MImotor/MImotor.c ****   */
+ 317:moudels/motor/MImotor/MImotor.c **** static void MI_motor_SetMechPositionToZero(MIMotorInstance* hmotor)
+ 318:moudels/motor/MImotor/MImotor.c **** {
+ 319:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT ;
+ 320:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=6;
+ 321:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+ 322:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 323:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 324:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 325:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->tx_buff[0]=1;
+ 326:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=1; i<8; i++)
+ 327:moudels/motor/MImotor/MImotor.c ****     {
+ 328:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
+ 329:moudels/motor/MImotor/MImotor.c ****     }
+ 330:moudels/motor/MImotor/MImotor.c **** 
+ 331:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
+ 332:moudels/motor/MImotor/MImotor.c ****      
+ 333:moudels/motor/MImotor/MImotor.c **** }
+ 334:moudels/motor/MImotor/MImotor.c **** 
+ 335:moudels/motor/MImotor/MImotor.c **** /**
+ 336:moudels/motor/MImotor/MImotor.c ****   * @brief          单个参数读取（通信类型17）
+ 337:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 338:moudels/motor/MImotor/MImotor.c ****   * @param[in]      index 功能码
+ 339:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 340:moudels/motor/MImotor/MImotor.c ****   */
+ 341:moudels/motor/MImotor/MImotor.c **** static void MI_motor_ReadParam(MIMotorInstance* hmotor,uint16_t index)
+ 342:moudels/motor/MImotor/MImotor.c **** {
+ 343:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT ;
+ 344:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=17;
+ 345:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+ 346:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 347:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 348:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 349:moudels/motor/MImotor/MImotor.c **** 
+ 350:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[0],&index,2);
+ 351:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=2; i<8; i++)
+ 352:moudels/motor/MImotor/MImotor.c ****     {
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 8
 
 
- 353:moudels/motor/MImotor/MImotor.c ****     {
- 354:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
- 355:moudels/motor/MImotor/MImotor.c ****     }
- 356:moudels/motor/MImotor/MImotor.c **** 
- 357:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
- 358:moudels/motor/MImotor/MImotor.c ****     // free(EXT);
- 359:moudels/motor/MImotor/MImotor.c **** }
- 360:moudels/motor/MImotor/MImotor.c **** 
- 361:moudels/motor/MImotor/MImotor.c **** /**
- 362:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机运行模式切换
- 363:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 364:moudels/motor/MImotor/MImotor.c ****   * @param[in]      run_mode 更改的模式
- 365:moudels/motor/MImotor/MImotor.c ****   * @note           通信类型18 （掉电丢失）
- 366:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 367:moudels/motor/MImotor/MImotor.c ****   */
- 368:moudels/motor/MImotor/MImotor.c **** static void MI_motor_ModeSwitch(MIMotorInstance* hmotor, uint8_t run_mode,uint16_t index)
- 369:moudels/motor/MImotor/MImotor.c **** {
-  51              		.loc 1 369 1 is_stmt 1 view -0
+ 353:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
+ 354:moudels/motor/MImotor/MImotor.c ****     }
+ 355:moudels/motor/MImotor/MImotor.c **** 
+ 356:moudels/motor/MImotor/MImotor.c ****     CANTransmit(hmotor->motor_can_instance,1);
+ 357:moudels/motor/MImotor/MImotor.c ****     // free(EXT);
+ 358:moudels/motor/MImotor/MImotor.c **** }
+ 359:moudels/motor/MImotor/MImotor.c **** 
+ 360:moudels/motor/MImotor/MImotor.c **** /**
+ 361:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机运行模式切换
+ 362:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 363:moudels/motor/MImotor/MImotor.c ****   * @param[in]      run_mode 更改的模式
+ 364:moudels/motor/MImotor/MImotor.c ****   * @note           通信类型18 （掉电丢失）
+ 365:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 366:moudels/motor/MImotor/MImotor.c ****   */
+ 367:moudels/motor/MImotor/MImotor.c **** static void MI_motor_ModeSwitch(MIMotorInstance* hmotor, uint8_t run_mode,uint16_t index)
+ 368:moudels/motor/MImotor/MImotor.c **** {
+  51              		.loc 1 368 1 is_stmt 1 view -0
   52              		.cfi_startproc
   53              		@ args = 0, pretend = 0, frame = 0
   54              		@ frame_needed = 0, uses_anonymous_args = 0
-  55              		.loc 1 369 1 is_stmt 0 view .LVU6
+  55              		.loc 1 368 1 is_stmt 0 view .LVU6
   56 0000 10B5     		push	{r4, lr}
   57              		.cfi_def_cfa_offset 8
   58              		.cfi_offset 4, -8
   59              		.cfi_offset 14, -4
- 370:moudels/motor/MImotor/MImotor.c ****      
- 371:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT ;
-  60              		.loc 1 371 5 is_stmt 1 view .LVU7
- 372:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=18;
-  61              		.loc 1 372 5 view .LVU8
-  62              		.loc 1 372 20 is_stmt 0 view .LVU9
+ 369:moudels/motor/MImotor/MImotor.c ****      
+ 370:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT ;
+  60              		.loc 1 370 5 is_stmt 1 view .LVU7
+ 371:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=18;
+  61              		.loc 1 371 5 view .LVU8
+  62              		.loc 1 371 20 is_stmt 0 view .LVU9
   63 0002 1C4B     		ldr	r3, .L9
   64 0004 DC78     		ldrb	r4, [r3, #3]	@ zero_extendqisi2
   65 0006 4FF0120C 		mov	ip, #18
   66 000a 6CF30404 		bfi	r4, ip, #0, #5
   67 000e DC70     		strb	r4, [r3, #3]
- 373:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
-  68              		.loc 1 373 5 is_stmt 1 view .LVU10
-  69              		.loc 1 373 20 is_stmt 0 view .LVU11
+ 372:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+  68              		.loc 1 372 5 is_stmt 1 view .LVU10
+  69              		.loc 1 372 20 is_stmt 0 view .LVU11
   70 0010 194C     		ldr	r4, .L9+4
   71 0012 2478     		ldrb	r4, [r4]	@ zero_extendqisi2
   72 0014 A3F80140 		strh	r4, [r3, #1]	@ unaligned
- 374:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=(hmotor->motor_can_instance->tx_id) ;
-  73              		.loc 1 374 5 is_stmt 1 view .LVU12
-  74              		.loc 1 374 32 is_stmt 0 view .LVU13
+ 373:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+  73              		.loc 1 373 5 is_stmt 1 view .LVU12
+  74              		.loc 1 373 31 is_stmt 0 view .LVU13
   75 0018 D0F8A841 		ldr	r4, [r0, #424]
-  76              		.loc 1 374 52 view .LVU14
+  76              		.loc 1 373 51 view .LVU14
   77 001c 94F838C0 		ldrb	ip, [r4, #56]	@ zero_extendqisi2
-  78              		.loc 1 374 24 view .LVU15
+  78              		.loc 1 373 24 view .LVU15
   79 0020 83F800C0 		strb	ip, [r3]
- 375:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
-  80              		.loc 1 375 5 is_stmt 1 view .LVU16
-  81              		.loc 1 375 19 is_stmt 0 view .LVU17
+ 374:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+  80              		.loc 1 374 5 is_stmt 1 view .LVU16
+  81              		.loc 1 374 19 is_stmt 0 view .LVU17
   82 0024 93F803C0 		ldrb	ip, [r3, #3]	@ zero_extendqisi2
   83 0028 2CF0E00C 		bic	ip, ip, #224
   84 002c 83F803C0 		strb	ip, [r3, #3]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 9
+ 375:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId=EXT.raw;
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 9
 
 
- 376:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId=EXT.raw;
-  85              		.loc 1 376 5 is_stmt 1 view .LVU18
-  86              		.loc 1 376 49 is_stmt 0 view .LVU19
+  85              		.loc 1 375 5 is_stmt 1 view .LVU18
+  86              		.loc 1 375 49 is_stmt 0 view .LVU19
   87 0030 1B68     		ldr	r3, [r3]
-  88              		.loc 1 376 45 view .LVU20
+  88              		.loc 1 375 45 view .LVU20
   89 0032 A360     		str	r3, [r4, #8]	@ unaligned
- 377:moudels/motor/MImotor/MImotor.c **** 
- 378:moudels/motor/MImotor/MImotor.c ****     
- 379:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=2; i<8; i++)
-  90              		.loc 1 379 5 is_stmt 1 view .LVU21
+ 376:moudels/motor/MImotor/MImotor.c **** 
+ 377:moudels/motor/MImotor/MImotor.c ****     
+ 378:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=2; i<8; i++)
+  90              		.loc 1 378 5 is_stmt 1 view .LVU21
   91              	.LBB2:
-  92              		.loc 1 379 9 view .LVU22
+  92              		.loc 1 378 9 view .LVU22
   93              	.LVL2:
-  94              		.loc 1 379 17 is_stmt 0 view .LVU23
+  94              		.loc 1 378 17 is_stmt 0 view .LVU23
   95 0034 0223     		movs	r3, #2
   96              	.LVL3:
   97              	.L3:
-  98              		.loc 1 379 23 is_stmt 1 discriminator 1 view .LVU24
+  98              		.loc 1 378 23 is_stmt 1 discriminator 1 view .LVU24
   99 0036 072B     		cmp	r3, #7
  100 0038 0AD8     		bhi	.L8
- 380:moudels/motor/MImotor/MImotor.c ****     {
- 381:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
- 101              		.loc 1 381 9 view .LVU25
- 102              		.loc 1 381 47 is_stmt 0 view .LVU26
+ 379:moudels/motor/MImotor/MImotor.c ****     {
+ 380:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
+ 101              		.loc 1 380 9 view .LVU25
+ 102              		.loc 1 380 47 is_stmt 0 view .LVU26
  103 003a D0F8A841 		ldr	r4, [r0, #424]
  104 003e 04EB030C 		add	ip, r4, r3
  105 0042 4FF0000E 		mov	lr, #0
  106 0046 8CF83DE0 		strb	lr, [ip, #61]
- 379:moudels/motor/MImotor/MImotor.c ****     {
- 107              		.loc 1 379 28 is_stmt 1 discriminator 3 view .LVU27
+ 378:moudels/motor/MImotor/MImotor.c ****     {
+ 107              		.loc 1 378 28 is_stmt 1 discriminator 3 view .LVU27
  108 004a 0133     		adds	r3, r3, #1
  109              	.LVL4:
- 379:moudels/motor/MImotor/MImotor.c ****     {
- 110              		.loc 1 379 28 is_stmt 0 discriminator 3 view .LVU28
+ 378:moudels/motor/MImotor/MImotor.c ****     {
+ 110              		.loc 1 378 28 is_stmt 0 discriminator 3 view .LVU28
  111 004c DBB2     		uxtb	r3, r3
  112              	.LVL5:
- 379:moudels/motor/MImotor/MImotor.c ****     {
- 113              		.loc 1 379 28 discriminator 3 view .LVU29
+ 378:moudels/motor/MImotor/MImotor.c ****     {
+ 113              		.loc 1 378 28 discriminator 3 view .LVU29
  114 004e F2E7     		b	.L3
  115              	.L8:
- 379:moudels/motor/MImotor/MImotor.c ****     {
- 116              		.loc 1 379 28 discriminator 3 view .LVU30
+ 378:moudels/motor/MImotor/MImotor.c ****     {
+ 116              		.loc 1 378 28 discriminator 3 view .LVU30
  117              	.LBE2:
- 382:moudels/motor/MImotor/MImotor.c ****     }
- 383:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[0],&index,2);
- 118              		.loc 1 383 5 is_stmt 1 view .LVU31
- 119              		.loc 1 383 19 is_stmt 0 view .LVU32
+ 381:moudels/motor/MImotor/MImotor.c ****     }
+ 382:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[0],&index,2);
+ 118              		.loc 1 382 5 is_stmt 1 view .LVU31
+ 119              		.loc 1 382 19 is_stmt 0 view .LVU32
  120 0050 D0F8A831 		ldr	r3, [r0, #424]
  121              	.LVL6:
- 122              		.loc 1 383 5 view .LVU33
+ 122              		.loc 1 382 5 view .LVU33
  123 0054 A3F83D20 		strh	r2, [r3, #61]	@ unaligned
- 384:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[4],&run_mode,1);
- 124              		.loc 1 384 5 is_stmt 1 view .LVU34
- 125              		.loc 1 384 19 is_stmt 0 view .LVU35
+ 383:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[4],&run_mode,1);
+ 124              		.loc 1 383 5 is_stmt 1 view .LVU34
+ 125              		.loc 1 383 19 is_stmt 0 view .LVU35
  126 0058 D0F8A831 		ldr	r3, [r0, #424]
- 127              		.loc 1 384 5 view .LVU36
+ 127              		.loc 1 383 5 view .LVU36
  128 005c 83F84110 		strb	r1, [r3, #65]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 10
+ 384:moudels/motor/MImotor/MImotor.c ****     if(!CANTransmit(hmotor->motor_can_instance,1)){
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 10
 
 
- 385:moudels/motor/MImotor/MImotor.c ****     if(!CANTransmit(hmotor->motor_can_instance,1)){
- 129              		.loc 1 385 5 is_stmt 1 view .LVU37
- 130              		.loc 1 385 9 is_stmt 0 view .LVU38
+ 129              		.loc 1 384 5 is_stmt 1 view .LVU37
+ 130              		.loc 1 384 9 is_stmt 0 view .LVU38
  131 0060 B7EE000A 		vmov.f32	s0, #1.0e+0
  132 0064 D0F8A801 		ldr	r0, [r0, #424]
  133              	.LVL7:
- 134              		.loc 1 385 9 view .LVU39
+ 134              		.loc 1 384 9 view .LVU39
  135 0068 FFF7FEFF 		bl	CANTransmit
  136              	.LVL8:
- 137              		.loc 1 385 7 discriminator 1 view .LVU40
+ 137              		.loc 1 384 7 discriminator 1 view .LVU40
  138 006c 00B9     		cbnz	r0, .L2
  139              	.L6:
- 386:moudels/motor/MImotor/MImotor.c ****         while(1){
- 140              		.loc 1 386 9 is_stmt 1 view .LVU41
- 387:moudels/motor/MImotor/MImotor.c **** 
- 388:moudels/motor/MImotor/MImotor.c ****         }
- 141              		.loc 1 388 9 view .LVU42
- 386:moudels/motor/MImotor/MImotor.c ****         while(1){
- 142              		.loc 1 386 14 view .LVU43
+ 385:moudels/motor/MImotor/MImotor.c ****         while(1){
+ 140              		.loc 1 385 9 is_stmt 1 view .LVU41
+ 386:moudels/motor/MImotor/MImotor.c **** 
+ 387:moudels/motor/MImotor/MImotor.c ****         }
+ 141              		.loc 1 387 9 view .LVU42
+ 385:moudels/motor/MImotor/MImotor.c ****         while(1){
+ 142              		.loc 1 385 14 view .LVU43
  143 006e FEE7     		b	.L6
  144              	.L2:
- 389:moudels/motor/MImotor/MImotor.c ****     }
- 390:moudels/motor/MImotor/MImotor.c **** }
- 145              		.loc 1 390 1 is_stmt 0 view .LVU44
+ 388:moudels/motor/MImotor/MImotor.c ****     }
+ 389:moudels/motor/MImotor/MImotor.c **** }
+ 145              		.loc 1 389 1 is_stmt 0 view .LVU44
  146 0070 10BD     		pop	{r4, pc}
  147              	.L10:
  148 0072 00BF     		.align	2
@@ -581,130 +580,130 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  161              	MI_motor_Enable:
  162              	.LVL9:
  163              	.LFB150:
- 272:moudels/motor/MImotor/MImotor.c ****     
- 164              		.loc 1 272 1 is_stmt 1 view -0
+ 271:moudels/motor/MImotor/MImotor.c ****     
+ 164              		.loc 1 271 1 is_stmt 1 view -0
  165              		.cfi_startproc
  166              		@ args = 0, pretend = 0, frame = 0
  167              		@ frame_needed = 0, uses_anonymous_args = 0
- 272:moudels/motor/MImotor/MImotor.c ****     
- 168              		.loc 1 272 1 is_stmt 0 view .LVU46
+ 271:moudels/motor/MImotor/MImotor.c ****     
+ 168              		.loc 1 271 1 is_stmt 0 view .LVU46
  169 0000 08B5     		push	{r3, lr}
  170              		.cfi_def_cfa_offset 8
  171              		.cfi_offset 3, -8
  172              		.cfi_offset 14, -4
- 274:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=3;
- 173              		.loc 1 274 5 is_stmt 1 view .LVU47
- 275:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
- 174              		.loc 1 275 5 view .LVU48
- 275:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
- 175              		.loc 1 275 20 is_stmt 0 view .LVU49
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 11
-
-
+ 273:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=3;
+ 173              		.loc 1 273 5 is_stmt 1 view .LVU47
+ 274:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+ 174              		.loc 1 274 5 view .LVU48
+ 274:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+ 175              		.loc 1 274 20 is_stmt 0 view .LVU49
  176 0002 154B     		ldr	r3, .L17
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 11
+
+
  177 0004 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
  178 0006 0321     		movs	r1, #3
  179 0008 61F30402 		bfi	r2, r1, #0, #5
  180 000c DA70     		strb	r2, [r3, #3]
- 276:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 181              		.loc 1 276 5 is_stmt 1 view .LVU50
- 276:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 182              		.loc 1 276 20 is_stmt 0 view .LVU51
+ 275:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 181              		.loc 1 275 5 is_stmt 1 view .LVU50
+ 275:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 182              		.loc 1 275 20 is_stmt 0 view .LVU51
  183 000e 134A     		ldr	r2, .L17+4
  184 0010 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
  185 0012 A3F80120 		strh	r2, [r3, #1]	@ unaligned
- 277:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 186              		.loc 1 277 5 is_stmt 1 view .LVU52
- 277:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 187              		.loc 1 277 31 is_stmt 0 view .LVU53
+ 276:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 186              		.loc 1 276 5 is_stmt 1 view .LVU52
+ 276:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 187              		.loc 1 276 31 is_stmt 0 view .LVU53
  188 0016 D0F8A811 		ldr	r1, [r0, #424]
- 277:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 189              		.loc 1 277 51 view .LVU54
+ 276:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 189              		.loc 1 276 51 view .LVU54
  190 001a 91F83820 		ldrb	r2, [r1, #56]	@ zero_extendqisi2
- 277:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 191              		.loc 1 277 24 view .LVU55
+ 276:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 191              		.loc 1 276 24 view .LVU55
  192 001e 1A70     		strb	r2, [r3]
- 278:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 193              		.loc 1 278 5 is_stmt 1 view .LVU56
- 278:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 194              		.loc 1 278 19 is_stmt 0 view .LVU57
+ 277:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 193              		.loc 1 277 5 is_stmt 1 view .LVU56
+ 277:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 194              		.loc 1 277 19 is_stmt 0 view .LVU57
  195 0020 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
  196 0022 22F0E002 		bic	r2, r2, #224
  197 0026 DA70     		strb	r2, [r3, #3]
- 279:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
- 198              		.loc 1 279 5 is_stmt 1 view .LVU58
- 279:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
- 199              		.loc 1 279 50 is_stmt 0 view .LVU59
+ 278:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
+ 198              		.loc 1 278 5 is_stmt 1 view .LVU58
+ 278:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
+ 199              		.loc 1 278 50 is_stmt 0 view .LVU59
  200 0028 1B68     		ldr	r3, [r3]
- 279:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
- 201              		.loc 1 279 45 view .LVU60
+ 278:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
+ 201              		.loc 1 278 45 view .LVU60
  202 002a 8B60     		str	r3, [r1, #8]	@ unaligned
- 280:moudels/motor/MImotor/MImotor.c ****     {
- 203              		.loc 1 280 5 is_stmt 1 view .LVU61
+ 279:moudels/motor/MImotor/MImotor.c ****     {
+ 203              		.loc 1 279 5 is_stmt 1 view .LVU61
  204              	.LBB3:
- 280:moudels/motor/MImotor/MImotor.c ****     {
- 205              		.loc 1 280 9 view .LVU62
+ 279:moudels/motor/MImotor/MImotor.c ****     {
+ 205              		.loc 1 279 9 view .LVU62
  206              	.LVL10:
- 280:moudels/motor/MImotor/MImotor.c ****     {
- 207              		.loc 1 280 17 is_stmt 0 view .LVU63
+ 279:moudels/motor/MImotor/MImotor.c ****     {
+ 207              		.loc 1 279 17 is_stmt 0 view .LVU63
  208 002c 0023     		movs	r3, #0
- 280:moudels/motor/MImotor/MImotor.c ****     {
- 209              		.loc 1 280 5 view .LVU64
+ 279:moudels/motor/MImotor/MImotor.c ****     {
+ 209              		.loc 1 279 5 view .LVU64
  210 002e 07E0     		b	.L12
  211              	.LVL11:
  212              	.L13:
- 282:moudels/motor/MImotor/MImotor.c ****     }
- 213              		.loc 1 282 9 is_stmt 1 view .LVU65
- 282:moudels/motor/MImotor/MImotor.c ****     }
- 214              		.loc 1 282 15 is_stmt 0 view .LVU66
+ 281:moudels/motor/MImotor/MImotor.c ****     }
+ 213              		.loc 1 281 9 is_stmt 1 view .LVU65
+ 281:moudels/motor/MImotor/MImotor.c ****     }
+ 214              		.loc 1 281 15 is_stmt 0 view .LVU66
  215 0030 D0F8A821 		ldr	r2, [r0, #424]
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 12
+ 281:moudels/motor/MImotor/MImotor.c ****     }
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 12
 
 
- 282:moudels/motor/MImotor/MImotor.c ****     }
- 216              		.loc 1 282 47 view .LVU67
+ 216              		.loc 1 281 47 view .LVU67
  217 0034 1A44     		add	r2, r2, r3
  218 0036 0021     		movs	r1, #0
  219 0038 82F83D10 		strb	r1, [r2, #61]
- 280:moudels/motor/MImotor/MImotor.c ****     {
- 220              		.loc 1 280 28 is_stmt 1 discriminator 3 view .LVU68
+ 279:moudels/motor/MImotor/MImotor.c ****     {
+ 220              		.loc 1 279 28 is_stmt 1 discriminator 3 view .LVU68
  221 003c 0133     		adds	r3, r3, #1
  222              	.LVL12:
- 280:moudels/motor/MImotor/MImotor.c ****     {
- 223              		.loc 1 280 28 is_stmt 0 discriminator 3 view .LVU69
+ 279:moudels/motor/MImotor/MImotor.c ****     {
+ 223              		.loc 1 279 28 is_stmt 0 discriminator 3 view .LVU69
  224 003e DBB2     		uxtb	r3, r3
  225              	.LVL13:
  226              	.L12:
- 280:moudels/motor/MImotor/MImotor.c ****     {
- 227              		.loc 1 280 23 is_stmt 1 discriminator 1 view .LVU70
+ 279:moudels/motor/MImotor/MImotor.c ****     {
+ 227              		.loc 1 279 23 is_stmt 1 discriminator 1 view .LVU70
  228 0040 072B     		cmp	r3, #7
  229 0042 F5D9     		bls	.L13
  230              	.LBE3:
- 285:moudels/motor/MImotor/MImotor.c ****         while(1){
- 231              		.loc 1 285 5 view .LVU71
- 285:moudels/motor/MImotor/MImotor.c ****         while(1){
- 232              		.loc 1 285 9 is_stmt 0 view .LVU72
+ 284:moudels/motor/MImotor/MImotor.c ****         while(1){
+ 231              		.loc 1 284 5 view .LVU71
+ 284:moudels/motor/MImotor/MImotor.c ****         while(1){
+ 232              		.loc 1 284 9 is_stmt 0 view .LVU72
  233 0044 B7EE000A 		vmov.f32	s0, #1.0e+0
  234 0048 D0F8A801 		ldr	r0, [r0, #424]
  235              	.LVL14:
- 285:moudels/motor/MImotor/MImotor.c ****         while(1){
- 236              		.loc 1 285 9 view .LVU73
+ 284:moudels/motor/MImotor/MImotor.c ****         while(1){
+ 236              		.loc 1 284 9 view .LVU73
  237 004c FFF7FEFF 		bl	CANTransmit
  238              	.LVL15:
- 285:moudels/motor/MImotor/MImotor.c ****         while(1){
- 239              		.loc 1 285 7 discriminator 1 view .LVU74
+ 284:moudels/motor/MImotor/MImotor.c ****         while(1){
+ 239              		.loc 1 284 7 discriminator 1 view .LVU74
  240 0050 00B9     		cbnz	r0, .L11
  241              	.L15:
- 286:moudels/motor/MImotor/MImotor.c **** 
- 242              		.loc 1 286 9 is_stmt 1 view .LVU75
- 288:moudels/motor/MImotor/MImotor.c ****     }
- 243              		.loc 1 288 9 view .LVU76
- 286:moudels/motor/MImotor/MImotor.c **** 
- 244              		.loc 1 286 14 view .LVU77
+ 285:moudels/motor/MImotor/MImotor.c **** 
+ 242              		.loc 1 285 9 is_stmt 1 view .LVU75
+ 287:moudels/motor/MImotor/MImotor.c ****     }
+ 243              		.loc 1 287 9 view .LVU76
+ 285:moudels/motor/MImotor/MImotor.c **** 
+ 244              		.loc 1 285 14 view .LVU77
  245 0052 FEE7     		b	.L15
  246              	.L11:
- 291:moudels/motor/MImotor/MImotor.c **** /**
- 247              		.loc 1 291 1 is_stmt 0 view .LVU78
+ 290:moudels/motor/MImotor/MImotor.c **** /**
+ 247              		.loc 1 290 1 is_stmt 0 view .LVU78
  248 0054 08BD     		pop	{r3, pc}
  249              	.L18:
  250 0056 00BF     		.align	2
@@ -718,119 +717,119 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  259              		.syntax unified
  260              		.thumb
  261              		.thumb_func
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 13
-
-
  263              	MI_motor_Stop:
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 13
+
+
  264              	.LVL16:
  265              	.LFB151:
- 299:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT;
- 266              		.loc 1 299 1 is_stmt 1 view -0
+ 298:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT;
+ 266              		.loc 1 298 1 is_stmt 1 view -0
  267              		.cfi_startproc
  268              		@ args = 0, pretend = 0, frame = 0
  269              		@ frame_needed = 0, uses_anonymous_args = 0
- 299:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT;
- 270              		.loc 1 299 1 is_stmt 0 view .LVU80
+ 298:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T EXT;
+ 270              		.loc 1 298 1 is_stmt 0 view .LVU80
  271 0000 08B5     		push	{r3, lr}
  272              		.cfi_def_cfa_offset 8
  273              		.cfi_offset 3, -8
  274              		.cfi_offset 14, -4
- 300:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=4;
- 275              		.loc 1 300 5 is_stmt 1 view .LVU81
- 301:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
- 276              		.loc 1 301 5 view .LVU82
- 301:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
- 277              		.loc 1 301 20 is_stmt 0 view .LVU83
+ 299:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=4;
+ 275              		.loc 1 299 5 is_stmt 1 view .LVU81
+ 300:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+ 276              		.loc 1 300 5 view .LVU82
+ 300:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+ 277              		.loc 1 300 20 is_stmt 0 view .LVU83
  278 0002 144B     		ldr	r3, .L23
  279 0004 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
  280 0006 0421     		movs	r1, #4
  281 0008 61F30402 		bfi	r2, r1, #0, #5
  282 000c DA70     		strb	r2, [r3, #3]
- 302:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 283              		.loc 1 302 5 is_stmt 1 view .LVU84
- 302:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 284              		.loc 1 302 20 is_stmt 0 view .LVU85
+ 301:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 283              		.loc 1 301 5 is_stmt 1 view .LVU84
+ 301:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 284              		.loc 1 301 20 is_stmt 0 view .LVU85
  285 000e 124A     		ldr	r2, .L23+4
  286 0010 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
  287 0012 A3F80120 		strh	r2, [r3, #1]	@ unaligned
- 303:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 288              		.loc 1 303 5 is_stmt 1 view .LVU86
- 303:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 289              		.loc 1 303 31 is_stmt 0 view .LVU87
+ 302:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 288              		.loc 1 302 5 is_stmt 1 view .LVU86
+ 302:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 289              		.loc 1 302 31 is_stmt 0 view .LVU87
  290 0016 D0F8A811 		ldr	r1, [r0, #424]
- 303:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 291              		.loc 1 303 51 view .LVU88
+ 302:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 291              		.loc 1 302 51 view .LVU88
  292 001a 91F83820 		ldrb	r2, [r1, #56]	@ zero_extendqisi2
- 303:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 293              		.loc 1 303 24 view .LVU89
+ 302:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 293              		.loc 1 302 24 view .LVU89
  294 001e 1A70     		strb	r2, [r3]
- 304:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 295              		.loc 1 304 5 is_stmt 1 view .LVU90
- 304:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 296              		.loc 1 304 19 is_stmt 0 view .LVU91
+ 303:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 295              		.loc 1 303 5 is_stmt 1 view .LVU90
+ 303:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 296              		.loc 1 303 19 is_stmt 0 view .LVU91
  297 0020 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
  298 0022 22F0E002 		bic	r2, r2, #224
  299 0026 DA70     		strb	r2, [r3, #3]
- 305:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
- 300              		.loc 1 305 5 is_stmt 1 view .LVU92
- 305:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
- 301              		.loc 1 305 50 is_stmt 0 view .LVU93
+ 304:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
+ 300              		.loc 1 304 5 is_stmt 1 view .LVU92
+ 304:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
+ 301              		.loc 1 304 50 is_stmt 0 view .LVU93
  302 0028 1B68     		ldr	r3, [r3]
- 305:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
- 303              		.loc 1 305 45 view .LVU94
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 14
-
-
+ 304:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=0; i<8; i++)
+ 303              		.loc 1 304 45 view .LVU94
  304 002a 8B60     		str	r3, [r1, #8]	@ unaligned
- 306:moudels/motor/MImotor/MImotor.c ****     {
- 305              		.loc 1 306 5 is_stmt 1 view .LVU95
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 14
+
+
+ 305:moudels/motor/MImotor/MImotor.c ****     {
+ 305              		.loc 1 305 5 is_stmt 1 view .LVU95
  306              	.LBB4:
- 306:moudels/motor/MImotor/MImotor.c ****     {
- 307              		.loc 1 306 9 view .LVU96
+ 305:moudels/motor/MImotor/MImotor.c ****     {
+ 307              		.loc 1 305 9 view .LVU96
  308              	.LVL17:
- 306:moudels/motor/MImotor/MImotor.c ****     {
- 309              		.loc 1 306 17 is_stmt 0 view .LVU97
+ 305:moudels/motor/MImotor/MImotor.c ****     {
+ 309              		.loc 1 305 17 is_stmt 0 view .LVU97
  310 002c 0023     		movs	r3, #0
- 306:moudels/motor/MImotor/MImotor.c ****     {
- 311              		.loc 1 306 5 view .LVU98
+ 305:moudels/motor/MImotor/MImotor.c ****     {
+ 311              		.loc 1 305 5 view .LVU98
  312 002e 07E0     		b	.L20
  313              	.LVL18:
  314              	.L21:
- 308:moudels/motor/MImotor/MImotor.c ****     }
- 315              		.loc 1 308 9 is_stmt 1 view .LVU99
- 308:moudels/motor/MImotor/MImotor.c ****     }
- 316              		.loc 1 308 15 is_stmt 0 view .LVU100
+ 307:moudels/motor/MImotor/MImotor.c ****     }
+ 315              		.loc 1 307 9 is_stmt 1 view .LVU99
+ 307:moudels/motor/MImotor/MImotor.c ****     }
+ 316              		.loc 1 307 15 is_stmt 0 view .LVU100
  317 0030 D0F8A821 		ldr	r2, [r0, #424]
- 308:moudels/motor/MImotor/MImotor.c ****     }
- 318              		.loc 1 308 47 view .LVU101
+ 307:moudels/motor/MImotor/MImotor.c ****     }
+ 318              		.loc 1 307 47 view .LVU101
  319 0034 1A44     		add	r2, r2, r3
  320 0036 0021     		movs	r1, #0
  321 0038 82F83D10 		strb	r1, [r2, #61]
- 306:moudels/motor/MImotor/MImotor.c ****     {
- 322              		.loc 1 306 28 is_stmt 1 discriminator 3 view .LVU102
+ 305:moudels/motor/MImotor/MImotor.c ****     {
+ 322              		.loc 1 305 28 is_stmt 1 discriminator 3 view .LVU102
  323 003c 0133     		adds	r3, r3, #1
  324              	.LVL19:
- 306:moudels/motor/MImotor/MImotor.c ****     {
- 325              		.loc 1 306 28 is_stmt 0 discriminator 3 view .LVU103
+ 305:moudels/motor/MImotor/MImotor.c ****     {
+ 325              		.loc 1 305 28 is_stmt 0 discriminator 3 view .LVU103
  326 003e DBB2     		uxtb	r3, r3
  327              	.LVL20:
  328              	.L20:
- 306:moudels/motor/MImotor/MImotor.c ****     {
- 329              		.loc 1 306 23 is_stmt 1 discriminator 1 view .LVU104
+ 305:moudels/motor/MImotor/MImotor.c ****     {
+ 329              		.loc 1 305 23 is_stmt 1 discriminator 1 view .LVU104
  330 0040 072B     		cmp	r3, #7
  331 0042 F5D9     		bls	.L21
  332              	.LBE4:
- 311:moudels/motor/MImotor/MImotor.c **** }
- 333              		.loc 1 311 5 view .LVU105
+ 310:moudels/motor/MImotor/MImotor.c **** }
+ 333              		.loc 1 310 5 view .LVU105
  334 0044 B7EE000A 		vmov.f32	s0, #1.0e+0
  335 0048 D0F8A801 		ldr	r0, [r0, #424]
  336              	.LVL21:
- 311:moudels/motor/MImotor/MImotor.c **** }
- 337              		.loc 1 311 5 is_stmt 0 view .LVU106
+ 310:moudels/motor/MImotor/MImotor.c **** }
+ 337              		.loc 1 310 5 is_stmt 0 view .LVU106
  338 004c FFF7FEFF 		bl	CANTransmit
  339              	.LVL22:
- 312:moudels/motor/MImotor/MImotor.c **** /**
- 340              		.loc 1 312 1 view .LVU107
+ 311:moudels/motor/MImotor/MImotor.c **** /**
+ 340              		.loc 1 311 1 view .LVU107
  341 0050 08BD     		pop	{r3, pc}
  342              	.L24:
  343 0052 00BF     		.align	2
@@ -838,10 +837,10 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  345 0054 00000000 		.word	EXT.0
  346 0058 00000000 		.word	MI_MASTERID
  347              		.cfi_endproc
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 15
-
-
  348              	.LFE151:
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 15
+
+
  350              		.global	__aeabi_f2d
  351              		.global	__aeabi_dsub
  352              		.global	__aeabi_ddiv
@@ -898,10 +897,10 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  394              		.loc 1 21 26 view .LVU117
  395 001a FFF7FEFF 		bl	__aeabi_f2d
  396              	.LVL27:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 16
-
-
   21:moudels/motor/MImotor/MImotor.c **** 
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 16
+
+
  397              		.loc 1 21 47 view .LVU118
  398 001e 0022     		movs	r2, #0
  399 0020 2F4B     		ldr	r3, .L27+8
@@ -958,10 +957,10 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  438              		.loc 1 24 47 view .LVU130
  439 005e 0022     		movs	r2, #0
  440 0060 1F4B     		ldr	r3, .L27+8
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 17
-
-
  441 0062 FFF7FEFF 		bl	__aeabi_dsub
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 17
+
+
  442              	.LVL36:
   24:moudels/motor/MImotor/MImotor.c **** 
  443              		.loc 1 24 56 view .LVU131
@@ -1018,10 +1017,10 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  483              	.LVL44:
   27:moudels/motor/MImotor/MImotor.c **** 
  484              		.loc 1 27 65 view .LVU143
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 18
-
-
  485 00a4 0022     		movs	r2, #0
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 18
+
+
  486 00a6 114B     		ldr	r3, .L27+20
  487 00a8 FFF7FEFF 		bl	__aeabi_dmul
  488              	.LVL45:
@@ -1078,10 +1077,10 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  527              	.LFE137:
  529              		.section	.text.DecodeMIMotor,"ax",%progbits
  530              		.align	1
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 19
-
-
  531              		.syntax unified
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 19
+
+
  532              		.thumb
  533              		.thumb_func
  535              	DecodeMIMotor:
@@ -1138,10 +1137,10 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  573              		.loc 1 39 15 discriminator 1 view .LVU167
  574 001e 85ED6E0A 		vstr.32	s0, [r5, #440]
   40:moudels/motor/MImotor/MImotor.c ****     if(RxCAN_info.communication_type == 0){//通信类型0的反馈帧解码
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 20
-
-
  575              		.loc 1 40 5 is_stmt 1 view .LVU168
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 20
+
+
  576 0022 236A     		ldr	r3, [r4, #32]	@ unaligned
  577 0024 0593     		str	r3, [sp, #20]
   41:moudels/motor/MImotor/MImotor.c ****         RxCAN_info_type_0_s RxCAN_info_type_0;
@@ -1198,10 +1197,10 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  615              		.loc 1 56 9 view .LVU182
  616 004e 0093     		str	r3, [sp]
   57:moudels/motor/MImotor/MImotor.c ****         memcpy(&RxCAN_info_type_17.param,&_instance->rx_buff[0],4);//获取查找的参数信息
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 21
-
-
  617              		.loc 1 57 9 view .LVU183
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 21
+
+
  618 0050 B4F84510 		ldrh	r1, [r4, #69]	@ unaligned
  619 0054 ADF80410 		strh	r1, [sp, #4]	@ movhi
   58:moudels/motor/MImotor/MImotor.c ****         measure->motor_id=RxCAN_info_type_17.motor_id;
@@ -1258,10 +1257,10 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
   51:moudels/motor/MImotor/MImotor.c ****         measure->speed_aps=RxCAN_info_type_2.speed;
  656              		.loc 1 51 48 is_stmt 0 view .LVU199
  657 008c 039B     		ldr	r3, [sp, #12]	@ float
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 22
-
-
   51:moudels/motor/MImotor/MImotor.c ****         measure->speed_aps=RxCAN_info_type_2.speed;
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 22
+
+
  658              		.loc 1 51 30 view .LVU200
  659 008e AB60     		str	r3, [r5, #8]	@ float
   52:moudels/motor/MImotor/MImotor.c ****         measure->temperature=RxCAN_info_type_2.temperature;
@@ -1293,20 +1292,20 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  682              	MIMotorStop:
  683              	.LVL59:
  684              	.LFB142:
- 146:moudels/motor/MImotor/MImotor.c ****     motor->stop_flag = MOTOR_STOP;
- 685              		.loc 1 146 1 is_stmt 1 view -0
+ 145:moudels/motor/MImotor/MImotor.c ****     motor->stop_flag = MOTOR_STOP;
+ 685              		.loc 1 145 1 is_stmt 1 view -0
  686              		.cfi_startproc
  687              		@ args = 0, pretend = 0, frame = 0
  688              		@ frame_needed = 0, uses_anonymous_args = 0
  689              		@ link register save eliminated.
- 147:moudels/motor/MImotor/MImotor.c **** }
- 690              		.loc 1 147 5 view .LVU208
- 147:moudels/motor/MImotor/MImotor.c **** }
- 691              		.loc 1 147 22 is_stmt 0 view .LVU209
+ 146:moudels/motor/MImotor/MImotor.c **** }
+ 690              		.loc 1 146 5 view .LVU208
+ 146:moudels/motor/MImotor/MImotor.c **** }
+ 691              		.loc 1 146 22 is_stmt 0 view .LVU209
  692 0000 0023     		movs	r3, #0
  693 0002 80F8AD31 		strb	r3, [r0, #429]
- 148:moudels/motor/MImotor/MImotor.c **** 
- 694              		.loc 1 148 1 view .LVU210
+ 147:moudels/motor/MImotor/MImotor.c **** 
+ 694              		.loc 1 147 1 view .LVU210
  695 0006 7047     		bx	lr
  696              		.cfi_endproc
  697              	.LFE142:
@@ -1318,24 +1317,24 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  704              		.thumb_func
  706              	MIMotorEnable:
  707              	.LVL60:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 23
-
-
  708              	.LFB143:
- 151:moudels/motor/MImotor/MImotor.c ****     motor->stop_flag = MOTOR_ENALBED;
- 709              		.loc 1 151 1 is_stmt 1 view -0
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 23
+
+
+ 150:moudels/motor/MImotor/MImotor.c ****     motor->stop_flag = MOTOR_ENALBED;
+ 709              		.loc 1 150 1 is_stmt 1 view -0
  710              		.cfi_startproc
  711              		@ args = 0, pretend = 0, frame = 0
  712              		@ frame_needed = 0, uses_anonymous_args = 0
  713              		@ link register save eliminated.
- 152:moudels/motor/MImotor/MImotor.c **** }
- 714              		.loc 1 152 5 view .LVU212
- 152:moudels/motor/MImotor/MImotor.c **** }
- 715              		.loc 1 152 22 is_stmt 0 view .LVU213
+ 151:moudels/motor/MImotor/MImotor.c **** }
+ 714              		.loc 1 151 5 view .LVU212
+ 151:moudels/motor/MImotor/MImotor.c **** }
+ 715              		.loc 1 151 22 is_stmt 0 view .LVU213
  716 0000 0123     		movs	r3, #1
  717 0002 80F8AD31 		strb	r3, [r0, #429]
- 153:moudels/motor/MImotor/MImotor.c **** 
- 718              		.loc 1 153 1 view .LVU214
+ 152:moudels/motor/MImotor/MImotor.c **** 
+ 718              		.loc 1 152 1 view .LVU214
  719 0006 7047     		bx	lr
  720              		.cfi_endproc
  721              	.LFE143:
@@ -1378,10 +1377,10 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  755              	.LVL64:
   76:moudels/motor/MImotor/MImotor.c ****     instance->motor_type = config->motor_type;
  756              		.loc 1 76 5 is_stmt 1 view .LVU220
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 24
-
-
  757 0010 4FF4E072 		mov	r2, #448
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 24
+
+
  758 0014 0021     		movs	r1, #0
  759 0016 FFF7FEFF 		bl	memset
  760              	.LVL65:
@@ -1389,7 +1388,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  761              		.loc 1 77 5 view .LVU221
   77:moudels/motor/MImotor/MImotor.c ****     instance->motor_settings = config->controller_setting_init_config;
  762              		.loc 1 77 34 is_stmt 0 view .LVU222
- 763 001a 94F89C30 		ldrb	r3, [r4, #156]	@ zero_extendqisi2
+ 763 001a 94F8A030 		ldrb	r3, [r4, #160]	@ zero_extendqisi2
   77:moudels/motor/MImotor/MImotor.c ****     instance->motor_settings = config->controller_setting_init_config;
  764              		.loc 1 77 26 view .LVU223
  765 001e 85F8AC31 		strb	r3, [r5, #428]
@@ -1399,123 +1398,123 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  767              		.loc 1 78 30 is_stmt 0 view .LVU225
  768 0022 05F11C03 		add	r3, r5, #28
  769 0026 04F19402 		add	r2, r4, #148
- 770 002a 92E80300 		ldm	r2, {r0, r1}
- 771 002e 83E80300 		stm	r3, {r0, r1}
+ 770 002a 07CA     		ldm	r2, {r0, r1, r2}
+ 771 002c 83E80700 		stm	r3, {r0, r1, r2}
   80:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.can_module_callback=DecodeMIMotor;
  772              		.loc 1 80 5 is_stmt 1 view .LVU226
   80:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.can_module_callback=DecodeMIMotor;
  773              		.loc 1 80 58 is_stmt 0 view .LVU227
- 774 0032 94F8A530 		ldrb	r3, [r4, #165]	@ zero_extendqisi2
+ 774 0030 94F8A930 		ldrb	r3, [r4, #169]	@ zero_extendqisi2
   80:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.can_module_callback=DecodeMIMotor;
  775              		.loc 1 80 34 view .LVU228
- 776 0036 84F8A630 		strb	r3, [r4, #166]
+ 776 0034 84F8AA30 		strb	r3, [r4, #170]
   81:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.id=instance;   
  777              		.loc 1 81 5 is_stmt 1 view .LVU229
   81:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.id=instance;   
  778              		.loc 1 81 48 is_stmt 0 view .LVU230
- 779 003a 1C4A     		ldr	r2, .L39
- 780 003c C4F8AC20 		str	r2, [r4, #172]
+ 779 0038 1C4A     		ldr	r2, .L39
+ 780 003a C4F8B020 		str	r2, [r4, #176]
   82:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.EXT_ID.fields.motor_id=config->can_init_config.tx_id;
  781              		.loc 1 82 5 is_stmt 1 view .LVU231
   82:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.EXT_ID.fields.motor_id=config->can_init_config.tx_id;
  782              		.loc 1 82 31 is_stmt 0 view .LVU232
- 783 0040 C4F8B050 		str	r5, [r4, #176]
+ 783 003e C4F8B450 		str	r5, [r4, #180]
   83:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.EXT_ID.fields.data=0;
  784              		.loc 1 83 5 is_stmt 1 view .LVU233
   83:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.EXT_ID.fields.data=0;
  785              		.loc 1 83 51 is_stmt 0 view .LVU234
- 786 0044 84F8A730 		strb	r3, [r4, #167]
+ 786 0042 84F8AB30 		strb	r3, [r4, #171]
   84:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.EXT_ID.fields.mode=3;
  787              		.loc 1 84 5 is_stmt 1 view .LVU235
   84:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.EXT_ID.fields.mode=3;
  788              		.loc 1 84 47 is_stmt 0 view .LVU236
- 789 0048 0026     		movs	r6, #0
- 790 004a 84F8A860 		strb	r6, [r4, #168]
- 791 004e 84F8A960 		strb	r6, [r4, #169]
+ 789 0046 0026     		movs	r6, #0
+ 790 0048 84F8AC60 		strb	r6, [r4, #172]
+ 791 004c 84F8AD60 		strb	r6, [r4, #173]
   85:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.EXT_ID.fields.res=0;
  792              		.loc 1 85 5 is_stmt 1 view .LVU237
   85:moudels/motor/MImotor/MImotor.c ****     config->can_init_config.EXT_ID.fields.res=0;
  793              		.loc 1 85 47 is_stmt 0 view .LVU238
- 794 0052 94F8AA30 		ldrb	r3, [r4, #170]	@ zero_extendqisi2
- 795 0056 0322     		movs	r2, #3
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 25
+ 794 0050 94F8AE30 		ldrb	r3, [r4, #174]	@ zero_extendqisi2
+ 795 0054 0322     		movs	r2, #3
+ 796 0056 62F30403 		bfi	r3, r2, #0, #5
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 25
 
 
- 796 0058 62F30403 		bfi	r3, r2, #0, #5
- 797 005c 84F8AA30 		strb	r3, [r4, #170]
+ 797 005a 84F8AE30 		strb	r3, [r4, #174]
   86:moudels/motor/MImotor/MImotor.c ****     instance->motor_can_instance = CANRegister(&config->can_init_config);//注册小米电机到can
  798              		.loc 1 86 5 is_stmt 1 view .LVU239
   86:moudels/motor/MImotor/MImotor.c ****     instance->motor_can_instance = CANRegister(&config->can_init_config);//注册小米电机到can
  799              		.loc 1 86 46 is_stmt 0 view .LVU240
- 800 0060 DBB2     		uxtb	r3, r3
- 801 0062 66F34713 		bfi	r3, r6, #5, #3
- 802 0066 84F8AA30 		strb	r3, [r4, #170]
+ 800 005e DBB2     		uxtb	r3, r3
+ 801 0060 66F34713 		bfi	r3, r6, #5, #3
+ 802 0064 84F8AE30 		strb	r3, [r4, #174]
   87:moudels/motor/MImotor/MImotor.c ****     // 注册守护线程
  803              		.loc 1 87 5 is_stmt 1 view .LVU241
   87:moudels/motor/MImotor/MImotor.c ****     // 注册守护线程
  804              		.loc 1 87 36 is_stmt 0 view .LVU242
- 805 006a 04F1A000 		add	r0, r4, #160
- 806 006e FFF7FEFF 		bl	CANRegister
+ 805 0068 04F1A400 		add	r0, r4, #164
+ 806 006c FFF7FEFF 		bl	CANRegister
  807              	.LVL66:
   87:moudels/motor/MImotor/MImotor.c ****     // 注册守护线程
  808              		.loc 1 87 34 discriminator 1 view .LVU243
- 809 0072 C5F8A801 		str	r0, [r5, #424]
+ 809 0070 C5F8A801 		str	r0, [r5, #424]
   89:moudels/motor/MImotor/MImotor.c ****         .callback = MIMotorLostCallback,
  810              		.loc 1 89 5 is_stmt 1 view .LVU244
   89:moudels/motor/MImotor/MImotor.c ****         .callback = MIMotorLostCallback,
  811              		.loc 1 89 26 is_stmt 0 view .LVU245
- 812 0076 0196     		str	r6, [sp, #4]
- 813 0078 0296     		str	r6, [sp, #8]
- 814 007a 0396     		str	r6, [sp, #12]
- 815 007c 0223     		movs	r3, #2
- 816 007e ADF80430 		strh	r3, [sp, #4]	@ movhi
- 817 0082 0B4B     		ldr	r3, .L39+4
- 818 0084 0293     		str	r3, [sp, #8]
- 819 0086 0395     		str	r5, [sp, #12]
+ 812 0074 0196     		str	r6, [sp, #4]
+ 813 0076 0296     		str	r6, [sp, #8]
+ 814 0078 0396     		str	r6, [sp, #12]
+ 815 007a 0223     		movs	r3, #2
+ 816 007c ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 817 0080 0B4B     		ldr	r3, .L39+4
+ 818 0082 0293     		str	r3, [sp, #8]
+ 819 0084 0395     		str	r5, [sp, #12]
   94:moudels/motor/MImotor/MImotor.c **** 
  820              		.loc 1 94 5 is_stmt 1 view .LVU246
   94:moudels/motor/MImotor/MImotor.c **** 
  821              		.loc 1 94 24 is_stmt 0 view .LVU247
- 822 0088 01A8     		add	r0, sp, #4
- 823 008a FFF7FEFF 		bl	DaemonRegister
+ 822 0086 01A8     		add	r0, sp, #4
+ 823 0088 FFF7FEFF 		bl	DaemonRegister
  824              	.LVL67:
   94:moudels/motor/MImotor/MImotor.c **** 
  825              		.loc 1 94 22 discriminator 1 view .LVU248
- 826 008e C5F8B001 		str	r0, [r5, #432]
+ 826 008c C5F8B001 		str	r0, [r5, #432]
   96:moudels/motor/MImotor/MImotor.c ****     mi_motor_instance[idx++] = instance;
  827              		.loc 1 96 5 is_stmt 1 view .LVU249
- 828 0092 2846     		mov	r0, r5
- 829 0094 FFF7FEFF 		bl	MIMotorEnable
+ 828 0090 2846     		mov	r0, r5
+ 829 0092 FFF7FEFF 		bl	MIMotorEnable
  830              	.LVL68:
   97:moudels/motor/MImotor/MImotor.c ****     return instance;
  831              		.loc 1 97 5 view .LVU250
   97:moudels/motor/MImotor/MImotor.c ****     return instance;
  832              		.loc 1 97 26 is_stmt 0 view .LVU251
- 833 0098 064A     		ldr	r2, .L39+8
- 834 009a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 835 009c 591C     		adds	r1, r3, #1
- 836 009e 1170     		strb	r1, [r2]
+ 833 0096 074A     		ldr	r2, .L39+8
+ 834 0098 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 835 009a 591C     		adds	r1, r3, #1
+ 836 009c 1170     		strb	r1, [r2]
   97:moudels/motor/MImotor/MImotor.c ****     return instance;
  837              		.loc 1 97 30 view .LVU252
- 838 00a0 054A     		ldr	r2, .L39+12
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 26
+ 838 009e 064A     		ldr	r2, .L39+12
+ 839 00a0 42F82350 		str	r5, [r2, r3, lsl #2]
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 26
 
 
- 839 00a2 42F82350 		str	r5, [r2, r3, lsl #2]
   98:moudels/motor/MImotor/MImotor.c **** }
  840              		.loc 1 98 5 is_stmt 1 view .LVU253
   99:moudels/motor/MImotor/MImotor.c **** 
  841              		.loc 1 99 1 is_stmt 0 view .LVU254
- 842 00a6 2846     		mov	r0, r5
- 843 00a8 04B0     		add	sp, sp, #16
+ 842 00a4 2846     		mov	r0, r5
+ 843 00a6 04B0     		add	sp, sp, #16
  844              		.cfi_def_cfa_offset 16
  845              		@ sp needed
- 846 00aa 70BD     		pop	{r4, r5, r6, pc}
+ 846 00a8 70BD     		pop	{r4, r5, r6, pc}
  847              	.LVL69:
  848              	.L40:
   99:moudels/motor/MImotor/MImotor.c **** 
  849              		.loc 1 99 1 view .LVU255
- 850              		.align	2
+ 850 00aa 00BF     		.align	2
  851              	.L39:
  852 00ac 00000000 		.word	DecodeMIMotor
  853 00b0 00000000 		.word	MIMotorLostCallback
@@ -1532,19 +1531,19 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  866              	MIMotorOuterLoop:
  867              	.LVL70:
  868              	.LFB144:
- 157:moudels/motor/MImotor/MImotor.c ****     motor->motor_settings.outer_loop_type = outer_loop;
- 869              		.loc 1 157 1 is_stmt 1 view -0
+ 156:moudels/motor/MImotor/MImotor.c ****     motor->motor_settings.outer_loop_type = outer_loop;
+ 869              		.loc 1 156 1 is_stmt 1 view -0
  870              		.cfi_startproc
  871              		@ args = 0, pretend = 0, frame = 0
  872              		@ frame_needed = 0, uses_anonymous_args = 0
  873              		@ link register save eliminated.
- 158:moudels/motor/MImotor/MImotor.c **** }
- 874              		.loc 1 158 5 view .LVU257
- 158:moudels/motor/MImotor/MImotor.c **** }
- 875              		.loc 1 158 43 is_stmt 0 view .LVU258
+ 157:moudels/motor/MImotor/MImotor.c **** }
+ 874              		.loc 1 157 5 view .LVU257
+ 157:moudels/motor/MImotor/MImotor.c **** }
+ 875              		.loc 1 157 43 is_stmt 0 view .LVU258
  876 0000 0177     		strb	r1, [r0, #28]
- 159:moudels/motor/MImotor/MImotor.c **** 
- 877              		.loc 1 159 1 view .LVU259
+ 158:moudels/motor/MImotor/MImotor.c **** 
+ 877              		.loc 1 158 1 view .LVU259
  878 0002 7047     		bx	lr
  879              		.cfi_endproc
  880              	.LFE144:
@@ -1557,22 +1556,22 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  889              	MIMotorSetRef:
  890              	.LVL71:
  891              	.LFB145:
- 163:moudels/motor/MImotor/MImotor.c ****     motor->motor_controller.pid_ref = ref;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 27
+ 162:moudels/motor/MImotor/MImotor.c ****     motor->motor_controller.pid_ref = ref;
+ 892              		.loc 1 162 1 is_stmt 1 view -0
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 27
 
 
- 892              		.loc 1 163 1 is_stmt 1 view -0
  893              		.cfi_startproc
  894              		@ args = 0, pretend = 0, frame = 0
  895              		@ frame_needed = 0, uses_anonymous_args = 0
  896              		@ link register save eliminated.
- 164:moudels/motor/MImotor/MImotor.c **** }
- 897              		.loc 1 164 5 view .LVU261
- 164:moudels/motor/MImotor/MImotor.c **** }
- 898              		.loc 1 164 37 is_stmt 0 view .LVU262
+ 163:moudels/motor/MImotor/MImotor.c **** }
+ 897              		.loc 1 163 5 view .LVU261
+ 163:moudels/motor/MImotor/MImotor.c **** }
+ 898              		.loc 1 163 37 is_stmt 0 view .LVU262
  899 0000 80ED680A 		vstr.32	s0, [r0, #416]
- 165:moudels/motor/MImotor/MImotor.c **** 
- 900              		.loc 1 165 1 view .LVU263
+ 164:moudels/motor/MImotor/MImotor.c **** 
+ 900              		.loc 1 164 1 view .LVU263
  901 0004 7047     		bx	lr
  902              		.cfi_endproc
  903              	.LFE145:
@@ -1585,77 +1584,77 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  912              	FloatToUint:
  913              	.LVL72:
  914              	.LFB146:
- 179:moudels/motor/MImotor/MImotor.c ****     float span = x_max - x_min;
- 915              		.loc 1 179 1 is_stmt 1 view -0
+ 178:moudels/motor/MImotor/MImotor.c ****     float span = x_max - x_min;
+ 915              		.loc 1 178 1 is_stmt 1 view -0
  916              		.cfi_startproc
  917              		@ args = 0, pretend = 0, frame = 0
  918              		@ frame_needed = 0, uses_anonymous_args = 0
  919              		@ link register save eliminated.
- 180:moudels/motor/MImotor/MImotor.c ****     float offset = x_min;
- 920              		.loc 1 180 5 view .LVU265
- 180:moudels/motor/MImotor/MImotor.c ****     float offset = x_min;
- 921              		.loc 1 180 11 is_stmt 0 view .LVU266
+ 179:moudels/motor/MImotor/MImotor.c ****     float offset = x_min;
+ 920              		.loc 1 179 5 view .LVU265
+ 179:moudels/motor/MImotor/MImotor.c ****     float offset = x_min;
+ 921              		.loc 1 179 11 is_stmt 0 view .LVU266
  922 0000 31EE607A 		vsub.f32	s14, s2, s1
  923              	.LVL73:
- 181:moudels/motor/MImotor/MImotor.c ****     if(x > x_max) x=x_max;
- 924              		.loc 1 181 5 is_stmt 1 view .LVU267
- 182:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) x=x_min;
- 925              		.loc 1 182 5 view .LVU268
- 182:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) x=x_min;
- 926              		.loc 1 182 7 is_stmt 0 view .LVU269
+ 180:moudels/motor/MImotor/MImotor.c ****     if(x > x_max) x=x_max;
+ 924              		.loc 1 180 5 is_stmt 1 view .LVU267
+ 181:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) x=x_min;
+ 925              		.loc 1 181 5 view .LVU268
+ 181:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) x=x_min;
+ 926              		.loc 1 181 7 is_stmt 0 view .LVU269
  927 0004 B4EEC01A 		vcmpe.f32	s2, s0
  928 0008 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  929 000c 06D4     		bmi	.L44
- 183:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
- 930              		.loc 1 183 10 is_stmt 1 view .LVU270
- 183:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
- 931              		.loc 1 183 12 is_stmt 0 view .LVU271
+ 182:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
+ 930              		.loc 1 182 10 is_stmt 1 view .LVU270
+ 182:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
+ 931              		.loc 1 182 12 is_stmt 0 view .LVU271
  932 000e F4EEC00A 		vcmpe.f32	s1, s0
  933 0012 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  934 0016 14DC     		bgt	.L45
  935 0018 B0EE401A 		vmov.f32	s2, s0
  936              	.LVL74:
  937              	.L44:
- 184:moudels/motor/MImotor/MImotor.c **** }
- 938              		.loc 1 184 5 is_stmt 1 view .LVU272
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 28
+ 183:moudels/motor/MImotor/MImotor.c **** }
+ 938              		.loc 1 183 5 is_stmt 1 view .LVU272
+ 183:moudels/motor/MImotor/MImotor.c **** }
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 28
 
 
- 184:moudels/motor/MImotor/MImotor.c **** }
- 939              		.loc 1 184 26 is_stmt 0 view .LVU273
+ 939              		.loc 1 183 26 is_stmt 0 view .LVU273
  940 001c 31EE601A 		vsub.f32	s2, s2, s1
  941              	.LVL75:
- 184:moudels/motor/MImotor/MImotor.c **** }
- 942              		.loc 1 184 46 view .LVU274
+ 183:moudels/motor/MImotor/MImotor.c **** }
+ 942              		.loc 1 183 46 view .LVU274
  943 0020 0123     		movs	r3, #1
  944 0022 03FA00F0 		lsl	r0, r3, r0
  945              	.LVL76:
- 184:moudels/motor/MImotor/MImotor.c **** }
- 946              		.loc 1 184 53 view .LVU275
+ 183:moudels/motor/MImotor/MImotor.c **** }
+ 946              		.loc 1 183 53 view .LVU275
  947 0026 0138     		subs	r0, r0, #1
- 184:moudels/motor/MImotor/MImotor.c **** }
- 948              		.loc 1 184 36 view .LVU276
+ 183:moudels/motor/MImotor/MImotor.c **** }
+ 948              		.loc 1 183 36 view .LVU276
  949 0028 07EE900A 		vmov	s15, r0	@ int
  950 002c F8EEE77A 		vcvt.f32.s32	s15, s15
- 184:moudels/motor/MImotor/MImotor.c **** }
- 951              		.loc 1 184 34 view .LVU277
+ 183:moudels/motor/MImotor/MImotor.c **** }
+ 951              		.loc 1 183 34 view .LVU277
  952 0030 21EE271A 		vmul.f32	s2, s2, s15
- 184:moudels/motor/MImotor/MImotor.c **** }
- 953              		.loc 1 184 57 view .LVU278
+ 183:moudels/motor/MImotor/MImotor.c **** }
+ 953              		.loc 1 183 57 view .LVU278
  954 0034 C1EE077A 		vdiv.f32	s15, s2, s14
- 185:moudels/motor/MImotor/MImotor.c **** 
- 955              		.loc 1 185 1 view .LVU279
+ 184:moudels/motor/MImotor/MImotor.c **** 
+ 955              		.loc 1 184 1 view .LVU279
  956 0038 FCEEE77A 		vcvt.u32.f32	s15, s15
  957 003c 17EE900A 		vmov	r0, s15	@ int
  958 0040 7047     		bx	lr
  959              	.LVL77:
  960              	.L45:
- 183:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
- 961              		.loc 1 183 25 discriminator 1 view .LVU280
+ 182:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
+ 961              		.loc 1 182 25 discriminator 1 view .LVU280
  962 0042 B0EE601A 		vmov.f32	s2, s1
  963              	.LVL78:
- 183:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
- 964              		.loc 1 183 25 discriminator 1 view .LVU281
+ 182:moudels/motor/MImotor/MImotor.c ****     return (uint32_t) ((x-offset)*((float)((1<<bits)-1))/span);
+ 964              		.loc 1 182 25 discriminator 1 view .LVU281
  965 0046 E9E7     		b	.L44
  966              		.cfi_endproc
  967              	.LFE146:
@@ -1668,51 +1667,51 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  976              	RangeRestrict:
  977              	.LVL79:
  978              	.LFB147:
- 195:moudels/motor/MImotor/MImotor.c ****     float res;
- 979              		.loc 1 195 1 is_stmt 1 view -0
+ 194:moudels/motor/MImotor/MImotor.c ****     float res;
+ 979              		.loc 1 194 1 is_stmt 1 view -0
  980              		.cfi_startproc
  981              		@ args = 0, pretend = 0, frame = 0
  982              		@ frame_needed = 0, uses_anonymous_args = 0
  983              		@ link register save eliminated.
- 195:moudels/motor/MImotor/MImotor.c ****     float res;
- 984              		.loc 1 195 1 is_stmt 0 view .LVU283
+ 194:moudels/motor/MImotor/MImotor.c ****     float res;
+ 984              		.loc 1 194 1 is_stmt 0 view .LVU283
  985 0000 F0EE407A 		vmov.f32	s15, s0
  986 0004 B0EE410A 		vmov.f32	s0, s2
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 29
-
-
  987              	.LVL80:
- 196:moudels/motor/MImotor/MImotor.c ****     if(x > x_max) res=x_max;
- 988              		.loc 1 196 5 is_stmt 1 view .LVU284
- 197:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) res=x_min;
- 989              		.loc 1 197 5 view .LVU285
- 197:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) res=x_min;
- 990              		.loc 1 197 7 is_stmt 0 view .LVU286
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 29
+
+
+ 195:moudels/motor/MImotor/MImotor.c ****     if(x > x_max) res=x_max;
+ 988              		.loc 1 195 5 is_stmt 1 view .LVU284
+ 196:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) res=x_min;
+ 989              		.loc 1 196 5 view .LVU285
+ 196:moudels/motor/MImotor/MImotor.c ****     else if(x < x_min) res=x_min;
+ 990              		.loc 1 196 7 is_stmt 0 view .LVU286
  991 0008 F4EEC17A 		vcmpe.f32	s15, s2
  992 000c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  993 0010 09DC     		bgt	.L47
- 198:moudels/motor/MImotor/MImotor.c ****     else res = x;
- 994              		.loc 1 198 10 is_stmt 1 view .LVU287
- 198:moudels/motor/MImotor/MImotor.c ****     else res = x;
- 995              		.loc 1 198 12 is_stmt 0 view .LVU288
+ 197:moudels/motor/MImotor/MImotor.c ****     else res = x;
+ 994              		.loc 1 197 10 is_stmt 1 view .LVU287
+ 197:moudels/motor/MImotor/MImotor.c ****     else res = x;
+ 995              		.loc 1 197 12 is_stmt 0 view .LVU288
  996 0012 F4EEE07A 		vcmpe.f32	s15, s1
  997 0016 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  998 001a 02D5     		bpl	.L51
- 198:moudels/motor/MImotor/MImotor.c ****     else res = x;
- 999              		.loc 1 198 27 discriminator 1 view .LVU289
+ 197:moudels/motor/MImotor/MImotor.c ****     else res = x;
+ 999              		.loc 1 197 27 discriminator 1 view .LVU289
  1000 001c B0EE600A 		vmov.f32	s0, s1
  1001 0020 7047     		bx	lr
  1002              	.LVL81:
  1003              	.L51:
- 199:moudels/motor/MImotor/MImotor.c ****     return res;
- 1004              		.loc 1 199 14 view .LVU290
+ 198:moudels/motor/MImotor/MImotor.c ****     return res;
+ 1004              		.loc 1 198 14 view .LVU290
  1005 0022 B0EE670A 		vmov.f32	s0, s15
  1006              	.LVL82:
  1007              	.L47:
- 200:moudels/motor/MImotor/MImotor.c **** }
- 1008              		.loc 1 200 5 is_stmt 1 view .LVU291
- 201:moudels/motor/MImotor/MImotor.c **** 
- 1009              		.loc 1 201 1 is_stmt 0 view .LVU292
+ 199:moudels/motor/MImotor/MImotor.c **** }
+ 1008              		.loc 1 199 5 is_stmt 1 view .LVU291
+ 200:moudels/motor/MImotor/MImotor.c **** 
+ 1009              		.loc 1 200 1 is_stmt 0 view .LVU292
  1010 0026 7047     		bx	lr
  1011              		.cfi_endproc
  1012              	.LFE147:
@@ -1725,143 +1724,143 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  1021              	MI_motor_Modeset:
  1022              	.LVL83:
  1023              	.LFB155:
- 391:moudels/motor/MImotor/MImotor.c ****  void MI_motor_Modeset(MIMotorInstance* hmotor,float param,uint16_t index)
- 392:moudels/motor/MImotor/MImotor.c **** {
- 1024              		.loc 1 392 1 is_stmt 1 view -0
+ 390:moudels/motor/MImotor/MImotor.c ****  void MI_motor_Modeset(MIMotorInstance* hmotor,float param,uint16_t index)
+ 391:moudels/motor/MImotor/MImotor.c **** {
+ 1024              		.loc 1 391 1 is_stmt 1 view -0
  1025              		.cfi_startproc
  1026              		@ args = 0, pretend = 0, frame = 0
  1027              		@ frame_needed = 0, uses_anonymous_args = 0
- 1028              		.loc 1 392 1 is_stmt 0 view .LVU294
+ 1028              		.loc 1 391 1 is_stmt 0 view .LVU294
  1029 0000 10B5     		push	{r4, lr}
  1030              		.cfi_def_cfa_offset 8
  1031              		.cfi_offset 4, -8
  1032              		.cfi_offset 14, -4
  1033 0002 10EE10EA 		vmov	lr, s0
- 393:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T  EXT;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 30
+ 392:moudels/motor/MImotor/MImotor.c ****     static EXT_ID_T  EXT;
+ 1034              		.loc 1 392 5 is_stmt 1 view .LVU295
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 30
 
 
- 1034              		.loc 1 393 5 is_stmt 1 view .LVU295
- 394:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=18;
- 1035              		.loc 1 394 5 view .LVU296
- 1036              		.loc 1 394 20 is_stmt 0 view .LVU297
+ 393:moudels/motor/MImotor/MImotor.c ****     EXT.fields.mode=18;
+ 1035              		.loc 1 393 5 view .LVU296
+ 1036              		.loc 1 393 20 is_stmt 0 view .LVU297
  1037 0006 194B     		ldr	r3, .L59
  1038 0008 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
  1039 000a 1224     		movs	r4, #18
  1040 000c 64F30402 		bfi	r2, r4, #0, #5
  1041 0010 DA70     		strb	r2, [r3, #3]
- 395:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
- 1042              		.loc 1 395 5 is_stmt 1 view .LVU298
- 1043              		.loc 1 395 20 is_stmt 0 view .LVU299
+ 394:moudels/motor/MImotor/MImotor.c ****     EXT.fields.data=MI_MASTERID;
+ 1042              		.loc 1 394 5 is_stmt 1 view .LVU298
+ 1043              		.loc 1 394 20 is_stmt 0 view .LVU299
  1044 0012 174A     		ldr	r2, .L59+4
  1045 0014 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
  1046 0016 A3F80120 		strh	r2, [r3, #1]	@ unaligned
- 396:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
- 1047              		.loc 1 396 5 is_stmt 1 view .LVU300
- 1048              		.loc 1 396 31 is_stmt 0 view .LVU301
+ 395:moudels/motor/MImotor/MImotor.c ****     EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
+ 1047              		.loc 1 395 5 is_stmt 1 view .LVU300
+ 1048              		.loc 1 395 31 is_stmt 0 view .LVU301
  1049 001a D0F8A841 		ldr	r4, [r0, #424]
- 1050              		.loc 1 396 51 view .LVU302
+ 1050              		.loc 1 395 51 view .LVU302
  1051 001e 94F83820 		ldrb	r2, [r4, #56]	@ zero_extendqisi2
- 1052              		.loc 1 396 24 view .LVU303
+ 1052              		.loc 1 395 24 view .LVU303
  1053 0022 1A70     		strb	r2, [r3]
- 397:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
- 1054              		.loc 1 397 5 is_stmt 1 view .LVU304
- 1055              		.loc 1 397 19 is_stmt 0 view .LVU305
+ 396:moudels/motor/MImotor/MImotor.c ****     EXT.fields.res=0;
+ 1054              		.loc 1 396 5 is_stmt 1 view .LVU304
+ 1055              		.loc 1 396 19 is_stmt 0 view .LVU305
  1056 0024 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
  1057 0026 22F0E002 		bic	r2, r2, #224
  1058 002a DA70     		strb	r2, [r3, #3]
- 398:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
- 1059              		.loc 1 398 5 is_stmt 1 view .LVU306
- 1060              		.loc 1 398 50 is_stmt 0 view .LVU307
+ 397:moudels/motor/MImotor/MImotor.c ****     hmotor->motor_can_instance->txconf.ExtId= EXT.raw;
+ 1059              		.loc 1 397 5 is_stmt 1 view .LVU306
+ 1060              		.loc 1 397 50 is_stmt 0 view .LVU307
  1061 002c 1B68     		ldr	r3, [r3]
- 1062              		.loc 1 398 45 view .LVU308
+ 1062              		.loc 1 397 45 view .LVU308
  1063 002e A360     		str	r3, [r4, #8]	@ unaligned
- 399:moudels/motor/MImotor/MImotor.c **** 
- 400:moudels/motor/MImotor/MImotor.c ****     
- 401:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=2; i<8; i++)
- 1064              		.loc 1 401 5 is_stmt 1 view .LVU309
+ 398:moudels/motor/MImotor/MImotor.c **** 
+ 399:moudels/motor/MImotor/MImotor.c ****     
+ 400:moudels/motor/MImotor/MImotor.c ****     for(uint8_t i=2; i<8; i++)
+ 1064              		.loc 1 400 5 is_stmt 1 view .LVU309
  1065              	.LBB8:
- 1066              		.loc 1 401 9 view .LVU310
+ 1066              		.loc 1 400 9 view .LVU310
  1067              	.LVL84:
- 1068              		.loc 1 401 17 is_stmt 0 view .LVU311
+ 1068              		.loc 1 400 17 is_stmt 0 view .LVU311
  1069 0030 0223     		movs	r3, #2
  1070              	.LVL85:
  1071              	.L53:
- 1072              		.loc 1 401 23 is_stmt 1 discriminator 1 view .LVU312
+ 1072              		.loc 1 400 23 is_stmt 1 discriminator 1 view .LVU312
  1073 0032 072B     		cmp	r3, #7
  1074 0034 09D8     		bhi	.L58
- 402:moudels/motor/MImotor/MImotor.c ****     {
- 403:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
- 1075              		.loc 1 403 9 view .LVU313
- 1076              		.loc 1 403 15 is_stmt 0 view .LVU314
+ 401:moudels/motor/MImotor/MImotor.c ****     {
+ 402:moudels/motor/MImotor/MImotor.c ****         hmotor->motor_can_instance->tx_buff[i]=0;
+ 1075              		.loc 1 402 9 view .LVU313
+ 1076              		.loc 1 402 15 is_stmt 0 view .LVU314
  1077 0036 D0F8A821 		ldr	r2, [r0, #424]
- 1078              		.loc 1 403 47 view .LVU315
+ 1078              		.loc 1 402 47 view .LVU315
  1079 003a 1A44     		add	r2, r2, r3
  1080 003c 4FF0000C 		mov	ip, #0
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 31
-
-
  1081 0040 82F83DC0 		strb	ip, [r2, #61]
- 401:moudels/motor/MImotor/MImotor.c ****     {
- 1082              		.loc 1 401 28 is_stmt 1 discriminator 3 view .LVU316
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 31
+
+
+ 400:moudels/motor/MImotor/MImotor.c ****     {
+ 1082              		.loc 1 400 28 is_stmt 1 discriminator 3 view .LVU316
  1083 0044 0133     		adds	r3, r3, #1
  1084              	.LVL86:
- 401:moudels/motor/MImotor/MImotor.c ****     {
- 1085              		.loc 1 401 28 is_stmt 0 discriminator 3 view .LVU317
+ 400:moudels/motor/MImotor/MImotor.c ****     {
+ 1085              		.loc 1 400 28 is_stmt 0 discriminator 3 view .LVU317
  1086 0046 DBB2     		uxtb	r3, r3
  1087              	.LVL87:
- 401:moudels/motor/MImotor/MImotor.c ****     {
- 1088              		.loc 1 401 28 discriminator 3 view .LVU318
+ 400:moudels/motor/MImotor/MImotor.c ****     {
+ 1088              		.loc 1 400 28 discriminator 3 view .LVU318
  1089 0048 F3E7     		b	.L53
  1090              	.L58:
- 401:moudels/motor/MImotor/MImotor.c ****     {
- 1091              		.loc 1 401 28 discriminator 3 view .LVU319
+ 400:moudels/motor/MImotor/MImotor.c ****     {
+ 1091              		.loc 1 400 28 discriminator 3 view .LVU319
  1092              	.LBE8:
- 404:moudels/motor/MImotor/MImotor.c ****     }
- 405:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[0],&index,2);
- 1093              		.loc 1 405 5 is_stmt 1 view .LVU320
- 1094              		.loc 1 405 19 is_stmt 0 view .LVU321
+ 403:moudels/motor/MImotor/MImotor.c ****     }
+ 404:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[0],&index,2);
+ 1093              		.loc 1 404 5 is_stmt 1 view .LVU320
+ 1094              		.loc 1 404 19 is_stmt 0 view .LVU321
  1095 004a D0F8A831 		ldr	r3, [r0, #424]
  1096              	.LVL88:
- 1097              		.loc 1 405 5 view .LVU322
+ 1097              		.loc 1 404 5 view .LVU322
  1098 004e A3F83D10 		strh	r1, [r3, #61]	@ unaligned
- 406:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[4],&param,4);
- 1099              		.loc 1 406 5 is_stmt 1 view .LVU323
- 1100              		.loc 1 406 19 is_stmt 0 view .LVU324
+ 405:moudels/motor/MImotor/MImotor.c ****     memcpy(&hmotor->motor_can_instance->tx_buff[4],&param,4);
+ 1099              		.loc 1 405 5 is_stmt 1 view .LVU323
+ 1100              		.loc 1 405 19 is_stmt 0 view .LVU324
  1101 0052 D0F8A831 		ldr	r3, [r0, #424]
- 1102              		.loc 1 406 5 view .LVU325
+ 1102              		.loc 1 405 5 view .LVU325
  1103 0056 C3F841E0 		str	lr, [r3, #65]	@ unaligned
- 407:moudels/motor/MImotor/MImotor.c ****     if(!CANTransmit(hmotor->motor_can_instance,1)){
- 1104              		.loc 1 407 5 is_stmt 1 view .LVU326
- 1105              		.loc 1 407 9 is_stmt 0 view .LVU327
+ 406:moudels/motor/MImotor/MImotor.c ****     if(!CANTransmit(hmotor->motor_can_instance,1)){
+ 1104              		.loc 1 406 5 is_stmt 1 view .LVU326
+ 1105              		.loc 1 406 9 is_stmt 0 view .LVU327
  1106 005a B7EE000A 		vmov.f32	s0, #1.0e+0
  1107              	.LVL89:
- 1108              		.loc 1 407 9 view .LVU328
+ 1108              		.loc 1 406 9 view .LVU328
  1109 005e D0F8A801 		ldr	r0, [r0, #424]
  1110              	.LVL90:
- 1111              		.loc 1 407 9 view .LVU329
+ 1111              		.loc 1 406 9 view .LVU329
  1112 0062 FFF7FEFF 		bl	CANTransmit
  1113              	.LVL91:
- 1114              		.loc 1 407 7 discriminator 1 view .LVU330
+ 1114              		.loc 1 406 7 discriminator 1 view .LVU330
  1115 0066 00B9     		cbnz	r0, .L52
  1116              	.L56:
- 408:moudels/motor/MImotor/MImotor.c ****         while(1){
- 1117              		.loc 1 408 9 is_stmt 1 view .LVU331
- 409:moudels/motor/MImotor/MImotor.c **** 
- 410:moudels/motor/MImotor/MImotor.c ****         }
- 1118              		.loc 1 410 9 view .LVU332
- 408:moudels/motor/MImotor/MImotor.c ****         while(1){
- 1119              		.loc 1 408 14 view .LVU333
+ 407:moudels/motor/MImotor/MImotor.c ****         while(1){
+ 1117              		.loc 1 407 9 is_stmt 1 view .LVU331
+ 408:moudels/motor/MImotor/MImotor.c **** 
+ 409:moudels/motor/MImotor/MImotor.c ****         }
+ 1118              		.loc 1 409 9 view .LVU332
+ 407:moudels/motor/MImotor/MImotor.c ****         while(1){
+ 1119              		.loc 1 407 14 view .LVU333
  1120 0068 FEE7     		b	.L56
  1121              	.L52:
- 411:moudels/motor/MImotor/MImotor.c ****     }
- 412:moudels/motor/MImotor/MImotor.c **** }
- 1122              		.loc 1 412 1 is_stmt 0 view .LVU334
+ 410:moudels/motor/MImotor/MImotor.c ****     }
+ 411:moudels/motor/MImotor/MImotor.c **** }
+ 1122              		.loc 1 411 1 is_stmt 0 view .LVU334
  1123 006a 10BD     		pop	{r4, pc}
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 32
-
-
  1124              	.L60:
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 32
+
+
  1125              		.align	2
  1126              	.L59:
  1127 006c 00000000 		.word	EXT.3
@@ -1877,80 +1876,80 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  1139              	MI_motor_TorqueControl:
  1140              	.LVL92:
  1141              	.LFB156:
- 413:moudels/motor/MImotor/MImotor.c **** /*-------------------- 封装的一些控制函数 --------------------*/
- 414:moudels/motor/MImotor/MImotor.c **** 
- 415:moudels/motor/MImotor/MImotor.c **** /**
- 416:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机力矩控制模式控制指令
- 417:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 418:moudels/motor/MImotor/MImotor.c ****   * @param[in]      torque 目标力矩
- 419:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 420:moudels/motor/MImotor/MImotor.c ****   */
- 421:moudels/motor/MImotor/MImotor.c **** void  MI_motor_TorqueControl(MIMotorInstance* hmotor)
- 422:moudels/motor/MImotor/MImotor.c **** {
- 1142              		.loc 1 422 1 is_stmt 1 view -0
+ 412:moudels/motor/MImotor/MImotor.c **** /*-------------------- 封装的一些控制函数 --------------------*/
+ 413:moudels/motor/MImotor/MImotor.c **** 
+ 414:moudels/motor/MImotor/MImotor.c **** /**
+ 415:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机力矩控制模式控制指令
+ 416:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 417:moudels/motor/MImotor/MImotor.c ****   * @param[in]      torque 目标力矩
+ 418:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 419:moudels/motor/MImotor/MImotor.c ****   */
+ 420:moudels/motor/MImotor/MImotor.c **** void  MI_motor_TorqueControl(MIMotorInstance* hmotor)
+ 421:moudels/motor/MImotor/MImotor.c **** {
+ 1142              		.loc 1 421 1 is_stmt 1 view -0
  1143              		.cfi_startproc
  1144              		@ args = 0, pretend = 0, frame = 0
  1145              		@ frame_needed = 0, uses_anonymous_args = 0
- 1146              		.loc 1 422 1 is_stmt 0 view .LVU336
+ 1146              		.loc 1 421 1 is_stmt 0 view .LVU336
  1147 0000 10B5     		push	{r4, lr}
  1148              		.cfi_def_cfa_offset 8
  1149              		.cfi_offset 4, -8
  1150              		.cfi_offset 14, -4
  1151 0002 0446     		mov	r4, r0
- 423:moudels/motor/MImotor/MImotor.c ****     MI_motor_ModeSwitch(hmotor, 3,0x7005);
- 1152              		.loc 1 423 5 is_stmt 1 view .LVU337
+ 422:moudels/motor/MImotor/MImotor.c ****     MI_motor_ModeSwitch(hmotor, 3,0x7005);
+ 1152              		.loc 1 422 5 is_stmt 1 view .LVU337
  1153 0004 47F20502 		movw	r2, #28677
  1154 0008 0321     		movs	r1, #3
  1155 000a FFF7FEFF 		bl	MI_motor_ModeSwitch
  1156              	.LVL93:
- 424:moudels/motor/MImotor/MImotor.c ****     MI_motor_Enable ( hmotor);
- 1157              		.loc 1 424 5 view .LVU338
+ 423:moudels/motor/MImotor/MImotor.c ****     MI_motor_Enable ( hmotor);
+ 1157              		.loc 1 423 5 view .LVU338
  1158 000e 2046     		mov	r0, r4
  1159 0010 FFF7FEFF 		bl	MI_motor_Enable
  1160              	.LVL94:
- 425:moudels/motor/MImotor/MImotor.c ****     // MI_motor_Modeset(hmotor, torque,0x7006);
- 426:moudels/motor/MImotor/MImotor.c **** }
- 1161              		.loc 1 426 1 is_stmt 0 view .LVU339
+ 424:moudels/motor/MImotor/MImotor.c ****     // MI_motor_Modeset(hmotor, torque,0x7006);
+ 425:moudels/motor/MImotor/MImotor.c **** }
+ 1161              		.loc 1 425 1 is_stmt 0 view .LVU339
  1162 0014 10BD     		pop	{r4, pc}
- 1163              		.loc 1 426 1 view .LVU340
+ 1163              		.loc 1 425 1 view .LVU340
  1164              		.cfi_endproc
  1165              	.LFE156:
  1167              		.section	.text.MI_motor_stop,"ax",%progbits
  1168              		.align	1
  1169              		.global	MI_motor_stop
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 33
-
-
  1170              		.syntax unified
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 33
+
+
  1171              		.thumb
  1172              		.thumb_func
  1174              	MI_motor_stop:
  1175              	.LVL95:
  1176              	.LFB157:
- 427:moudels/motor/MImotor/MImotor.c **** 
- 428:moudels/motor/MImotor/MImotor.c **** /**
- 429:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机力矩控制模式控制指令
- 430:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 431:moudels/motor/MImotor/MImotor.c ****   * @param[in]      torque 目标力矩
- 432:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 433:moudels/motor/MImotor/MImotor.c ****   */
- 434:moudels/motor/MImotor/MImotor.c **** void  MI_motor_stop(MIMotorInstance* hmotor)
- 435:moudels/motor/MImotor/MImotor.c **** {
- 1177              		.loc 1 435 1 is_stmt 1 view -0
+ 426:moudels/motor/MImotor/MImotor.c **** 
+ 427:moudels/motor/MImotor/MImotor.c **** /**
+ 428:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机力矩控制模式控制指令
+ 429:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 430:moudels/motor/MImotor/MImotor.c ****   * @param[in]      torque 目标力矩
+ 431:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 432:moudels/motor/MImotor/MImotor.c ****   */
+ 433:moudels/motor/MImotor/MImotor.c **** void  MI_motor_stop(MIMotorInstance* hmotor)
+ 434:moudels/motor/MImotor/MImotor.c **** {
+ 1177              		.loc 1 434 1 is_stmt 1 view -0
  1178              		.cfi_startproc
  1179              		@ args = 0, pretend = 0, frame = 0
  1180              		@ frame_needed = 0, uses_anonymous_args = 0
- 1181              		.loc 1 435 1 is_stmt 0 view .LVU342
+ 1181              		.loc 1 434 1 is_stmt 0 view .LVU342
  1182 0000 08B5     		push	{r3, lr}
  1183              		.cfi_def_cfa_offset 8
  1184              		.cfi_offset 3, -8
  1185              		.cfi_offset 14, -4
- 436:moudels/motor/MImotor/MImotor.c ****     MI_motor_Stop( hmotor);
- 1186              		.loc 1 436 5 is_stmt 1 view .LVU343
+ 435:moudels/motor/MImotor/MImotor.c ****     MI_motor_Stop( hmotor);
+ 1186              		.loc 1 435 5 is_stmt 1 view .LVU343
  1187 0002 FFF7FEFF 		bl	MI_motor_Stop
  1188              	.LVL96:
- 437:moudels/motor/MImotor/MImotor.c **** }
- 1189              		.loc 1 437 1 is_stmt 0 view .LVU344
+ 436:moudels/motor/MImotor/MImotor.c **** }
+ 1189              		.loc 1 436 1 is_stmt 0 view .LVU344
  1190 0006 08BD     		pop	{r3, pc}
  1191              		.cfi_endproc
  1192              	.LFE157:
@@ -1963,54 +1962,54 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  1201              	MI_motor_LocationControl:
  1202              	.LVL97:
  1203              	.LFB158:
- 438:moudels/motor/MImotor/MImotor.c **** 
- 439:moudels/motor/MImotor/MImotor.c **** /**
- 440:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机位置模式控制指令
- 441:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 442:moudels/motor/MImotor/MImotor.c ****   * @param[in]      location 控制位置 rad
- 443:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kp 响应速度(到达位置快慢)，一般取1-10
- 444:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kd 电机阻尼，过小会震荡，过大电机会震动明显。一般取0.5�
- 445:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 446:moudels/motor/MImotor/MImotor.c ****   */
- 447:moudels/motor/MImotor/MImotor.c **** void  MI_motor_LocationControl(MIMotorInstance* hmotor)
- 448:moudels/motor/MImotor/MImotor.c **** {
- 1204              		.loc 1 448 1 is_stmt 1 view -0
+ 437:moudels/motor/MImotor/MImotor.c **** 
+ 438:moudels/motor/MImotor/MImotor.c **** /**
+ 439:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机位置模式控制指令
+ 440:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 441:moudels/motor/MImotor/MImotor.c ****   * @param[in]      location 控制位置 rad
+ 442:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kp 响应速度(到达位置快慢)，一般取1-10
+ 443:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kd 电机阻尼，过小会震荡，过大电机会震动明显。一般取0.5�
+ 444:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 445:moudels/motor/MImotor/MImotor.c ****   */
+ 446:moudels/motor/MImotor/MImotor.c **** void  MI_motor_LocationControl(MIMotorInstance* hmotor)
+ 447:moudels/motor/MImotor/MImotor.c **** {
+ 1204              		.loc 1 447 1 is_stmt 1 view -0
  1205              		.cfi_startproc
  1206              		@ args = 0, pretend = 0, frame = 0
  1207              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 34
+ 1208              		.loc 1 447 1 is_stmt 0 view .LVU346
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 34
 
 
- 1208              		.loc 1 448 1 is_stmt 0 view .LVU346
  1209 0000 10B5     		push	{r4, lr}
  1210              		.cfi_def_cfa_offset 8
  1211              		.cfi_offset 4, -8
  1212              		.cfi_offset 14, -4
  1213 0002 0446     		mov	r4, r0
- 449:moudels/motor/MImotor/MImotor.c ****    MI_motor_ModeSwitch(hmotor, 1,0x7005);
- 1214              		.loc 1 449 4 is_stmt 1 view .LVU347
+ 448:moudels/motor/MImotor/MImotor.c ****    MI_motor_ModeSwitch(hmotor, 1,0x7005);
+ 1214              		.loc 1 448 4 is_stmt 1 view .LVU347
  1215 0004 47F20502 		movw	r2, #28677
  1216 0008 0121     		movs	r1, #1
  1217 000a FFF7FEFF 		bl	MI_motor_ModeSwitch
  1218              	.LVL98:
- 450:moudels/motor/MImotor/MImotor.c ****    MI_motor_Enable ( hmotor);
- 1219              		.loc 1 450 4 view .LVU348
+ 449:moudels/motor/MImotor/MImotor.c ****    MI_motor_Enable ( hmotor);
+ 1219              		.loc 1 449 4 view .LVU348
  1220 000e 2046     		mov	r0, r4
  1221 0010 FFF7FEFF 		bl	MI_motor_Enable
  1222              	.LVL99:
- 451:moudels/motor/MImotor/MImotor.c ****    MI_motor_Modeset(hmotor, 30,0x7017);//最大速度
- 1223              		.loc 1 451 4 view .LVU349
+ 450:moudels/motor/MImotor/MImotor.c ****    MI_motor_Modeset(hmotor, 30,0x7017);//最大速度
+ 1223              		.loc 1 450 4 view .LVU349
  1224 0014 47F21701 		movw	r1, #28695
  1225 0018 B3EE0E0A 		vmov.f32	s0, #3.0e+1
  1226 001c 2046     		mov	r0, r4
  1227 001e FFF7FEFF 		bl	MI_motor_Modeset
  1228              	.LVL100:
- 452:moudels/motor/MImotor/MImotor.c ****     // MI_motor_Modeset(hmotor, location,0x7016);//速度
- 453:moudels/motor/MImotor/MImotor.c **** 
- 454:moudels/motor/MImotor/MImotor.c **** }
- 1229              		.loc 1 454 1 is_stmt 0 view .LVU350
+ 451:moudels/motor/MImotor/MImotor.c ****     // MI_motor_Modeset(hmotor, location,0x7016);//速度
+ 452:moudels/motor/MImotor/MImotor.c **** 
+ 453:moudels/motor/MImotor/MImotor.c **** }
+ 1229              		.loc 1 453 1 is_stmt 0 view .LVU350
  1230 0022 10BD     		pop	{r4, pc}
- 1231              		.loc 1 454 1 view .LVU351
+ 1231              		.loc 1 453 1 view .LVU351
  1232              		.cfi_endproc
  1233              	.LFE158:
  1235              		.section	.text.MI_motor_SpeedControl,"ax",%progbits
@@ -2022,52 +2021,52 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  1242              	MI_motor_SpeedControl:
  1243              	.LVL101:
  1244              	.LFB159:
- 455:moudels/motor/MImotor/MImotor.c **** 
- 456:moudels/motor/MImotor/MImotor.c **** /**
- 457:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机速度模式控制指令
- 458:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
- 459:moudels/motor/MImotor/MImotor.c ****   * @param[in]      speed 控制速度
- 460:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kd 响应速度，一般取0.1-1
- 461:moudels/motor/MImotor/MImotor.c ****   * @retval         none
- 462:moudels/motor/MImotor/MImotor.c ****   */
- 463:moudels/motor/MImotor/MImotor.c **** void  MI_motor_SpeedControl(MIMotorInstance* hmotor)
- 464:moudels/motor/MImotor/MImotor.c **** {
- 1245              		.loc 1 464 1 is_stmt 1 view -0
+ 454:moudels/motor/MImotor/MImotor.c **** 
+ 455:moudels/motor/MImotor/MImotor.c **** /**
+ 456:moudels/motor/MImotor/MImotor.c ****   * @brief          小米电机速度模式控制指令
+ 457:moudels/motor/MImotor/MImotor.c ****   * @param[in]      hmotor 电机结构体
+ 458:moudels/motor/MImotor/MImotor.c ****   * @param[in]      speed 控制速度
+ 459:moudels/motor/MImotor/MImotor.c ****   * @param[in]      kd 响应速度，一般取0.1-1
+ 460:moudels/motor/MImotor/MImotor.c ****   * @retval         none
+ 461:moudels/motor/MImotor/MImotor.c ****   */
+ 462:moudels/motor/MImotor/MImotor.c **** void  MI_motor_SpeedControl(MIMotorInstance* hmotor)
+ 463:moudels/motor/MImotor/MImotor.c **** {
+ 1245              		.loc 1 463 1 is_stmt 1 view -0
  1246              		.cfi_startproc
  1247              		@ args = 0, pretend = 0, frame = 0
  1248              		@ frame_needed = 0, uses_anonymous_args = 0
- 1249              		.loc 1 464 1 is_stmt 0 view .LVU353
+ 1249              		.loc 1 463 1 is_stmt 0 view .LVU353
  1250 0000 10B5     		push	{r4, lr}
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 35
-
-
  1251              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 35
+
+
  1252              		.cfi_offset 4, -8
  1253              		.cfi_offset 14, -4
  1254 0002 0446     		mov	r4, r0
- 465:moudels/motor/MImotor/MImotor.c ****     MI_motor_ModeSwitch(hmotor, 2,0x7005);
- 1255              		.loc 1 465 5 is_stmt 1 view .LVU354
+ 464:moudels/motor/MImotor/MImotor.c ****     MI_motor_ModeSwitch(hmotor, 2,0x7005);
+ 1255              		.loc 1 464 5 is_stmt 1 view .LVU354
  1256 0004 47F20502 		movw	r2, #28677
  1257 0008 0221     		movs	r1, #2
  1258 000a FFF7FEFF 		bl	MI_motor_ModeSwitch
  1259              	.LVL102:
- 466:moudels/motor/MImotor/MImotor.c ****    MI_motor_Enable ( hmotor);
- 1260              		.loc 1 466 4 view .LVU355
+ 465:moudels/motor/MImotor/MImotor.c ****    MI_motor_Enable ( hmotor);
+ 1260              		.loc 1 465 4 view .LVU355
  1261 000e 2046     		mov	r0, r4
  1262 0010 FFF7FEFF 		bl	MI_motor_Enable
  1263              	.LVL103:
- 467:moudels/motor/MImotor/MImotor.c ****    MI_motor_Modeset(hmotor, 23,0x7018);//最大dianliu
- 1264              		.loc 1 467 4 view .LVU356
+ 466:moudels/motor/MImotor/MImotor.c ****    MI_motor_Modeset(hmotor, 23,0x7018);//最大dianliu
+ 1264              		.loc 1 466 4 view .LVU356
  1265 0014 47F21801 		movw	r1, #28696
  1266 0018 B3EE070A 		vmov.f32	s0, #2.3e+1
  1267 001c 2046     		mov	r0, r4
  1268 001e FFF7FEFF 		bl	MI_motor_Modeset
  1269              	.LVL104:
- 468:moudels/motor/MImotor/MImotor.c ****     // MI_motor_Modeset(hmotor,speed,0x700A);//速度
- 469:moudels/motor/MImotor/MImotor.c **** }
- 1270              		.loc 1 469 1 is_stmt 0 view .LVU357
+ 467:moudels/motor/MImotor/MImotor.c ****     // MI_motor_Modeset(hmotor,speed,0x700A);//速度
+ 468:moudels/motor/MImotor/MImotor.c **** }
+ 1270              		.loc 1 468 1 is_stmt 0 view .LVU357
  1271 0022 10BD     		pop	{r4, pc}
- 1272              		.loc 1 469 1 view .LVU358
+ 1272              		.loc 1 468 1 view .LVU358
  1273              		.cfi_endproc
  1274              	.LFE159:
  1276              		.section	.text.MIMotorControl,"ax",%progbits
@@ -2093,15 +2092,15 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  1295              		.loc 1 103 5 view .LVU360
  104:moudels/motor/MImotor/MImotor.c ****     // Motor_Controller_s *motor_controller;   // 电机控制器
  1296              		.loc 1 104 5 view .LVU361
- 107:moudels/motor/MImotor/MImotor.c ****     for(size_t i=0;i<idx;++i)
+ 107:moudels/motor/MImotor/MImotor.c ****     for(size_t i=0;i<idx;i++)
  1297              		.loc 1 107 5 view .LVU362
  108:moudels/motor/MImotor/MImotor.c ****     {
  1298              		.loc 1 108 5 view .LVU363
  1299              	.LBB9:
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 36
-
-
  108:moudels/motor/MImotor/MImotor.c ****     {
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 36
+
+
  1300              		.loc 1 108 9 view .LVU364
  1301              	.LVL105:
  108:moudels/motor/MImotor/MImotor.c ****     {
@@ -2109,7 +2108,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  1303 0002 0025     		movs	r5, #0
  108:moudels/motor/MImotor/MImotor.c ****     {
  1304              		.loc 1 108 5 view .LVU366
- 1305 0004 0AE0     		b	.L70
+ 1305 0004 09E0     		b	.L70
  1306              	.LVL106:
  1307              	.L82:
  116:moudels/motor/MImotor/MImotor.c ****               motor_setting->ifsetflag=0;
@@ -2122,35 +2121,35 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  117:moudels/motor/MImotor/MImotor.c ****         }else if(motor->stop_flag == MOTOR_ENALBED&&motor_setting->ifsetflag==0){
  1313              		.loc 1 117 39 is_stmt 0 view .LVU369
  1314 000c 0023     		movs	r3, #0
- 1315 000e 84F82330 		strb	r3, [r4, #35]
+ 1315 000e 6362     		str	r3, [r4, #36]	@ float
  1316              	.L72:
  132:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
  1317              		.loc 1 132 10 is_stmt 1 view .LVU370
  132:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
  1318              		.loc 1 132 18 is_stmt 0 view .LVU371
- 1319 0012 94F8AD31 		ldrb	r3, [r4, #429]	@ zero_extendqisi2
+ 1319 0010 94F8AD31 		ldrb	r3, [r4, #429]	@ zero_extendqisi2
  132:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
  1320              		.loc 1 132 12 view .LVU372
- 1321 0016 012B     		cmp	r3, #1
- 1322 0018 31D0     		beq	.L80
+ 1321 0014 012B     		cmp	r3, #1
+ 1322 0016 34D0     		beq	.L80
  1323              	.L75:
  108:moudels/motor/MImotor/MImotor.c ****     {
- 1324              		.loc 1 108 26 is_stmt 1 discriminator 2 view .LVU373
- 1325 001a 0135     		adds	r5, r5, #1
+ 1324              		.loc 1 108 27 is_stmt 1 discriminator 2 view .LVU373
+ 1325 0018 0135     		adds	r5, r5, #1
  1326              	.LVL108:
  1327              	.L70:
  108:moudels/motor/MImotor/MImotor.c ****     {
  1328              		.loc 1 108 21 discriminator 1 view .LVU374
- 1329 001c 2A4B     		ldr	r3, .L87
- 1330 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1331 0020 AB42     		cmp	r3, r5
- 1332 0022 50D9     		bls	.L81
+ 1329 001a 304B     		ldr	r3, .L87
+ 1330 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1331 001e AB42     		cmp	r3, r5
+ 1332 0020 5AD9     		bls	.L81
  110:moudels/motor/MImotor/MImotor.c ****         motor_setting = &motor->motor_settings;
  1333              		.loc 1 110 9 view .LVU375
  110:moudels/motor/MImotor/MImotor.c ****         motor_setting = &motor->motor_settings;
  1334              		.loc 1 110 15 is_stmt 0 view .LVU376
- 1335 0024 294B     		ldr	r3, .L87+4
- 1336 0026 53F82540 		ldr	r4, [r3, r5, lsl #2]
+ 1335 0022 2F4B     		ldr	r3, .L87+4
+ 1336 0024 53F82540 		ldr	r4, [r3, r5, lsl #2]
  1337              	.LVL109:
  111:moudels/motor/MImotor/MImotor.c ****         // motor_controller = &motor->motor_controller;
  1338              		.loc 1 111 9 is_stmt 1 view .LVU377
@@ -2158,302 +2157,306 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 1
  1339              		.loc 1 114 9 view .LVU378
  114:moudels/motor/MImotor/MImotor.c ****         if(motor->stop_flag == MOTOR_STOP){
  1340              		.loc 1 114 38 is_stmt 0 view .LVU379
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 37
+ 1341 0028 D4F8A021 		ldr	r2, [r4, #416]	@ float
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 37
 
 
- 1341 002a D4F8A021 		ldr	r2, [r4, #416]	@ float
  114:moudels/motor/MImotor/MImotor.c ****         if(motor->stop_flag == MOTOR_STOP){
  1342              		.loc 1 114 13 view .LVU380
- 1343 002e 284B     		ldr	r3, .L87+8
- 1344 0030 1A60     		str	r2, [r3]	@ float
+ 1343 002c 2D4B     		ldr	r3, .L87+8
+ 1344 002e 1A60     		str	r2, [r3]	@ float
  115:moudels/motor/MImotor/MImotor.c ****               MI_motor_stop(motor);
  1345              		.loc 1 115 9 is_stmt 1 view .LVU381
  115:moudels/motor/MImotor/MImotor.c ****               MI_motor_stop(motor);
  1346              		.loc 1 115 17 is_stmt 0 view .LVU382
- 1347 0032 94F8AD31 		ldrb	r3, [r4, #429]	@ zero_extendqisi2
+ 1347 0030 94F8AD31 		ldrb	r3, [r4, #429]	@ zero_extendqisi2
  115:moudels/motor/MImotor/MImotor.c ****               MI_motor_stop(motor);
  1348              		.loc 1 115 11 view .LVU383
- 1349 0036 002B     		cmp	r3, #0
- 1350 0038 E5D0     		beq	.L82
- 118:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
+ 1349 0034 002B     		cmp	r3, #0
+ 1350 0036 E6D0     		beq	.L82
+ 118:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP&&motor_setting->ifsetflag==0)){
  1351              		.loc 1 118 15 is_stmt 1 view .LVU384
- 118:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
+ 118:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP&&motor_setting->ifsetflag==0)){
  1352              		.loc 1 118 17 is_stmt 0 view .LVU385
- 1353 003a 012B     		cmp	r3, #1
- 1354 003c E9D1     		bne	.L72
- 118:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
+ 1353 0038 012B     		cmp	r3, #1
+ 1354 003a E9D1     		bne	.L72
+ 118:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP&&motor_setting->ifsetflag==0)){
  1355              		.loc 1 118 66 discriminator 1 view .LVU386
- 1356 003e 94F82330 		ldrb	r3, [r4, #35]	@ zero_extendqisi2
- 118:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
+ 1356 003c D4ED097A 		vldr.32	s15, [r4, #36]
+ 118:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP&&motor_setting->ifsetflag==0)){
  1357              		.loc 1 118 51 discriminator 1 view .LVU387
- 1358 0042 002B     		cmp	r3, #0
- 1359 0044 E5D1     		bne	.L72
+ 1358 0040 F5EE407A 		vcmp.f32	s15, #0
+ 1359 0044 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 1360 0048 E2D1     		bne	.L72
  119:moudels/motor/MImotor/MImotor.c ****                     MI_motor_LocationControl(motor);
- 1360              		.loc 1 119 13 is_stmt 1 view .LVU388
+ 1361              		.loc 1 119 13 is_stmt 1 view .LVU388
  119:moudels/motor/MImotor/MImotor.c ****                     MI_motor_LocationControl(motor);
- 1361              		.loc 1 119 30 is_stmt 0 view .LVU389
- 1362 0046 637F     		ldrb	r3, [r4, #29]	@ zero_extendqisi2
+ 1362              		.loc 1 119 30 is_stmt 0 view .LVU389
+ 1363 004a 637F     		ldrb	r3, [r4, #29]	@ zero_extendqisi2
  119:moudels/motor/MImotor/MImotor.c ****                     MI_motor_LocationControl(motor);
- 1363              		.loc 1 119 15 view .LVU390
- 1364 0048 042B     		cmp	r3, #4
- 1365 004a 0AD0     		beq	.L83
+ 1364              		.loc 1 119 15 view .LVU390
+ 1365 004c 042B     		cmp	r3, #4
+ 1366 004e 0AD0     		beq	.L83
  122:moudels/motor/MImotor/MImotor.c ****             {
- 1366              		.loc 1 122 19 is_stmt 1 view .LVU391
+ 1367              		.loc 1 122 19 is_stmt 1 view .LVU391
  122:moudels/motor/MImotor/MImotor.c ****             {
- 1367              		.loc 1 122 21 is_stmt 0 view .LVU392
- 1368 004c 022B     		cmp	r3, #2
- 1369 004e 0FD0     		beq	.L84
+ 1368              		.loc 1 122 21 is_stmt 0 view .LVU392
+ 1369 0050 022B     		cmp	r3, #2
+ 1370 0052 0FD0     		beq	.L84
  126:moudels/motor/MImotor/MImotor.c ****            {
- 1370              		.loc 1 126 19 is_stmt 1 view .LVU393
+ 1371              		.loc 1 126 19 is_stmt 1 view .LVU393
  126:moudels/motor/MImotor/MImotor.c ****            {
- 1371              		.loc 1 126 21 is_stmt 0 view .LVU394
- 1372 0050 012B     		cmp	r3, #1
- 1373 0052 DED1     		bne	.L72
+ 1372              		.loc 1 126 21 is_stmt 0 view .LVU394
+ 1373 0054 012B     		cmp	r3, #1
+ 1374 0056 DBD1     		bne	.L72
  128:moudels/motor/MImotor/MImotor.c ****                     motor_setting->ifsetflag=1;
- 1374              		.loc 1 128 21 is_stmt 1 view .LVU395
- 1375 0054 2046     		mov	r0, r4
- 1376 0056 FFF7FEFF 		bl	MI_motor_TorqueControl
- 1377              	.LVL110:
+ 1375              		.loc 1 128 21 is_stmt 1 view .LVU395
+ 1376 0058 2046     		mov	r0, r4
+ 1377 005a FFF7FEFF 		bl	MI_motor_TorqueControl
+ 1378              	.LVL110:
  129:moudels/motor/MImotor/MImotor.c ****             }
- 1378              		.loc 1 129 21 view .LVU396
+ 1379              		.loc 1 129 21 view .LVU396
  129:moudels/motor/MImotor/MImotor.c ****             }
- 1379              		.loc 1 129 45 is_stmt 0 view .LVU397
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 38
+ 1380              		.loc 1 129 45 is_stmt 0 view .LVU397
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 38
 
 
- 1380 005a 0123     		movs	r3, #1
- 1381 005c 84F82330 		strb	r3, [r4, #35]
- 1382 0060 D7E7     		b	.L72
- 1383              	.L83:
+ 1381 005e 4FF07E53 		mov	r3, #1065353216
+ 1382 0062 6362     		str	r3, [r4, #36]	@ float
+ 1383 0064 D4E7     		b	.L72
+ 1384              	.L83:
  120:moudels/motor/MImotor/MImotor.c ****                     motor_setting->ifsetflag=1;
- 1384              		.loc 1 120 21 is_stmt 1 view .LVU398
- 1385 0062 2046     		mov	r0, r4
- 1386 0064 FFF7FEFF 		bl	MI_motor_LocationControl
- 1387              	.LVL111:
- 121:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==SPEED_LOOP)
- 1388              		.loc 1 121 21 view .LVU399
- 121:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==SPEED_LOOP)
- 1389              		.loc 1 121 45 is_stmt 0 view .LVU400
- 1390 0068 0123     		movs	r3, #1
- 1391 006a 84F82330 		strb	r3, [r4, #35]
- 1392 006e D0E7     		b	.L72
- 1393              	.L84:
+ 1385              		.loc 1 120 21 is_stmt 1 view .LVU398
+ 1386 0066 2046     		mov	r0, r4
+ 1387 0068 FFF7FEFF 		bl	MI_motor_LocationControl
+ 1388              	.LVL111:
+ 121:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==SPEED_LOOP&&motor_setting->ifsetflag==0)
+ 1389              		.loc 1 121 21 view .LVU399
+ 121:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==SPEED_LOOP&&motor_setting->ifsetflag==0)
+ 1390              		.loc 1 121 45 is_stmt 0 view .LVU400
+ 1391 006c 4FF07E53 		mov	r3, #1065353216
+ 1392 0070 6362     		str	r3, [r4, #36]	@ float
+ 1393 0072 CDE7     		b	.L72
+ 1394              	.L84:
  124:moudels/motor/MImotor/MImotor.c ****                     motor_setting->ifsetflag=1;
- 1394              		.loc 1 124 21 is_stmt 1 view .LVU401
- 1395 0070 2046     		mov	r0, r4
- 1396 0072 FFF7FEFF 		bl	MI_motor_SpeedControl
- 1397              	.LVL112:
- 125:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==CURRENT_LOOP)
- 1398              		.loc 1 125 21 view .LVU402
- 125:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==CURRENT_LOOP)
- 1399              		.loc 1 125 45 is_stmt 0 view .LVU403
- 1400 0076 0123     		movs	r3, #1
- 1401 0078 84F82330 		strb	r3, [r4, #35]
- 1402 007c C9E7     		b	.L72
- 1403              	.L80:
+ 1395              		.loc 1 124 21 is_stmt 1 view .LVU401
+ 1396 0074 2046     		mov	r0, r4
+ 1397 0076 FFF7FEFF 		bl	MI_motor_SpeedControl
+ 1398              	.LVL112:
+ 125:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==CURRENT_LOOP&&motor_setting->ifsetflag==0)
+ 1399              		.loc 1 125 21 view .LVU402
+ 125:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==CURRENT_LOOP&&motor_setting->ifsetflag==0)
+ 1400              		.loc 1 125 45 is_stmt 0 view .LVU403
+ 1401 007a 4FF07E53 		mov	r3, #1065353216
+ 1402 007e 6362     		str	r3, [r4, #36]	@ float
+ 1403 0080 C6E7     		b	.L72
+ 1404              	.L80:
  132:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
- 1404              		.loc 1 132 61 discriminator 1 view .LVU404
- 1405 007e 94F82330 		ldrb	r3, [r4, #35]	@ zero_extendqisi2
+ 1405              		.loc 1 132 61 discriminator 1 view .LVU404
+ 1406 0082 94ED097A 		vldr.32	s14, [r4, #36]
  132:moudels/motor/MImotor/MImotor.c ****             if((motor_setting->close_loop_type==ANGLE_LOOP)){
- 1406              		.loc 1 132 46 discriminator 1 view .LVU405
- 1407 0082 012B     		cmp	r3, #1
- 1408 0084 C9D1     		bne	.L75
- 133:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor, 6.28,0x7016);
- 1409              		.loc 1 133 13 is_stmt 1 view .LVU406
- 133:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor, 6.28,0x7016);
- 1410              		.loc 1 133 30 is_stmt 0 view .LVU407
- 1411 0086 637F     		ldrb	r3, [r4, #29]	@ zero_extendqisi2
- 133:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor, 6.28,0x7016);
- 1412              		.loc 1 133 15 view .LVU408
- 1413 0088 042B     		cmp	r3, #4
- 1414 008a 0BD0     		beq	.L85
+ 1407              		.loc 1 132 46 discriminator 1 view .LVU405
+ 1408 0086 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 1409 008a B4EE677A 		vcmp.f32	s14, s15
+ 1410 008e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 1411 0092 C1D1     		bne	.L75
+ 133:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x7016);
+ 1412              		.loc 1 133 13 is_stmt 1 view .LVU406
+ 133:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x7016);
+ 1413              		.loc 1 133 30 is_stmt 0 view .LVU407
+ 1414 0094 637F     		ldrb	r3, [r4, #29]	@ zero_extendqisi2
+ 133:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x7016);
+ 1415              		.loc 1 133 15 view .LVU408
+ 1416 0096 042B     		cmp	r3, #4
+ 1417 0098 0CD0     		beq	.L85
  135:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x700A);
- 1415              		.loc 1 135 19 is_stmt 1 view .LVU409
+ 1418              		.loc 1 135 19 is_stmt 1 view .LVU409
  135:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x700A);
- 1416              		.loc 1 135 21 is_stmt 0 view .LVU410
- 1417 008c 022B     		cmp	r3, #2
- 1418 008e 11D0     		beq	.L86
- 137:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,0,0x7006);
- 1419              		.loc 1 137 19 is_stmt 1 view .LVU411
- 137:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,0,0x7006);
- 1420              		.loc 1 137 21 is_stmt 0 view .LVU412
- 1421 0090 012B     		cmp	r3, #1
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 39
+ 1419              		.loc 1 135 21 is_stmt 0 view .LVU410
+ 1420 009a 022B     		cmp	r3, #2
+ 1421 009c 13D0     		beq	.L86
+ 137:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x7006);
+ 1422              		.loc 1 137 19 is_stmt 1 view .LVU411
+ 137:moudels/motor/MImotor/MImotor.c ****                     MI_motor_Modeset(motor,ref,0x7006);
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 39
 
 
- 1422 0092 C2D1     		bne	.L75
+ 1423              		.loc 1 137 21 is_stmt 0 view .LVU412
+ 1424 009e 012B     		cmp	r3, #1
+ 1425 00a0 BAD1     		bne	.L75
  138:moudels/motor/MImotor/MImotor.c ****             }
- 1423              		.loc 1 138 21 is_stmt 1 view .LVU413
- 1424 0094 47F20601 		movw	r1, #28678
- 1425 0098 9FED0E0A 		vldr.32	s0, .L87+12
- 1426 009c 2046     		mov	r0, r4
- 1427 009e FFF7FEFF 		bl	MI_motor_Modeset
- 1428              	.LVL113:
- 1429 00a2 BAE7     		b	.L75
- 1430              	.L85:
+ 1426              		.loc 1 138 21 is_stmt 1 view .LVU413
+ 1427 00a2 47F20601 		movw	r1, #28678
+ 1428 00a6 0F4B     		ldr	r3, .L87+8
+ 1429 00a8 93ED000A 		vldr.32	s0, [r3]
+ 1430 00ac 2046     		mov	r0, r4
+ 1431 00ae FFF7FEFF 		bl	MI_motor_Modeset
+ 1432              	.LVL113:
+ 1433 00b2 B1E7     		b	.L75
+ 1434              	.L85:
  134:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==SPEED_LOOP){
- 1431              		.loc 1 134 21 view .LVU414
- 1432 00a4 47F21601 		movw	r1, #28694
- 1433 00a8 9FED0B0A 		vldr.32	s0, .L87+16
- 1434 00ac 2046     		mov	r0, r4
- 1435 00ae FFF7FEFF 		bl	MI_motor_Modeset
- 1436              	.LVL114:
- 1437 00b2 B2E7     		b	.L75
- 1438              	.L86:
+ 1435              		.loc 1 134 21 view .LVU414
+ 1436 00b4 47F21601 		movw	r1, #28694
+ 1437 00b8 0A4B     		ldr	r3, .L87+8
+ 1438 00ba 93ED000A 		vldr.32	s0, [r3]
+ 1439 00be 2046     		mov	r0, r4
+ 1440 00c0 FFF7FEFF 		bl	MI_motor_Modeset
+ 1441              	.LVL114:
+ 1442 00c4 A8E7     		b	.L75
+ 1443              	.L86:
  136:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==CURRENT_LOOP){
- 1439              		.loc 1 136 21 view .LVU415
- 1440 00b4 47F20A01 		movw	r1, #28682
- 1441 00b8 054B     		ldr	r3, .L87+8
- 1442 00ba 93ED000A 		vldr.32	s0, [r3]
- 1443 00be 2046     		mov	r0, r4
- 1444 00c0 FFF7FEFF 		bl	MI_motor_Modeset
- 1445              	.LVL115:
- 1446 00c4 A9E7     		b	.L75
- 1447              	.LVL116:
- 1448              	.L81:
+ 1444              		.loc 1 136 21 view .LVU415
+ 1445 00c6 47F20A01 		movw	r1, #28682
+ 1446 00ca 064B     		ldr	r3, .L87+8
+ 1447 00cc 93ED000A 		vldr.32	s0, [r3]
+ 1448 00d0 2046     		mov	r0, r4
+ 1449 00d2 FFF7FEFF 		bl	MI_motor_Modeset
+ 1450              	.LVL115:
+ 1451 00d6 9FE7     		b	.L75
+ 1452              	.LVL116:
+ 1453              	.L81:
  136:moudels/motor/MImotor/MImotor.c ****             }else if(motor_setting->close_loop_type==CURRENT_LOOP){
- 1449              		.loc 1 136 21 is_stmt 0 view .LVU416
- 1450              	.LBE9:
- 144:moudels/motor/MImotor/MImotor.c **** void MIMotorStop(MIMotorInstance *motor)
- 1451              		.loc 1 144 1 view .LVU417
- 1452 00c6 38BD     		pop	{r3, r4, r5, pc}
- 1453              	.LVL117:
- 1454              	.L88:
- 144:moudels/motor/MImotor/MImotor.c **** void MIMotorStop(MIMotorInstance *motor)
- 1455              		.loc 1 144 1 view .LVU418
- 1456              		.align	2
- 1457              	.L87:
- 1458 00c8 00000000 		.word	idx
- 1459 00cc 00000000 		.word	mi_motor_instance
- 1460 00d0 00000000 		.word	ref.4
- 1461 00d4 00000000 		.word	0
- 1462 00d8 C3F5C840 		.word	1086911939
- 1463              		.cfi_endproc
- 1464              	.LFE141:
- 1466              		.section	.bss.EXT.0,"aw",%nobits
- 1467              		.align	2
- 1470              	EXT.0:
- 1471 0000 00000000 		.space	4
- 1472              		.section	.bss.EXT.1,"aw",%nobits
- 1473              		.align	2
- 1476              	EXT.1:
- 1477 0000 00000000 		.space	4
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 40
+ 1454              		.loc 1 136 21 is_stmt 0 view .LVU416
+ 1455              	.LBE9:
+ 143:moudels/motor/MImotor/MImotor.c **** void MIMotorStop(MIMotorInstance *motor)
+ 1456              		.loc 1 143 1 view .LVU417
+ 1457 00d8 38BD     		pop	{r3, r4, r5, pc}
+ 1458              	.LVL117:
+ 1459              	.L88:
+ 143:moudels/motor/MImotor/MImotor.c **** void MIMotorStop(MIMotorInstance *motor)
+ 1460              		.loc 1 143 1 view .LVU418
+ 1461 00da 00BF     		.align	2
+ 1462              	.L87:
+ 1463 00dc 00000000 		.word	idx
+ 1464 00e0 00000000 		.word	mi_motor_instance
+ 1465 00e4 00000000 		.word	ref.4
+ 1466              		.cfi_endproc
+ 1467              	.LFE141:
+ 1469              		.section	.bss.EXT.0,"aw",%nobits
+ 1470              		.align	2
+ 1473              	EXT.0:
+ 1474 0000 00000000 		.space	4
+ 1475              		.section	.bss.EXT.1,"aw",%nobits
+ 1476              		.align	2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 40
 
 
- 1478              		.section	.bss.EXT.2,"aw",%nobits
- 1479              		.align	2
- 1482              	EXT.2:
- 1483 0000 00000000 		.space	4
- 1484              		.section	.bss.EXT.3,"aw",%nobits
- 1485              		.align	2
- 1488              	EXT.3:
- 1489 0000 00000000 		.space	4
- 1490              		.section	.bss.ref.4,"aw",%nobits
- 1491              		.align	2
- 1494              	ref.4:
- 1495 0000 00000000 		.space	4
- 1496              		.global	MI_MASTERID
- 1497              		.section	.data.MI_MASTERID,"aw"
- 1500              	MI_MASTERID:
- 1501 0000 01       		.byte	1
- 1502              		.section	.bss.mi_motor_instance,"aw",%nobits
- 1503              		.align	2
- 1506              	mi_motor_instance:
- 1507 0000 00000000 		.space	32
- 1507      00000000 
- 1507      00000000 
- 1507      00000000 
- 1507      00000000 
- 1508              		.section	.bss.idx,"aw",%nobits
- 1511              	idx:
- 1512 0000 00       		.space	1
- 1513              		.text
- 1514              	.Letext0:
- 1515              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 1516              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 1517              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
- 1518              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 1519              		.file 6 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
- 1520              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 1521              		.file 8 "bsp/can/bsp_can.h"
- 1522              		.file 9 "moudels/algorithm/controller.h"
- 1523              		.file 10 "moudels/motor/motor_def.h"
- 1524              		.file 11 "moudels/daemon/daemon.h"
- 1525              		.file 12 "moudels/motor/MImotor/MImotor.h"
- 1526              		.file 13 "Core/Inc/can.h"
- 1527              		.file 14 "bsp/dwt/bsp_dwt.h"
- 1528              		.file 15 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
- 1529              		.file 16 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
- 1530              		.file 17 "<built-in>"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 41
+ 1479              	EXT.1:
+ 1480 0000 00000000 		.space	4
+ 1481              		.section	.bss.EXT.2,"aw",%nobits
+ 1482              		.align	2
+ 1485              	EXT.2:
+ 1486 0000 00000000 		.space	4
+ 1487              		.section	.bss.EXT.3,"aw",%nobits
+ 1488              		.align	2
+ 1491              	EXT.3:
+ 1492 0000 00000000 		.space	4
+ 1493              		.section	.bss.ref.4,"aw",%nobits
+ 1494              		.align	2
+ 1497              	ref.4:
+ 1498 0000 00000000 		.space	4
+ 1499              		.global	MI_MASTERID
+ 1500              		.section	.bss.MI_MASTERID,"aw",%nobits
+ 1503              	MI_MASTERID:
+ 1504 0000 00       		.space	1
+ 1505              		.section	.bss.mi_motor_instance,"aw",%nobits
+ 1506              		.align	2
+ 1509              	mi_motor_instance:
+ 1510 0000 00000000 		.space	32
+ 1510      00000000 
+ 1510      00000000 
+ 1510      00000000 
+ 1510      00000000 
+ 1511              		.section	.bss.idx,"aw",%nobits
+ 1514              	idx:
+ 1515 0000 00       		.space	1
+ 1516              		.text
+ 1517              	.Letext0:
+ 1518              		.file 2 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 1519              		.file 3 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 1520              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1521              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1522              		.file 6 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-too
+ 1523              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 1524              		.file 8 "bsp/can/bsp_can.h"
+ 1525              		.file 9 "moudels/algorithm/controller.h"
+ 1526              		.file 10 "moudels/motor/motor_def.h"
+ 1527              		.file 11 "moudels/daemon/daemon.h"
+ 1528              		.file 12 "moudels/motor/MImotor/MImotor.h"
+ 1529              		.file 13 "Core/Inc/can.h"
+ 1530              		.file 14 "bsp/dwt/bsp_dwt.h"
+ 1531              		.file 15 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
+ 1532              		.file 16 "C:/Users/Sive/AppData/Roaming/Code/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-to
+ 1533              		.file 17 "<built-in>"
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 41
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 MImotor.c
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:21     .text.MIMotorLostCallback:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:26     .text.MIMotorLostCallback:00000000 MIMotorLostCallback
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:43     .text.MI_motor_ModeSwitch:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:48     .text.MI_motor_ModeSwitch:00000000 MI_motor_ModeSwitch
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:150    .text.MI_motor_ModeSwitch:00000074 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1482   .bss.EXT.2:00000000 EXT.2
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1500   .data.MI_MASTERID:00000000 MI_MASTERID
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:156    .text.MI_motor_Enable:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:161    .text.MI_motor_Enable:00000000 MI_motor_Enable
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:252    .text.MI_motor_Enable:00000058 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1476   .bss.EXT.1:00000000 EXT.1
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:258    .text.MI_motor_Stop:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:263    .text.MI_motor_Stop:00000000 MI_motor_Stop
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:345    .text.MI_motor_Stop:00000054 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1470   .bss.EXT.0:00000000 EXT.0
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:356    .text.MI_motor_RxDecode:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:362    .text.MI_motor_RxDecode:00000000 MI_motor_RxDecode
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:520    .text.MI_motor_RxDecode:000000d8 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:530    .text.DecodeMIMotor:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:535    .text.DecodeMIMotor:00000000 DecodeMIMotor
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:676    .text.MIMotorStop:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:682    .text.MIMotorStop:00000000 MIMotorStop
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:700    .text.MIMotorEnable:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:706    .text.MIMotorEnable:00000000 MIMotorEnable
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:724    .text.MIMotorInit:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:730    .text.MIMotorInit:00000000 MIMotorInit
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:852    .text.MIMotorInit:000000ac $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1511   .bss.idx:00000000 idx
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1506   .bss.mi_motor_instance:00000000 mi_motor_instance
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:860    .text.MIMotorOuterLoop:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:866    .text.MIMotorOuterLoop:00000000 MIMotorOuterLoop
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:883    .text.MIMotorSetRef:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:889    .text.MIMotorSetRef:00000000 MIMotorSetRef
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:906    .text.FloatToUint:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:912    .text.FloatToUint:00000000 FloatToUint
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:970    .text.RangeRestrict:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:976    .text.RangeRestrict:00000000 RangeRestrict
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1015   .text.MI_motor_Modeset:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1021   .text.MI_motor_Modeset:00000000 MI_motor_Modeset
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1127   .text.MI_motor_Modeset:0000006c $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1488   .bss.EXT.3:00000000 EXT.3
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1133   .text.MI_motor_TorqueControl:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1139   .text.MI_motor_TorqueControl:00000000 MI_motor_TorqueControl
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1168   .text.MI_motor_stop:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1174   .text.MI_motor_stop:00000000 MI_motor_stop
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1195   .text.MI_motor_LocationControl:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1201   .text.MI_motor_LocationControl:00000000 MI_motor_LocationControl
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1236   .text.MI_motor_SpeedControl:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1242   .text.MI_motor_SpeedControl:00000000 MI_motor_SpeedControl
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1277   .text.MIMotorControl:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1283   .text.MIMotorControl:00000000 MIMotorControl
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1458   .text.MIMotorControl:000000c8 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1494   .bss.ref.4:00000000 ref.4
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1467   .bss.EXT.0:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1473   .bss.EXT.1:00000000 $d
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccItBThL.s 			page 42
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:21     .text.MIMotorLostCallback:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:26     .text.MIMotorLostCallback:00000000 MIMotorLostCallback
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:43     .text.MI_motor_ModeSwitch:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:48     .text.MI_motor_ModeSwitch:00000000 MI_motor_ModeSwitch
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:150    .text.MI_motor_ModeSwitch:00000074 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1485   .bss.EXT.2:00000000 EXT.2
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1503   .bss.MI_MASTERID:00000000 MI_MASTERID
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:156    .text.MI_motor_Enable:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:161    .text.MI_motor_Enable:00000000 MI_motor_Enable
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:252    .text.MI_motor_Enable:00000058 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1479   .bss.EXT.1:00000000 EXT.1
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:258    .text.MI_motor_Stop:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:263    .text.MI_motor_Stop:00000000 MI_motor_Stop
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:345    .text.MI_motor_Stop:00000054 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1473   .bss.EXT.0:00000000 EXT.0
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:356    .text.MI_motor_RxDecode:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:362    .text.MI_motor_RxDecode:00000000 MI_motor_RxDecode
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:520    .text.MI_motor_RxDecode:000000d8 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:530    .text.DecodeMIMotor:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:535    .text.DecodeMIMotor:00000000 DecodeMIMotor
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:676    .text.MIMotorStop:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:682    .text.MIMotorStop:00000000 MIMotorStop
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:700    .text.MIMotorEnable:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:706    .text.MIMotorEnable:00000000 MIMotorEnable
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:724    .text.MIMotorInit:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:730    .text.MIMotorInit:00000000 MIMotorInit
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:852    .text.MIMotorInit:000000ac $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1514   .bss.idx:00000000 idx
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1509   .bss.mi_motor_instance:00000000 mi_motor_instance
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:860    .text.MIMotorOuterLoop:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:866    .text.MIMotorOuterLoop:00000000 MIMotorOuterLoop
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:883    .text.MIMotorSetRef:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:889    .text.MIMotorSetRef:00000000 MIMotorSetRef
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:906    .text.FloatToUint:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:912    .text.FloatToUint:00000000 FloatToUint
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:970    .text.RangeRestrict:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:976    .text.RangeRestrict:00000000 RangeRestrict
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1015   .text.MI_motor_Modeset:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1021   .text.MI_motor_Modeset:00000000 MI_motor_Modeset
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1127   .text.MI_motor_Modeset:0000006c $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1491   .bss.EXT.3:00000000 EXT.3
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1133   .text.MI_motor_TorqueControl:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1139   .text.MI_motor_TorqueControl:00000000 MI_motor_TorqueControl
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1168   .text.MI_motor_stop:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1174   .text.MI_motor_stop:00000000 MI_motor_stop
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1195   .text.MI_motor_LocationControl:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1201   .text.MI_motor_LocationControl:00000000 MI_motor_LocationControl
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1236   .text.MI_motor_SpeedControl:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1242   .text.MI_motor_SpeedControl:00000000 MI_motor_SpeedControl
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1277   .text.MIMotorControl:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1283   .text.MIMotorControl:00000000 MIMotorControl
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1463   .text.MIMotorControl:000000dc $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1497   .bss.ref.4:00000000 ref.4
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1470   .bss.EXT.0:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1476   .bss.EXT.1:00000000 $d
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s 			page 42
 
 
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1479   .bss.EXT.2:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1485   .bss.EXT.3:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1491   .bss.ref.4:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1503   .bss.mi_motor_instance:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\ccItBThL.s:1512   .bss.idx:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1482   .bss.EXT.2:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1488   .bss.EXT.3:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1494   .bss.ref.4:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1504   .bss.MI_MASTERID:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1506   .bss.mi_motor_instance:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\ccX6Z0WA.s:1515   .bss.idx:00000000 $d
 
 UNDEFINED SYMBOLS
 CANTransmit

@@ -6,7 +6,7 @@
 
 static uint8_t idx=0 ; 
 static MIMotorInstance *mi_motor_instance[MI_MOTOR_CNT] = {NULL}; 
-uint8_t MI_MASTERID = 1; //master id 发送指令时EXTID的bit8:15,反馈的bit0:7
+uint8_t MI_MASTERID = 0; //master id 发送指令时EXTID的bit8:15,反馈的bit0:7
 /**
   * @brief          小米电机反馈帧解码（通信类型2）
   * @param[in]      Rx_can_info 接受到的电机数据结构体
@@ -105,7 +105,7 @@ void MIMotorControl()
     // Motor_Controller_s *motor_controller;   // 电机控制器
     // MI_Motor_Measure_s *measure;           // 电机测量值
     static float ref;
-    for(size_t i=0;i<idx;++i)
+    for(size_t i=0;i<idx;i++)
     {
         motor = mi_motor_instance[i];
         motor_setting = &motor->motor_settings;
@@ -116,14 +116,14 @@ void MIMotorControl()
               MI_motor_stop(motor);
               motor_setting->ifsetflag=0;
         }else if(motor->stop_flag == MOTOR_ENALBED&&motor_setting->ifsetflag==0){
-            if((motor_setting->close_loop_type==ANGLE_LOOP)){
+            if((motor_setting->close_loop_type==ANGLE_LOOP&&motor_setting->ifsetflag==0)){
                     MI_motor_LocationControl(motor);
                     motor_setting->ifsetflag=1;
-            }else if(motor_setting->close_loop_type==SPEED_LOOP)
+            }else if(motor_setting->close_loop_type==SPEED_LOOP&&motor_setting->ifsetflag==0)
             {
                     MI_motor_SpeedControl(motor);
                     motor_setting->ifsetflag=1;
-            }else if(motor_setting->close_loop_type==CURRENT_LOOP)
+            }else if(motor_setting->close_loop_type==CURRENT_LOOP&&motor_setting->ifsetflag==0)
            {
                     MI_motor_TorqueControl(motor);
                     motor_setting->ifsetflag=1;
@@ -370,7 +370,7 @@ static void MI_motor_ModeSwitch(MIMotorInstance* hmotor, uint8_t run_mode,uint16
     static EXT_ID_T EXT ;
     EXT.fields.mode=18;
     EXT.fields.data=MI_MASTERID;
-    EXT.fields.motor_id=(hmotor->motor_can_instance->tx_id) ;
+    EXT.fields.motor_id=hmotor->motor_can_instance->tx_id;
     EXT.fields.res=0;
     hmotor->motor_can_instance->txconf.ExtId=EXT.raw;
 

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
   27:moudels/algorithm/MahonyAHRS.c **** //-------------------------------------------------------------------------------------------------
   28:moudels/algorithm/MahonyAHRS.c **** // Variable definitions
   29:moudels/algorithm/MahonyAHRS.c **** 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 2
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 2
 
 
   30:moudels/algorithm/MahonyAHRS.c **** volatile float twoKp = twoKpDef;											// 2 * proportional gain (Kp)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
   84:moudels/algorithm/MahonyAHRS.c ****     //     q2q3 = q[2] * q[3];
   85:moudels/algorithm/MahonyAHRS.c ****     //     q3q3 = q[3] * q[3];   
   86:moudels/algorithm/MahonyAHRS.c **** 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 3
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 3
 
 
   87:moudels/algorithm/MahonyAHRS.c ****     //     // Reference direction of Earth's magnetic field
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  141:moudels/algorithm/MahonyAHRS.c **** 	q[0] *= recipNorm;
  142:moudels/algorithm/MahonyAHRS.c **** 	q[1] *= recipNorm;
  143:moudels/algorithm/MahonyAHRS.c **** 	q[2] *= recipNorm;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 4
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 4
 
 
  144:moudels/algorithm/MahonyAHRS.c **** 	q[3] *= recipNorm;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  198:moudels/algorithm/MahonyAHRS.c **** 	gy *= (0.5f * (1.0f / sampleFreq));
  199:moudels/algorithm/MahonyAHRS.c **** 	gz *= (0.5f * (1.0f / sampleFreq));
  200:moudels/algorithm/MahonyAHRS.c **** 	qa = q[0];
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 5
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 5
 
 
  201:moudels/algorithm/MahonyAHRS.c **** 	qb = q[1];
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
   58              		.loc 1 226 29 view .LVU12
   59 001a 67EE277A 		vmul.f32	s15, s14, s15
   60              		.loc 1 226 16 view .LVU13
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 6
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 6
 
 
   61 001e B7EE080A 		vmov.f32	s0, #1.5e+0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  152:moudels/algorithm/MahonyAHRS.c **** 	float halfex, halfey, halfez;
  112              		.loc 1 152 2 view .LVU20
  153:moudels/algorithm/MahonyAHRS.c **** 	float qa, qb, qc;
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 7
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 7
 
 
  113              		.loc 1 153 2 view .LVU21
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  151              		.loc 1 163 3 is_stmt 1 view .LVU37
  163:moudels/algorithm/MahonyAHRS.c **** 
  152              		.loc 1 163 6 is_stmt 0 view .LVU38
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 8
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 8
 
 
  153 0060 6AEE80AA 		vmul.f32	s21, s21, s0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  171:moudels/algorithm/MahonyAHRS.c **** 		halfey = (az * halfvx - ax * halfvz);
  190              		.loc 1 171 3 is_stmt 1 view .LVU56
  171:moudels/algorithm/MahonyAHRS.c **** 		halfey = (az * halfvx - ax * halfvz);
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 9
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 9
 
 
  191              		.loc 1 171 16 is_stmt 0 view .LVU57
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  177:moudels/algorithm/MahonyAHRS.c **** 			integralFBy += twoKi * halfey * (1.0f / sampleFreq);
  230              		.loc 1 177 34 view .LVU73
  231 00de 9FED5C7A 		vldr.32	s14, .L13+4
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 10
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 10
 
 
  232              	.LVL24:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  272              	.LVL27:
  182:moudels/algorithm/MahonyAHRS.c **** 		}
  273              		.loc 1 182 4 is_stmt 1 view .LVU88
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 11
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 11
 
 
  274 0138 D3ED007A 		vldr.32	s15, [r3]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  199:moudels/algorithm/MahonyAHRS.c **** 	qa = q[0];
  313              		.loc 1 199 5 is_stmt 0 view .LVU104
  314 0172 28EE271A 		vmul.f32	s2, s16, s15
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 12
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 12
 
 
  315              	.LVL35:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  204:moudels/algorithm/MahonyAHRS.c **** 	q[2] += (qa * gy - qb * gz + q[3] * gx);
  351              		.loc 1 204 36 view .LVU123
  352 01ae 29EEA06A 		vmul.f32	s12, s19, s1
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 13
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 13
 
 
  204:moudels/algorithm/MahonyAHRS.c **** 	q[2] += (qa * gy - qb * gz + q[3] * gx);
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  209:moudels/algorithm/MahonyAHRS.c **** 	q[0] *= recipNorm;
  390              		.loc 1 209 27 is_stmt 0 view .LVU141
  391 01f6 69EE097A 		vmul.f32	s15, s18, s18
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 14
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 14
 
 
  392              	.LVL42:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  431              		.cfi_restore 80
  432              		.cfi_restore 81
  433              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 15
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 15
 
 
  434 023a 10BD     		pop	{r4, pc}
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  482              		.cfi_def_cfa_offset 8
  483              		.cfi_offset 4, -8
  484              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 16
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 16
 
 
  485 0002 2DED048B 		vpush.64	{d8, d9}
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  132:moudels/algorithm/MahonyAHRS.c **** 	qc = q[2];
  525              		.loc 1 132 2 is_stmt 1 view .LVU179
  132:moudels/algorithm/MahonyAHRS.c **** 	qc = q[2];
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 17
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 17
 
 
  526              		.loc 1 132 5 is_stmt 0 view .LVU180
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  136:moudels/algorithm/MahonyAHRS.c **** 	q[3] += (qa * gz + qb * gy - qc * gx); 
  563              		.loc 1 136 2 is_stmt 1 view .LVU198
  136:moudels/algorithm/MahonyAHRS.c **** 	q[3] += (qa * gz + qb * gy - qc * gx); 
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 18
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 18
 
 
  564              		.loc 1 136 14 is_stmt 0 view .LVU199
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  602 00be 77EE877A 		vadd.f32	s15, s15, s14
  140:moudels/algorithm/MahonyAHRS.c **** 	q[0] *= recipNorm;
  603              		.loc 1 140 55 view .LVU216
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 19
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 19
 
 
  604 00c2 28EE087A 		vmul.f32	s14, s16, s16
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  645              	.LVL62:
   57:moudels/algorithm/MahonyAHRS.c **** 	}
  646              		.loc 1 57 3 view .LVU230
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 20
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 20
 
 
  647 0100 F9E7     		b	.L15
@@ -1176,29 +1176,29 @@ ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 1
  690              		.text
  691              	.Letext0:
  692              		.file 2 "moudels/algorithm/MahonyAHRS.h"
-ARM GAS  C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s 			page 21
+ARM GAS  C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s 			page 21
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 MahonyAHRS.c
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:21     .text.invSqrt:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:27     .text.invSqrt:00000000 invSqrt
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:73     .text.invSqrt:0000002c $d
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:78     .text.MahonyAHRSupdateIMU:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:84     .text.MahonyAHRSupdateIMU:00000000 MahonyAHRSupdateIMU
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:456    .text.MahonyAHRSupdateIMU:0000024c $d
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:681    .bss.twoKi:00000000 twoKi
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:674    .bss.integralFBx:00000000 integralFBx
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:667    .bss.integralFBy:00000000 integralFBy
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:660    .bss.integralFBz:00000000 integralFBz
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:688    .data.twoKp:00000000 twoKp
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:467    .text.MahonyAHRSupdate:00000000 $t
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:473    .text.MahonyAHRSupdate:00000000 MahonyAHRSupdate
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:651    .text.MahonyAHRSupdate:00000104 $d
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:657    .bss.integralFBz:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:664    .bss.integralFBy:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:671    .bss.integralFBx:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:678    .bss.twoKi:00000000 $d
-C:\Users\Sive\AppData\Local\Temp\cckZUeCl.s:685    .data.twoKp:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:21     .text.invSqrt:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:27     .text.invSqrt:00000000 invSqrt
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:73     .text.invSqrt:0000002c $d
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:78     .text.MahonyAHRSupdateIMU:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:84     .text.MahonyAHRSupdateIMU:00000000 MahonyAHRSupdateIMU
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:456    .text.MahonyAHRSupdateIMU:0000024c $d
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:681    .bss.twoKi:00000000 twoKi
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:674    .bss.integralFBx:00000000 integralFBx
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:667    .bss.integralFBy:00000000 integralFBy
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:660    .bss.integralFBz:00000000 integralFBz
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:688    .data.twoKp:00000000 twoKp
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:467    .text.MahonyAHRSupdate:00000000 $t
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:473    .text.MahonyAHRSupdate:00000000 MahonyAHRSupdate
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:651    .text.MahonyAHRSupdate:00000104 $d
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:657    .bss.integralFBz:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:664    .bss.integralFBy:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:671    .bss.integralFBx:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:678    .bss.twoKi:00000000 $d
+C:\Users\Sive\AppData\Local\Temp\cc1OECNb.s:685    .data.twoKp:00000000 $d
 
 NO UNDEFINED SYMBOLS

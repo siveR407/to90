@@ -173,9 +173,9 @@ static void RemoteControlSet()
 
 
     // 底盘参数,目前没有加入小陀螺(调试似乎暂时没有必要),系数需要调整
-    chassis_cmd_send.vx = 10.0f * (float)rc_data[TEMP].rc.rocker_r_; // _水平方向
-    chassis_cmd_send.vy = 10.0f * (float)rc_data[TEMP].rc.rocker_r1; // 1数值方向
-     chassis_cmd_send.wz = 10.0f * (float)rc_data[TEMP].rc.rocker_l_;
+    chassis_cmd_send.vx =   (float)rc_data[TEMP].rc.rocker_r_; // _水平方向
+    chassis_cmd_send.vy =  (float)rc_data[TEMP].rc.rocker_r1; // 1数值方向
+     chassis_cmd_send.wz =   (float)rc_data[TEMP].rc.rocker_l_;
       // 旋转方向
 
     if(rc_data[TEMP].rc.SG>800){

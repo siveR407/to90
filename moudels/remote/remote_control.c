@@ -64,7 +64,7 @@ static void sbus_to_rc(const uint8_t *sbus_rx_buf)
     rc_ctrl[TEMP].rc.SD = ch[7]  ;     
     rc_ctrl[TEMP].rc.SG = ch[10]  ;   
     rc_ctrl[TEMP].rc.SH = ch[11]  ;                          // 应急开关
-    RectifyRCjoystick();
+    // RectifyRCjoystick();
     // // 开关,0左1右
     // rc_ctrl[TEMP].rc.switch_right = ((sbus_buf[5] >> 4) & 0x0003);     //!< Switch right
     // rc_ctrl[TEMP].rc.switch_left = ((sbus_buf[5] >> 4) & 0x000C) >> 2; //!< Switch left
